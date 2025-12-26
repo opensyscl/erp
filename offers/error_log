@@ -1,0 +1,28 @@
+[10-Oct-2025 13:16:36 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 5
+[10-Oct-2025 13:16:36 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php:5
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 5
+[10-Oct-2025 13:48:58 America/Santiago] PHP Warning:  Undefined variable $searchTerm in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 101
+[10-Oct-2025 13:49:00 America/Santiago] PHP Warning:  Undefined variable $searchTerm in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 101
+[10-Oct-2025 13:49:01 America/Santiago] PHP Warning:  Undefined variable $searchTerm in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 101
+[10-Oct-2025 14:13:45 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 15
+[10-Oct-2025 14:13:45 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php:15
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 15
+[10-Oct-2025 14:14:10 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 15
+[10-Oct-2025 14:14:10 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php:15
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 15
+[10-Oct-2025 14:16:28 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 5
+[10-Oct-2025 14:16:28 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php:5
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 5
+[10-Oct-2025 14:22:56 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 12
+[10-Oct-2025 14:22:56 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php:12
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/offers/offers.php on line 12

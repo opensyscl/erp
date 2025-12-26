@@ -1,0 +1,944 @@
+:root {
+    --background-start: #f0f2f5;
+    --background-end: #e6e9ee;
+    --card-background: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(200, 200, 200, 0.6); /* Ajuste sutil */
+    --card-shadow: rgba(0, 0, 0, 0.1); /* Sombra más visible */
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --accent-color: #3b82f6; /* Azul brillante */
+    --accent-color-transparent: rgba(59, 130, 246, 0.1);
+    --danger-color: #ef4444; /* Rojo */
+    --danger-color-dark: #dc2626;
+    --glass-bg: rgba(255, 255, 255, 0.75); /* Fondo de encabezado más sólido */
+    --glass-border: rgba(200, 200, 200, 0.5);
+    /* Colores específicos del módulo de Horarios */
+    --dayoff-bg: #fee2e2; /* Rojo claro suave */
+    --dayoff-text: #b91c1c; /* Rojo oscuro */
+    --no-schedule-bg: #f9fafb;
+    --no-schedule-text: #9ca3af;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+    1. ESTILOS BASE Y SCALING (IMPORTANTE: 85% ZOOM)
+    ========================================================================== */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-start);
+    background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    
+    /* CORRECCIÓN CLAVE: Aplica un zoom del 85% a todo el cuerpo del documento */
+    transform: scale(0.85);
+    transform-origin: top left;
+    width: 117.65%; /* 100% / 0.85 */
+    min-height: 117.65vh; 
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* ==========================================================================
+    2. ENCABEZADO (HEADER)
+    ========================================================================== */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.header-left strong {
+    color: var(--text-primary);
+}
+
+.launcher-icon {
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 0;
+}
+
+.launcher-icon:hover {
+    background-color: rgba(0,0,0,0.05);
+    transform: scale(1.1);
+}
+
+.launcher-icon svg {
+    display: block;
+    color: var(--text-primary);
+}
+
+.header-nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-nav a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+    color: var(--text-primary);
+    background: rgba(0,0,0,0.05);
+}
+
+.header-nav a.active {
+    color: #fff;
+    background-color: var(--accent-color);
+    font-weight: 600;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.app-version {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6b7280;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    vertical-align: middle;
+}
+
+.btn-logout {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    background-color: var(--danger-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+/* Estilos para el campo de selección de turno */
+#shift_id {
+    /* Reseteo y apariencia base */
+    -webkit-appearance: none; /* Deshabilita la apariencia nativa de Chrome/Safari */
+    -moz-appearance: none;     /* Deshabilita la apariencia nativa de Firefox */
+    appearance: none;          /* Deshabilita la apariencia nativa */
+    
+    /* Diseño */
+    width: 100%;
+    padding: 10px 40px 10px 15px; /* Espacio extra a la derecha para la flecha custom */
+    font-size: 14px;
+    line-height: 1.5;
+    color: #374151; /* Color de texto oscuro */
+    background-color: #ffffff; /* Fondo blanco */
+    border: 1px solid #d1d5db; /* Borde gris suave */
+    border-radius: 8px; /* Bordes redondeados modernos */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Sombra ligera */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+}
+/* Efecto al enfocar (Focus) */
+#shift_id:focus {
+    border-color: #3b82f6; /* Borde azul al enfocar (similar a tu botón Guardar) */
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* Anillo de enfoque azul sutil */
+}
+
+/* Estilo para cuando el selector no tiene un valor seleccionado */
+#shift_id:invalid {
+    color: #9ca3af; /* Texto más claro para la opción "-- Seleccione un Turno --" */
+}
+
+/* Contenedor para posicionar la flecha custom (es necesario envolver el select) */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem; /* Espacio inferior */
+}
+
+/* Flecha custom (el toque sofisticado) */
+.select-wrapper::after {
+    content: '▼'; /* Símbolo de flecha hacia abajo */
+    position: absolute;
+    top: 50%;
+    right: 15px; /* Posicionado a la derecha */
+    transform: translateY(-50%);
+    pointer-events: none; /* Asegura que la flecha no interfiera con el clic */
+    color: #6b7280; /* Color gris oscuro */
+    font-size: 0.75rem;
+}
+
+/* ==========================================================================
+    3. CONTROLES DE PÁGINA Y SELECTOR DE MES
+    ========================================================================== */
+
+.page-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.page-header-controls h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Controles de botones para gestionar entidades */
+.controls-group {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+/* Estilos para botones primario y secundario */
+.btn-primary, .btn-secondary, .btn-danger {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: #e5e7eb;
+    color: var(--text-primary);
+}
+.btn-secondary:hover {
+    background-color: #d1d5db;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+.btn-danger:hover {
+    background-color: var(--danger-color-dark);
+}
+
+/* Botón pequeño para las tablas (Gestión de Empleados) */
+.btn-small {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+
+/* Estilos para el contenedor del selector de mes */
+.month-selector-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.month-selector-container label {
+    font-size: 1rem;
+    color: #374151;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Estilos para el select de mes */
+.month-selector-container select {
+    padding: 8px 30px 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+    /* Customización de flecha */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234B5563" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.018 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.month-selector-container select:hover {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* ==========================================================================
+    4. TARJETAS DE CONTENIDO (KPIs y General)
+    ========================================================================== */
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.kpi-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.12);
+}
+
+.kpi-card h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b7280; 
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.kpi-card .value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.kpi-card .projection {
+    color: #1ea769; 
+    font-weight: 600;
+}
+
+.content-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-bottom: 2.5rem;
+}
+
+.content-card h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* Colores condicionales */
+.danger-color { color: #ef4444; font-weight: 700; }
+.warning-color { color: #f97316; font-weight: 700; }
+.success-color { color: #22c55e; font-weight: 700; }
+
+.value.danger-color { color: #ef4444 !important; }
+.value.warning-color { color: #f59e0b !important; }
+.value.success-color { color: #10b981 !important; }
+
+/* ==========================================================================
+    5. TABLAS GENERALES (Ventas y Empleados)
+    ========================================================================== */
+
+.table-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.table-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.table-controls label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.table-controls select {
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+/* Estilo para tablas de listado como la de Venta y Empleados (data-table) */
+.sales-table, .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden; 
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.sales-table th, .sales-table td,
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #edf2f7;
+    text-align: left;
+}
+
+.sales-table th, .data-table th {
+    background-color: #f7f9fc;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    position: relative; /* Para ordenamiento */
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.sales-table tbody tr:last-child td,
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sales-table tbody tr:hover,
+.data-table tbody tr:hover {
+    background-color: var(--accent-color-transparent);
+}
+
+.sales-table td {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+/* Estilos de ordenamiento (flechas) */
+.sales-table th::after {
+    content: ''; 
+    position: absolute;
+    top: 50%;
+    right: 5px; 
+    transform: translateY(-50%);
+    opacity: 0; 
+    transition: opacity 0.2s;
+    font-size: 0.7em;
+    line-height: 1; 
+}
+
+.sales-table th.sort-asc::after {
+    content: '▲'; 
+    opacity: 1; 
+    color: #4CAF50; 
+    margin-top: -5px; 
+}
+
+.sales-table th.sort-desc::after {
+    content: '▼'; 
+    opacity: 1; 
+    color: #f44336; 
+    margin-top: -1px; 
+}
+
+/* ==========================================================================
+    6. CALENDARIO DE HORARIOS (SCHEDULES GRID)
+    ========================================================================== */
+
+.full-width {
+    width: 100%;
+    overflow-x: auto; 
+}
+
+.schedule-calendar-grid table {
+    width: 100%;
+    min-width: 1200px; 
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.schedule-calendar-grid th, .schedule-calendar-grid td {
+    border: 1px solid #e5e7eb;
+    padding: 6px 4px;
+    text-align: center;
+    vertical-align: middle;
+    height: 65px; 
+    line-height: 1.2;
+}
+
+.schedule-calendar-grid thead th {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    font-weight: 600;
+    position: sticky; 
+    top: 0;
+    z-index: 10;
+}
+
+.schedule-calendar-grid th span {
+    font-weight: 400;
+    color: #6b7280;
+    font-size: 0.8rem;
+}
+
+/* Columna de Empleados (Nombre) */
+.employee-name-cell {
+    text-align: left;
+    font-weight: 600;
+    background-color: #ffffff;
+    position: sticky;
+    left: 0;
+    z-index: 15;
+    min-width: 150px;
+    padding-left: 15px !important;
+}
+
+/* Celdas de Horario */
+.schedule-cell {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.schedule-cell:hover {
+    background-color: #eff6ff;
+    border-color: #60a5fa;
+}
+
+.no-schedule-cell {
+    background-color: var(--no-schedule-bg);
+    color: var(--no-schedule-text);
+}
+
+.day-off-cell {
+    background-color: var(--dayoff-bg);
+    color: var(--dayoff-text);
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.assigned-shift-cell {
+    color: var(--text-primary);
+}
+
+/* Estilo para el nombre del turno dentro de la celda */
+.shift-name {
+    display: inline-block;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ==========================================================================
+    7. MODALES Y FORMULARIOS (Horarios y Empleados)
+    ========================================================================== */
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; /* Z-index del modal */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5); 
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 5% auto; 
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 550px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal más grande para Gestión de Empleados */
+.large-modal {
+    max-width: 700px !important; 
+}
+
+.close-btn {
+    color: #9ca3af;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover, .close-btn:focus {
+    color: var(--danger-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Controles de radio en línea (para tipo de asignación de horario) */
+.radio-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.radio-group label {
+    font-weight: 400; 
+    margin-bottom: 0;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Sección de formulario (Turno Fijo o Personalizado) */
+.form-section {
+    padding: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    margin-top: 15px;
+    background-color: #f9fafb;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.input-group input[type="time"],
+.form-group select,
+.form-group textarea,
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    margin-top: 5px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input[type="radio"], 
+.form-group input[type="checkbox"] {
+    /* Reinicia estilos */
+    width: auto !important;
+    padding: 0 !important;
+    margin: 0 5px 0 0 !important;
+    border: none !important;
+    border-radius: 50% !important; /* Asegura que sean circulares */
+    box-shadow: none !important;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-color-transparent);
+    outline: none;
+}
+
+
+.input-group label {
+    flex-shrink: 0;
+    width: 80px;
+    text-align: right;
+    margin: 0;
+}
+
+.modal-actions {
+    margin-top: 30px;
+    padding-top: 15px; /* Separador superior */
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-actions#employee-actions {
+    justify-content: space-between;
+}
+
+/* --- ESTILOS ESPECÍFICOS DEL FORMULARIO DE EMPLEADOS --- */
+
+#employee-form {
+    margin-top: 25px !important;
+    padding: 25px !important;
+    border: 1px solid var(--card-border);
+    background: var(--card-background);
+    box-shadow: 0 4px 10px var(--card-shadow);
+    border-radius: 12px !important;
+}
+
+#employee-form h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+/* Controles de radio apilados (para Activo/Inactivo de Empleado) */
+.radio-group-stacked {
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.radio-group-stacked > label {
+    display: block; 
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.radio-group-stacked div {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+    padding-left: 10px;
+}
+
+.radio-group-stacked .option-wrapper label {
+    /* Alinea el texto de la opción */
+    margin-bottom: 0;
+    font-weight: 400; 
+    cursor: pointer;
+}
+
+/* Asegúrate de que las opciones individuales se vean bien */
+.radio-group-stacked .option-wrapper {
+    display: flex;
+    align-items: center; /* Centra verticalmente el radio y el texto */
+    padding: 5px 0;
+}
+
+.radio-group-stacked input[type="radio"] {
+    margin-right: 5px;
+}
+
+.radio-group-stacked div label {
+    font-weight: 400; 
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+    8. FOOTER Y MEDIA QUERIES
+    ========================================================================== */
+
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+    .header-nav {
+        display: none;
+    }
+    .page-header-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .page-header-controls h1 {
+        font-size: 1.5rem;
+    }
+    .month-selector-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .controls-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .btn-primary, .btn-secondary {
+        flex-grow: 1;
+        text-align: center;
+    }
+}
+
+/* Estilos para la nueva estructura por semanas */
+#schedule-calendar-weeks {
+    display: flex; /* Mostrar las semanas una debajo de la otra */
+    flex-direction: column; 
+    gap: 30px; /* Espacio entre cada semana */
+}
+
+/* Contenedor para cada tabla semanal */
+.weekly-schedule-card {
+    border: 1px solid #e5e7eb; /* Borde suave */
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.weekly-schedule-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #374151;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 8px;
+}
+
+/* Asegurar que la tabla dentro de la semana use todo el ancho */
+.weekly-schedule-card .data-table {
+    width: 100%;
+    table-layout: fixed; /* Ayuda a controlar el ancho de las columnas */
+}
+
+/* Asegurar que el nombre del empleado siempre tenga el mismo ancho */
+.weekly-schedule-card .employee-name-cell, 
+.weekly-schedule-card .employee-name-header {
+    width: 150px; /* Anchura fija para la columna de empleado */
+    min-width: 150px;
+    position: sticky; /* Opcional: mantiene el nombre visible al hacer scroll horizontal (si la semana es ancha) */
+    left: 0;
+    z-index: 10;
+    background-color: #f9fafb; /* Fondo para la celda sticky */
+    border-right: 1px solid #e5e7eb;
+}
+
+/* Es muy importante quitar el overflow horizontal del contenedor principal si estaba puesto */
+.schedule-calendar-grid { /* Si aún usas esta clase, quita el overflow */
+    overflow-x: visible !important;
+}
+
+/* ==========================================================================
+    9. TOAST NOTIFICATIONS (CORREGIDO Z-INDEX)
+    ========================================================================== */
+
+/* Estilos para el contenedor de toasts */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* 🚀 CORRECCIÓN: Valor muy alto para estar SIEMPRE sobre el modal (z-index: 2000) */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilos para el toast individual */
+.toast {
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateX(100%);
+    min-width: 250px;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Tipos de toasts */
+.toast.success {
+    background-color: #10b981; /* Verde esmeralda (similar a Tailwind) */
+    border-left: 5px solid #059669;
+}
+
+.toast.error {
+    background-color: #ef4444; /* Rojo */
+    border-left: 5px solid #dc2626;
+}
+
+.toast.warning {
+    background-color: #f59e0b; /* Amarillo */
+    border-left: 5px solid #d97706;
+}

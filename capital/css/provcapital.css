@@ -1,0 +1,725 @@
+/* -------------------------------------------------------------------
+ * Estilos para Análisis de Utilidad y Capital (capital.php)
+ * ------------------------------------------------------------------- */
+
+/* Variables de color para Glassmorphism y JS del gráfico */
+:root {
+	--reinvestment-color: #3b82f6; /* Azul para CMV/Reinversión */
+	--utility-color: #10b981; /* Verde para Utilidad y Venta Neta */
+	--sales-color: rgba(0, 123, 255, 0.5); /* Color para barras de venta en el gráfico diario */
+	--tax-debit-color: #f59e0b; /* Naranja/Ámbar para IVA Recaudado (Débito Fiscal) */
+	--tax-f22-color: #ef4444; /* Rojo para IVA a Pagar (F22) */
+
+	/* Estilos de Glassmorphism */
+	--background-start: #f0f2f5;
+	--background-end: #e6e9ee;
+	--card-background: rgba(255, 255, 255, 0.7);
+	--card-border: rgba(255, 255, 255, 0.9);
+	--card-shadow: rgba(0, 0, 0, 0.08);
+	--text-primary: #1a202c;
+	--text-secondary: #4a5568;
+	--accent-color: #3b82f6;
+	--accent-color-transparent: rgba(59, 130, 246, 0.1);
+	--danger-color: #ef4444;
+	--danger-color-dark: #dc2626;
+	--glass-bg: rgba(255, 255, 255, 0.5);
+	--glass-border: rgba(200, 200, 200, 0.5);
+
+	/* Estilos específicos que antes estaban en el <style> de provcapital.php */
+	--primary-color: var(--accent-color);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* -------------------------------------------------------------------
+ * AÑADIDO: Mejora de Accesibilidad (Focus States)
+ * ------------------------------------------------------------------- */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+.launcher-icon:focus-visible {
+	outline: 3px solid var(--accent-color);
+	outline-offset: 2px;
+	border-radius: 8px; /* Coherente con el diseño general */
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	background-color: var(--background-start);
+	background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+	color: var(--text-primary);
+	min-height: 100vh;
+	/* Ajuste de escala para mejor visualización de muchos elementos (ajustar si es necesario) */
+	transform: scale(0.85);
+	transform-origin: top left;
+	width: 117.65%;
+	min-height: 117.65vh;
+	/* AÑADIDO: Desplazamiento suave para mejor UX y anti-aliasing para texto */
+	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+	width: 90%;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 2rem 0;
+}
+
+/* --- Encabezado Principal y Navegación --- */
+.main-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 2rem;
+	background: var(--glass-bg);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border-bottom: 1px solid var(--glass-border);
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+.header-left {
+	display: flex;
+	align-items: center;
+	font-weight: 500;
+	color: var(--text-secondary);
+}
+
+.header-left strong {
+	color: var(--text-primary);
+}
+
+.launcher-icon {
+	margin-right: 1rem;
+	padding: 0.5rem;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	line-height: 0;
+	color: var(--text-primary);
+}
+
+.launcher-icon:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+	transform: scale(1.1);
+}
+
+.launcher-icon svg {
+	display: block;
+	color: var(--text-primary);
+}
+
+.header-nav {
+	flex-grow: 1;
+	text-align: center;
+}
+
+.header-nav a {
+	margin: 0 0.5rem;
+	text-decoration: none;
+	color: var(--text-secondary);
+	font-weight: 500;
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+	color: var(--text-primary);
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.header-nav a.active {
+	color: #fff;
+	background-color: var(--accent-color);
+	font-weight: 600;
+}
+
+.header-right {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+
+.btn-primary {
+	/* CORRECCIÓN: Estilos de botón consolidados */
+	background: var(--accent-color);
+	color: #fff;
+	padding: 10px 15px; /* Ajuste de padding para consistencia */
+	border-radius: 8px; /* Ajuste de radio para consistencia */
+	cursor: pointer;
+	border: none; /* Asegura que no tenga bordes */
+	font-weight: 600;
+	transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+	background: #346bd4; /* Un tono ligeramente más oscuro del azul */
+}
+
+.app-version {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: #6b7280;
+	background-color: rgba(0, 0, 0, 0.05);
+	padding: 0.2rem 0.5rem;
+	border-radius: 6px;
+	vertical-align: middle;
+}
+
+.btn-logout {
+	background-color: var(--danger-color);
+	color: white;
+	border: none;
+	padding: 0.6rem 1.2rem;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	text-decoration: none;
+}
+
+.btn-logout:hover {
+	background-color: var(--danger-color-dark);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* --- Controles de Página --- */
+.page-header-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.page-header-controls h1 {
+	margin: 0;
+	font-size: 1.8rem;
+	font-weight: 700;
+}
+
+/* Estilo del Select común para mes y límite */
+.month-selector-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	border-radius: 12px;
+}
+
+.month-selector-container label {
+	font-size: 0.95rem;
+	color: var(--text-secondary);
+	font-weight: 500;
+}
+
+.month-selector-container select,
+.table-controls select {
+	padding: 8px 12px;
+	border-radius: 8px;
+	border: 1px solid #d1d5db;
+	background-color: #f9fafb;
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--text-primary);
+	cursor: pointer;
+	/* Estilos para el selector sin la flecha nativa */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234A5568" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.018 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 12px;
+	padding-right: 30px; /* Espacio para la flecha */
+	line-height: 1.5; /* CORRECCIÓN: Asegura una mejor alineación vertical del texto */
+}
+
+/* --- Controles de Rango de Fechas (Añadido y Modificado) --- */
+.date-range-controls {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	border-radius: 12px;
+}
+
+/* Aplicamos estilos de select a los inputs de tipo date */
+.date-range-controls input[type="date"] {
+	padding: 8px 12px;
+	border-radius: 8px;
+	border: 1px solid #d1d5db;
+	background-color: #f9fafb;
+	font-size: 1rem;
+	font-weight: 600; /* Coherente con el font-weight del select */
+	color: var(--text-primary);
+	cursor: pointer;
+	/* Desactivar estilos nativos para el input de fecha */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	line-height: 1.5; /* CORRECCIÓN: Asegura una mejor alineación vertical del texto */
+	/* Opcional: Para asegurar que el icono de calendario se muestre correctamente */
+	padding-right: 12px;
+}
+
+/* Ajuste específico para inputs de fecha dentro de controles de tabla para que sean más pequeños */
+.table-controls .date-range-controls input[type="date"] {
+	padding: 6px 10px;
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+/* --- Fin de Controles de Rango de Fechas (Añadido y Modificado) --- */
+
+
+/* --- Tarjetas KPI --- */
+.kpi-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 1.5rem;
+	margin-bottom: 2.5rem;
+}
+
+.kpi-card {
+	background: var(--card-background);
+	border: 1px solid var(--card-border);
+	border-radius: 16px;
+	padding: 1.5rem;
+	box-shadow: 0 8px 32px 0 var(--card-shadow);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	transition: all 0.3s ease;
+}
+
+.kpi-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.12);
+}
+
+.kpi-card h3 {
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: #6b7280;
+	margin-bottom: 0.75rem;
+	text-transform: uppercase;
+}
+
+.kpi-card .value {
+	font-size: 2.2rem;
+	font-weight: 700;
+	color: var(--text-primary);
+}
+
+.kpi-card .reinvestment {
+	color: var(--reinvestment-color);
+}
+
+/* Estilos de Utilidad */
+.kpi-card .utility {
+	color: var(--utility-color);
+}
+.kpi-card .projection {
+	color: var(--utility-color); /* Usamos el color de utilidad para la proyección */
+	font-weight: 600;
+}
+
+/* Estilos de Reconciliación Fiscal y Venta Neta */
+.kpi-card .tax {
+	/* IVA Recaudado (Débito Fiscal) */
+	color: var(--tax-debit-color);	
+}
+.kpi-card .utility-projection {
+	/* Venta Neta (Usaremos el verde para que se vea como Capital Operativo) */
+	color: var(--utility-color);	
+}
+.kpi-card .tax-f22 {
+	/* IVA Pagado y IVA F22 */
+	color: var(--tax-f22-color);	
+	/*font-weight: 600;*/
+}
+
+/* Estilos de Proyecciones */
+.kpi-card .reinvestment-projection {
+	/* Proyección CMV */
+	color: var(--reinvestment-color);
+	/* font-weight: 600;*/
+}
+
+/* Otros KPI */
+.kpi-card .transactions {
+	color: var(--accent-color);
+}
+
+
+/* ------------------------------------------------------------- */
+/* --- Layout del Contenido Principal (Gráficos y Tabla) --- */
+/* ------------------------------------------------------------- */
+
+/* Contenedor principal para los 3 bloques */
+.main-content-layout {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	margin-bottom: 2.5rem;
+}
+
+/* Fila Superior para Gráficos (30% y 70%) */
+.chart-row-top {
+	display: flex;
+	gap: 1.5rem;
+	flex-wrap: wrap; /* Permite que se apilen en móvil */
+	align-items: stretch;
+}
+
+/* Fila Inferior para la Tabla (100% de ancho) */
+.table-row-bottom {
+	flex: 1 1 100%;
+}
+
+/* Columna para la Gráfica de Proporción (30%) */
+.chart-column-proportion {
+	/* 30% del ancho total menos la mitad del gap */
+	flex: 0 0 calc(30% - 0.75rem);
+	min-width: 250px; /* Ancho mínimo para evitar deformación en pantallas estrechas */
+}
+
+/* Columna para la Gráfica de Barras Diaria (70%) */
+.chart-column-daily {
+	/* 70% del ancho total menos la mitad del gap */
+	flex: 1 1 calc(70% - 0.75rem);
+	min-width: 400px;
+	/* Estilos traídos desde el <style> de provcapital.php para estirar el gráfico */
+	display: flex;
+	flex-direction: column;
+}
+
+/* Estilo para el contenedor del Desglose (Tabla) 100% */
+.table-column-full {
+	flex: 1 1 100%;
+	display: flex;
+	flex-direction: column; /* Asegura que la tabla dentro se estire */
+}
+
+.content-card {
+	background: var(--card-background);
+	border: 1px solid var(--card-border);
+	border-radius: 16px;
+	padding: 2rem;
+	box-shadow: 0 8px 32px 0 var(--card-shadow);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	height: fit-content;
+	/* Aseguramos que la tarjeta en la fila inferior se estire si es necesario */
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.content-card h2 {
+	font-size: 1.2rem;
+	font-weight: 600;
+	/* Reducimos el margen inferior por defecto, para que no empuje tanto si no está envuelto */
+	margin-bottom: 0.5rem; 
+}
+
+/* Estilos para estirar el gráfico diario dentro de su tarjeta (traído desde el <style>) */
+.chart-column-daily .content-card {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+.chart-column-daily .content-card > div[style*="height: 300px;"] {
+	flex-grow: 1;
+	height: auto !important; /* Sobreescribimos el 300px inline para que se estire */
+	min-height: 300px;
+}
+/* Fin de estilos de estiramiento del gráfico diario */
+
+
+/* --- ESTILOS PARA ALINEAR TÍTULO Y SELECTOR (NUEVO) --- */
+/* ESTO REQUIERE QUE EL H2 Y LOS CONTROLES ESTÉN DENTRO DE UNA ETIQUETA CON CLASE .chart-title-bar */
+.chart-title-bar {
+	display: flex;
+	justify-content: space-between; /* Espacio entre el título y el selector */
+	align-items: center; /* Centrar verticalmente */
+	margin-bottom: 1.5rem; /* El margen inferior se aplica a todo el componente de la barra */
+	flex-wrap: wrap; /* Permitir que se envuelva en pantallas pequeñas */
+}
+
+/* APLICAMOS !important para garantizar que el h2 pierda su margin-bottom cuando está en la barra de título */
+.content-card .chart-title-bar h2 {
+	margin: 0 !important; 
+	font-size: 1.2rem; 
+	font-weight: 600;
+	flex-shrink: 0; /* No encoger el título */
+	max-width: 100%; 
+}
+
+.chart-title-bar form {
+	margin: 0; /* Eliminar margen del formulario */
+	display: flex;
+	align-items: center;
+	gap: 0.5rem; /* Pequeño espacio entre label y select */
+}
+.chart-title-bar label {
+	white-space: nowrap; /* Evitar que el label se rompa */
+	font-size: 0.95rem; /* Ajuste para el label dentro del título */
+	color: var(--text-secondary);
+	font-weight: 500;
+}
+.chart-title-bar select {
+	max-width: 250px; /* Limitar el ancho del selector para mejor estética */
+	/* Usamos los estilos de select ya definidos para table-controls/month-selector-container */
+	padding: 6px 10px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	padding-right: 25px;
+}
+/* --- FIN DE NUEVOS ESTILOS --- */
+
+
+/* AÑADIDO: Contenedor para el Canvas del gráfico. Útil para aplicar max-height */
+.chart-container {
+	position: relative;
+	flex-grow: 1; /* Permite que ocupe el espacio dentro de la tarjeta */
+}
+
+/* AÑADIDO: Estilos para el elemento Canvas (si se usa Chart.js, por ejemplo) */
+.chart-container canvas {
+	max-height: 500px; /* Previene que los gráficos crezcan demasiado verticalmente */
+	width: 100% !important;
+	height: 100% !important;
+	display: block;
+}
+
+
+/* ------------------------------------------- */
+/* --- Tabla de Desglose y Controles --- */
+/* ------------------------------------------- */
+.table-header-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+	flex-wrap: wrap;
+}
+
+.table-header-controls h2 {
+	margin-bottom: 0;
+}
+
+/* Contenedor que agrupa el selector de Mes y el selector de Límite */
+.table-controls {
+	display: flex;
+	gap: 1.5rem;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+/* Estilos de los labels de los controles */
+.table-controls label {
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+	font-weight: 500;
+}
+
+/* Ajustes específicos para el contenedor del mes dentro de table-controls */
+.month-selector-container {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+
+/* Ajustamos el tamaño del select en los controles de la tabla para que sea más pequeño */
+.table-controls select {
+	padding: 6px 10px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	padding-right: 25px;
+}
+
+.table-container {
+	flex-grow: 1; /* Permite que la tabla ocupe el espacio restante dentro de la tarjeta */
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+/* -------------------------------------------------------------------
+ * AÑADIDO: Scrollbar Styling para la Tabla (Webkit)
+ * ------------------------------------------------------------------- */
+.table-container::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+	background: rgba(255, 255, 255, 0.4); /* Fondo claro de Glassmorphism */
+	border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+	background: rgba(59, 130, 246, 0.5); /* Tono suave de accent-color */
+	border-radius: 10px;
+	border: 2px solid var(--card-background); /* Borde para visualización 3D/flotante */
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+	background: var(--accent-color);
+}
+/* ------------------------------------------------------------------- */
+
+
+.sales-table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.sales-table th,
+.sales-table td {
+	padding: 1rem;
+	border-bottom: 1px solid #e2e8f0;
+	white-space: nowrap;
+}
+
+.sales-table th {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--text-secondary);
+	text-transform: uppercase;
+	background-color: rgba(248, 250, 252, 0.9); /* Subido el alfa para mejor visibilidad del sticky header */
+	/* Mantener fijo el encabezado de la tabla para el scroll interno */
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.sales-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+.sales-table tbody tr:hover {
+	background-color: var(--accent-color-transparent);
+}
+
+.sales-table td {
+	font-size: 0.95rem;
+	color: var(--text-primary);
+}
+
+/* Alineación a la derecha para las columnas de valores */
+.sales-table td:nth-child(4),
+.sales-table td:nth-child(5),
+.sales-table td:nth-child(6) {
+	text-align: right;
+}
+
+/* --- Pie de Página y Responsive --- */
+.footer {
+	text-align: center;
+	padding: 2rem 0;
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 1200px) {
+	/* Las dos gráficas se apilan en pantallas medianas */
+	.chart-row-top {
+		flex-direction: column;
+	}
+	.chart-column-proportion,
+	.chart-column-daily {
+		flex: 1 1 100%; /* Ocupan todo el ancho disponible */
+		min-width: unset;
+	}
+	/* Para que el título y el selector sigan viéndose bien */
+	.chart-title-bar {
+		margin-bottom: 1rem;
+	}
+}
+
+@media (max-width: 900px) {
+	.main-header {
+		padding: 1rem;
+	}
+	/* CORRECCIÓN: Evitar que la navegación ocupe espacio cuando está oculta */
+	.header-nav {
+		display: none;
+	}
+}
+
+@media (max-width: 600px) {
+	/* En móvil, los controles de la tabla se apilan */
+	.table-header-controls {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+	}
+
+	.table-controls {
+		width: 100%;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+
+	.month-selector-container {
+		flex-grow: 1;
+		justify-content: flex-start;
+	}
+
+	.table-controls > label {
+		margin-left: 0.5rem;
+	}
+	
+	/* El control de rango de fecha también debe ocupar todo el ancho */
+	.date-range-controls {
+		width: 100%;
+		justify-content: space-between;
+	}
+	
+	.date-range-controls input[type="date"] {
+		max-width: 120px;
+	}
+
+	/* Ajuste de alineación en móvil para el título/selector del gráfico */
+	.chart-title-bar {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+	}
+	.chart-title-bar form {
+		width: 100%;
+		justify-content: space-between;
+	}
+	.chart-title-bar select {
+		flex-grow: 1; /* Hace que el selector ocupe más espacio */
+		max-width: none;
+	}
+}
+
+/* Estilos específicos */
+.kpi-card-total {
+	background-color: var(--card-background);
+	border-left: 5px solid var(--primary-color);
+}
+.table-controls select, .table-controls input {
+	/* Se eliminó el margen que podía causar problemas de alineación */
+	margin-left: 0; 
+}

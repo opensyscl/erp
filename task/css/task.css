@@ -1,0 +1,793 @@
+/*
+ * Archivo: css/task.css
+ * Descripción: Estilos unificados para la aplicación de tablero Kanban.
+ * Diseño Glassmorphism, columnas centradas y uso de Modal/FAB para la creación de tareas.
+ */
+
+/* --------------------------------------------------
+ * --- 0. VARIABLES Y RESET BÁSICO ---
+ * -------------------------------------------------- */
+
+:root {
+    /* Colores Base */
+    --background-start: #f0f2f5;
+    --background-end: #e6e9ee;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+
+    /* Card & Glassmorphism */
+    --card-background: rgba(255, 255, 255, 0.7); /* Fondo de tarjetas transparente */
+    --card-border: rgba(255, 255, 255, 0.9);
+    --card-shadow: rgba(0, 0, 0, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.5); /* Fondo para header y columnas */
+    --glass-border: rgba(200, 200, 200, 0.5);
+
+    /* Colores Funcionales */
+    --accent-color: #3b82f6; /* Azul primario (Botones, FAB, Highlight) */
+    --accent-color-hover: #2563eb;
+    --accent-color-transparent: rgba(59, 130, 246, 0.1);
+    --danger-color: #ef4444; /* Rojo */
+    --danger-color-dark: #dc2626;
+    --success-color: #10b981; /* Verde */
+    --warning-color: #f59e0b; /* Amarillo/Naranja */
+
+    /* Colores de Prioridad */
+    --priority-high: var(--danger-color);
+    --priority-medium: var(--warning-color);
+    --priority-low: var(--success-color);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --------------------------------------------------
+ * --- 1. ESTILOS BASE Y SCALING ---
+ * -------------------------------------------------- */
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+    background-color: var(--background-start);
+    background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    
+    /* ESTILOS DE ESCALADO (Mantener solo si es requerido por el entorno) */
+    transform: scale(0.85);
+    transform-origin: top left;
+    width: 117.65%;
+    min-height: 117.65vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* --------------------------------------------------
+ * --- 2. ENCABEZADO (HEADER) ---
+ * -------------------------------------------------- */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    /* Estilo Glassmorphism */
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-left {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.header-left strong {
+    color: var(--text-primary);
+}
+
+.launcher-icon {
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 0;
+}
+
+.launcher-icon:hover {
+    background-color: rgba(0,0,0,0.05);
+    transform: scale(1.1);
+}
+
+.launcher-icon svg {
+    display: block;
+    color: var(--text-primary);
+}
+
+.header-nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-nav a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+    color: var(--text-primary);
+    background: rgba(0,0,0,0.05);
+}
+
+.header-nav a.active {
+    color: #fff;
+    background-color: var(--accent-color);
+    font-weight: 600;
+}
+
+.header-right {
+    gap: 1.5rem;
+}
+
+.app-version {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6b7280;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    vertical-align: middle;
+}
+
+.btn-logout {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    background-color: var(--danger-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* --------------------------------------------------
+ * --- 3. CONTROLES DE PÁGINA Y FILTROS (Mantenidos) ---
+ * -------------------------------------------------- */
+
+.page-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.page-header-controls h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.filter-controls-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.month-selector-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.month-selector-container label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.month-selector-container select {
+    padding: 8px 35px 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234B5563" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.018 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.range-selector-styled {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    padding: 10px 15px;
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.range-selector-styled .date-input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.range-selector-styled label {
+    font-size: 0.8rem;
+    color: #4b5563;
+    margin-bottom: 3px;
+}
+
+.range-selector-styled input[type="date"] {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    min-width: 130px;
+}
+
+.range-selector-styled .btn-filter {
+    padding: 8px 15px;
+    height: 38px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.range-selector-styled .btn-reset {
+    padding: 8px 15px;
+    height: 38px;
+    background-color: #fecaca;
+    color: #b91c1c;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+/* --- Estilo para el Toast de Resumen de Filtro y Feedback --- */
+.filter-toast {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    vertical-align: middle;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.filter-toast strong {
+    font-weight: 700;
+}
+
+.success-toast {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.error-toast {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+/* --------------------------------------------------
+ * --- 4. CARDS DE KPI Y CONTENIDO (Mantenidos) ---
+ * -------------------------------------------------- */
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.kpi-card, .content-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.kpi-card {
+    padding: 1.5rem;
+}
+
+.kpi-card h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.kpi-card .value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.content-card {
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+/* --------------------------------------------------
+ * --- 5. UTILIDADES Y DRAG & DROP ---
+ * -------------------------------------------------- */
+
+.danger-color { color: var(--danger-color); font-weight: 700; }
+.warning-color { color: var(--warning-color); font-weight: 700; }
+.success-color { color: var(--success-color); font-weight: 700; }
+
+/* Estilos para el Drag & Drop visual */
+.dragging {
+    opacity: 0.5;
+    border: 2px dashed var(--accent-color) !important;
+}
+
+.altalight {
+    border: 2px solid var(--accent-color) !important;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+/* --------------------------------------------------
+ * --- 6. LAYOUT KANBAN (Centrado, SIN Scroll Horizontal) ---
+ * -------------------------------------------------- */
+
+.kanban-layout {
+    display: block;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+}
+
+.kanban-board-wrapper {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.kanban-board {
+    display: flex;
+    gap: 1.5rem;
+    /* CAMBIOS CLAVE PARA CENTRADO Y NO SCROLL */
+    justify-content: center; /* Centra las columnas horizontalmente */
+    flex-wrap: wrap; /* Permite que las columnas se envuelvan si no caben */
+    
+    height: 100%;
+    padding-bottom: 10px;
+}
+
+.page-title {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center; 
+}
+
+
+/* --- Columna Kanban --- */
+
+.kanban-column {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px 0 var(--card-shadow);
+    padding: 15px;
+    width: 320px;
+    min-width: 320px;
+    flex-shrink: 0; 
+    display: flex;
+    flex-direction: column;
+    /* Altura ajustada al contenido */
+    height: min-content; 
+    min-height: 200px;
+}
+
+.column-header {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color-transparent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-count {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.task-list {
+    /* Scroll vertical solo dentro de la lista de tareas */
+    overflow-y: auto; 
+    padding-right: 5px;
+    min-height: 50px;
+}
+
+/* --- Tarjeta de Tarea --- */
+
+.task-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    cursor: grab;
+    transition: all 0.2s ease;
+    position: relative; /* ¡Mantenido para el botón de eliminar! */
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-color);
+}
+
+.task-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.task-description {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    white-space: pre-wrap;
+}
+
+.task-meta {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+/* Clases de Prioridad */
+.priority-high { color: var(--priority-high); font-weight: 700; }
+.priority-medium { color: var(--priority-medium); font-weight: 600; }
+.priority-low { color: var(--priority-low); }
+
+
+/* --------------------------------------------------
+ * --- 7. BOTÓN FLOTANTE (FAB) y MODAL ---
+ * -------------------------------------------------- */
+
+/* Botón Flotante de Acción (FAB) */
+.floating-action-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s, transform 0.2s;
+    z-index: 500;
+}
+
+.floating-action-button:hover {
+    background-color: var(--accent-color-hover);
+    transform: scale(1.05);
+}
+
+.floating-action-button svg {
+    stroke: white;
+    width: 24px;
+    height: 24px;
+}
+
+/* Modal Overlay */
+.modal {
+    display: none; /* Oculto por defecto, se activa con JS */
+    position: fixed; /* ¡CORRECCIÓN CLAVE! Cubre todo el viewport */
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    
+    /* PROPIEDADES CLAVE PARA CENTRADO */
+    /* Estas propiedades deben estar aquí, aunque `display: none;` esté arriba.
+       Cuando JS lo muestre (cambiando display a 'flex'), el centrado se aplica. */
+    display: flex; 
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
+    
+    overflow: auto; /* Permite scroll si el contenido es muy grande */
+}
+
+/* Contenido del Modal */
+.modal-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    max-height: 95vh; /* Limita la altura del modal al 95% del viewport */
+    overflow-y: auto; /* Permite scroll interno si es necesario */
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--text-primary);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.close-button {
+    color: var(--text-secondary);
+    font-size: 32px;
+    font-weight: 300;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: var(--danger-color);
+}
+
+/* CORRECCIÓN DE SELECTOR: El HTML usa .create-edit-task-form */
+.create-edit-task-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.create-edit-task-form input[type="text"],
+.create-edit-task-form textarea,
+.create-edit-task-form select,
+.create-edit-task-form input[type="date"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.create-edit-task-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.create-edit-task-form input:focus,
+.create-edit-task-form textarea:focus,
+.create-edit-task-form select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+/* Usamos el botón .btn-filter que es global, pero le damos estilos específicos si es el submit del form */
+.create-edit-task-form button[type="submit"],
+/* Se añade el selector .btn-filter para que coincida con el botón del formulario */
+.btn-filter { 
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.create-edit-task-form button[type="submit"]:hover,
+.btn-filter:hover {
+    background-color: var(--accent-color-hover);
+    transform: translateY(-1px);
+}
+
+/* --------------------------------------------------
+ * --- 8. PIE DE PÁGINA (Footer) ---
+ * -------------------------------------------------- */
+
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* --------------------------------------------------
+ * --- 9. MEDIA QUERIES (Adaptación a Móviles y Tablets) ---
+ * -------------------------------------------------- */
+
+@media (max-width: 900px) {
+    .header-nav {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ajustes generales para filtros */
+    .page-header-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .filter-controls-group {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .month-selector-container, .range-selector-styled {
+        width: 100%;
+    }
+
+    .range-selector-styled {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .range-selector-styled .date-input-group {
+        flex-grow: 1;
+        min-width: 40%;
+    }
+
+    .range-selector-styled .btn-filter, .range-selector-styled .btn-reset {
+        flex-basis: 40%;
+        flex-grow: 1;
+    }
+
+    .filter-toast {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Ajustes para el Layout Kanban en móvil */
+    .kanban-layout {
+        padding: 15px 15px;
+    }
+
+    /* FAB - Ligeramente más pequeño en móvil */
+    .floating-action-button {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+
+/* --------------------------------------------------
+ * --- 10. ESTILOS PARA EL BOTÓN DE ELIMINAR EN HOVER ---
+ * -------------------------------------------------- */
+
+.delete-task-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    
+    /* Apariencia */
+    background: none;
+    border: none;
+    color: var(--danger-color);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    line-height: 0;
+    opacity: 0; /* Oculto por defecto */
+    visibility: hidden; /* Oculto por defecto */
+    transition: opacity 0.2s, background-color 0.2s;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+}
+
+.delete-task-btn:hover {
+    color: var(--danger-color-dark);
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.delete-task-btn svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+}
+
+/* El contenedor principal de la tarjeta debe ser 'relative' */
+.task-card {
+    position: relative; 
+    /* ... otros estilos de .task-card ... */
+}
+
+/* Mostrar el botón cuando se pasa el ratón sobre la tarjeta */
+.task-card:hover .delete-task-btn {
+    opacity: 1;
+    visibility: visible;
+}

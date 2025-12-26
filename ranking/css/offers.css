@@ -1,0 +1,359 @@
+/* ==========================================================================
+   CONFIGURACIÓN DE VARIABLES Y TIPOGRAFÍA
+   ========================================================================== */
+:root {
+    --main-bg-color: #f7f7f7; /* Blanco/Gris claro para el fondo principal */
+    --promo-blue: #007bff; /* Azul para la burbuja de promo */
+    --text-dark: #343a40; /* Texto oscuro */
+    --text-light: white; /* Texto claro */
+    --save-red: #dc3545; /* Rojo para el ahorro */
+    --grey-text: #6c757d; /* Gris para texto secundario */
+    --border-yellow: #ffc107; /* Amarillo para bordes de la oferta */
+}
+
+/* Base global */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   CONTENEDOR PRINCIPAL (A5 Horizontal)
+   ========================================================================== */
+.offer-container {
+    /* Dimensiones A5 Horizontal: 21cm de ancho x 14.8cm de alto */
+    width: 21cm; 
+    height: 14.8cm;
+    background-color: var(--main-bg-color);
+    border: 3px solid var(--border-yellow); /* Borde amarillo para resaltar */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    display: flex; /* Para las dos columnas principales (imagen e info) */
+    position: relative; /* Para posicionar pseudoelementos y fondos */
+    overflow: hidden; /* Corta lo que se salga de los límites */
+}
+
+/* Pseudo-elementos para el fondo segmentado */
+.offer-container::before,
+.offer-container::after {
+    content: '';
+    position: absolute;
+    z-index: 0; /* Detrás del contenido */
+}
+
+/* Fondo azul curvado superior-derecha */
+.offer-container::before {
+    background-color: var(--promo-blue);
+    width: 120%; /* Más grande para cubrir esquinas */
+    height: 150%;
+    top: -50%; /* Posicionamiento para que se vea solo una parte */
+    right: -50%;
+    transform: rotate(20deg); /* Rotación para la diagonal */
+    border-radius: 50%; /* Forma circular gigante */
+}
+
+/* Fondo gris curvado inferior-izquierda (similar al original) */
+.offer-container::after {
+    background-color: rgba(var(--grey-text), 0.1); /* Un gris muy claro semi-transparente */
+    width: 120%;
+    height: 100%;
+    bottom: -60%; /* Posicionamiento para que se vea solo una parte */
+    left: -30%;
+    transform: rotate(-15deg); /* Rotación en dirección opuesta */
+    border-radius: 50%;
+}
+
+/* Contenedores de las dos columnas principales */
+.image-column {
+    flex-basis: 35%; /* La imagen ocupa el 35% del ancho */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5cm; /* Relleno para que la imagen no toque los bordes */
+    position: relative; /* Para z-index si la imagen debe estar sobre el fondo */
+    z-index: 1; /* Asegura que la imagen esté sobre los pseudo-elementos */
+}
+
+.info-and-footer-column {
+    flex-basis: 65%; /* El contenido y el footer ocupan el 65% restante */
+    display: flex;
+    flex-direction: column; /* Para apilar el contenido y el footer */
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté sobre los pseudo-elementos */
+}
+
+/* Imagen del producto */
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ajusta la imagen sin distorsionar */
+    filter: drop-shadow(5px 5px 8px rgba(0,0,0,0.3)); /* Sombra para que destaque */
+}
+
+.image-placeholder {
+    font-size: 1.2rem;
+    color: var(--grey-text);
+    text-align: center;
+    padding: 1rem;
+    border: 2px dashed var(--grey-text);
+    border-radius: 5px;
+}
+
+/* Columna de contenido (sin el footer) */
+.content-column {
+    flex-grow: 1; /* Ocupa todo el espacio disponible entre el header y el footer */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente los elementos */
+    text-align: center;
+    padding: 0.5rem 1rem 0 1rem; /* Padding superior, lateral, sin inferior */
+}
+
+/* Header de la oferta (dentro de la columna de contenido) */
+.offer-header {
+    background-color: transparent; /* El fondo lo dan los pseudoelementos */
+    color: var(--text-dark);
+    padding: 0.2rem 0;
+    position: relative;
+    width: 100%;
+    margin-bottom: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo-brand {
+    background-color: var(--promo-blue); /* Fondo azul para el "PROMO" */
+    color: var(--text-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 0.2rem;
+    position: absolute;
+    top: -0.5rem; /* Pequeño ajuste para que sobresalga */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Para que quede encima */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.product-name {
+    font-size: 1.6rem; 
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    padding: 0 0.5rem;
+    margin-top: 0.5rem; /* Ajuste por el promo-brand */
+}
+
+/* Cuerpo de la oferta (Precios y Ahorro) */
+.offer-body {
+    flex-grow: 1; /* Permite que ocupe el espacio restante */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea los elementos al inicio */
+    width: 100%;
+    padding-top: 0.5rem;
+}
+
+/* Precio Principal de Oferta (2X$X.XXX) */
+.main-price-box {
+    background-color: var(--promo-blue); /* Fondo azul como el ejemplo */
+    color: var(--text-light);
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.8rem;
+    width: 90%; /* Ocupa un buen ancho */
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%); /* Forma de burbuja/cinta */
+}
+/* Reajuste para una forma más sencilla de burbuja si la anterior es muy compleja
+.main-price-box {
+    background-color: var(--promo-blue);
+    color: var(--text-light);
+    padding: 0.8rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.8rem;
+    width: 90%;
+    position: relative;
+    transform: skewX(-5deg); // Pequeña inclinación
+}
+.main-price-box > * {
+    transform: skewX(5deg); // Contrarresta la inclinación para el texto
+}
+*/
+
+
+.new-price-label {
+    font-size: 1rem;
+    font-weight: 700;
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 0.1rem;
+    color: var(--border-yellow); /* Texto "LLEVA" en amarillo */
+}
+
+.new-price {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.8rem; 
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+/* Sección de Referencia y Ahorro */
+.reference-section {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reference-price-label {
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-bottom: 0.1rem;
+    color: var(--grey-text);
+}
+
+.reference-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: line-through; 
+    color: var(--grey-text);
+    margin-bottom: 0.5rem;
+}
+
+.save-box {
+    background-color: var(--save-red); /* Rojo para el ahorro */
+    color: var(--text-light);
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Roboto', sans-serif; /* Usar Roboto para el ahorro también */
+}
+
+.save-text {
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+/* Pie de página de Detalles (Código y Stock) */
+.details-footer {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: var(--text-dark);
+    border-top: 1px dashed var(--grey-text);
+    margin-top: auto; /* Empuja al fondo del content-column */
+}
+
+.barcode-info, .stock-info {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    color: var(--grey-text);
+}
+strong {
+    color: var(--text-dark); /* Stock en negrita más oscuro */
+}
+
+
+/* Pie de página legal (dentro de la info-and-footer-column) */
+.offer-footer {
+    text-align: center;
+    padding: 0.3rem 1rem;
+    background-color: var(--promo-blue); /* Fondo azul oscuro */
+    color: var(--text-light);
+    font-size: 0.6rem;
+    flex-shrink: 0; /* Asegura que no se encoja */
+}
+
+
+/* ==========================================================================
+   ESTILOS DE IMPRESIÓN (MEDIO: print)
+   ========================================================================== */
+@page {
+    /* Define A5 apaisado (landscape) */
+    size: A5 landscape; 
+    margin: 0; 
+}
+
+@media print {
+    body {
+        transform: none !important; 
+        width: auto !important;
+        min-height: auto !important;
+        background-color: white; 
+        margin: 0;
+        padding: 0;
+    }
+
+    .offer-container {
+        width: 21cm; 
+        height: 14.8cm; 
+        border: none; /* Eliminar borde para impresión si se desea */
+        box-shadow: none;
+        padding: 0; /* Sin padding en el contenedor principal */
+        display: flex; /* Mantener flex para las columnas */
+        flex-direction: row;
+    }
+    
+    /* Pseudoelementos deben imprimirse */
+    .offer-container::before,
+    .offer-container::after {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+
+    .image-column {
+        flex-basis: 35%;
+        padding: 0.5cm; /* Mantener padding para la imagen */
+    }
+
+    .info-and-footer-column {
+        flex-basis: 65%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-column {
+        flex-grow: 1;
+        padding: 0.5cm 1cm 0 1cm; /* Ajustar padding para impresión */
+        justify-content: flex-start; /* Asegura el inicio */
+    }
+
+    .offer-footer {
+        flex-shrink: 0;
+        height: 0.7cm; /* Altura más precisa para el footer en impresión */
+        padding: 0.2cm 1cm;
+        font-size: 0.55rem;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+
+    /* Regla para imprimir colores y fondos */
+    .promo-brand, .main-price-box, .save-box, .offer-footer {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+}

@@ -1,0 +1,7 @@
+[14-Oct-2025 19:11:57 America/Santiago] PHP Parse error:  syntax error, unexpected identifier " " in /home1/puntodat/tiendaslistto.cl/erp/quotation/quotation.php on line 265
+[14-Oct-2025 19:12:01 America/Santiago] PHP Parse error:  syntax error, unexpected identifier " " in /home1/puntodat/tiendaslistto.cl/erp/quotation/quotation.php on line 265
+[14-Oct-2025 20:38:00 America/Santiago] Error al registrar cotización: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`puntodat_erplistto`.`quotations`, CONSTRAINT `quotations_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`))
+[15-Oct-2025 17:44:16 America/Santiago] Error al registrar cotización: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'product_id' cannot be null
+[15-Oct-2025 17:44:42 America/Santiago] Error al registrar cotización: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'product_id' cannot be null
+[15-Oct-2025 17:44:58 America/Santiago] Error al registrar cotización: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'product_id' cannot be null
+[15-Oct-2025 17:48:34 America/Santiago] Error al registrar cotización: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'product_id' cannot be null

@@ -1,0 +1,196 @@
+/* ==== Reset & Base ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F5F5F5;
+  color: #212121;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ==== Header sticky con estilo Material ==== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3F51B5; /* Indigo 500 */
+  color: #FFFFFF;
+  padding: 16px 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.welcome {
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.btn-login, .btn-logout {
+  color: #3F51B5; /* Primary */
+  background-color: #FFFFFF;
+  border: 1px solid #3F51B5;
+  padding: 8px 16px;
+  border-radius: 24px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.btn-login:hover, .btn-logout:hover {
+  background-color: #E8EAF6; /* Indigo 50 */
+  color: #303F9F; /* Indigo 700 */
+}
+
+.btn-cart {
+  background-color: #FF4081; /* Secondary */
+  color: #FFFFFF;
+  padding: 10px 22px;
+  border-radius: 24px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.btn-cart:hover {
+  background-color: #F50057; /* Secondary Dark */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* ==== Contenedor principal ==== */
+.container {
+  max-width: 70%;
+  margin: 30px auto 60px;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #212121;
+}
+
+/* ==== Formulario ==== */
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #3F51B5;
+}
+
+form select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form select:focus {
+  border-color: #3F51B5;
+  outline: none;
+}
+
+/* ==== Botones ==== */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: #FF4081; /* Secondary */
+  color: #FFFFFF;
+  border-radius: 24px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 25px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: #F50057;
+}
+
+/* ==== Alertas ==== */
+.alert {
+  padding: 15px 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+    padding: 20px;
+  }
+  .header h1 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding-bottom: 40px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .container {
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  form select {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}

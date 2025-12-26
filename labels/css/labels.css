@@ -1,0 +1,786 @@
+/* ------------------------------------------------------------- */
+/* --- VARIABLES Y ESTILOS BASE --- */
+/* ------------------------------------------------------------- */
+
+:root {
+ --background-start: #f0f2f5;
+ --background-end: #e6e9ee;
+ --card-background: rgba(255, 255, 255, 0.7);
+ --card-border: rgba(255, 255, 255, 0.9);
+ --card-shadow: rgba(0, 0, 0, 0.08);
+ --text-primary: #1a202c;
+ --text-secondary: #4a5568;
+ --accent-color: #3b82f6;
+ --accent-color-transparent: rgba(59, 130, 246, 0.1);
+ --danger-color: #ef4444;
+ --danger-color-dark: #dc2626;
+ --glass-bg: rgba(255, 255, 255, 0.5);
+ --glass-border: rgba(200, 200, 200, 0.5);
+ --success-bg: #dcfce7;
+ --success-text: #166534;
+ --success-border: #86efac;
+ --error-bg: #fee2e2;
+ --error-text: #991b1b;
+ --error-border: #fca5a5;
+
+ /* Colores específicos para KPIs */
+ --kpi-orange: #f59e0b;
+ --kpi-green: #10b981;
+ --kpi-red: #ef4444;
+ --kpi-purple: #8b5cf6;
+ --kpi-blue: #3b82f6; /* Añadido para Precio Promedio */
+
+ /* Variable para la altura del footer */
+ --footer-height: 40px;
+}
+
+* {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+}
+
+/* ==========================================================================
+1. ESTILOS BASE (SIN SCALING GLOBAL)
+========================================================================== */
+
+body {
+ font-family: 'Inter', sans-serif;
+ background-color: var(--background-start);
+ background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+ color: var(--text-primary);
+ min-height: 100vh;
+}
+
+html {
+ zoom: 0.85; /* Escala todo el sitio al 85% */
+}
+
+.container {
+ width: 90%;
+ max-width: 1400px;
+ margin: 0 auto;
+ padding: 2rem 0;
+ /* Añadir padding inferior para dejar espacio al footer fijo */
+ padding-bottom: calc(var(--footer-height) + 2rem);
+}
+
+/* ==========================================================================
+2. ENCABEZADO (HEADER) - MODIFICADO PARA LAYOUT COMPACTO
+========================================================================== */
+
+.main-header {
+  display: flex;
+  justify-content: space-between; /* Empuja el contenido a los extremos (Launcher + Saludo) y (Botón Logout) */
+  align-items: center;
+  padding: 0.8rem 2rem; /* Ligeramente menos padding vertical para ser más compacto */
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: var(--text-primary); /* Color de texto principal para el saludo */
+  font-size: 1.1rem; /* Tamaño de fuente ligeramente más grande para el saludo */
+}
+
+.header-left strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.launcher-icon {
+  margin-right: 1.5rem; /* Más espacio para separar del saludo */
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 0;
+}
+
+.launcher-icon:hover {
+  background-color: rgba(0,0,0,0.05);
+  transform: scale(1.05);
+}
+
+.launcher-icon svg {
+  display: block;
+  color: var(--text-primary);
+}
+
+/* La sección de navegación ha sido eliminada del diseño. */
+.header-nav {
+  display: none; /* Ocultar completamente */
+}
+
+/* Estilo para la versión cuando está junto al saludo (diseño de la imagen) */
+.app-version {
+  font-size: 0.75rem; /* Letra más pequeña */
+  font-weight: 600;
+  color: #4a5568; /* Color de texto más oscuro (simulando la imagen) */
+  background-color: #e2e8f0; /* Color gris claro para el fondo (simulando la imagen) */
+  padding: 3px 8px; /* Padding más compacto */
+  border-radius: 4px; /* Bordes menos redondeados */
+  margin-left: 10px; /* Separación del texto de saludo */
+  line-height: 1;
+}
+
+.btn-logout {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem; /* Ajustado para hacerlo más visible */
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-logout:hover {
+  background-color: var(--danger-color-dark);
+  transform: translateY(-1px); /* Efecto de elevación más sutil */
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* ==========================================================================
+3. CONTROLES DE PÁGINA Y BOTONES
+========================================================================== */
+
+.page-header-controls {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 2rem;
+ flex-wrap: wrap; /* Para manejo en móvil */
+}
+
+/* Título de página principal */
+.page-title {
+ font-size: 1.8rem;
+ font-weight: 700;
+ margin: 0;
+}
+
+/* Botón primario grande */
+.btn-primary {
+ display: flex;
+ align-items: center;
+ padding: 0.75rem 1.5rem;
+ border-radius: 8px;
+ background-color: var(--accent-color);
+ color: white;
+ border: none;
+ font-weight: 600;
+ font-size: 14px;
+ cursor: pointer;
+ transition: all 0.2s ease;
+ text-decoration: none;
+ line-height: 1; /* Asegura un buen centrado vertical */
+}
+
+.btn-primary:hover {
+ opacity: 0.9;
+ box-shadow: 0 4px 15px var(--accent-color-transparent);
+ transform: translateY(-1px);
+}
+
+/* ==========================================================================
+4. TARJETAS DE KPIS Y GRÁFICO
+========================================================================== */
+
+.kpi-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ gap: 1.5rem;
+ margin-bottom: 2.5rem;
+}
+
+.kpi-card {
+ background: var(--card-background);
+ border: 1px solid var(--card-border);
+ border-radius: 16px;
+ padding: 1.5rem;
+ box-shadow: 0 8px 32px 0 var(--card-shadow);
+ backdrop-filter: blur(10px);
+ -webkit-backdrop-filter: blur(10px);
+ transition: all 0.3s ease;
+ /* Nuevo estilo para el borde de color */
+ border-left: 4px solid;
+}
+
+/* Clases específicas para el color del borde izquierdo del KPI */
+.kpi-card.orange { border-left-color: var(--kpi-orange); }
+.kpi-card.green { border-left-color: var(--kpi-green); }
+.kpi-card.red { border-left-color: var(--kpi-red); }
+.kpi-card.purple { border-left-color: var(--kpi-purple); }
+.kpi-card.blue { border-left-color: var(--kpi-blue); }
+
+
+.kpi-card:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 10px 30px 0 rgba(0,0,0,0.12);
+}
+
+.kpi-card h3 {
+ font-size: 0.9rem;
+ font-weight: 600;
+ color: var(--text-secondary);
+ margin-bottom: 0.75rem;
+ text-transform: uppercase;
+}
+
+.kpi-card .value {
+ font-size: 2.2rem;
+ font-weight: 700;
+ color: var(--text-primary);
+}
+
+.kpi-card .projection {
+ color: var(--kpi-green);
+ font-weight: 600;
+}
+
+.content-card {
+ background: var(--card-background);
+ border: 1px solid var(--card-border);
+ border-radius: 16px;
+ padding: 2rem;
+ box-shadow: 0 8px 32px 0 var(--card-shadow);
+ backdrop-filter: blur(10px);
+ -webkit-backdrop-filter: blur(10px);
+ margin-bottom: 2.5rem;
+}
+
+.content-card h2 {
+ font-size: 1.2rem;
+ font-weight: 600;
+ margin-bottom: 1.5rem;
+}
+
+
+/* ==========================================================================
+5. TABLA DE VENTAS Y CONTROLES (Incluye estilos de ordenamiento corregidos)
+========================================================================== */
+
+.table-header-controls {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 1.5rem;
+ flex-wrap: wrap;
+ gap: 1rem;
+}
+
+.table-header-controls h2 {
+ font-size: 1.2rem;
+ font-weight: 600;
+ margin: 0;
+}
+
+/* Contenedor de filtros y búsqueda */
+.table-controls {
+  display: flex; /* Mantener horizontal en desktop */
+  gap: 10px;
+  align-items: center;
+}
+
+/* Campo de búsqueda */
+.search-input {
+ padding: 0.75rem 1rem;
+ border: 1px solid #cbd5e1;
+ border-radius: 8px;
+ background-color: #fff;
+ font-size: 1rem;
+ transition: all 0.2s ease;
+ width: 300px;
+}
+.search-input:focus {
+ border-color: var(--accent-color);
+ box-shadow: 0 0 0 3px var(--accent-color-transparent);
+ outline: none;
+}
+
+/* Estilo para los selects de filtro */
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 150px; /* Ancho mínimo en desktop */
+  background-color: #fff;
+}
+
+
+.table-container {
+ overflow-x: auto;
+}
+
+.sales-table {
+ width: 100%;
+ border-collapse: collapse;
+ text-align: left;
+}
+
+.sales-table th,
+.sales-table td {
+ padding: 1rem;
+ border-bottom: 1px solid #e2e8f0;
+}
+
+.sales-table th {
+ font-size: 0.8rem;
+ font-weight: 600;
+ color: var(--text-secondary);
+ text-transform: uppercase;
+ white-space: nowrap; /* Evita que los encabezados se rompan */
+}
+
+.sales-table tbody tr:hover {
+ background-color: var(--accent-color-transparent);
+}
+
+.sales-table td {
+ font-size: 0.95rem;
+ color: var(--text-primary);
+}
+
+/* Estilos de acción en tabla (botón mini) */
+.btn-primary-mini {
+  background-color: var(--accent-color);
+ color: white;
+ padding: 0.7rem 1rem;
+ border-radius: 0.375rem;
+ font-size: 0.85rem;
+ font-weight: 600;
+ border: none;
+ cursor: pointer;
+ transition: background-color 0.2s, transform 0.2s;
+ line-height: 1;
+}
+
+.btn-primary-mini:hover {
+ background-color: #316dcc;
+ transform: translateY(-1px);
+}
+
+
+/* --- ESTILOS DE ORDENAMIENTO (Corregidos de labels.php) --- */
+/* NOTA: Estos estilos son más específicos para la estructura en labels.php */
+.sortable {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  user-select: none;
+}
+.sort-icon {
+  width: 10px;
+  height: 10px;
+  position: relative;
+  opacity: 0.3; /* Icono gris por defecto */
+  transition: opacity 0.2s;
+  color: var(--text-primary);
+}
+.sort-icon.active {
+  opacity: 1; /* Icono activo visible */
+  color: var(--accent-color); /* Color primario para el icono activo */
+}
+/* Estilos para los triángulos (usados en labels.php) */
+.sort-icon:before, .sort-icon:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  left: 0;
+}
+.sort-icon:after { /* Triángulo ASC (flecha hacia arriba) */
+  top: 0;
+  border-bottom: 5px solid currentColor;
+}
+.sort-icon:before { /* Triángulo DESC (flecha hacia abajo) */
+  bottom: 0;
+  border-top: 5px solid currentColor;
+}
+/* Mostrar solo el indicador activo */
+.sort-icon.asc:before {
+  border-top-color: transparent;
+}
+.sort-icon.desc:after {
+  border-bottom-color: transparent;
+}
+.sort-icon.none {
+  opacity: 0.3;
+}
+/* ------------------------------------------- */
+
+
+/* ==========================================================================
+6. ESTILOS DE FORMULARIOS GENERALES
+========================================================================== */
+
+.form-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 1rem 2.5rem;
+}
+
+.form-group {
+ margin-bottom: 1.25rem;
+}
+
+.form-group label {
+ display: block;
+ font-weight: 500;
+ margin-bottom: 0.5rem;
+ font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+ width: 100%;
+ padding: 0.75rem;
+ border: 1px solid #cbd5e1;
+ border-radius: 8px;
+ background-color: #fff;
+ font-size: 1rem;
+ transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+ border-color: var(--accent-color);
+ box-shadow: 0 0 0 3px var(--accent-color-transparent);
+ outline: none;
+}
+
+.btn-submit {
+ width: 100%;
+ padding: 0.8rem;
+ border-radius: 8px;
+ border: none;
+ background-color: var(--accent-color);
+ color: white;
+ font-size: 1rem;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s ease;
+ margin-top: 3.7rem;
+ margin-bottom: 1.3rem;
+}
+
+.btn-submit:hover {
+ opacity: 0.9;
+ box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* ==========================================================================
+7. ESTILOS ESPECÍFICOS PARA OPERACIONES Y GASTOS
+========================================================================== */
+
+.form-grid-operaciones {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 1.5rem 2.5rem;
+}
+
+.form-row-2-cols {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 1rem 2.5rem;
+ margin-bottom: 0.5rem;
+}
+
+.expense-category {
+ padding: 1rem;
+ border: 1px solid #e2e8f0;
+ border-radius: 8px;
+ margin-bottom: 1.5rem;
+ background-color: #f7f9fb;
+}
+
+.fixed-expenses-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 0 1.5rem;
+}
+
+.variable-expenses-grid {
+ display: grid;
+ grid-template-columns: 1fr;
+ gap: 1rem;
+}
+
+.fixed-expenses-grid h4,
+.variable-expenses-grid h4 {
+ grid-column: 1 / -1;
+}
+
+.expense-category h4,
+.expense-category1 h4 {
+ font-size: 1rem;
+ font-weight: 600;
+ color: var(--accent-color);
+ margin-bottom: 1rem;
+ border-bottom: 2px solid var(--accent-color);
+ display: inline-block;
+ padding-bottom: 0.5rem;
+}
+
+.variable-expenses-grid .form-group {
+ grid-column: 1 / -1;
+}
+
+.variable-expenses-grid .expense-type-group {
+ grid-column: span 1;
+ display: flex;
+ align-items: flex-end;
+ margin-bottom: 1.25rem;
+ margin-top: 1rem;
+ padding-top: 1rem;
+ border-top: 1px dashed #e2e8f0;
+}
+
+.expense-total-display {
+ padding: 1.5rem;
+ background-color: var(--danger-color-dark);
+ color: white;
+ border-radius: 12px;
+ text-align: center;
+ margin-top: 1rem;
+ margin-bottom: 0;
+}
+
+.expense-total-display strong {
+ display: block;
+ font-size: 2.5rem;
+ font-weight: 700;
+ line-height: 1.2;
+}
+
+.expense-total-display span {
+ font-size: 1rem;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ opacity: 0.8;
+ display: block;
+}
+
+.form-grid-operaciones > .btn-submit {
+ margin-top: 16px;
+ margin-bottom: 0;
+}
+
+.form-footer-actions {
+ grid-column: 1 / -1;
+ display: flex;
+ gap: 1.5rem;
+ align-items: stretch;
+ margin-top: 1.5rem;
+ margin-bottom: 2rem;
+}
+
+.form-footer-actions .expense-total-display {
+ flex-grow: 1;
+ padding: 1rem 1.5rem;
+ text-align: left;
+ background-color: var(--danger-color);
+ color: white;
+ border-radius: 12px;
+}
+
+.form-footer-actions .btn-submit {
+ flex-shrink: 0;
+ padding: 1rem 2rem;
+ font-size: 1.1rem;
+ font-weight: 700;
+ line-height: 1;
+ width: 40%;
+ max-width: none;
+ margin: 0;
+ align-self: center;
+}
+
+.expense-type-group {
+ display: flex;
+ gap: 1rem;
+}
+
+.expense-type-group label {
+ font-weight: 500;
+}
+
+.expense-type-group input[type="radio"] {
+ margin-right: 0.5rem;
+}
+
+/* ==========================================================================
+8. NOTIFICACIONES Y MENSAJES DE ERROR
+========================================================================== */
+
+.error-message {
+ background-color: var(--error-bg);
+ color: var(--error-text);
+ border: 1px solid var(--error-border);
+ padding: 1rem;
+ border-radius: 8px;
+ margin-top: 1rem;
+ font-weight: 500;
+}
+
+/* --- Styles for Notification Toast (REEMPLAZO DE alert()) --- */
+#notification-area {
+ position: fixed;
+ bottom: 20px;
+ right: 20px;
+ z-index: 2000;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+}
+.notification-toast {
+ background-color: var(--success-bg);
+ color: var(--success-text);
+ border: 1px solid var(--success-border);
+ padding: 1rem 1.5rem;
+ border-radius: 8px;
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+ font-weight: 600;
+ opacity: 0;
+ transform: translateY(20px);
+ transition: opacity 0.3s ease, transform 0.3s ease;
+ min-width: 250px;
+}
+.notification-toast.error {
+ background-color: var(--error-bg);
+ color: var(--error-text);
+ border: 1px solid var(--error-border);
+}
+.notification-toast.show {
+ opacity: 1;
+ transform: translateY(0);
+}
+
+
+/* ==========================================================================
+9. PIE DE PÁGINA (FOOTER) Y MEDIA QUERIES
+========================================================================== */
+
+.fixed-footer {
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ width: 100%;
+ background-color: #dfdfdf;
+ color: #7f7f7f;
+ text-align: center;
+ padding: 10px 0;
+ font-size: 0.85em;
+ z-index: 999;
+ height: var(--footer-height);
+ box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 900px) {
+ /* Encabezado */
+ .main-header {
+  /* En móvil, volvemos a un diseño más compacto, manteniendo el justify-content: space-between
+       para que el launcher/saludo esté a la izquierda y el botón de logout a la derecha */
+  flex-direction: row; 
+  flex-wrap: wrap; /* Permite que el contenido se envuelva si es muy largo */
+  justify-content: space-between;
+  gap: 0.5rem; /* Ajuste el gap entre elementos */
+  padding: 0.8rem 1rem; /* Menos padding horizontal en móvil */
+ }
+    
+ /* Aseguramos que la izquierda y la derecha estén correctamente alineadas */
+ .header-left, .header-right {
+    flex-grow: 0;
+    flex-basis: auto;
+    /* Evitamos que el header-left ocupe todo el ancho forzando la envoltura */
+ }
+
+ .header-nav {
+  display: none; /* Ocultar nav en móviles */
+ }
+ .header-right {
+  gap: 0.75rem;
+ }
+    
+    /* El tamaño del texto de saludo en móvil puede ser ajustado */
+    .header-left {
+        font-size: 1rem;
+    }
+
+
+ /* Controles de página */
+ .page-header-controls {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+ }
+
+ /* Tabla y búsqueda */
+ .table-header-controls {
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 1.5rem;
+ }
+ 
+  /* MODIFICACIÓN CLAVE: APILAMIENTO DE CONTROLES DE FILTRO */
+  .table-controls {
+    display: flex;
+    flex-direction: column; /* Apila los selects y el input verticalmente */
+    width: 100%; /* Ocupa todo el ancho del contenedor padre (table-header-controls) */
+    gap: 10px;
+    align-items: stretch; /* Estira los elementos para que tengan el mismo ancho */
+  }
+
+  /* ESTIRA TODOS LOS ELEMENTOS DE CONTROL AL 100% */
+ .filter-select,
+ .search-input {
+  width: 100%; /* Fuerzan el ancho completo en móvil */
+    min-width: 0; /* Elimina la restricción de ancho mínimo */
+ }
+
+ /* Formularios y Grids */
+ .form-grid,
+ .form-grid-operaciones {
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+ }
+ .fixed-expenses-grid,
+ .variable-expenses-grid {
+  grid-template-columns: 1fr;
+  gap: 0;
+ }
+ .form-row-2-cols {
+  grid-template-columns: 1fr;
+  gap: 0;
+ }
+
+ /* Footer de Formulario */
+ .form-footer-actions {
+  flex-direction: column;
+  gap: 1rem;
+ }
+ .form-footer-actions .expense-total-display,
+ .form-footer-actions .btn-submit {
+  width: 100%;
+  max-width: none;
+  text-align: center;
+ }
+}

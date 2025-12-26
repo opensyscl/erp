@@ -1,0 +1,486 @@
+/*
+ * Archivo: css/taskmetrics.css
+ * Descripción: Estilos para el módulo de Métricas del tablero Kanban.
+ * Basado en el diseño Glassmorphism unificado.
+ */
+
+/* ==========================================================================
+ * 0. VARIABLES Y RESET
+ * ========================================================================== */
+
+:root {
+    /* Colores Base */
+    --background-start: #f0f2f5;
+    --background-end: #e6e9ee;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+
+    /* Card & Glassmorphism */
+    --card-background: rgba(255, 255, 255, 0.9); /* Ligeramente menos transparente para las tarjetas */
+    --card-border: #e5e7eb; /* Borde más sólido */
+    --card-shadow: rgba(0, 0, 0, 0.05); /* Sombra suave */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(200, 200, 200, 0.5);
+
+    /* Colores Funcionales */
+    --accent-color: #3b82f6; /* Azul primario */
+    --accent-color-hover: #2563eb;
+    --accent-color-transparent: rgba(59, 130, 246, 0.1);
+    --danger-color: #ef4444; /* Rojo */
+    --danger-color-dark: #dc2626;
+    --success-color: #10b981; /* Verde */
+    --warning-color: #f59e0b; /* Amarillo/Naranja */
+
+    /* Colores de Prioridad (Aseguramos consistencia con el PHP) */
+    --priority-high: var(--danger-color);
+    --priority-medium: var(--warning-color);
+    --priority-low: var(--success-color);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+ * 1. ESTILOS BASE Y LAYOUT
+ * ========================================================================== */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-start);
+    background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    
+    /* Nota Importante: Aplicar zoom/escalado para entornos específicos */
+    transform: scale(0.85);
+    transform-origin: top left;
+    width: 117.65%; /* 100% / 0.85 */
+    min-height: 117.65vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* El layout principal de métricas necesita padding para el contenido */
+.metrics-layout {
+    padding: 1.5rem 2rem;
+    width: 100%;
+    min-height: calc(100vh - 80px); /* Altura mínima restando el header */
+}
+
+/* * Título principal eliminado en PHP.
+ * Se mantienen los estilos para los nuevos H2 de sección.
+ */
+.metrics-layout h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Separador para las secciones de métricas */
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 3rem 0;
+    opacity: 0.7;
+}
+
+
+/* ==========================================================================
+ * 2. ENCABEZADO (HEADER) - REUTILIZADO DEL DISEÑO BASE
+ * ========================================================================== */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-left {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.header-left strong {
+    color: var(--text-primary);
+}
+
+.launcher-icon {
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 0;
+}
+
+.launcher-icon:hover {
+    background-color: rgba(0,0,0,0.05);
+    transform: scale(1.1);
+}
+
+.launcher-icon svg {
+    display: block;
+    color: var(--text-primary);
+}
+
+.header-nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-nav a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+    color: var(--text-primary);
+    background: rgba(0,0,0,0.05);
+}
+
+.header-nav a.active {
+    color: #fff;
+    background-color: var(--accent-color);
+    font-weight: 600;
+}
+
+.header-right {
+    gap: 1.5rem;
+}
+
+.app-version {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6b7280;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    vertical-align: middle;
+}
+
+.btn-logout {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    background-color: var(--danger-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+
+/* ==========================================================================
+ * 3. CONTROLES DE PÁGINA Y TOASTS
+ * ========================================================================== */
+
+/* Toast de feedback (usado para errores en PHP) */
+.filter-toast {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    vertical-align: middle;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.filter-toast strong {
+    font-weight: 700;
+}
+
+.error-toast {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+
+/* ==========================================================================
+ * 4. TARJETAS DE MÉTRICAS (KPI GRID)
+ * ========================================================================== */
+
+/* Layout para 4 columnas (Generalmente para las 4 métricas principales) */
+.metrics-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Layout para 5 columnas (Generalmente para el desglose por Estado) */
+.metrics-grid-5 {
+    display: grid;
+    /* Usamos 'repeat(5, 1fr)' para forzar las 5 columnas en desktop, ya que los ítems tienen tamaños similares */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Estilo genérico para la cuadrícula (usado para gráficos y el bloque principal en PHP) */
+.metrics-grid {
+    display: grid;
+    /* Ajustado para mejor distribución de espacio y compatibilidad con 1fr/1fr de gráficos */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+
+.metric-card, .chart-container {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 10px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    /* Colores sólidos para los nuevos gráficos */
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+}
+
+.metric-card {
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.metric-card h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.metric-card .value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    line-height: 1.2;
+}
+
+/* ==========================================================================
+ * 5. CONTENEDORES DE GRÁFICOS
+ * ========================================================================== */
+
+.chart-container {
+    padding: 2rem;
+    margin-bottom: 0;
+    min-height: 400px;
+}
+
+.chart-container h2 {
+    font-size: 1.4rem;
+    margin-top: 0; /* Reiniciar margen superior dentro del card */
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Estilos para el desglose de estado (lista simple) */
+.tasks-list-status {
+    list-style: none;
+    padding: 0;
+}
+
+.tasks-list-status li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.tasks-list-status li:last-child {
+    border-bottom: none;
+}
+
+/* Leyenda del gráfico de prioridad */
+.legend-priority {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+    /* Aseguramos que los colores de prioridad del PHP se usen */
+}
+
+
+/* ==========================================================================
+ * 6. CLASES DE UTILIDAD Y COLORES
+ * ========================================================================== */
+
+/* Clases de utilidad para texto dentro de la tarjeta de KPI */
+.danger-color {
+    color: var(--danger-color);
+    font-weight: 700;
+}
+
+.warning-color {
+    color: var(--warning-color);
+    font-weight: 700;
+}
+
+.success-color {
+    color: var(--success-color);
+    font-weight: 700;
+}
+
+/* Sobrescritura para valores KPI grandes (asegura el color correcto) */
+.value.danger-color { 
+    color: var(--danger-color) !important;
+}
+
+.value.warning-color { 
+    color: var(--warning-color) !important;
+}
+
+.value.success-color { 
+    color: var(--success-color) !important;
+}
+
+/* ==========================================================================
+ * 7. FOOTER Y MEDIA QUERIES
+ * ========================================================================== */
+
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* --- Adaptación a Móviles y Tablets --- */
+
+@media (max-width: 900px) {
+    /* Ocultar navegación principal en pantallas pequeñas */
+    .header-nav {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    /* Media Query para pantallas más pequeñas: */
+    /* El layout de 5 columnas baja a 3 para evitar hacinamiento */
+    .metrics-grid-5 {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ajustes para la cuadrícula de métricas */
+    /* Todo se vuelve 1 columna en móvil */
+    .metrics-grid,
+    .metrics-grid-4,
+    .metrics-grid-5 {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+        gap: 1.5rem;
+    }
+
+    /* Ajustes para el header en móvil */
+    .main-header {
+        padding: 1rem;
+    }
+    
+    .filter-toast {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .metric-card .value {
+        font-size: 2rem;
+    }
+    
+    .chart-container {
+        min-height: 350px;
+    }
+}
+
+/* NUEVA REGLA: Para el desglose de estado (6 columnas) */
+.metrics-grid-6 {
+    display: grid;
+    /* Fuerza 6 columnas */
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Adaptación responsive para la nueva cuadrícula */
+@media (max-width: 1400px) { /* Reducción a 4 columnas en monitores grandes */
+    .metrics-grid-6 {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+}
+@media (max-width: 1024px) { /* Reducción a 3 columnas en tablets horizontales */
+    .metrics-grid-6 {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+@media (max-width: 768px) {
+    /* Mantenemos 1 columna en móvil, aplicando a todas las grillas */
+    .metrics-grid,
+    .metrics-grid-4,
+    .metrics-grid-5,
+    .metrics-grid-6 { /* AGREGADO: Incluir la nueva clase */
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+}

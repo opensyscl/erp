@@ -1,0 +1,804 @@
+/* ==========================================================================
+   0. VARIABLES Y RESET
+   ========================================================================== */
+
+:root {
+    /* Colores Base */
+    --background-start: #f0f2f5;
+    --background-end: #e6e9ee;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+
+    /* Card & Glassmorphism */
+    --card-background: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(255, 255, 255, 0.9);
+    --card-shadow: rgba(0, 0, 0, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-border: rgba(200, 200, 200, 0.5);
+
+    /* Colores Funcionales */
+    --accent-color: #3b82f6; /* Azul primario */
+    --accent-color-hover: #2563eb;
+    --accent-color-transparent: rgba(59, 130, 246, 0.1);
+    --danger-color: #ef4444; /* Rojo */
+    --danger-color-dark: #dc2626;
+    --success-color: #10b981; /* Verde */
+    --warning-color: #f59e0b; /* Amarillo/Naranja */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   1. ESTILOS BASE Y SCALING
+   ========================================================================== */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-start);
+    background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    
+    /* Nota Importante: Aplicar zoom/escalado para entornos específicos */
+    transform: scale(0.85);
+    transform-origin: top left;
+    width: 117.65%; /* 100% / 0.85 */
+    min-height: 117.65vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* ==========================================================================
+   2. ENCABEZADO (HEADER)
+   ========================================================================== */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.header-left strong {
+    color: var(--text-primary);
+}
+
+.launcher-icon {
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 0;
+}
+
+.launcher-icon:hover {
+    background-color: rgba(0,0,0,0.05);
+    transform: scale(1.1);
+}
+
+.launcher-icon svg {
+    display: block;
+    color: var(--text-primary);
+}
+
+.header-nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-nav a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+    color: var(--text-primary);
+    background: rgba(0,0,0,0.05);
+}
+
+.header-nav a.active {
+    color: #fff;
+    background-color: var(--accent-color);
+    font-weight: 600;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.app-version {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6b7280;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    vertical-align: middle;
+}
+
+.btn-logout {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    background-color: var(--danger-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* ==========================================================================
+   3. CONTROLES DE PÁGINA, SELECTORES Y FILTROS
+   ========================================================================== */
+
+.page-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.page-header-controls h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Contenedor principal de los grupos de filtro para control móvil */
+.filter-controls-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* --- Estilos para el Selector de Mes (Dropdown) --- */
+.month-selector-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background-color: #fff; 
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.month-selector-container label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.month-selector-container select {
+    padding: 8px 35px 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+    /* Customización de flecha */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234B5563" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.018 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.month-selector-container select:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* --- Estilos para el Rango de Fechas (Inputs) --- */
+.range-selector-styled {
+    display: flex;
+    gap: 15px; 
+    align-items: flex-end; 
+    padding: 10px 15px;
+    background-color: #f7f7f7; 
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.range-selector-styled .date-input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.range-selector-styled label {
+    font-size: 0.8rem;
+    color: #4b5563;
+    margin-bottom: 3px;
+}
+
+.range-selector-styled input[type="date"] {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    min-width: 130px;
+}
+
+.range-selector-styled .btn-filter {
+    padding: 8px 15px;
+    height: 38px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.range-selector-styled .btn-filter:hover {
+    background-color: var(--accent-color-hover);
+}
+
+.range-selector-styled .btn-reset {
+    padding: 8px 15px;
+    height: 38px;
+    background-color: #fecaca;
+    color: #b91c1c;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+/* --- Estilo para el Toast de Resumen de Filtro --- */
+.filter-toast {
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #d1fae5;
+    color: #065f46;
+    font-weight: 500;
+    border: 1px solid #a7f3d0;
+    /* display: inline-block; */
+    vertical-align: middle;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.filter-toast strong {
+    font-weight: 700;
+    color: #065f46;
+}
+
+
+/* ==========================================================================
+   4. TARJETAS DE KPIS Y GRÁFICO (CARDS)
+   ========================================================================== */
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.kpi-card, .content-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.kpi-card {
+    padding: 1.5rem;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.12);
+}
+
+.kpi-card h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.kpi-card .value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.kpi-card .projection {
+    color: #1ea769;
+    font-weight: 600;
+}
+
+.content-card {
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.content-card h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   5. TABLA DE VENTAS Y CONTROLES
+   ========================================================================== */
+
+.table-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.table-header-controls h2 {
+    margin-bottom: 0;
+}
+
+.table-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.table-controls label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.table-controls select {
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.sales-table th,
+.sales-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.sales-table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    position: relative; 
+    cursor: pointer;
+    padding-right: 25px; 
+    user-select: none;
+    white-space: nowrap;
+}
+
+.sales-table tbody tr:hover {
+    background-color: var(--accent-color-transparent);
+}
+
+.sales-table td {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+/* Estilos de ordenamiento (flechas) */
+.sales-table th::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 8px; 
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-size: 0.7em;
+    line-height: 1;
+}
+
+.sales-table th.sort-asc::after {
+    content: '▲'; 
+    opacity: 1; 
+    color: #4CAF50;
+    margin-top: -5px; 
+}
+
+.sales-table th.sort-desc::after {
+    content: '▼'; 
+    opacity: 1; 
+    color: #f44336; 
+    margin-top: -1px; 
+}
+
+/* ==========================================================================
+   6. CLASES DE UTILIDAD Y COLORES
+   ========================================================================== */
+
+.danger-color {
+    color: var(--danger-color);
+    font-weight: 700;
+}
+
+.warning-color {
+    color: var(--warning-color);
+    font-weight: 700;
+}
+
+.success-color {
+    color: var(--success-color);
+    font-weight: 700;
+}
+
+/* Sobrescritura para valores KPI grandes */
+.value.danger-color { 
+    color: var(--danger-color) !important;
+    font-weight: 700;
+}
+
+.value.warning-color { 
+    color: var(--warning-color) !important;
+    font-weight: 700;
+}
+
+.value.success-color { 
+    color: var(--success-color) !important;
+    font-weight: 700;
+}
+
+
+/* ==========================================================================
+   7. FOOTER Y MEDIA QUERIES
+   ========================================================================== */
+
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* --- Adaptación a Móviles y Tablets --- */
+
+@media (max-width: 900px) {
+    /* Ocultar navegación principal en pantallas pequeñas */
+    .header-nav {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px; /* Espacio entre el título y los filtros */
+    }
+    
+    .filter-controls-group {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .month-selector-container, .range-selector-styled {
+        width: 100%;
+    }
+    
+    .range-selector-styled {
+        flex-wrap: wrap; 
+        align-items: flex-start;
+    }
+    
+    .range-selector-styled .date-input-group {
+        flex-grow: 1; 
+        min-width: 40%;
+    }
+    
+    /* El botón de filtro ocupa el ancho restante */
+    .range-selector-styled .btn-filter, .range-selector-styled .btn-reset {
+        flex-basis: 40%;
+        flex-grow: 1;
+    }
+    
+    /* En móvil, el toast debe ocupar el ancho completo */
+    .filter-toast {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+    /* Estilo del contenedor del selector de mes (Existente, pero aseguramos la consistencia) */
+    .month-selector-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 15px;
+      background-color: #fff; /* Fondo blanco */
+      border: 1px solid #e5e7eb; /* Gris claro */
+      border-radius: 12px;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); /* Sombra ligera */
+    }
+
+    .month-selector-container label {
+      font-weight: 600;
+      color: #1f2937; /* Gris oscuro */
+    }
+
+    .month-selector-container select {
+      padding: 8px 30px 8px 12px;
+      border: 8px 35px 8px 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+    }
+
+    /* NUEVO ESTILO: Contenedor para el Rango de Fechas y Botón "Filtrar" */
+    .range-selector-styled {
+      display: flex;
+      gap: 15px; /* Espacio entre los elementos de fecha y el botón */
+      align-items: flex-end; /* Alinear los elementos de fecha en la base */
+      padding: 10px 15px;
+      background-color: #ffffff; /* Gris muy suave, diferente al blanco */
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.05); /* Sombra interna sutil */
+    }
+    
+    .range-selector-styled .date-input-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .range-selector-styled label {
+      font-size: 0.8rem; /* Tamaño más pequeño para la etiqueta "Desde" / "Hasta" */
+      color: #4b5563;
+      margin-bottom: 3px;
+    }
+    
+    .range-selector-styled input[type="date"] {
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px; /* Bordes más redondeados */
+      font-family: inherit;
+      font-size: 0.9rem;
+      min-width: 130px; /* Asegurar un tamaño mínimo */
+    }
+
+    .range-selector-styled .btn-filter {
+      padding: 8px 15px; /* Ajuste para que coincida con la altura de los inputs */
+      height: 38px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .range-selector-styled .btn-filter:hover {
+      background-color: #2563eb;
+    }
+    
+    /* Estilo del botón de Reset */
+    .range-selector-styled .btn-reset {
+      padding: 8px 15px;
+      height: 38px;
+      background-color: #fecaca; /* Rojo muy suave */
+      color: #b91c1c; /* Rojo oscuro */
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s;
+      white-space: nowrap; /* Evita que el texto se rompa */
+    }
+
+    /* Adaptación móvil para los controles de filtro */
+    @media (max-width: 768px) {
+        .page-header-controls {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .filter-controls-group {
+            width: 100%;
+            flex-direction: column;
+            gap: 15px !important; /* Más espacio vertical */
+        }
+        .month-selector-container, .range-selector-styled {
+            width: 100%;
+        }
+        .range-selector-styled {
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+            align-items: flex-start;
+        }
+        .range-selector-styled .date-input-group {
+            flex-grow: 1; /* Permite que los inputs de fecha crezcan */
+            min-width: 40%;
+        }
+    }
+
+  /* Estilo para el botón de Imprimir Ticket */
+  .btn-print-ticket {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+ 
+  .btn-print-ticket:hover {
+   background-color: #059669; /* Verde más oscuro al pasar el ratón */
+  }
+  
+        /* Estilos generales (reutilizados) */
+        .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+        .kpi-card { min-height: 100px; }
+        /* Ajuste para los selectores movidos */
+        .filter-selects-inline select { padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem; }
+        .filter-controls-group select, .filter-controls-group input { padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; }
+        .sales-table th[data-sort-column] { cursor: pointer; }
+        .sales-table .numeric-cell { text-align: right; }
+        .btn-filter, .btn-reset { background-color: #3b82f6; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.2s; }
+        .btn-reset { background-color: #ef4444; }
+        .btn-filter:hover { background-color: #2563eb; }
+        .btn-reset:hover { background-color: #dc2626; }
+        .table-container { overflow-x: auto; }
+        
+        /* Semáforo para Stock */
+        .stock-danger { color: white; background-color: #dc2626; font-weight: bold; padding: 2px 5px; border-radius: 3px; }
+        .stock-warning { color: #333; background-color: #fbbf24; font-weight: bold; padding: 2px 5px; border-radius: 3px; }
+        .stock-safe { color: white; background-color: #10b981; font-weight: bold; padding: 2px 5px; border-radius: 3px; }
+
+        /* --- ESTILOS PARA LAS PESTAÑAS (TABS) --- */
+        .tabs-container {
+            display: flex;
+            gap: 10px;
+        }
+        .tab-button {
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all 0.2s;
+        }
+        .tab-button.active {
+            color: #3b82f6; /* Color azul primario */
+            border-bottom: 3px solid #3b82f6;
+            font-weight: 600;
+        }
+        .tab-button:hover:not(.active) {
+            color: #4b5563;
+            background-color: #f3f4f6;
+            border-radius: 4px 4px 0 0;
+        }
+        /* Nuevo estilo para las pestañas secundarias (más compactas) */
+        .secondary-tabs .tab-button {
+            padding: 5px 10px; 
+            font-size: 0.9rem;
+        }
+        .secondary-tabs {
+            overflow-x: auto; /* Permite desplazamiento lateral si hay muchos items */
+            white-space: nowrap;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        /* Estilos para el botón de paginación (tomando base de btn-filter) */
+        #detailed-pagination-controls button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 0.9rem;
+        }
+        #detailed-pagination-controls button:hover:not(:disabled) {
+            background-color: #2563eb;
+        }
+        #detailed-pagination-controls button:disabled {
+            background-color: #e5e7eb;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        /* --- ESTILOS PARA EL CONTENEDOR DEL GRÁFICO 1 --- */
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px; /* Separación del título */
+        }
+        .chart-header h2 {
+            margin: 0;
+        }
+        .filter-selects-inline {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        /* Contenido de las nuevas pestañas */
+        .tab-content {
+            display: none;
+            padding-top: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }

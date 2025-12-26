@@ -1,0 +1,1193 @@
+/* ==================================== */
+/* 1. VARIABLES CSS (CUSTOM PROPERTIES) */
+/* ==================================== */
+:root {
+  --background-start: #f0f2f5;
+  --background-end: #e6e9ee;
+  --card-background: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(255, 255, 255, 0.9);
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --accent-color: #3b82f6;
+  --accent-color-hover: #2563eb;
+  --accent-color-transparent: rgba(59, 130, 246, 0.1);
+  --danger-color: #ef4444;
+  --danger-color-dark: #dc2626;
+  --success-color: #10b981;
+  --success-color-dark: #059669;
+  --modal-save-button: #28a745;
+  --modal-save-button-hover: #218838;
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --glass-border: rgba(200, 200, 200, 0.5);
+  --glass-bg-darker: rgba(255, 255, 255, 0.3);
+}
+
+/* ==================================== */
+/* 2. ESTILOS BASE Y UTILITIES */
+/* ==================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-start);
+  background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+  color: var(--text-primary);
+  /* 🚀 AJUSTE CLAVE 1: Configurar el body para contener todo y evitar el scroll principal */
+  height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+  overflow: hidden; /* 🛑 ELIMINA EL SCROLL PRINCIPAL DE LA PÁGINA */
+  
+  /* Propiedades de escalado, a usar con precaución (mantengo tu configuración original) */
+  transform: scale(0.85);
+  transform-origin: top left;
+  width: 117.65%;
+  min-height: 117.65vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.page-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.info-message {
+  border-left: 5px solid var(--accent-color);
+  background-color: var(--accent-color-transparent);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: none;
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.product-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid var(--glass-border);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  z-index: 999;
+}
+
+/* ==================================== */
+/* 3. ENCABEZADO Y NAVEGACIÓN */
+/* ==================================== */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.header-left strong {
+  color: var(--text-primary);
+}
+
+.launcher-icon {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 0;
+}
+
+.launcher-icon:hover {
+  background-color: rgba(0,0,0,0.05);
+  transform: scale(1.1);
+}
+
+.launcher-icon svg {
+  display: block;
+  color: var(--text-primary);
+}
+
+.header-nav {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.header-nav a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+  color: var(--text-primary);
+  background: rgba(0,0,0,0.05);
+}
+
+.header-nav a.active {
+  color: #fff;
+  background-color: var(--accent-color);
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.app-version {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: rgba(0,0,0,0.05);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.btn-logout {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-logout:hover {
+  background-color: var(--danger-color-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* ==================================== */
+/* 4. BOTONES GENÉRICOS */
+/* ==================================== */
+.btn-primary, .btn-secondary, .btn-success {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+  background-color: #e2e8f0;
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.btn-success {
+  background-color: var(--modal-save-button);
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  font-weight: 700;
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+}
+
+.btn-success:hover {
+  background-color: var(--modal-save-button-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(40, 167, 69, 0.5);
+}
+
+.btn-success:disabled {
+  background-color: #a7f3d0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  line-height: 1;
+  display: inline-block;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-color-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(239, 68, 68, 0.6);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4);
+}
+
+.btn-view-invoice {
+  background-color: #6c757d;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.btn-view-invoice:hover {
+  background-color: #5a6268;
+}
+
+/* ==================================== */
+/* 5. LAYOUT PRINCIPAL (SIDEBAR Y CONTENIDO) */
+/* ==================================== */
+.main-wrapper {
+  display: flex;
+  /* CORRECCIÓN CLAVE 1: Ajustar el alto del main-wrapper a la ventana (100vh) */
+  height: calc(120vh - 60px); /* 100vh menos el alto del header (aprox 60px) */
+  min-height: auto;
+}
+
+/* 🚀 Estilos para Ocultar Scrollbar en WebKit (Chrome, Safari, Edge) */
+.main-content::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+  display: none; /* Oculta la barra de desplazamiento completamente */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--glass-bg-darker);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-right: 1px solid var(--glass-border);
+  padding: 20px 0;
+  flex-shrink: 0;
+  
+  /* FUNCIONALIDAD SCROLL */
+  height: 100%; /* Ocupa el 100% de la altura de .main-wrapper */
+  overflow-y: auto; /* Permite el scroll vertical solo en el sidebar */
+
+  /* 🚀 AJUSTE CLAVE: Ocultar la barra de scroll para IE, Edge y Firefox */
+  -ms-overflow-style: none; /* Oculta la barra en IE y Edge */
+  scrollbar-width: none; /* Oculta la barra en Firefox */
+}
+
+.sidebar-title {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  padding: 0 20px 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.supplier-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.supplier-item a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: background-color 0.2s, color 0.2s;
+  font-weight: 500;
+  border-left: 4px solid transparent;
+}
+
+.supplier-item a:hover {
+  background-color: var(--accent-color-transparent);
+  color: var(--accent-color);
+}
+
+.supplier-item a.active {
+  background-color: var(--accent-color-transparent);
+  color: var(--accent-color);
+  font-weight: 700;
+  border-left-color: var(--accent-color);
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+  
+  /* Permitir que el contenido principal (factura e historial) sea scrolleable */
+  height: 100%; 
+  overflow-y: auto; 
+  
+  /* 🚀 AJUSTE CLAVE: Ocultar la barra de scroll para IE, Edge y Firefox */
+  -ms-overflow-style: none; /* Oculta la barra en IE y Edge */
+  scrollbar-width: none; /* Oculta la barra en Firefox */
+}
+
+.content-card {
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px 0 var(--card-shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: 2.5rem;
+}
+
+.content-card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+/* ==================================== */
+/* 6. ESTILOS DE TABLAS */
+/* ==================================== */
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+}
+
+.supplier-products-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+
+    min-width: **1600px**; /* Aumentado de 1400px a 1600px para evitar el scroll horizontal */
+}
+
+.supplier-products-table th,
+.supplier-products-table td {
+  padding: 8px 10px;
+  text-align: center;
+  vertical-align: middle;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.supplier-products-table thead th {
+  background-color: #f8fafc;
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.current-metrics-header {
+  background-color: var(--accent-color-transparent);
+  color: var(--accent-color);
+}
+
+.invoice-data-header {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--success-color);
+}
+
+.supplier-products-table input[type="number"],
+.supplier-products-table input[type="text"] {
+    width: 100%;
+    max-width: **120px**; 
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: right;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.supplier-products-table input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 0.1rem rgba(59, 130, 246, 0.25);
+}
+
+.supplier-products-table td:nth-child(2) {
+  text-align: left;
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.supplier-products-table th:last-child,
+.supplier-products-table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Totales de Factura */
+.invoice-totals {
+  text-align: right;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px dashed var(--glass-border);
+}
+
+.invoice-totals p {
+  margin: 5px 0;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.invoice-totals .total-line {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #059669;
+  margin-top: 10px;
+}
+
+/* Tabla de Facturas Históricas */
+.invoices-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.invoices-table th,
+.invoices-table td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px;
+  text-align: left;
+}
+
+.invoices-table th {
+  background-color: #f7f7f7;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+.invoices-table td:nth-child(2) {
+  text-align: right;
+  font-weight: 700;
+  color: var(--success-color-dark);
+}
+
+/* ==================================== */
+/* 7. ESTILOS DE FORMULARIOS */
+/* ==================================== */
+.form-group {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.form-group label, #final-invoice-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select,
+#final-invoice-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #fff;
+  font-size: 1em;
+}
+
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%234a5568"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 1em;
+  padding-right: 30px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+#final-invoice-form input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 1px var(--accent-color);
+  outline: none;
+}
+
+.product-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.product-form-grid .full-width,
+.product-form-grid .button-row {
+  grid-column: 1 / span 2;
+}
+
+.product-form-grid .button-row {
+  margin-top: 10px;
+}
+
+.file-upload-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.file-upload-container input[type="file"] {
+  display: none;
+}
+
+.file-label {
+  padding: 12px;
+  background-color: #f7f7f7;
+  border-right: 1px solid #d1d5db;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: background-color 0.2s;
+}
+
+.file-label:hover {
+  background-color: #e5e5e5;
+}
+
+.file-name-display {
+  padding: 0 12px;
+  color: var(--text-secondary);
+  font-size: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+#modal-total-display {
+  color: var(--success-color-dark);
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+/* ==================================== */
+/* 8. ESTILOS DE MODALES (CORREGIDOS) */
+/* ==================================== */
+.modal {
+  /* CLAVE: Fija el modal a la ventana de visualización, ignorando el scroll del documento. */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none; /* Se oculta por defecto (CORREGIDO) */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  overflow-y: auto;
+}
+
+/* Clases para mostrar el modal */
+.modal.active, .modal.is-active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  /*width: 30%;*/
+  max-height: 90vh;
+  overflow-y: visible;
+}
+
+/* Estilos específicos del Modal de Selección de Productos */
+#select-product-modal .modal-content {
+  display: flex;
+  flex-direction: column;
+  /* Aumentar el ancho del modal para la grilla de 5 columnas */
+max-width: 900px;
+    width: 95%;
+}
+
+.product-search-container {
+  padding-top: 5px;
+  margin-bottom: 20px;
+}
+
+#product-search {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#product-search:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-color-transparent);
+}
+
+.search-info {
+  padding: 15px;
+  color: var(--text-secondary);
+  font-style: italic;
+  text-align: center;
+  background-color: #f7f9fc;
+  border-radius: 8px;
+  margin: 5px;
+  line-height: 1.5;
+}
+
+/* --- ESTILOS DE LA GRILLA DE PRODUCTOS INTEGRADOS --- */
+
+.product-grid-container {
+  display: grid;
+  /* ✅ CONFIGURACIÓN BASE: 5 COLUMNAS FIJAS */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: 10px;
+  background-color: #f7f9fc; /* Fondo del modal */
+  border-radius: 8px;
+  max-height: 70vh; /* Ajuste para el desplazamiento en modales grandes */
+  overflow-y: auto;
+}
+
+/* Estilo de la tarjeta de producto (proporción 4:3) */
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:not(.is-disabled):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
+  transform: translateY(-2px);
+}
+
+.product-card.is-disabled {
+  /* ⚠️ Se elimina la clase 'disabled' en JavaScript para permitir agregar stock 0, 
+       pero se mantiene el estilo por si se usa en otro contexto. */
+  opacity: 0.6;
+  cursor: not-allowed; /* Cambio a not-allowed para ser más claro */
+  background-color: #f7f7f7;
+}
+
+.product-image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid #eee;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  /* ✅ CORRECCIÓN: Usar 'contain' para mostrar la imagen completa sin recortar */
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s;
+  transform: none !important; /* Asegura que no haya zoom */
+}
+
+/* Eliminar el zoom en hover para la imagen contenida */
+.product-card:not(.is-disabled):hover .product-image {
+  transform: none;
+}
+
+.product-status-overlay {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.badge-quantity {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    background-color: #059669; /* Verde para indicar que está en factura */
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+}
+
+.status-badge.added { background-color: #28a745; } /* Verde */
+.status-badge.no-stock { background-color: #dc3545; } /* Rojo */
+.status-badge.new { background-color: #ffc107; color: #333; } /* Amarillo/Naranja */
+
+
+.product-details {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Permite que el texto ocupe el espacio restante */
+}
+
+.product-card-name {
+  font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 5px;
+  height: 36px; /* Altura fija para 2 líneas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.product-card-info {
+  font-size: 0.8em;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.product-card-price {
+  font-size: 14px;
+  color: var(--success-color-dark);
+  margin-top: auto; /* Empuja el precio hacia abajo para alineación */
+  font-weight: 700;
+}
+
+/* --- FIN ESTILOS DE LA GRILLA DE PRODUCTOS INTEGRADOS --- */
+
+/* Encabezado y Cierre del Modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.modal-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.close-button {
+  color: #aaa;
+  float: none;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: var(--danger-color);
+  text-decoration: none;
+  outline: none;
+}
+
+@keyframes modal-slide-in {
+  from { opacity: 0; transform: translateY(-50px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==================================== */
+/* 9. MENSAJES DE ESTADO (TOASTS) */
+/* ==================================== */
+.status-message {
+    /* Posicionamiento y Capa (CRUCIALES para que flote) */
+    position: fixed; /* Fija la posición en la ventana */
+    bottom: 25px;    /* 25px desde el borde inferior */
+    right: 25px;     /* 25px desde el borde derecho */
+    z-index: 20000;  /* ¡Asegura que esté SOBRE CUALQUIER COSA, incluyendo modales (z-index 1000)! */
+    
+    /* Apariencia */
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: white; /* Color de texto por defecto */
+    
+    /* Animación (CRUCIAL para el efecto de aparición/desaparición) */
+    opacity: 0;
+    visibility: hidden; 
+    transform: translateY(20px); /* Comienza 20px más abajo (invisible) */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    max-width: 400px;
+    pointer-events: none; 
+}
+
+#status-message.is-active { /* Usar la clase que agregaste en el JS */
+  display: block;
+  animation: status-fade-in-out 3s forwards;
+}
+
+#status-message.success {
+  background-color: #28a745;
+  border: 1px solid #218838;
+}
+
+#status-message.error {
+  background-color: #dc3545;
+  border: 1px solid #c82333;
+}
+
+#status-message.warning,
+#status-message.info {
+  background-color: #007bff;
+  border: 1px solid #0056b3;
+}
+
+@keyframes status-fade-in-out {
+  0% { opacity: 0; transform: translateY(-30px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-30px); }
+}
+
+/* ==================================== */
+/* 10. MEDIA QUERIES (RESPONSIVE) */
+/* ==================================== */
+@media (max-width: 1024px) {
+  /* En tabletas, reduce a 3 */
+  .product-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #select-product-modal .modal-content {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* En móvil grande, reduce a 2 */
+  .product-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  #select-product-modal .modal-content {
+    max-width: 95%;
+  }
+  .main-wrapper {
+    flex-direction: column;
+    height: auto; /* Permite que el contenido fluya en móvil */
+  }
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--glass-border);
+    padding: 15px 0;
+    height: auto; /* En modo móvil, el sidebar debe ser horizontalmente scrolleable, no verticalmente */
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+  .sidebar-title {
+    display: none;
+  }
+  .supplier-list {
+    display: flex;
+    overflow-x: auto;
+    padding: 0 15px;
+    gap: 10px;
+  }
+  .supplier-item a {
+    padding: 8px 15px;
+    border-left: none;
+    border-bottom: 4px solid transparent;
+    white-space: nowrap;
+  }
+  .supplier-item a.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--accent-color);
+  }
+  .main-content {
+    padding: 20px 15px;
+  }
+  .supplier-products-table {
+    min-width: 1000px;
+  }
+  .product-form-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .product-form-grid .full-width,
+  .product-form-grid .button-row {
+    grid-column: 1 / span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  /* En móvil pequeño, solo 1 columna */
+  .product-grid-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+  .product-card {
+    flex-direction: row;
+    align-items: center;
+    min-height: auto;
+  }
+  .product-image-container {
+    width: 60px;
+    height: 60px;
+    aspect-ratio: 1;
+    border-bottom: none;
+    margin-right: 10px;
+  }
+  .product-details {
+    padding: 5px 0;
+  }
+  .product-card-name {
+    height: auto;
+    -webkit-line-clamp: 1;
+  }
+}
+
+/* Estilos para el contenedor del grid */
+.product-grid-container {
+  display: grid;
+  /* REVISADO: Se mantiene 5 columnas fijas por regla general para cumplir la solicitud */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Estilos para la tarjeta individual */
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.product-card:hover {
+  border-color: #007bff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Estado de desactivado para productos ya agregados */
+.product-card.disabled {
+  opacity: 0.6;
+  pointer-events: none; /* Deshabilita el clic */
+  background-color: #f8f8f8;
+  border-color: #eee;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Contenedor de la imagen (debe ser pequeño y centrado) */
+.product-image-container {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 10px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.product-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Información */
+.product-info {
+  text-align: left;
+}
+
+.product-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  height: 3em;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+.product-stock, .product-cost {
+  font-size: 0.8rem;
+  margin: 3px 0;
+  color: #666;
+}
+
+.product-cost strong {
+  color: #059669;;
+  font-size: 0.9rem;
+}
+
+/* ========================================================= */
+/* CSS para el Mensaje de Estado (Toast) */
+/* ========================================================= */
+
+.status-message {
+    /* Posicionamiento y Capa (CRUCIALES para que flote) */
+    position: fixed; /* Fija la posición en la ventana */
+    bottom: 25px;    /* 25px desde el borde inferior */
+    right: 25px;     /* 25px desde el borde derecho */
+    z-index: 10000;  /* ¡Muy alto! Asegura que esté sobre modales y todo. */
+    
+    /* Apariencia */
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600; /* Semi-negrita */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    
+    /* Animación (CRUCIAL para el efecto de aparición/desaparición) */
+    opacity: 0;
+    visibility: hidden; /* Lo esconde completamente cuando no está activo */
+    transform: translateY(20px); /* Comienza 20px más abajo */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+
+    /* Asegura que no bloquee clics en otros elementos cuando no está visible */
+    pointer-events: none; 
+}
+
+/* Estado Activo: La clase que añade el JavaScript para mostrarlo */
+.status-message.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Sube a su posición final */
+    pointer-events: auto; /* Permite que el usuario pueda hacerle clic (si fuera necesario) */
+}
+
+/* Estilos por Tipo de Mensaje */
+
+/* Éxito (Success) - Usado al registrar la factura */
+.status-message.success {
+    background-color: #28a745; /* Verde fuerte */
+    color: #ffffff;
+}
+
+/* Información (Info) - Usado para cargar/mensajes temporales */
+.status-message.info {
+    background-color: #007bff; /* Azul */
+    color: #ffffff;
+}
+
+/* Advertencia (Warning) - Usado para limpiar o quitar ítems */
+.status-message.warning {
+    background-color: #ffc107; /* Amarillo */
+    color: #343a40; /* Texto oscuro para contraste */
+}
+
+/* Error - Usado para fallos en validación o AJAX */
+.status-message.error {
+    background-color: #dc3545; /* Rojo */
+    color: #ffffff;
+}

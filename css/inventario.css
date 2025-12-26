@@ -1,0 +1,1231 @@
+:root {
+--background-start: #f0f2f5;
+--background-end: #e6e9ee;
+--card-background: rgba(255, 255, 255, 0.7);
+--card-border: rgba(255, 255, 255, 0.9);
+--card-shadow: rgba(0, 0, 0, 0.08);
+--text-primary: #1a202c;
+--text-secondary: #4a5568;
+--accent-color: #3b82f6;
+--accent-color-transparent: rgba(59, 130, 246, 0.1);
+--danger-color: #ef4444; /* Rojo para el toast de error */
+--danger-color-dark: #dc2626;
+--glass-bg: rgba(255, 255, 255, 0.5);
+--glass-border: rgba(200, 200, 200, 0.5);
+--success-bg: #dcfce7;
+--success-text: #166534;
+--success-border: #86efac;
+
+/* 🟢 Toast Colors */
+--toast-success-bg: #10b981;
+--toast-warning-bg: #f59e0b;
+
+/* Variables de dimensiones para Toast (Uso de rem para escalabilidad) */
+--toast-gap: 0.625rem; /* 10px */
+--toast-padding-y: 0.9375rem; /* 15px */
+--toast-padding-x: 1.25rem; /* 20px */
+--toast-border-radius: 0.5rem; /* 8px */
+--toast-max-width: clamp(18.75rem, 90vw, 25rem); /* 300px-400px */
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+/* 🟢 CORREGIDO: Quitar límites de altura del body/html */
+body, html {
+  height: auto; /* Permitir que la altura se ajuste al contenido */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+font-family: 'Inter', sans-serif;
+background-color: var(--background-start);
+background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+color: var(--text-primary);
+min-height: 100vh;
+
+/* APLICACIÓN DEL ESCALADO AL 85% */
+transform: scale(0.85);
+transform-origin: top left;
+width: 117.65%;
+min-height: 117.65vh;
+}
+
+.container {
+width: 80%;
+max-width: 100%;
+margin: 0 auto;
+padding: 2rem 0;
+display: grid;
+grid-template-columns: 250px 1fr;
+gap: 2rem;
+
+  /* 🟢 CORREGIDO: Eliminar altura fija. El scroll debe ser continuo. */
+  min-height: auto;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- Header y Navegación --- */
+/* ------------------------------------------------------------------ */
+
+.main-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 2rem;
+background: var(--glass-bg);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--glass-border);
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+
+.header-left {
+display: flex;
+align-items: center;
+font-weight: 500;
+color: var(--text-secondary);
+}
+
+.header-left strong {
+color: var(--text-primary);
+}
+
+.launcher-icon {
+margin-right: 1rem;
+padding: 0.5rem;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.2s ease;
+line-height: 0;
+}
+
+.launcher-icon:hover {
+background-color: rgba(0, 0, 0, 0.05);
+transform: scale(1.1);
+}
+
+.launcher-icon svg {
+display: block;
+color: var(--text-primary);
+}
+
+.header-nav {
+flex-grow: 1;
+text-align: center;
+}
+
+.header-nav a {
+margin: 0 0.5rem;
+text-decoration: none;
+color: var(--text-secondary);
+font-weight: 500;
+padding: 0.5rem 1rem;
+border-radius: 8px;
+transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+color: var(--text-primary);
+background: rgba(0, 0, 0, 0.05);
+}
+
+.header-nav a.active {
+color: #fff;
+background-color: var(--accent-color);
+font-weight: 600;
+}
+
+.header-right {
+display: flex;
+align-items: center;
+gap: 1.5rem;
+}
+
+.app-version {
+font-size: 0.8rem;
+font-weight: 500;
+color: var(--text-secondary);
+background-color: rgba(0, 0, 0, 0.05);
+padding: 0.2rem 0.5rem;
+border-radius: 6px;
+}
+
+.btn-logout {
+background-color: var(--danger-color);
+color: white;
+border: none;
+padding: 0.6rem 1.2rem;
+border-radius: 8px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s ease;
+text-decoration: none;
+}
+
+.btn-logout:hover {
+background-color: var(--danger-color-dark);
+transform: translateY(-2px);
+box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* ------------------------------------------------------------------ */
+/* --- Contenido Principal y Sidebar --- */
+/* ------------------------------------------------------------------ */
+
+.page-title {
+font-size: 1.5rem;
+font-weight: 700;
+margin-bottom: 2rem;
+}
+
+.sidebar {
+background: var(--glass-bg);
+border-radius: 16px;
+padding: 1.5rem;
+box-shadow: 0 8px 32px 0 var(--card-shadow);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+align-self: start;
+position: sticky;
+top: 70px;
+ height: calc(112vh - 70px - 0rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* 🚀 .main-content (Grilla de Productos) */
+.main-content {
+  /* Mantenemos sin scroll interno y sin altura fija, permitiendo que su contenido extienda la página */
+  height: auto;
+  overflow-y: visible;
+  padding-bottom: 2rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- Ocultar la barra de scroll del Sidebar --- */
+/* ------------------------------------------------------------------ */
+
+/* Para navegadores basados en WebKit (Chrome, Safari, Edge) */
+.sidebar::-webkit-scrollbar {
+  display: none; /* Oculta la barra de desplazamiento */
+}
+
+/* Para Firefox */
+.sidebar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* --- Indicadores Clave de Rendimiento (KPI) --- */
+/* ------------------------------------------------------------------ */
+
+.kpi-grid {
+display: grid;
+grid-template-columns: repeat(7, 1fr); 
+    gap: 15px; /* Ajusta el espacio entre tarjetas a tu gusto */
+    margin-bottom: 30px;
+}
+
+.kpi-card {
+background: var(--card-background);
+border: 1px solid var(--card-border);
+border-radius: 16px;
+padding: 1.5rem;
+box-shadow: 0 8px 32px 0 var(--card-shadow);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+transition: all 0.3s ease;
+cursor: pointer;
+}
+
+.kpi-card:hover,
+.kpi-card.active {
+transform: translateY(-5px);
+box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.12);
+border: 1px solid var(--accent-color);
+}
+
+.kpi-card.active {
+background: var(--accent-color-transparent);
+}
+
+.kpi-card h3 {
+font-size: 0.9rem;
+font-weight: 600;
+color: var(--text-secondary);
+margin-bottom: 0.75rem;
+text-transform: uppercase;
+}
+
+.kpi-card .value {
+font-size: 2.2rem;
+font-weight: 700;
+color: var(--text-primary);
+}
+
+/* ------------------------------------------------------------------ */
+/* --- Barra de Acciones y Búsqueda (CORREGIDA para nueva estructura HTML) --- */
+/* ------------------------------------------------------------------ */
+
+/* Contenedor principal que contendrá los filtros/búsqueda y las acciones */
+.top-bar {
+display: flex;
+flex-direction: column; /* Apila la fila de filtros/búsqueda sobre la fila de botones */
+gap: 1.5rem;
+margin-bottom: 2rem;
+}
+
+/* Fila 1: Búsqueda + Filtros - Ahora actúa como una grilla de 4 columnas para alinearse con los KPIs */
+.filter-and-search-container {
+display: grid;
+grid-template-columns: repeat(4, 1fr); /* 4 columnas que representan los 4 espacios de KPI */
+gap: 1.5rem; /* Mismo gap que la grilla de KPI */
+width: 100%;
+align-items: flex-end; /* Alinea los elementos por la base */
+}
+
+/* Contenedor de Búsqueda */
+/* Ocupa las dos primeras columnas (2/4 del ancho) */
+.search-container {
+position: relative;
+grid-column: span 2; /* Ocupa 2 de 4 columnas */
+}
+
+/* Ajuste del input de búsqueda (se mantiene) */
+.search-container input {
+width: 100%;
+padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+border: 1px solid #cbd5e1;
+border-radius: 8px;
+background-color: #fff;
+font-size: 1rem;
+/* Asegura que el input se vea limpio, aunque el label esté dentro del HTML */
+height: 38px;
+}
+
+.search-container .fas {
+position: absolute;
+left: 1rem;
+top: 50%;
+transform: translateY(-50%);
+color: var(--text-secondary);
+}
+
+/* Contenedor de Filtros (Ordenamiento, Aplicar, Limpiar) */
+.filter-dropdown-form {
+ /* Ocupa las dos últimas columnas */
+ grid-column: 3 / span 2;
+
+ display: flex;
+ align-items: flex-end;
+ gap: 0.75rem; /* Menor gap para meter 3 elementos (label+select, Aplicar, Limpiar) */
+ justify-content: flex-end; /* Alinea los filtros a la derecha */
+}
+
+/* Estilos para el grupo de 'Ordenar por:' */
+.filter-dropdown-form .filter-group {
+ display: flex;
+ flex-direction: column;
+ flex-grow: 1; /* Permite que el select se estire para ocupar el espacio restante */
+ max-width: 50%; /* Limita el ancho del select para que no invada demasiado */
+}
+
+.filter-group label {
+ margin-bottom: 0.5rem;
+ font-size: 0.85rem;
+ color: #4b5563;
+ white-space: nowrap;
+}
+
+.filter-dropdown-form select {
+ padding: 0.5rem 0.75rem;
+ border: 1px solid #d1d5db;
+ border-radius: 0.375rem;
+ min-width: 100px;
+ font-size: 14px;
+ height: 38px;
+ flex-grow: 1; /* Hace que el select llene el ancho de su columna flex */
+}
+
+.btn-filter-submit,
+.filter-dropdown-form .btn-add {
+ height: 38px;
+ padding: 0.5rem 1rem;
+ display: flex;
+ align-items: center;
+ flex-shrink: 0; /* Evita que los botones se encojan */
+ font-weight: 500;
+}
+
+
+/* Fila 2: Botones de Acción (sin cambios, ya que deben estar en la fila de abajo) */
+.buttons-container {
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+justify-content: flex-start;
+width: 100%;
+}
+.btn-add {
+ /* Estilos generales para los botones de acción */
+ padding: 0.75rem 1.5rem;
+ border-radius: 8px;
+ font-weight: 600;
+ /* ... otros estilos se mantienen ... */
+}
+/* ------------------------------------------------------------------ */
+/* --- Media Queries (Ajuste para Móvil) --- */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+/* En móvil, la fila de búsqueda/filtros vuelve a ser una columna normal */
+.filter-and-search-container {
+ display: flex; /* Cambiamos a Flexbox para que los elementos se apilen */
+ flex-direction: column;
+ align-items: stretch;
+ gap: 1rem;
+}
+
+/* La búsqueda ocupa todo el ancho, ignorando el span 2 */
+.search-container {
+ grid-column: span 4; /* Vuelve a ocupar toda la fila */
+}
+
+/* Los filtros dropdowns se apilan y ocupan todo el ancho */
+.filter-dropdown-form {
+ grid-column: span 4; /* Vuelve a ocupar toda la fila */
+ flex-direction: column;
+ align-items: stretch;
+ gap: 0.75rem;
+ justify-content: flex-start;
+}
+
+.filter-dropdown-form select,
+.filter-dropdown-form .filter-group {
+ min-width: 100%;
+ max-width: none;
+}
+}
+.btn-filter-submit {
+ height: 38px;
+ padding: 0.5rem 1rem;
+ display: flex;
+ align-items: center;
+}
+
+/* Fila 2: Botones de Acción (Nuevo Producto, Exportar, etc.) */
+.buttons-container {
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+justify-content: flex-start; /* Alinea los botones a la izquierda en su propia fila */
+width: 100%; /* Ocupa todo el ancho */
+}
+
+/* El estilo .btn-add ahora es el estilo por defecto de los botones de ACCIÓN (AZUL) */
+.btn-add {
+background-color: var(--accent-color); /* AZUL (Nuevo Producto, Nueva Categoría, Nuevo Proveedor) */
+color: white;
+border: none;
+padding: 0.75rem 1.5rem;
+font-size: 14px;
+border-radius: 8px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+
+.btn-add:hover {
+background-color: #316be3;
+transform: translateY(-2px);
+box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+/* Nuevo Estilo Específico para el botón Exportar (VERDE) */
+.btn-action-green {
+    background-color: #10b981; /* VERDE (Exportar) */
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-action-green:hover {
+    background-color: #059669; /* Verde oscuro en hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+.btn-add .fas {
+margin-right: 0.5rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- Tarjetas de Contenido General y Formularios --- */
+/* ------------------------------------------------------------------ */
+
+.content-card {
+background: var(--card-background);
+border: 1px solid var(--card-border);
+border-radius: 16px;
+padding: 2rem;
+box-shadow: 0 8px 32px 0 var(--card-shadow);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+margin-bottom: 2.5rem;
+}
+
+.content-card h2 {
+font-size: 1.2rem;
+font-weight: 600;
+margin-bottom: 1.5rem;
+}
+
+.form-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 1.5rem;
+}
+
+.form-group {
+margin-bottom: 1.25rem;
+}
+
+.form-group label {
+display: block;
+font-weight: 500;
+margin-bottom: 0.5rem;
+font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+width: 100%;
+padding: 0.75rem;
+border: 1px solid #cbd5e1;
+border-radius: 8px;
+background-color: #fff;
+font-size: 1rem;
+transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+border-color: var(--accent-color);
+box-shadow: 0 0 0 3px var(--accent-color-transparent);
+outline: none;
+}
+
+.btn-submit {
+width: 100%;
+padding: 0.8rem;
+border-radius: 8px;
+border: none;
+background-color: var(--accent-color);
+color: white;
+font-size: 1rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s ease;
+margin-top: 1.5rem;
+}
+
+.btn-submit:hover {
+opacity: 0.9;
+box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.full-width {
+grid-column: 1 / -1;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- Tarjetas de Producto (Product Grid) --- */
+/* ------------------------------------------------------------------ */
+
+.product-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 1.5rem;
+}
+
+.product-card {
+background: rgb(255 255 255);
+border-radius: 16px;
+padding: 1rem;
+box-shadow: 0 8px 32px 0 var(--card-shadow);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+}
+
+.product-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.12);
+}
+
+.product-card-image {
+width: 100%;
+height: 120px;
+object-fit: contain;
+border-radius: 12px;
+}
+
+.product-info {
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+text-align: left;
+}
+
+.product-name {
+font-size: 14px;
+font-weight: 600;
+color: var(--text-primary);
+margin-bottom: 0.25rem;
+}
+
+.product-price {
+font-size: 1rem;
+font-weight: 700;
+color: var(--accent-color);
+margin-bottom: 0.5rem;
+}
+
+.product-details {
+font-size: 0.8rem;
+color: var(--text-secondary);
+margin-bottom: 0.5rem;
+}
+
+.product-stock {
+padding: 0.25rem 0.5rem;
+border-radius: 6px;
+font-size: 0.8rem;
+font-weight: 600;
+margin-top: auto;
+align-self: flex-start;
+}
+
+.stock-indicator {
+position: absolute;
+top: 1rem;
+right: 1rem;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+}
+
+.stock-indicator.green {
+background-color: #10b981;
+}
+
+.stock-indicator.orange {
+background-color: #f59e0b;
+}
+
+.stock-indicator.red {
+background-color: #ef4444;
+}
+
+.stock-indicator.purple { /* Stock Negativo */
+background-color: #9333ea;
+}
+
+.product-stock.stock-available {
+color: #10b981;
+background-color: #d1fae5;
+}
+
+.product-stock.stock-low {
+color: #f59e0b;
+background-color: #fef3c7;
+}
+
+.product-stock.stock-zero {
+color: #ef4444;
+background-color: #fee2e2;
+}
+
+.product-stock.stock-negative {
+color: #9333ea;
+background-color: #f3e8ff;
+}
+
+.card-actions {
+display: flex;
+justify-content: flex-end;
+gap: 0.5rem;
+margin-top: 2px;
+}
+
+.action-btn {
+background-color: var(--accent-color-transparent);
+border: none;
+padding: 0.6rem;
+border-radius: 8px;
+color: var(--accent-color);
+cursor: pointer;
+transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+background-color: var(--accent-color);
+color: white;
+transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------------------ */
+/* --- Modal y Formularios del Modal --- */
+/* ------------------------------------------------------------------ */
+
+.modal {
+display: none;
+position: fixed;
+z-index: 1000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0, 0, 0, 0.6);
+backdrop-filter: blur(5px);
+justify-content: center;
+align-items: center;
+}
+
+.modal-content {
+background-color: #fff;
+padding: 2.5rem;
+border-radius: 12px;
+box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+width: 90%;
+max-width: 600px;
+position: relative;
+animation: fadeIn 0.3s ease-out;
+margin-bottom: auto;
+margin-top: 200px;
+
+}
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: scale(0.95);
+}
+to {
+opacity: 1;
+transform: scale(1);
+}
+}
+
+.close-btn {
+color: #aaa;
+float: right;
+font-size: 2.5rem;
+font-weight: bold;
+position: absolute;
+top: 10px;
+right: 20px;
+cursor: pointer;
+transition: color 0.3s ease;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+color: #333;
+}
+
+.modal-content h2 {
+font-size: 1.2rem;
+color: #333;
+margin-top: 0;
+margin-bottom: 1.5rem;
+font-weight: 600;
+}
+
+.modal-form {
+display: flex;
+flex-direction: column;
+}
+
+.form-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 1.5rem;
+}
+
+.form-grid .full-width {
+grid-column: 1 / -1;
+}
+
+.form-group,
+.form-grid > div {
+display: flex;
+flex-direction: column;
+}
+
+.form-group label,
+.form-grid label {
+font-weight: 600;
+margin-bottom: 0.5rem;
+color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+width: 100%;
+padding: 10px 40px;
+border: 1px solid #ddd;
+border-radius: 8px;
+font-size: 14px;
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+background-color: #fafafb;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+border-color: #007bff;
+box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+outline: none;
+background-color: #fff;
+}
+
+.modal-content .btn-submit {
+background-color: #28a745;
+padding: 1rem 2rem;
+font-size: 1.1rem;
+font-weight: bold;
+margin-top: 2rem;
+}
+
+.modal-content .btn-submit:hover {
+background-color: #218838;
+transform: translateY(-2px);
+opacity: 1;
+box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+#confirm-modal .btn-logout {
+font-size: 1rem;
+padding: 0.75rem 1.5rem;
+border-radius: 6px;
+font-weight: 500;
+transition: background-color 0.3s ease;
+}
+
+#confirm-modal #cancel-action-btn {
+background-color: #6c757d;
+}
+
+#confirm-modal #cancel-action-btn:hover {
+background-color: #5a6268;
+}
+
+#confirm-modal #confirm-action-btn {
+background-color: #dc3545;
+}
+
+#confirm-modal #confirm-action-btn:hover {
+background-color: #c82333;
+}
+
+.precio-venta label {
+font-weight: bold;
+}
+
+.precio-venta input {
+color: var(--text-primary);
+font-weight: bold;
+border: 1px solid #555;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- Footer --- */
+/* ------------------------------------------------------------------ */
+
+.footer {
+text-align: center;
+padding: 2rem 0;
+font-size: 0.9rem;
+color: var(--text-secondary);
+}
+
+/* ------------------------------------------------------------------ */
+/* --- ESTILOS PARA TOAST (CORREGIDOS PARA COMPATIBILIDAD CON ESCALA) --- */
+/* ------------------------------------------------------------------ */
+
+#toast-container {
+position: fixed;
+z-index: 9999;
+top: 20px;
+right: 20px;
+
+/* CLAVE: Cancelamos el escalado (0.85) heredado del body */
+transform: scale(1) translateZ(0);
+transform-origin: center center;
+
+display: flex;
+flex-direction: column;
+gap: var(--toast-gap);
+pointer-events: none;
+
+background: none;
+border-radius: 0;
+}
+
+.toast {
+min-width: 300px;
+max-width: var(--toast-max-width);
+color: white;
+padding: var(--toast-padding-y) var(--toast-padding-x);
+border-radius: var(--toast-border-radius);
+
+background-color: #343a40;
+
+opacity: 0;
+transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+transform: translateX(100%);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+display: flex;
+align-items: center;
+gap: var(--toast-gap);
+
+pointer-events: all;
+}
+
+.toast.show {
+opacity: 1;
+transform: translateX(0);
+}
+
+.toast.success {
+background-color: var(--toast-success-bg);
+}
+
+.toast.error {
+background-color: var(--danger-color);
+}
+
+.toast.warning {
+background-color: var(--toast-warning-bg);
+color: #333;
+}
+
+.toast i {
+font-size: 1.5em;
+flex-shrink: 0;
+}
+
+/* ---------------------------------------------------- */
+/* --- Media Queries (Responsividad) --- */
+/* ---------------------------------------------------- */
+
+
+/* Esconder el botón de toggle en desktop */
+@media (min-width: 901px) {
+.mobile-sidebar-toggle-container {
+ display: none;
+}
+}
+
+@media (max-width: 900px) {
+.container {
+ grid-template-columns: 1fr;
+ gap: 1.5rem;
+ display: flex;
+ flex-direction: column;
+}
+ 
+  /* 🟢 CORREGIDO: Asegurar que el scroll general funcione en móvil también */
+  .sidebar, .main-content {
+    height: auto;
+    overflow-y: visible;
+    position: static;
+    top: auto;
+  }
+
+/* === Sidebar como menú desplegable (Categorías) === */
+.sidebar {
+ display: none;
+ position: static;
+ width: 100%;
+ padding: 0;
+ border: none;
+ box-shadow: none;
+ background: transparent;
+ backdrop-filter: none;
+ -webkit-backdrop-filter: none;
+ order: 1;
+}
+
+.mobile-sidebar-toggle-container {
+ display: block;
+ margin-bottom: 1.5rem;
+ order: 1;
+}
+
+.btn-sidebar-toggle {
+ width: 100%;
+ padding: 0.8rem;
+ background-color: var(--accent-color);
+ color: white;
+ border: none;
+ border-radius: 8px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: background-color 0.2s;
+}
+
+.btn-sidebar-toggle:hover {
+ background-color: #316be3;
+}
+
+.sidebar.open {
+ display: block;
+ padding: 1.5rem;
+ background: var(--glass-bg);
+ border: 1px solid var(--card-border);
+ border-radius: 16px;
+ box-shadow: 0 8px 32px 0 var(--card-shadow);
+ backdrop-filter: blur(10px);
+ -webkit-backdrop-filter: blur(10px);
+ margin-bottom: 1.5rem;
+}
+
+.header-nav {
+ display: none;
+}
+
+/* === KPIs y Búsqueda (Orden y Columnas) === */
+
+/* 1. KPIs a 2 columnas */
+.kpi-grid {
+ grid-template-columns: repeat(2, 1fr);
+ gap: 1rem;
+ order: 2;
+}
+
+/* 2. La barra superior (filtros y búsqueda) */
+.top-bar {
+ flex-direction: column;
+ align-items: stretch;
+ width: 100%;
+ order: 3;
+ margin-bottom: 1.5rem;
+ gap: 1rem; /* Ajustado el gap para móvil */
+}
+
+/* Para móvil, las filas de búsqueda y filtros vuelven a ser una columna */
+.filter-and-search-row {
+ display: flex; /* Cambiamos de grid a flex para móvil */
+ flex-direction: column;
+ align-items: stretch;
+ gap: 1rem;
+}
+
+/* La búsqueda ocupa todo el ancho */
+.search-container {
+ max-width: none;
+}
+
+/* Los filtros dropdowns también se apilan */
+.filter-dropdown-form {
+ flex-direction: column;
+ align-items: stretch;
+ gap: 0.75rem;
+ justify-content: flex-start; /* Desactiva justificación a la derecha */
+}
+
+.filter-dropdown-form select {
+ min-width: 100%;
+}
+
+/* La fila de botones (Fila 2) */
+.buttons-container {
+ justify-content: space-between;
+ order: 4;
+ margin-top: 0.5rem;
+}
+
+/* Ajuste: que los botones de acción se repartan el espacio */
+.btn-add {
+ flex-grow: 1;
+ text-align: center;
+ padding: 0.6rem 1rem;
+}
+
+.main-content {
+ order: 5;
+}
+}
+
+@media (max-width: 768px) {
+.modal-content {
+ padding: 1.5rem;
+}
+
+.form-grid {
+ grid-template-columns: 1fr;
+}
+
+.modal-content h2 {
+ font-size: 1.5rem;
+}
+
+.modal-content .btn-submit {
+ padding: 0.8rem 1.5rem;
+}
+}
+
+/* --- NUEVOS ESTILOS PARA EL SIDEBAR DESPLEGABLE --- */
+
+/* Contenedor del Título y el Toggle */
+.filter-group-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 0.75rem 0.5rem;
+ margin-bottom: 0.5rem;
+ cursor: pointer;
+ border-radius: 6px;
+ transition: background-color 0.2s ease;
+}
+
+.filter-group-header:hover {
+ background-color: #f1f5f9; /* Color de fondo ligero al pasar el mouse */
+}
+
+.filter-group-header h2 {
+ margin: 0;
+ font-size: 1.1rem;
+ color: #334155; /* Texto más oscuro */
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+
+/* Icono de chevron para desplegar */
+.filter-group-header .toggle-icon {
+ transition: transform 0.3s ease;
+ color: #94a3b8;
+ font-size: 0.9rem;
+}
+
+/* Girar el icono cuando está activo (expandido) */
+.filter-group-header.active .toggle-icon {
+ transform: rotate(180deg);
+}
+
+/* Lista de filtros (Categorías/Proveedores) */
+.filter-list {
+ max-height: 0;
+ overflow: hidden;
+ transition: max-height 0.3s ease-in-out;
+ padding-left: 0.5rem;
+}
+
+.filter-list.active-list {
+ max-height: 500px; /* Suficiente para mostrar la lista. Ajustar si es necesario. */
+ margin-bottom: 2rem;
+}
+
+/* Estilo para los enlaces de filtro (para categoras y proveedores) */
+.sidebar-filter {
+ display: block;
+ padding: 0.4rem 0.75rem;
+ margin-bottom: 0.2rem;
+ border-radius: 4px;
+ text-decoration: none;
+ color: #475569;
+ transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar-filter:hover {
+ background-color: #e2e8f0;
+ color: #1e293b;
+}
+
+/* Estilo para el filtro activo */
+.sidebar-filter.active {
+ background-color: #3b82f6; /* Azul primario */
+ color: white !important;
+ font-weight: 600;
+}
+
+.sidebar-separator {
+ margin: 1.5rem 0;
+ border: none;
+ border-top: 1px solid #e2e8f0;
+}
+
+/* --- ESTILOS PARA LIMITAR Y MOSTRAR MÁS (SIN CAMBIOS, APLICAN DENTRO DEL SIDEBAR) --- */
+
+/* Clase para limitar la altura de la lista de categorías (se aplica a #category-filters-container) */
+.limited-height {
+ max-height: 350px !important; /* Altura que muestre las 11-12 primeras. Ajusta este valor. */
+ overflow: hidden;
+ position: relative; /* Para la sombra/degradado */
+}
+
+/* Aplicar un efecto de desvanecimiento (fade out) al final de la lista limitada */
+.limited-height::after {
+ content: '';
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ height: 60px; /* Altura del degradado */
+ background: linear-gradient(to top, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 0) 100%);
+ pointer-events: none; /* Asegura que no bloquee los clics en los enlaces */
+}
+
+/* El contenedor del botón "Ver Más" */
+.view-more-container {
+ padding: 0.5rem 0;
+ text-align: center;
+ list-style: none; /* Asegura que no tenga el estilo de lista */
+ position: absolute; /* Colocarlo sobre el desvanecimiento */
+ bottom: 0;
+ width: 100%;
+ background-color: white; /* Asegura que el botón se vea sobre la sombra */
+}
+
+/* Estilo del botón "Ver Más" */
+.view-more-btn {
+ color: #3b82f6;
+ font-weight: 600;
+ text-decoration: none;
+ cursor: pointer;
+ font-size: 0.9rem;
+ padding: 0.5rem 1rem;
+ display: block;
+ border-radius: 4px;
+}
+
+.view-more-btn:hover {
+ background-color: #eff6ff; /* Fondo muy claro al pasar el mouse */
+}

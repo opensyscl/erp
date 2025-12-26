@@ -1,0 +1,1157 @@
+/* ------------------------------------------------ */
+/* QUOTATION.CSS (FINAL - CON ESCALA RESTAURADA) */
+/* ------------------------------------------------ */
+
+:root {
+--background-start: #f0f2f5;
+--background-end: #e6e9ee;
+--card-background: rgba(255, 255, 255, 0.7);
+--card-border: rgba(255, 255, 255, 0.9);
+--card-shadow: rgba(0, 0, 0, 0.08);
+--text-primary: #1a202c;
+--text-secondary: #4a5568;
+--accent-color: #3b82f6;
+--accent-color-hover: #2563eb;
+--accent-color-transparent: rgba(59, 130, 246, 0.1);
+--danger-color: #ef4444;
+--danger-color-dark: #dc2626;
+--success-color: #10b981;
+--success-color-dark: #059669;
+--modal-save-button: #28a745;
+--modal-save-button-hover: #218838;
+--glass-bg: rgba(255, 255, 255, 0.5);
+--glass-border: rgba(200, 200, 200, 0.5);
+--glass-bg-darker: rgba(255, 255, 255, 0.3);
+--color-success: #28a745;
+--color-success-dark: #1e7e34;
+--color-success-hover: #218838;
+--color-success-light: #e6ffe6;
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+html, body {
+/* CLAVE: Mantenemos el body con altura 100% real y sin scroll global */
+height: 100%; 
+overflow: hidden; 
+}
+
+body {
+font-family: 'Inter', sans-serif;
+background-color: var(--background-start);
+background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+color: var(--text-primary);
+min-height: 100vh;
+}
+
+/* 🚀 NUEVA CLASE PARA APLICAR LA ESCALA SOLAMENTE AL CONTENIDO */
+.application-scaler {
+    /* Restaurar el "zoom" anterior */
+    transform: scale(0.85);
+    transform-origin: top left;
+    /* Ajustes para compensar la escala y llenar la pantalla */
+    width: 117.65%; 
+    min-height: 117.65vh; 
+    /* El overflow hidden en body maneja el scroll global */
+}
+/* FIN DE LA CLASE DE ESCALA */
+
+
+.container {
+width: 90%;
+max-width: 1600px;
+margin: 0 auto;
+padding: 2rem 0;
+}
+
+.main-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 2rem;
+background: var(--glass-bg);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--glass-border);
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+
+.header-left {
+display: flex;
+align-items: center;
+font-weight: 500;
+color: var(--text-secondary);
+}
+
+.header-left strong {
+color: var(--text-primary);
+}
+
+.launcher-icon {
+margin-right: 1rem;
+padding: 0.5rem;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.2s ease;
+line-height: 0;
+}
+
+.launcher-icon:hover {
+background-color: rgba(0,0,0,0.05);
+transform: scale(1.1);
+}
+
+.launcher-icon svg {
+display: block;
+color: var(--text-primary);
+}
+
+.header-nav {
+flex-grow: 1;
+text-align: center;
+}
+
+.header-nav a {
+margin: 0 0.5rem;
+text-decoration: none;
+color: var(--text-secondary);
+font-weight: 500;
+padding: 0.5rem 1rem;
+border-radius: 8px;
+transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+color: var(--text-primary);
+background: rgba(0,0,0,0.05);
+}
+
+.header-nav a.active {
+color: #fff;
+background-color: var(--accent-color);
+font-weight: 600;
+}
+
+.header-right {
+display: flex;
+align-items: center;
+gap: 1.5rem;
+}
+
+.app-version {
+font-size: 0.8rem;
+font-weight: 500;
+color: var(--text-secondary);
+background-color: rgba(0,0,0,0.05);
+padding: 0.2rem 0.5rem;
+border-radius: 6px;
+}
+
+.btn-logout {
+background-color: var(--danger-color);
+color: white;
+border: none;
+padding: 0.6rem 1.2rem;
+border-radius: 8px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s ease;
+text-decoration: none;
+}
+
+.btn-logout:hover {
+background-color: var(--danger-color-dark);
+transform: translateY(-2px);
+box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+.page-title {
+font-size: 1rem;
+font-weight: 700;
+color: var(--text-primary);
+margin-top: 0;
+margin-bottom: 20px;
+}
+
+.btn-primary, .btn-secondary, .btn-success {
+padding: 0.6rem 1.2rem;
+border-radius: 8px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s ease;
+border: none;
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+}
+
+.btn-primary {
+background-color: var(--accent-color);
+color: white;
+}
+
+.btn-primary:hover {
+background-color: var(--accent-color-hover);
+transform: translateY(-1px);
+box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+background-color: #e2e8f0;
+color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+background-color: #cbd5e1;
+transform: translateY(-1px);
+}
+
+.btn-success {
+background-color: var(--modal-save-button);
+color: white;
+padding: 10px 20px;
+font-size: 1.1em;
+font-weight: 700;
+box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+}
+
+.btn-success:hover {
+background-color: var(--modal-save-button-hover);
+transform: translateY(-1px);
+box-shadow: 0 6px 12px rgba(40, 167, 69, 0.5);
+}
+
+.btn-success:disabled {
+background-color: #a7f3d0;
+cursor: not-allowed;
+transform: none;
+box-shadow: none;
+}
+
+/* ------------------------------------------------ */
+/* MODIFICACIONES CLAVE PARA SCROLL DE SIDEBAR Y CONTENIDO */
+/* ------------------------------------------------ */
+
+.main-wrapper {
+    display: flex;
+    /* 🚀 CORRECCIÓN AVANZADA: Usamos la altura calculada del viewport (117.65% del 100vh) */
+    /* menos la altura de la cabecera (60px) ajustada por el factor de escala (70px aprox). */
+    /* Esto soluciona el corte inferior del sidebar al usar transform: scale(). */
+    height: calc(117.65vh - 70px); 
+    overflow: hidden; 
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--glass-bg-darker);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-right: 1px solid var(--glass-border);
+    padding: 20px 0;
+    flex-shrink: 0; 
+    /* CLAVE: Altura del sidebar para que se vea completo. Toma el 100% del main-wrapper. */
+    height: 100%; 
+    display: flex; 
+    flex-direction: column;
+}
+
+.sidebar-title {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    padding: 0 20px 10px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--glass-border);
+    flex-shrink: 0; 
+}
+
+.supplier-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* CLAVE: Permite el scroll INDEPENDIENTE dentro del sidebar */
+    overflow-y: auto; 
+    flex-grow: 1; 
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    /* CLAVE: Permite el scroll del contenido principal si se desborda */
+    height: 100%; 
+    overflow-y: auto; 
+}
+
+/* ------------------------------------------------ */
+/* FIN MODIFICACIONES CLAVE PARA SCROLL DE SIDEBAR Y CONTENIDO */
+/* ------------------------------------------------ */
+
+.supplier-item a {
+display: block;
+padding: 10px 20px;
+text-decoration: none;
+color: var(--text-secondary);
+transition: background-color 0.2s, color 0.2s;
+font-weight: 500;
+border-left: 4px solid transparent;
+}
+
+.supplier-item a:hover {
+background-color: var(--accent-color-transparent);
+color: var(--accent-color);
+}
+
+.supplier-item a.active {
+background-color: var(--accent-color-transparent);
+color: var(--accent-color);
+font-weight: 700;
+border-left-color: var(--accent-color);
+}
+
+
+.content-card {
+background: var(--card-background);
+border: 1px solid var(--card-border);
+border-radius: 16px;
+padding: 2rem;
+box-shadow: 0 8px 32px 0 var(--card-shadow);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+margin-bottom: 2.5rem;
+}
+
+.content-card h2 {
+font-size: 1rem;
+font-weight: 600;
+color: var(--text-primary);
+border-bottom: 1px solid var(--glass-border);
+padding-bottom: 10px;
+margin-top: 0;
+margin-bottom: 20px;
+}
+
+.info-message {
+border-left: 5px solid var(--accent-color);
+background-color: var(--accent-color-transparent);
+padding: 15px;
+border-radius: 8px;
+box-shadow: none;
+border-color: rgba(59, 130, 246, 0.5);
+}
+
+.product-controls {
+display: flex;
+gap: 10px;
+margin-bottom: 20px;
+}
+
+.table-container {
+overflow-x: auto;
+border-radius: 8px;
+border: 1px solid var(--glass-border);
+}
+
+.supplier-products-table {
+width: 100%;
+border-collapse: collapse;
+font-size: 0.85em;
+min-width: 1400px;
+}
+
+.supplier-products-table th,
+.supplier-products-table td {
+padding: 8px 10px;
+text-align: center;
+vertical-align: middle;
+border-right: 1px solid #e2e8f0;
+border-bottom: 1px solid #e2e8f0;
+}
+
+.supplier-products-table thead th {
+background-color: #f8fafc;
+color: var(--text-secondary);
+font-weight: 600;
+border-bottom: 2px solid #cbd5e1;
+}
+
+.current-metrics-header {
+background-color: var(--accent-color-transparent);
+color: var(--accent-color);
+}
+
+.invoice-data-header {
+background-color: rgba(16, 185, 129, 0.15);
+color: var(--success-color);
+}
+
+.supplier-products-table input[type="number"],
+.supplier-products-table input[type="text"] {
+width: 100%;
+max-width: 90px;
+padding: 4px;
+border: 1px solid #ccc;
+border-radius: 4px;
+text-align: right;
+box-sizing: border-box;
+font-size: 1em;
+}
+
+.supplier-products-table input:focus {
+border-color: var(--accent-color);
+box-shadow: 0 0 0 0.1rem rgba(59, 130, 246, 0.25);
+}
+
+.supplier-products-table td:nth-child(2) {
+text-align: left;
+max-width: 250px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.invoice-totals {
+text-align: right;
+margin-top: 20px;
+padding-top: 15px;
+border-top: 1px dashed var(--glass-border);
+}
+
+.invoice-totals p {
+margin: 5px 0;
+font-size: 1.1em;
+font-weight: 500;
+color: var(--text-secondary);
+}
+
+.invoice-totals .total-line {
+font-size: 1.1rem;
+font-weight: 700;
+color: #059669;
+margin-top: 10px;
+}
+
+/* --- ESTILOS DEL BOTÓN LIMPIAR POR FILA (btn-remove/btn-danger) --- */
+
+/* La clase .btn-remove define el estilo base y compacto */
+.btn-remove {
+background: none;
+border: none;
+cursor: pointer;
+font-size: 0.7rem; /* Ajustado para hacerlo compacto como en la imagen */
+font-weight: 600;
+text-transform: uppercase;
+padding: 0.3rem 1rem; /* Padding compacto como en la imagen */
+border-radius: 8px;
+transition: all 0.2s ease;
+line-height: 1;
+display: inline-block;
+}
+
+/* La clase .btn-danger le da el estilo rojo y la sombra */
+.btn-danger {
+background-color: var(--danger-color); /* Rojo principal */
+color: white; /* Texto blanco */
+border: none;
+box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+}
+
+.btn-danger:hover {
+background-color: var(--danger-color-dark); /* Rojo más oscuro al pasar el mouse */
+transform: translateY(-2px);
+box-shadow: 0 6px 12px rgba(239, 68, 68, 0.6);
+}
+
+.btn-danger:active {
+transform: translateY(0);
+box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4);
+}
+/* FIN ESTILOS BOTÓN LIMPIAR POR FILA */
+
+
+.invoices-table {
+width: 100%;
+border-collapse: collapse;
+}
+
+.invoices-table th,
+.invoices-table td {
+border-bottom: 1px solid #e2e8f0;
+padding: 12px;
+text-align: left;
+}
+
+.invoices-table th {
+background-color: #f7f7f7;
+font-weight: 600;
+color: var(--text-secondary);
+text-transform: uppercase;
+font-size: 0.85em;
+}
+
+.invoices-table td:nth-child(2) {
+text-align: right;
+font-weight: 700;
+color: var(--success-color-dark);
+}
+
+/* =======================================
+ESTILO DEL BOTÓN DE ACCIÓN EN TABLAS
+======================================= */
+
+
+/* Estilo para el botón de acción en las tablas (Ver Detalle) */
+.btn-view-invoice {
+/* Estilos básicos de enlace para que se vea como botón */
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+border-radius: 6px;
+font-weight: 500;
+text-decoration: none;
+cursor: pointer;
+transition: background-color 0.2s, box-shadow 0.2s;
+white-space: nowrap;
+
+/* COLORES DE ÉXITO (VERDE) - Mismo estilo que un botón de éxito */
+background-color: #28a745; /* Verde estándar */
+color: white;
+border: 1px solid #1e7e34;
+}
+
+.btn-view-invoice:hover {
+background-color: #218838; /* Verde un poco más oscuro al pasar el ratón */
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-view-invoice i {
+font-size: 1rem;
+}
+
+/* ------------------------------------------------ */
+/* CORRECCIÓN DE ESTILOS DE MODALES (CENTRADOS) 🚀 */
+/* ------------------------------------------------ */
+.modal {
+position: fixed;
+top: 0;
+left: 0;
+    width: 100%;
+    height: 100%;
+background-color: rgba(0, 0, 0, 0.6);
+z-index: 1000;
+display: none;
+/* Centrado con Flexbox */
+justify-content: center;
+align-items: center;
+overflow: auto; /* Permite scroll si el contenido es demasiado alto */
+}
+
+.modal:not(.is-active) {
+display: none;
+}
+
+.modal.is-active {
+display: flex; /* Fuerza la visualización y el centrado */
+}
+
+.modal-content {
+background-color: #fff;
+padding: 2.5rem;
+border-radius: 12px;
+box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+width: 47%;
+max-width: 780px;
+position: relative;
+animation: modal-slide-in 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+/* CLAVE para el centrado/scroll */
+margin: 20px auto;
+max-height: calc(100vh - 40px); /* Evita que el contenido se salga de la ventana */
+}
+
+@keyframes modal-slide-in {
+from { opacity: 0; transform: translateY(-50px) scale(0.95); }
+to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid #e5e7eb;
+padding-bottom: 15px;
+margin-bottom: 25px;
+}
+
+.modal-header h2 {
+font-size: 1.8rem;
+font-weight: 700;
+margin: 0;
+padding-bottom: 0;
+border-bottom: none;
+}
+
+.close-button {
+color: #aaa;
+float: none; /* Eliminamos el float */
+font-size: 32px; /* Aumentamos un poco el tamaño */
+font-weight: 300; /* Hacemos el icono más ligero */
+line-height: 1;
+cursor: pointer;
+transition: color 0.2s;
+}
+
+.close-button:hover,
+.close-button:focus {
+color: var(--danger-color); /* Un color de acento al cerrar */
+text-decoration: none;
+outline: none; /* Eliminar el contorno feo al enfocar */
+}
+/* ------------------------------------------------ */
+/* FIN CORRECCIÓN DE ESTILOS DE MODALES 🛠️ */
+/* ------------------------------------------------ */
+
+.form-group { margin-bottom: 20px;
+margin-top: 20px; }
+
+.form-group label, #final-invoice-form label {
+display: block;
+font-weight: 500;
+margin-bottom: 5px;
+font-size: 0.9em;
+color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select,
+#final-invoice-form input {
+width: 100%;
+padding: 12px;
+border: 1px solid #d1d5db;
+border-radius: 6px;
+box-sizing: border-box;
+transition: border-color 0.2s, box-shadow 0.2s;
+background-color: #fff;
+font-size: 1em;
+}
+
+.form-group select {
+appearance: none;
+-webkit-appearance: none;
+background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%234a5568"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>');
+background-repeat: no-repeat;
+background-position: right 12px center;
+background-size: 1em;
+padding-right: 30px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+#final-invoice-form input:focus {
+border-color: var(--accent-color);
+box-shadow: 0 0 0 1px var(--accent-color);
+outline: none;
+}
+
+.product-form-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
+margin-bottom: 25px;
+}
+
+.product-form-grid .full-width,
+.product-form-grid .button-row {
+grid-column: 1 / span 2;
+}
+
+.product-form-grid .button-row {
+margin-top: 10px;
+}
+
+.file-upload-container {
+display: flex;
+align-items: center;
+border: 1px solid #d1d5db;
+border-radius: 6px;
+padding: 0;
+background-color: #fff;
+overflow: hidden;
+}
+
+.file-upload-container input[type="file"] {
+display: none;
+}
+
+.file-label {
+padding: 12px;
+background-color: #f7f7f7;
+border-right: 1px solid #d1d5db;
+cursor: pointer;
+font-weight: 500;
+color: var(--text-primary);
+transition: background-color 0.2s;
+}
+
+.file-label:hover {
+background-color: #e5e5e5;
+}
+
+.file-name-display {
+padding: 0 12px;
+color: var(--text-secondary);
+font-size: 1em;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+flex-grow: 1;
+}
+
+#modal-total-display {
+color: var(--success-color-dark);
+font-size: 1.8rem;
+font-weight: 800;
+}
+
+/* ------------------------------------------------ */
+/* ESTILOS ESPECÍFICOS DEL MODAL 'SELECCIONAR PRODUCTO' 🔎 (AJUSTE FINAL) */
+/* ------------------------------------------------ */
+
+/* Contenedor principal de la barra de búsqueda y resultados */
+.product-search-container {
+    padding-top: 5px;
+    margin-bottom: 20px;
+}
+
+/* Estilo mejorado para el input de búsqueda */
+#product-search {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#product-search:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-color-transparent);
+}
+
+/* Contenedor de la lista de resultados */
+.product-selection-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+/* Mensaje inicial o de "No encontrado" */
+.search-info {
+    padding: 15px;
+    color: var(--text-secondary);
+    font-style: italic;
+    text-align: center;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    margin: 5px;
+    line-height: 1.5;
+}
+
+/* Estilos para cada fila de resultados */
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #f0f2f5;
+    border-radius: 0;
+    /* Evita el scroll horizontal en la fila */
+    overflow: hidden;
+}
+
+.search-result-item:hover {
+    background-color: var(--accent-color-transparent);
+    transform: none;
+}
+
+.search-result-item:active {
+    background-color: rgba(59, 130, 246, 0.2);
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+/* Icono (ph ph-hand-tap) - Si existe en tu HTML */
+.search-result-item i {
+    color: var(--accent-color);
+    font-size: 1.2em;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+/* Código de Barras */
+.product-code {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: visible; 
+    text-overflow: clip;
+    flex-grow: 0; 
+    flex-shrink: 0; 
+    margin-right: 15px;
+}
+
+/* Nombre del Producto */
+.product-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    flex-grow: 1; 
+    margin-right: 10px;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+/* Información adicional (Stock y Precio) */
+.product-info {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    text-align: right;
+    flex-shrink: 0; 
+    padding: 4px 8px;
+    background-color: #f0f4f8;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+/* ------------------------------------------------ */
+/* FIN ESTILOS ESPECÍFICOS DEL MODAL 🚀 */
+/* ------------------------------------------------ */
+
+
+.footer {
+text-align: center;
+padding: 2rem 0;
+font-size: 0.9rem;
+color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+.main-wrapper {
+flex-direction: column;
+}
+.sidebar {
+width: 100%;
+border-right: none;
+border-bottom: 1px solid var(--glass-border);
+padding: 15px 0;
+}
+.sidebar-title {
+display: none;
+}
+.supplier-list {
+display: flex;
+overflow-x: auto;
+padding: 0 15px;
+gap: 10px;
+}
+.supplier-item a {
+padding: 8px 15px;
+border-left: none;
+border-bottom: 4px solid transparent;
+white-space: nowrap;
+}
+.supplier-item a.active {
+border-left-color: transparent;
+border-bottom-color: var(--accent-color);
+}
+.main-content {
+padding: 20px 15px;
+}
+.supplier-products-table {
+min-width: 1000px;
+}
+.product-form-grid {
+grid-template-columns: 1fr;
+gap: 15px;
+}
+.product-form-grid .full-width,
+.product-form-grid .button-row {
+grid-column: 1 / span 1;
+}
+}
+
+@media (max-width: 600px) {
+.product-item-row {
+flex-direction: column;
+align-items: flex-start;
+gap: 5px;
+}
+.add-to-invoice-btn {
+width: 100%;
+margin-top: 8px;
+}
+.product-info small {
+margin-top: 5px;
+}
+.modal-content {
+padding: 20px;
+max-width: 95%;
+}
+}
+
+/* Opcional: Para asegurar que el ancho de la columna Acción sea pequeño */
+.supplier-products-table th:last-child,
+.supplier-products-table td:last-child {
+width: 1%;
+white-space: nowrap;
+text-align: center;
+}
+/* ------------------------------------------------ */
+/* ESTILOS GLOBALES PARA MENSAJES DE ESTADO */
+/* ------------------------------------------------ */
+
+#status-message {
+position: fixed;
+top: 20px; 
+right: 20px; 
+z-index: 1000; 
+
+padding: 15px 25px;
+margin: 10px;
+border-radius: 8px; 
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+font-weight: bold;
+color: white; 
+display: none; 
+max-width: 400px; 
+}
+
+/* Estilo para mensajes de ÉXITO (color verde) */
+#status-message.success {
+background-color: #28a745; 
+border: 1px solid #218838;
+}
+
+/* Estilo para mensajes de ERROR (color rojo) */
+#status-message.error {
+background-color: #dc3545; 
+border: 1px solid #c82333;
+}
+
+/* Estilo para mensajes de ADVERTENCIA/INFO (color azul/amarillo) */
+#status-message.warning,
+#status-message.info {
+background-color: #007bff; 
+border: 1px solid #0056b3;
+}
+
+/* Animación de entrada/salida para el status-message */
+@keyframes status-fade-in-out {
+0% { opacity: 0; transform: translateY(-30px); }
+10% { opacity: 1; transform: translateY(0); }
+90% { opacity: 1; transform: translateY(0); }
+100% { opacity: 0; transform: translateY(-30px); }
+}
+
+/* Estilo Sugerido para .status-button */
+.status-button {
+display: inline-flex;
+align-items: center;
+padding: 6px 12px;
+margin-left: 15px;
+background-color: #28a745; 
+color: white !important;
+text-decoration: none;
+border-radius: 4px;
+font-size: 0.9em;
+font-weight: 600;
+transition: background-color 0.3s;
+border: none;
+}
+
+.status-button:hover {
+background-color: #218838;
+}
+
+/* Estilo para la nueva fila (alerta verde) */
+.new-highlight {
+background-color: var(--color-success-light, #e6ffe6); 
+animation: fade-highlight 5s ease-out forwards; 
+}
+
+@keyframes fade-highlight {
+0% { background-color: var(--color-success-light, #e6ffe6); } 
+100% { background-color: initial; } 
+}
+
+/* Estilo del botón 'Ver Detalle' */
+.btn-view-invoice {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+border-radius: 6px;
+font-weight: 500;
+text-decoration: none;
+cursor: pointer;
+transition: background-color 0.2s, box-shadow 0.2s;
+white-space: nowrap;
+
+/* COLORES DE ÉXITO (VERDE) */
+background-color: var(--color-success, #28a745);
+color: white;
+border: 1px solid var(--color-success-dark, #1e7e34);
+}
+
+.btn-view-invoice:hover {
+background-color: var(--color-success-hover, #218838);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para hacer el modal de productos más grande */
+.large-modal-content {
+    max-width: 900px; 
+    width: 95%;
+}
+
+/* ------------------------------------------------ */
+/* ESTILOS DE LA GRILLA DE PRODUCTOS (CORRECCIONES) 🛠️ */
+/* ------------------------------------------------ */
+
+.product-grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 10px;
+    background-color: #f7f9fc; 
+    border-radius: 8px;
+    max-height: 70vh; 
+    overflow-y: auto;
+}
+
+/* Estilo de la tarjeta de producto (proporción 4:3) */
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:not(.is-disabled):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.product-card:hover:not(.is-disabled) {
+    border-color: var(--accent-color); 
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2); 
+    transform: translateY(-2px);
+}
+
+.product-card.is-disabled {
+    opacity: 0.6;
+    cursor: pointer;
+    background-color: #f7f7f7;
+}
+
+.product-image-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s;
+    transform: none !important;
+}
+
+.product-card:not(.is-disabled):hover .product-image {
+    transform: none;
+}
+
+.product-status-overlay {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+}
+
+.status-badge.added { background-color: #28a745; } 
+.status-badge.no-stock { background-color: #dc3545; } 
+.status-badge.new { background-color: #ffc107; color: #333; } 
+
+
+.product-details {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.product-card-name {
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    height: 36px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.product-card-price {
+    font-size: 14px;
+    color: var(--success-color-dark); 
+}
+
+.product-card-info {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 8px;
+}
+/* ------------------------------------------------ */
+/* FIN ESTILOS DE LA GRILLA DE PRODUCTOS */
+/* ------------------------------------------------ */

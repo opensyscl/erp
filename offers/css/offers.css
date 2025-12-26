@@ -1,0 +1,849 @@
+/*
+ * Archivo: css/offers.css
+ * Estilos para el módulo de Gestión de Promociones (Packs y Combos)
+ * Incluye Glassmorphism, variables y el factor de escala del 85%
+ * CORREGIDO para responsividad de tabla en móvil (USANDO .offers-table-wrapper).
+ */
+
+:root {
+    /* Variables de Estilo Global (Glassmorphism) */
+    --background-start: #f0f2f5;
+    --background-end: #e6e9ee;
+    --card-background: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(255, 255, 255, 0.9);
+    --card-shadow: rgba(0, 0, 0, 0.08);
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --accent-color: #3b82f6; /* Azul Primario */
+    --accent-color-transparent: rgba(59, 130, 246, 0.1);
+    --success-color: #10b981; /* Verde */
+    --danger-color: #ef4444; /* Rojo */
+    --danger-color-dark: #dc2626;
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-border: rgba(200, 200, 200, 0.5);
+    /* Variable para el fondo del signo de moneda */
+    --background-light: #f8f8f8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+    1. ESTILOS BASE Y SCALING (IMPORTANTE: 85% ZOOM)
+    ========================================================================== */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-start);
+    background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    
+    /* APLICACIÓN DEL SCALING AL 85% */
+    transform: scale(0.85);
+    transform-origin: top left;
+    width: 117.65%; /* 100% / 0.85 */
+    min-height: 117.65vh; 
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+/* Diseño de dos columnas para el módulo de ofertas */
+.offers-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Columna 1 más estrecha, Columna 2 más ancha */
+    gap: 2rem;
+}
+
+/* --- ESTILO DE TARJETA GLASSMORHISM (content-card) --- */
+.content-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.content-card h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    color: var(--text-primary);
+}
+
+
+/* ==========================================================================
+    2. ENCABEZADO (HEADER) - Estilo Glassmorphism
+    ========================================================================== */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.header-left strong {
+    color: var(--text-primary);
+}
+
+.launcher-icon {
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 0;
+}
+
+.launcher-icon:hover {
+    background-color: rgba(0,0,0,0.05);
+    transform: scale(1.1);
+}
+
+.launcher-icon svg {
+    display: block;
+    color: var(--text-primary);
+}
+
+.header-nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-nav a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+    color: var(--text-primary);
+    background: rgba(0,0,0,0.05);
+}
+
+.header-nav a.active {
+    color: #fff;
+    background-color: var(--accent-color);
+    font-weight: 600;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.app-version {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6b7280;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    vertical-align: middle;
+}
+
+.btn-logout {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    background-color: var(--danger-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+
+/* ==========================================================================
+    3. CONTROLES Y FORMS
+    ========================================================================== */
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    font-size: 1rem;
+    background-color: var(--glass-bg);
+    color: var(--text-primary); 
+}
+
+.form-control:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-color-transparent);
+}
+
+.input-small {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    font-size: 0.85rem;
+    background-color: #f9fafb; 
+    border: 1px solid #d1d5db;
+}
+
+/* Estilos para el nuevo contenedor de dos columnas */
+.form-group-row {
+    display: flex;
+    gap: 1.5rem; 
+    margin-bottom: 1.5rem; 
+}
+
+.form-group-row .form-group {
+    flex: 1; 
+    min-width: 0; 
+}
+
+/* Estilos para el input de precio final con signo de peso */
+.price-display-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--glass-border); 
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.currency-sign {
+    padding: 0 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background-color: var(--background-light);
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+}
+
+/* SOBREESCRIBIR ESTILOS DEL FORM-CONTROL PARA ESTE INPUT ESPECÍFICO */
+.price-input-display {
+    border: none;
+    padding: 12px 12px; 
+    font-size: 1.5rem; 
+    font-weight: 700;
+    color: var(--success-color);
+    text-align: right;
+    flex-grow: 1;
+    background-color: transparent; 
+}
+
+.price-input-display:focus {
+    outline: none;
+    box-shadow: none; 
+}
+
+@media (max-width: 768px) {
+    .form-group-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+
+/* ==========================================================================
+    4. BÚSQUEDA Y RESULTADOS (COLUMNA 1)
+    ========================================================================== */
+
+.search-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.search-results-dropdown {
+    position: absolute;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    justify-content: space-between;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background-color 0.15s ease;
+}
+
+.search-result-item:hover:not(.disabled) {
+    background-color: var(--accent-color-transparent);
+}
+
+.search-result-item.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #f8fafc;
+}
+
+.product-visual {
+    flex-shrink: 0; 
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+}
+
+.product-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+.product-text-details {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.search-result-item strong {
+    font-weight: 600;
+}
+
+.stock-info {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.price-info {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.actions-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.btn-add-product {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add-product:hover:not(:disabled) {
+    background-color: #2563eb;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.btn-add-product:disabled {
+    background-color: #d1d5db;
+    cursor: not-allowed;
+}
+
+
+/* ==========================================================================
+    5. TABLA Y RESUMEN (COLUMNA 2)
+    ========================================================================== */
+
+.product-list-header {
+    font-size: 1rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-primary);
+}
+
+.product-list-header .text-secondary {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.offers-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.offers-table th, .offers-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+    font-size: 0.9rem;
+}
+
+.offers-table th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.numeric-cell {
+    text-align: right !important;
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+    color: var(--danger-color);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: opacity 0.2s;
+    padding: 0 5px;
+}
+.btn-remove:hover {
+    opacity: 0.7;
+}
+
+/* --- RESUMEN Y TOTALES --- */
+
+.summary-box {
+    margin-top: 1.5rem;
+    /* padding: 1rem 0;
+    /* border-top: 1px solid var(--glass-border); */
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.summary-line span:first-child {
+    color: var(--text-secondary);
+}
+
+.summary-line .value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* --- PRECIO FINAL DESTACADO --- */
+
+.final-price-group {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.final-price-group label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    display: block; 
+}
+
+.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px;
+    background-color: var(--success-color);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+}
+
+.btn-primary:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Clases de color para Margen y Alertas */
+.danger-color { color: var(--danger-color); }
+.success-color { color: var(--success-color); }
+.info-color { color: var(--accent-color); }
+
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.success-alert {
+    background-color: #d1fae5;
+    border: 1px solid #10b981;
+    color: #065f46;
+}
+
+.error-alert {
+    background-color: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #991b1b;
+}
+
+
+/* ==========================================================================
+    6. MEDIA QUERIES (GENERAL)
+    ========================================================================== */
+
+@media (max-width: 1100px) {
+    .offers-grid {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas medianas */
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .main-header {
+        padding: 1rem;
+    }
+    .header-nav {
+        display: none;
+    }
+    .header-right {
+        gap: 0.5rem;
+    }
+}
+
+
+/* ==========================================================================
+    7. LISTADO DE OFERTAS (MÓDULO 3)
+    ========================================================================== */
+
+.offers-list-container {
+    /* Asegura que el listado ocupe el ancho completo debajo de las dos columnas de creación */
+    grid-column: 1 / span 2; 
+    margin-top: 2rem;
+}
+
+/* Estilos de botones pequeños para acciones (Editar/Eliminar) */
+.btn-small {
+    padding: 6px 8px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    margin-right: 5px;
+    font-weight: 100;
+    transition: all 0.2s;
+}
+
+.btn-secondary {
+    background-color: #e5e7eb; /* Gris claro */
+    color: var(--text-secondary);
+}
+.btn-secondary:hover {
+    background-color: #d1d5db;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+.btn-danger:hover {
+    background-color: var(--danger-color-dark);
+}
+
+/* Alineación de columnas numéricas en la tabla de listado */
+.offers-list-table th:nth-child(4), /* Stock */
+.offers-list-table td:nth-child(4),
+.offers-list-table th:nth-child(5), /* Costo Total */
+.offers-list-table td:nth-child(5),
+.offers-list-table th:nth-child(6), /* Precio Final */
+.offers-list-table td:nth-child(6),
+.offers-list-table th:nth-child(7), /* Margen */
+.offers-list-table td:nth-child(7) {
+    text-align: right !important;
+}
+
+/* Asegurar el contraste de los textos de porcentaje de margen en la tabla de listado */
+.offers-list-table .danger-color { 
+    color: var(--danger-color); 
+    font-weight: 600; 
+}
+.offers-list-table .success-color { 
+    color: var(--success-color); 
+    font-weight: 600; 
+}
+.offers-list-table .info-color { 
+    color: var(--accent-color); 
+    font-weight: 600; 
+}
+
+.btn-thrid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px;
+    background-color: #d33c3c;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.btn-thrid:hover {
+    background-color: #c03434;
+}
+
+
+/* ==========================================================================
+    8. KPIS GENERALES Y DE OFERTA (TARJETAS)
+    ========================================================================== */
+
+/* kpi-grid ya estaba definido para los KPIs generales */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* --- ESTILO DE TARJETAS KPI --- */
+.kpi-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.12);
+}
+
+.kpi-card h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b7280; /* Usamos un gris específico para headers KPI */
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+/* Estilo para el valor principal en la tarjeta (General KPIs) */
+.kpi-grid:not(.offer-kpi-grid) .kpi-card .value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.kpi-card .projection {
+    color: #1ea769; /* Verde para proyección positiva */
+    font-weight: 600;
+}
+
+
+/* --- NUEVOS ESTILOS PARA LOS KPIS DE RENTABILIDAD DEL PACK --- */
+
+/* Reutilizamos kpi-grid, pero la hacemos un poco más compacta */
+.offer-kpi-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem; /* Separación del header */
+}
+
+.kpi-header {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Estilo para el valor principal en las tarjetas de la OFERTA */
+.offer-kpi-grid .kpi-card .value {
+    font-size: 1.8rem; /* Un poco más pequeño que el KPI general */
+    font-weight: 700;
+    margin-top: 0.5rem;
+    /* Color inicial neutro. El JS agregará la clase de color */
+    color: var(--text-primary); 
+    line-height: 1.2;
+}
+
+/* Sobrescribir colores dinámicos para los valores de las tarjetas de OFERTA */
+.offer-kpi-grid .value.success-color {
+    color: var(--success-color);
+}
+
+.offer-kpi-grid .value.danger-color {
+    color: var(--danger-color);
+}
+
+.offer-kpi-grid .value.info-color {
+    color: var(--accent-color);
+}
+
+/* Nuevo estilo para mostrar el stock al lado del input de cantidad */
+.offers-table td:nth-child(2) {
+    /* Asegura que la celda pueda contener el input y el texto en línea */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stock-display {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    white-space: nowrap; /* Evita que el stock se rompa en dos líneas */
+}
+
+/* Ajuste del ancho del input pequeño para el nuevo diseño */
+.input-quantity {
+    width: 45px !important; 
+}
+.input-discount {
+    /* 55px es lo mínimo para 2 dígitos + padding + el % imaginario. Aumentemos un poco */
+    width: 60px !important; 
+    padding: 5px 8px !important; /* Aseguramos un padding interno adecuado */
+    box-sizing: border-box !important; /* Es crucial para que el padding se incluya en el ancho total */
+    text-align: center !important; /* Centramos el texto para mejor visualización */
+}
+
+
+/* ==========================================================================
+    9. RESPONSIVIDAD ESPECÍFICA PARA TABLAS EN MÓVIL (CORRECCIÓN FINAL) 🛠️
+    ========================================================================== */
+
+@media (max-width: 768px) {
+    /* 1. Hacemos que el wrapper de la tabla sea el elemento que se desplaza */
+    /* Este selector debe coincidir con el HTML que contiene la tabla de listado (.offers-list-table) */
+    .offers-table-wrapper { 
+        width: 100%;
+        overflow-x: auto; /* Permite el desplazamiento horizontal */
+        -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+        /* Eliminamos el padding lateral si es necesario para dar más espacio horizontal */
+        margin: 0 -2rem; /* Compensar el padding de .content-card si la tabla desborda */
+        padding: 0 2rem; /* Restaurar el padding interno para que el scroll empiece en los bordes */
+    }
+
+    /* 2. Forzamos un ancho mínimo a la tabla para habilitar el scroll */
+    .offers-list-table {
+        min-width: 700px; /* Un poco más ancho para asegurar que todos los datos se vean */
+        width: 700px !important; 
+    }
+
+    /* 3. Estilos internos de la tabla para optimizar el espacio */
+    .offers-list-table th, 
+    .offers-list-table td {
+        white-space: nowrap; 
+        padding: 8px 10px;
+    }
+    
+    .offers-list-table td:last-child {
+        min-width: 130px; 
+    }
+    .btn-small {
+        font-size: 12px;
+        padding: 4px 6px;
+    }
+
+    /* Pequeño ajuste para la tabla de productos del pack (columna 2) si desborda */
+    .config-card .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .products-table {
+        min-width: 650px;
+    }
+}

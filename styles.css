@@ -1,0 +1,285 @@
+/* --- ESTILOS GENERALES --- */
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* --- MENSAJES --- */
+.message {
+    padding: 10px;
+    background: #eafbea;
+    border: 1px solid #2ecc71;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* --- FORMULARIOS --- */
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.form label {
+    grid-column: span 2;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.form input,
+.form button,
+.form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.form button {
+    grid-column: span 2;
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form button:hover {
+    background: #2980b9;
+}
+
+/* --- FILTROS --- */
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filters input,
+.filters select,
+.filters button {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.filters button {
+    background: #9b59b6;
+    color: #fff;
+    cursor: pointer;
+}
+
+.filters button:hover {
+    background: #8e44ad;
+}
+
+/* --- GRID VIEW --- */
+.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+/* --- LIST VIEW --- */
+.list-view {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-view th,
+.list-view td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.list-view th {
+    background: #f0f0f0;
+}
+
+.list-view tr:nth-child(even) {
+    background: #fafafa;
+}
+
+/* --- BOTONES --- */
+.btn-edit,
+.btn-delete {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 2px;
+    transition: background 0.3s;
+}
+
+.btn-edit {
+    background: #27ae60;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background: #219150;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+/* --- MODO OSCURO --- */
+body.dark {
+    background: #1e1e1e;
+    color: #eaeaea;
+}
+
+body.dark .container {
+    background: #2c2c2c;
+    color: #eaeaea;
+    border: 1px solid #444;
+}
+
+body.dark h2 {
+    color: #fff;
+}
+
+body.dark .message {
+    background: #2e7d32;
+    border-color: #1b5e20;
+    color: #e0f7e9;
+}
+
+/* Formularios */
+body.dark .form input,
+body.dark .form select,
+body.dark .form button {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark .form button {
+    background: #2980b9;
+}
+body.dark .form button:hover {
+    background: #1f6391;
+}
+
+/* Filtros */
+body.dark .filters input,
+body.dark .filters select,
+body.dark .filters button {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark .filters button {
+    background: #8e44ad;
+}
+body.dark .filters button:hover {
+    background: #6d3685;
+}
+
+/* Grid */
+body.dark .card {
+    background: #333;
+    border: 1px solid #555;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+body.dark .card h3 {
+    color: #fff;
+}
+
+/* Lista */
+body.dark .list-view th {
+    background: #444;
+    color: #fff;
+}
+body.dark .list-view td {
+    background: #2c2c2c;
+    color: #eaeaea;
+    border: 1px solid #444;
+}
+body.dark .list-view tr:nth-child(even) {
+    background: #242424;
+}
+
+/* Botones */
+body.dark .btn-edit {
+    background: #2e7d32;
+}
+body.dark .btn-edit:hover {
+    background: #1b5e20;
+}
+
+body.dark .btn-delete {
+    background: #c0392b;
+}
+body.dark .btn-delete:hover {
+    background: #962d22;
+}
+
+/* Botón modo oscuro */
+.toggle-dark {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #444;
+    color: #fff;
+    transition: background 0.3s;
+}
+body.dark .toggle-dark {
+    background: #f0f0f0;
+    color: #222;
+}

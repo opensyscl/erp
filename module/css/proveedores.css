@@ -1,0 +1,100 @@
+
+        .page-title {
+            color: #212529;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 1rem;
+        }
+        .section-subtitle {
+            color: #495057;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        .section-subtitle span {
+            color: #007bff;
+            text-transform: uppercase;
+        }
+        .supplier-form {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .form-label {
+            font-weight: 500;
+        }
+        .btn-flotante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .card-header h5 {
+            font-weight: bold;
+        }
+        /* Estilos de la tabla de productos */
+        .table {
+            font-size: 0.875rem;
+        }
+        .table thead {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: #E9F5FF; /* Nuevo color de fondo del encabezado */
+            color: #0056b3; /* Nuevo color de fuente */
+            border-bottom: 2px solid #b3d9ff;
+        }
+        .table thead th {
+            font-weight: 600;
+            padding: 0.75rem 0.5rem;
+        }
+        .table tbody td {
+            padding: 0.5rem;
+        }
+        .table tbody tr:nth-child(even) {
+            background-color: #f8f9fa; /* Color para filas pares */
+        }
+        .table-responsive {
+            border-radius: 8px;
+            overflow-y: auto;
+            max-height: 500px;
+            border: 1px solid #e9ecef;
+        }
+        /* Fin de estilos de la tabla de productos */
+
+        .invoice-list {
+            margin-top: 3rem;
+        }
+        .invoice-list h2 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn-add-row {
+            margin-top: 1rem;
+        }
+        .new-product-row {
+            background-color: #f0fdf4;
+        }
+        .layout {
+            display: flex;
+            padding-top: 20px;
+        }
+        .sidebar-left {
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 40px);
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+        .content-proveedores {
+            flex-grow: 1;
+        }

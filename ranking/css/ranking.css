@@ -1,0 +1,501 @@
+/* ----------------------------------------------------------------------------------
+ * Estilos Generales y Variables CSS
+ * ---------------------------------------------------------------------------------- */
+
+:root {
+    /* Fondos */
+    --background-start: #f0f2f5;
+    --background-end: #e6e9ee;
+    
+    /* Tarjetas (Glassmorphism) */
+    --card-background: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(255, 255, 255, 0.9);
+    --card-shadow: rgba(0, 0, 0, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-border: rgba(200, 200, 200, 0.5);
+
+    /* Tipografía */
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+
+    /* Colores Funcionales */
+    --accent-color: #3b82f6; /* Azul Primario */
+    --accent-color-transparent: rgba(59, 130, 246, 0.1);
+    --danger-color: #ef4444;
+    --danger-color-dark: #dc2626;
+    --success-color: #1ea769; /* Verde para margen/rentabilidad */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-start);
+    background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    
+    /* Configuración de Escala/Zoom (ajuste específico del entorno) */
+    transform: scale(0.85);
+    transform-origin: top left;
+    width: 117.65%;
+    min-height: 117.65vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* ----------------------------------------------------------------------------------
+ * HEADER Y NAVEGACIÓN
+ * ---------------------------------------------------------------------------------- */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+.launcher-icon {
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 0;
+}
+.launcher-icon:hover {
+    background-color: rgba(0,0,0,0.05);
+    transform: scale(1.1);
+}
+.launcher-icon svg {
+    display: block;
+    color: var(--text-primary);
+}
+.header-nav {
+    flex-grow: 1;
+    text-align: center;
+}
+.header-nav a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+.header-nav a:hover {
+    color: var(--text-primary);
+    background: rgba(0,0,0,0.05);
+}
+.header-nav a.active {
+    color: #fff;
+    background-color: var(--accent-color);
+    font-weight: 600;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.app-version {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+}
+.btn-logout {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+.btn-logout:hover {
+    background-color: var(--danger-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* ----------------------------------------------------------------------------------
+ * TÍTULO Y SELECTOR DE MES
+ * ---------------------------------------------------------------------------------- */
+
+.page-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+.page-title {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.month-selector-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+.month-selector-container label {
+    font-size: 1rem;
+    color: #374151;
+    font-weight: 500;
+    margin: 0;
+}
+.month-selector-container select {
+    padding: 8px 30px 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    /* Remover flecha nativa */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Flecha SVG personalizada */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234B5563" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.018 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.month-selector-container select:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* ----------------------------------------------------------------------------------
+ * KPI GRID
+ * ---------------------------------------------------------------------------------- */
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Mantener la estructura para el grid del día */
+.kpi-grid:nth-of-type(2) {
+    grid-template-columns: repeat(4, 1fr); 
+}
+
+.kpi-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.12);
+}
+.kpi-card h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+.kpi-card .value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+/* AJUSTES PARA LOS KPI DE NOMBRE DE PRODUCTO (Mes y Día) */
+
+.kpi-card.product-kpi .value {
+    font-size: 1.8rem; 
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: -0.5rem; 
+}
+
+.kpi-card.product-kpi .sub-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: 0.5rem;
+}
+
+
+/* ----------------------------------------------------------------------------------
+ * CONTENIDO GENERAL (GRÁFICO Y TABLA)
+ * ---------------------------------------------------------------------------------- */
+
+.content-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-bottom: 2.5rem;
+}
+.content-card h2 {
+font-size: 1.2rem;
+    font-weight: 600;
+    /* margin-bottom: 1.5rem;*/
+}
+
+/* ----------------------------------------------------------------------------------
+ * PESTAÑAS (TABS)
+ * ---------------------------------------------------------------------------------- */
+
+.table-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Alinear tabs abajo */
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: -20px;
+}
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
+    flex-wrap: wrap;
+}
+.tab-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    /* background: transparent; */
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #595959;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.tab-button:hover {
+    color: var(--text-primary);
+    background-color: #f3f4f6;
+    border-radius: 6px 6px 0 0;
+}
+.tab-button.active {
+    color: var(--accent-color);
+    font-weight: 600;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+/* ----------------------------------------------------------------------------------
+ * TABLA DE RANKING
+ * ---------------------------------------------------------------------------------- */
+
+.table-container {
+    overflow-x: auto;
+}
+.sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 1000px; 
+}
+.sales-table th,
+.sales-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+.sales-table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+.sales-table tbody tr:hover {
+    background-color: var(--accent-color-transparent);
+}
+.sales-table td {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+/* ESTILOS ESPECÍFICOS PARA COLUMNAS DE MARGEN EN LA TABLA */
+.sales-table .unit-margin,
+.sales-table .margin-share {
+    font-weight: 700; 
+    color: var(--success-color); 
+}
+
+/* ----------------------------------------------------------------------------------
+ * FOOTER
+ * ---------------------------------------------------------------------------------- */
+
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ----------------------------------------------------------------------------------
+ * MEDIA QUERIES (Responsividad)
+ * ---------------------------------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+    }
+    .kpi-grid:nth-of-type(2) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* Fuerza que los KPIs que antes ocupaban 2 columnas (si los hubiera) vuelvan a 1 */
+    .kpi-card[style*="grid-column: span 2"] {
+        grid-column: span 1 !important; 
+    }
+}
+
+@media (max-width: 900px) {
+    .header-nav {
+        display: none; /* Ocultar navegación en móviles */
+    }
+    .page-header-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .kpi-grid {
+        grid-template-columns: 1fr; /* 1 columna en móviles */
+    }
+    .kpi-grid:nth-of-type(2) {
+        grid-template-columns: 1fr;
+    }
+    .table-header-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+  /* ---------------------------------------------------------------------- */
+  /* --- CAMBIO CLAVE: ALINEACIÓN DEL ENCABEZADO Y EL FILTRO (Flexbox) --- */
+  /* ---------------------------------------------------------------------- */
+  .table-header-controls {
+    display: flex;
+    justify-content: space-between; /* Mueve el H2 a la izquierda y el controls-group a la derecha */
+    align-items: center; /* Alinea verticalmente el título y los controles */
+    flex-wrap: wrap; /* Permite que los elementos salten de línea en pantallas pequeñas */
+    margin-bottom: 20px;
+    margin-top: 0px;
+  }
+ 
+ /* NUEVOS ESTILOS PARA EL FILTRO DE LÍMITE */
+  .controls-group {
+   display: flex;
+   align-items: center;
+   gap: 20px; /* Espacio entre el selector de límite y las pestañas */
+   flex-wrap: wrap; /* Para que se adapte mejor en móvil */
+    margin-top: 20px;
+    
+  }
+  .limit-selector-container {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-size: 0.9em;
+   color: var(--text-secondary);
+     font-size: 13.5px;
+  color: #595959;
+  }
+  #limitSelector {
+   padding: 5px 10px;
+   /*border: 1px solid var(--border-color);*/
+   border-radius: 6px;
+   background-color: white;
+   cursor: pointer;
+   transition: border-color 0.2s;
+  }
+  #limitSelector:hover {
+   border-color: var(--accent-color);
+  }
+  /* FIN NUEVOS ESTILOS */
+
+ .sales-table th {
+ position: relative;
+ padding-right: 20px; /* Espacio para el icono */
+ }
+ /* Icono base (Triángulo) - CSS para flechas de ordenación */
+ .sales-table th:after {
+   content: "▲";
+   opacity: 0.3;
+ position: absolute;
+ right: 5px;
+ top: 50%;
+   transform: translateY(-50%) rotate(180deg);
+   font-size: 0.7em;
+ }
+  .sales-table th:before {
+   content: "▼";
+   opacity: 0.3;
+ position: absolute;
+ right: 5px;
+ top: 50%;
+   transform: translateY(-50%);
+   font-size: 0.7em;
+  }
+  .sales-table th.sort-asc:after {
+   opacity: 1; /* Flecha ASC (arriba) activa */
+  }
+  .sales-table th.sort-desc:before {
+   opacity: 1; /* Flecha DESC (abajo) activa */
+  }
+  .sales-table th.sort-asc:before,
+  .sales-table th.sort-desc:after,
+  .sales-table th.no-sort:before,
+  .sales-table th.no-sort:after {
+    content: none; /* Oculta ambos si no se puede ordenar */
+  }
+  
+  .chart-tab-button.active {
+    color: var(--accent-color, #007bff); /* Usar tu color principal */
+    border-bottom-color: var(--accent-color, #007bff) !important;
+}

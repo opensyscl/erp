@@ -1,0 +1,450 @@
+[04-Sep-2025 16:09:08 America/Santiago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:1) in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 4
+[04-Sep-2025 16:09:08 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'puntodat_erplistto.products' doesn't exist in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:18
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php(18): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 18
+[04-Sep-2025 16:11:44 America/Santiago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:1) in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 4
+[04-Sep-2025 16:14:31 America/Santiago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:1) in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 4
+[04-Sep-2025 16:14:37 America/Santiago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:1) in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 4
+[04-Sep-2025 16:17:31 America/Santiago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:1) in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 4
+[04-Sep-2025 16:19:10 America/Santiago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:1) in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 4
+[04-Sep-2025 16:24:08 America/Santiago] PHP Warning:  Undefined variable $pdo in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:08 America/Santiago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:12
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:09 America/Santiago] PHP Warning:  Undefined variable $pdo in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:09 America/Santiago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:12
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:09 America/Santiago] PHP Warning:  Undefined variable $pdo in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:09 America/Santiago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:12
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:10 America/Santiago] PHP Warning:  Undefined variable $pdo in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:10 America/Santiago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:12
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:10 America/Santiago] PHP Warning:  Undefined variable $pdo in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:10 America/Santiago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:12
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:12 America/Santiago] PHP Warning:  Undefined variable $pdo in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[04-Sep-2025 16:24:12 America/Santiago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php:12
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/products_search.php on line 12
+[08-Sep-2025 19:26:52 America/Santiago] PHP Warning:  Undefined array key "cart" in /home1/puntodat/tiendaslistto.cl/erp/api/cart.php on line 45
+[10-Sep-2025 19:22:53 America/Santiago] PHP Warning:  Undefined array key "cart" in /home1/puntodat/tiendaslistto.cl/erp/api/cart.php on line 45
+[11-Sep-2025 14:59:53 America/Santiago] PHP Warning:  Undefined array key "cart" in /home1/puntodat/tiendaslistto.cl/erp/api/cart.php on line 45
+[14-Sep-2025 17:40:48 America/Santiago] PHP Warning:  Undefined array key "cart" in /home1/puntodat/tiendaslistto.cl/erp/api/cart.php on line 45
+[15-Sep-2025 16:35:36 America/Santiago] PHP Warning:  Undefined array key "cart" in /home1/puntodat/tiendaslistto.cl/erp/api/cart.php on line 45
+[17-Sep-2025 15:38:56 America/Santiago] PHP Warning:  Undefined array key "cart" in /home1/puntodat/tiendaslistto.cl/erp/api/cart.php on line 45
+[17-Sep-2025 18:25:22 America/Santiago] PHP Warning:  Undefined array key "cart" in /home1/puntodat/tiendaslistto.cl/erp/api/cart.php on line 45
+[18-Sep-2025 17:40:01 America/Santiago] PHP Warning:  Undefined array key "cart" in /home1/puntodat/tiendaslistto.cl/erp/api/cart.php on line 45
+[18-Sep-2025 22:49:38 America/Santiago] PHP Warning:  Undefined array key "cart" in /home1/puntodat/tiendaslistto.cl/erp/api/cart.php on line 45
+[22-Sep-2025 14:37:38 America/Santiago] PHP Warning:  Undefined array key "cart" in /home1/puntodat/tiendaslistto.cl/erp/api/cart.php on line 45
+[23-Sep-2025 17:03:43 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 2
+[23-Sep-2025 17:03:43 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php:2
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 2
+[23-Sep-2025 17:03:45 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 2
+[23-Sep-2025 17:03:45 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php:2
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 2
+[23-Sep-2025 17:03:49 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 2
+[23-Sep-2025 17:03:49 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php:2
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 2
+[23-Sep-2025 17:03:51 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php on line 2
+[23-Sep-2025 17:03:51 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php:2
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php on line 2
+[23-Sep-2025 17:03:52 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php on line 2
+[23-Sep-2025 17:03:52 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php:2
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php on line 2
+[23-Sep-2025 17:03:53 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php on line 2
+[23-Sep-2025 17:03:53 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php:2
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php on line 2
+[23-Sep-2025 17:03:54 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php on line 2
+[23-Sep-2025 17:03:54 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php:2
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/load_products.php on line 2
+[23-Sep-2025 18:04:33 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[23-Sep-2025 18:04:41 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[23-Sep-2025 18:56:47 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[23-Sep-2025 18:56:51 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[23-Sep-2025 18:56:51 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[23-Sep-2025 21:43:16 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:43:41 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:44:08 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:44:33 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:44:51 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:45:23 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:45:43 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:46:02 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:46:25 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:47:11 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:47:37 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:49:07 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:49:42 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[23-Sep-2025 21:50:44 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[24-Sep-2025 00:14:09 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:14:09 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:14:13 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:14:13 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:14:25 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:14:25 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:14:34 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:14:34 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:16:45 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:16:45 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:16:56 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:16:56 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:05 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:05 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:15 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:15 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:26 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:26 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:35 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:35 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:45 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:45 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:55 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:55 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:55 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:17:55 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:18:06 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:18:06 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:18:15 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:18:15 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:18:26 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:18:26 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:18:35 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 00:18:35 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php:7
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/get_sales_data.php on line 7
+[24-Sep-2025 12:46:00 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[24-Sep-2025 20:01:31 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[26-Sep-2025 12:12:44 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[26-Sep-2025 12:13:07 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[26-Sep-2025 13:20:04 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[26-Sep-2025 17:00:41 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[26-Sep-2025 17:50:57 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[26-Sep-2025 17:52:03 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[26-Sep-2025 21:43:13 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[26-Sep-2025 22:32:45 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[26-Sep-2025 23:08:33 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[27-Sep-2025 14:53:00 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[27-Sep-2025 14:55:58 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[27-Sep-2025 18:47:48 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[27-Sep-2025 18:52:00 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[27-Sep-2025 20:20:15 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[27-Sep-2025 20:20:30 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[27-Sep-2025 20:30:00 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[27-Sep-2025 20:45:51 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[27-Sep-2025 20:51:17 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[27-Sep-2025 20:52:03 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[29-Sep-2025 10:44:45 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[29-Sep-2025 12:27:30 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[29-Sep-2025 12:27:55 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[29-Sep-2025 12:29:13 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[29-Sep-2025 12:31:31 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[30-Sep-2025 14:38:40 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[30-Sep-2025 14:40:05 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[30-Sep-2025 14:40:15 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[30-Sep-2025 14:42:25 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[30-Sep-2025 19:30:52 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[01-Oct-2025 09:22:54 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[01-Oct-2025 17:57:20 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[01-Oct-2025 17:57:37 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[01-Oct-2025 17:57:49 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[01-Oct-2025 17:58:02 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[01-Oct-2025 17:58:12 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[01-Oct-2025 17:58:28 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[01-Oct-2025 21:10:39 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc2ff7feb4_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:10:39 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpK2unN2&quot; to &quot;../uploads/68ddc2ff7feb4_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:10:50 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc30a29f9f_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:10:50 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpAIpUvP&quot; to &quot;../uploads/68ddc30a29f9f_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:08 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc31c13865_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:08 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpC4ytz9&quot; to &quot;../uploads/68ddc31c13865_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:08 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc31c2ede1_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:08 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpMwljW9&quot; to &quot;../uploads/68ddc31c2ede1_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:08 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc31c49e2d_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:08 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpeZfwHa&quot; to &quot;../uploads/68ddc31c49e2d_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:10 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc31e22b40_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:10 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpy95R7i&quot; to &quot;../uploads/68ddc31e22b40_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:11 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc31fe9cf1_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:11 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpMEbBqr&quot; to &quot;../uploads/68ddc31fe9cf1_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:19 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc327bf253_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:19 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpuaH1U0&quot; to &quot;../uploads/68ddc327bf253_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:38 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc33a16ddc_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:11:38 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/php6U2eIm&quot; to &quot;../uploads/68ddc33a16ddc_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:12:07 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc357b6e87_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:12:07 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/php02I0ly&quot; to &quot;../uploads/68ddc357b6e87_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:12:10 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc35a2021a_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:12:10 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpGssAvJ&quot; to &quot;../uploads/68ddc35a2021a_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:12:32 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc370c4525_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:12:32 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/php0nCITo&quot; to &quot;../uploads/68ddc370c4525_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:12:34 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc37234168_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:12:34 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpgs7iCv&quot; to &quot;../uploads/68ddc37234168_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:12:49 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc38139764_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:12:49 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpo8PK5B&quot; to &quot;../uploads/68ddc38139764_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:13:15 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc39b35c15_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:13:15 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpUWQpTw&quot; to &quot;../uploads/68ddc39b35c15_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:36:01 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68ddc8f145e93_Leches Naturales Soprole.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[01-Oct-2025 21:36:01 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpQicMXi&quot; to &quot;../uploads/68ddc8f145e93_Leches Naturales Soprole.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[02-Oct-2025 22:10:28 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[03-Oct-2025 21:45:22 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68e06e22e9e7b_images (13).jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[03-Oct-2025 21:45:22 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpGmZo6p&quot; to &quot;../uploads/68e06e22e9e7b_images (13).jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[03-Oct-2025 21:45:26 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/68e06e26989e2_images (13).jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[03-Oct-2025 21:45:26 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpKAqFSM&quot; to &quot;../uploads/68e06e26989e2_images (13).jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 29
+[03-Oct-2025 22:28:59 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[03-Oct-2025 22:42:46 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[03-Oct-2025 22:49:02 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[03-Oct-2025 22:49:43 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[05-Oct-2025 18:54:57 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[05-Oct-2025 21:58:57 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[06-Oct-2025 20:00:42 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[07-Oct-2025 10:30:28 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[07-Oct-2025 10:33:28 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[07-Oct-2025 10:33:38 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[07-Oct-2025 10:35:37 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[07-Oct-2025 16:43:32 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[07-Oct-2025 21:11:02 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[08-Oct-2025 18:25:36 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[10-Oct-2025 13:44:21 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[11-Oct-2025 11:30:13 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[11-Oct-2025 11:46:35 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[11-Oct-2025 11:47:14 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[12-Oct-2025 11:32:14 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:32:19 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:37:32 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:43:26 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:43:31 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:43:36 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:46:46 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:56:18 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:56:24 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:56:27 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:56:28 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 11:56:43 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 12:03:32 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[12-Oct-2025 16:22:59 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[12-Oct-2025 22:27:40 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[13-Oct-2025 10:08:00 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 10:09:36 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 10:09:44 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 10:10:11 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 10:16:15 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 10:16:36 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 10:22:33 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 10:25:49 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 11:26:19 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[13-Oct-2025 12:12:04 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[13-Oct-2025 12:14:10 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[13-Oct-2025 12:14:36 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[13-Oct-2025 12:22:26 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[13-Oct-2025 12:23:36 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[13-Oct-2025 12:31:12 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 13:24:38 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 15:08:44 America/Santiago] PHP Warning:  Undefined array key "supplier_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 20
+[13-Oct-2025 19:47:27 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:47:54 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:48:14 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:48:28 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:48:48 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:49:03 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:49:21 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:49:35 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:51:43 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:52:27 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:53:06 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:54:36 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:55:16 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:56:02 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:56:34 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 19:59:58 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 20:00:12 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 20:00:22 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 20:00:37 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 20:00:48 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 20:01:02 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[13-Oct-2025 20:02:11 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[16-Oct-2025 14:58:38 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[16-Oct-2025 14:59:17 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[16-Oct-2025 14:59:29 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[17-Oct-2025 13:11:57 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[17-Oct-2025 13:18:10 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[17-Oct-2025 15:20:45 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[17-Oct-2025 15:21:28 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[17-Oct-2025 15:21:33 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[17-Oct-2025 15:24:31 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[20-Oct-2025 11:48:06 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 19
+[22-Oct-2025 11:52:39 America/Santiago] PHP Warning:  require(../vendor/autoload.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 15
+[22-Oct-2025 11:52:39 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php:15
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 15
+[22-Oct-2025 11:52:48 America/Santiago] PHP Warning:  require(../vendor/autoload.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 15
+[22-Oct-2025 11:52:48 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php:15
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 15
+[22-Oct-2025 11:52:50 America/Santiago] PHP Warning:  require(../vendor/autoload.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 15
+[22-Oct-2025 11:52:50 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php:15
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 15
+[22-Oct-2025 11:55:04 America/Santiago] PHP Warning:  require(../vendor/autoload.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 6
+[22-Oct-2025 11:55:04 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php:6
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 6
+[28-Oct-2025 14:04:24 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/6900f798e72dd_Ropa de halloween.png): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[28-Oct-2025 14:04:24 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpH69Oc5&quot; to &quot;../uploads/6900f798e72dd_Ropa de halloween.png&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[28-Oct-2025 14:04:27 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/6900f79b3b9d0_Ropa de halloween.png): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[28-Oct-2025 14:04:27 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpvl5PJa&quot; to &quot;../uploads/6900f79b3b9d0_Ropa de halloween.png&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[28-Oct-2025 14:05:26 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/6900f7d61c776_Ropa de halloween.png): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[28-Oct-2025 14:05:26 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpTetkQK&quot; to &quot;../uploads/6900f7d61c776_Ropa de halloween.png&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[28-Oct-2025 14:05:26 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/6900f7d6b1b31_Ropa de halloween.png): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[28-Oct-2025 14:05:26 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/php0Zje2O&quot; to &quot;../uploads/6900f7d6b1b31_Ropa de halloween.png&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[30-Oct-2025 16:31:29 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[30-Oct-2025 16:32:07 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[31-Oct-2025 12:51:15 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[31-Oct-2025 12:51:43 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[31-Oct-2025 12:52:03 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[31-Oct-2025 12:53:30 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[31-Oct-2025 12:53:49 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[31-Oct-2025 12:54:13 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[01-Nov-2025 13:04:35 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[01-Nov-2025 13:56:42 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/69063bcab35b1_Captura de pantalla 2025-11-01 135630.png): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[01-Nov-2025 13:56:42 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpNi2pZb&quot; to &quot;../uploads/69063bcab35b1_Captura de pantalla 2025-11-01 135630.png&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[01-Nov-2025 15:13:45 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[01-Nov-2025 15:16:48 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[01-Nov-2025 15:18:02 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[01-Nov-2025 15:18:33 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[02-Nov-2025 16:25:40 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[02-Nov-2025 16:26:10 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[02-Nov-2025 16:26:19 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[03-Nov-2025 15:42:04 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[03-Nov-2025 15:44:29 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[04-Nov-2025 10:56:54 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/690a0626bf954_Captura de pantalla 2025-11-03 162029.png): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[04-Nov-2025 10:56:54 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpuw228C&quot; to &quot;../uploads/690a0626bf954_Captura de pantalla 2025-11-03 162029.png&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[04-Nov-2025 10:57:55 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/690a06636d850_Snacks.jpg): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[04-Nov-2025 10:57:55 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpYELeDP&quot; to &quot;../uploads/690a06636d850_Snacks.jpg&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 34
+[05-Nov-2025 09:36:08 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[05-Nov-2025 09:37:13 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[05-Nov-2025 11:13:16 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[05-Nov-2025 13:01:10 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[05-Nov-2025 13:01:21 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 23
+[05-Nov-2025 22:04:51 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[11-Nov-2025 15:43:45 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[11-Nov-2025 15:44:09 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[13-Nov-2025 17:31:31 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[14-Nov-2025 12:25:11 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/691749d768d0d_Helado-Savory-Pasas-Al-Ron-Cassata-1-L.webp): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 82
+[14-Nov-2025 12:25:11 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpHoshdQ&quot; to &quot;../uploads/691749d768d0d_Helado-Savory-Pasas-Al-Ron-Cassata-1-L.webp&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 82
+[14-Nov-2025 12:25:26 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/691749e6b0250_Helado-Savory-Pasas-Al-Ron-Cassata-1-L.webp): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 82
+[14-Nov-2025 12:25:26 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpj2wybp&quot; to &quot;../uploads/691749e6b0250_Helado-Savory-Pasas-Al-Ron-Cassata-1-L.webp&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 82
+[14-Nov-2025 12:28:40 America/Santiago] PHP Warning:  move_uploaded_file(../uploads/69174aa8aebff_Helado-Savory-Pasas-Al-Ron-Cassata-1-L.webp): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 82
+[14-Nov-2025 12:28:40 America/Santiago] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpt1wjPy&quot; to &quot;../uploads/69174aa8aebff_Helado-Savory-Pasas-Al-Ron-Cassata-1-L.webp&quot; in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 82
+[15-Nov-2025 17:11:20 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[15-Nov-2025 21:15:19 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[16-Nov-2025 08:59:50 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[21-Nov-2025 14:40:35 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[21-Nov-2025 18:12:23 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[21-Nov-2025 18:14:45 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[21-Nov-2025 18:16:58 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[25-Nov-2025 12:16:55 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[25-Nov-2025 12:17:46 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[25-Nov-2025 12:19:23 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[25-Nov-2025 12:19:51 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[25-Nov-2025 12:22:08 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[25-Nov-2025 12:42:47 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[25-Nov-2025 16:07:11 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[25-Nov-2025 21:09:49 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[27-Nov-2025 14:38:41 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[27-Nov-2025 14:39:04 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[27-Nov-2025 14:39:42 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[27-Nov-2025 14:41:13 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[27-Nov-2025 14:41:21 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[27-Nov-2025 14:41:53 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[27-Nov-2025 14:43:33 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[27-Nov-2025 19:11:57 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[27-Nov-2025 20:18:12 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[28-Nov-2025 09:24:47 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[28-Nov-2025 09:25:27 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[28-Nov-2025 09:25:43 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[28-Nov-2025 09:28:24 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[29-Nov-2025 11:28:24 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[29-Nov-2025 13:00:08 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[11-Dec-2025 11:36:44 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[11-Dec-2025 17:22:34 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[13-Dec-2025 15:26:55 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 72
+[13-Dec-2025 21:02:07 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 82
+[13-Dec-2025 21:02:44 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 82
+[15-Dec-2025 22:25:44 America/Santiago] PHP Warning:  Undefined array key "category_id" in /home1/puntodat/tiendaslistto.cl/erp/api/apiinventario.php on line 82

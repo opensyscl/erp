@@ -1,0 +1,2 @@
+[24-Nov-2025 12:14:30 America/Santiago] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in /home1/puntodat/tiendaslistto.cl/erp/inventario/conteo_inventario.php on line 166
+[24-Nov-2025 12:46:52 America/Santiago] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home1/puntodat/tiendaslistto.cl/erp/inventario/conteo_inventario.php on line 368

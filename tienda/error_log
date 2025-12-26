@@ -1,0 +1,385 @@
+[16-Sep-2025 08:40:58 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 08:40:58 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 08:41:02 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 08:41:02 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 08:41:42 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 5
+[16-Sep-2025 08:41:42 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:5
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 5
+[16-Sep-2025 08:42:36 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 5
+[16-Sep-2025 08:42:36 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:5
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 5
+[16-Sep-2025 08:42:51 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'image' in 'field list' in /home1/puntodat/tiendaslistto.cl/app/index.php:36
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/index.php(36): PDO->query('SELECT id, name...')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[16-Sep-2025 08:44:16 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'image' in 'field list' in /home1/puntodat/tiendaslistto.cl/app/index.php:36
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/index.php(36): PDO->query('SELECT id, name...')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[16-Sep-2025 08:44:17 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'image' in 'field list' in /home1/puntodat/tiendaslistto.cl/app/index.php:36
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/index.php(36): PDO->query('SELECT id, name...')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[16-Sep-2025 09:03:39 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:03:39 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:04:00 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:04:00 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:06:18 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:06:18 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:12:08 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:12:08 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:12:15 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:12:15 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:12:21 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/appconfig.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:12:21 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/appconfig.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:12:41 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:12:41 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:13:46 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:13:46 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:18:37 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:18:37 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:42:32 America/Santiago] PHP Warning:  require_once(../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 09:42:32 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/index.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/index.php on line 3
+[16-Sep-2025 10:10:08 America/Santiago] PHP Warning:  Undefined variable $customer in /home1/puntodat/tiendaslistto.cl/app/index.php on line 7
+[16-Sep-2025 10:10:08 America/Santiago] PHP Warning:  Trying to access array offset on null in /home1/puntodat/tiendaslistto.cl/app/index.php on line 7
+[16-Sep-2025 10:10:08 America/Santiago] PHP Warning:  Undefined variable $customer in /home1/puntodat/tiendaslistto.cl/app/index.php on line 8
+[16-Sep-2025 10:10:08 America/Santiago] PHP Warning:  Trying to access array offset on null in /home1/puntodat/tiendaslistto.cl/app/index.php on line 8
+[16-Sep-2025 10:16:14 America/Santiago] PHP Parse error:  Unmatched '}' in /home1/puntodat/tiendaslistto.cl/app/login.php on line 38
+[16-Sep-2025 13:03:48 America/Santiago] PHP Warning:  The use statement with non-compound name 'TCPDF' has no effect in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 13
+[16-Sep-2025 13:03:48 America/Santiago] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 9
+[16-Sep-2025 13:03:48 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/checkout.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 9
+[16-Sep-2025 13:07:21 America/Santiago] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 9
+[16-Sep-2025 13:07:21 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/checkout.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 9
+[16-Sep-2025 13:07:37 America/Santiago] Error enviando email: SMTP Error: Could not authenticate.
+[16-Sep-2025 13:17:09 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/tcpdf/tcpdf.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 14
+[16-Sep-2025 13:17:09 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/tcpdf/tcpdf.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/checkout.php:14
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 14
+[16-Sep-2025 13:17:57 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/tcpdf/tcpdf.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 14
+[16-Sep-2025 13:17:57 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/tcpdf/tcpdf.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/checkout.php:14
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 14
+[17-Sep-2025 10:39:47 America/Santiago] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 4
+[17-Sep-2025 10:39:47 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php:4
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 4
+[17-Sep-2025 10:49:46 America/Santiago] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 9
+[17-Sep-2025 10:49:46 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 9
+[17-Sep-2025 10:51:07 America/Santiago] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 9
+[17-Sep-2025 10:51:07 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 9
+[17-Sep-2025 10:53:06 America/Santiago] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 9
+[17-Sep-2025 10:53:06 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php:9
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 9
+[17-Sep-2025 11:08:31 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'puntodat_erplistto.Customers' doesn't exist in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php:24
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/forgot_password.php(24): PDO->prepare('SELECT id FROM ...')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 24
+[17-Sep-2025 11:08:45 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'puntodat_erplistto.Customers' doesn't exist in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php:24
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/forgot_password.php(24): PDO->prepare('SELECT id FROM ...')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 24
+[17-Sep-2025 11:08:50 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'puntodat_erplistto.Customers' doesn't exist in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php:24
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/forgot_password.php(24): PDO->prepare('SELECT id FROM ...')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 24
+[17-Sep-2025 11:09:48 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'reset_token_expires_at' in 'field list' in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php:38
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/forgot_password.php(38): PDO->prepare('UPDATE customer...')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 38
+[17-Sep-2025 11:16:14 America/Santiago] PHP Parse error:  syntax error, unexpected identifier "https", expecting ")" in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 63
+[17-Sep-2025 11:16:17 America/Santiago] PHP Parse error:  syntax error, unexpected identifier "https", expecting ")" in /home1/puntodat/tiendaslistto.cl/app/forgot_password.php on line 63
+[17-Sep-2025 11:20:22 America/Santiago] PHP Warning:  The use statement with non-compound name 'PDOException' has no effect in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 6
+[17-Sep-2025 11:25:51 America/Santiago] PHP Warning:  The use statement with non-compound name 'PDOException' has no effect in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 6
+[17-Sep-2025 11:40:55 America/Santiago] PHP Warning:  Undefined variable $active_tab in /home1/puntodat/tiendaslistto.cl/app/login.php on line 286
+[17-Sep-2025 11:40:55 America/Santiago] PHP Warning:  Undefined variable $active_tab in /home1/puntodat/tiendaslistto.cl/app/login.php on line 287
+[17-Sep-2025 11:40:55 America/Santiago] PHP Warning:  Undefined variable $active_tab in /home1/puntodat/tiendaslistto.cl/app/login.php on line 292
+[17-Sep-2025 11:40:55 America/Santiago] PHP Warning:  Undefined variable $active_tab in /home1/puntodat/tiendaslistto.cl/app/login.php on line 311
+[17-Sep-2025 11:41:02 America/Santiago] PHP Warning:  Undefined variable $active_tab in /home1/puntodat/tiendaslistto.cl/app/login.php on line 286
+[17-Sep-2025 11:41:02 America/Santiago] PHP Warning:  Undefined variable $active_tab in /home1/puntodat/tiendaslistto.cl/app/login.php on line 287
+[17-Sep-2025 11:41:02 America/Santiago] PHP Warning:  Undefined variable $active_tab in /home1/puntodat/tiendaslistto.cl/app/login.php on line 292
+[17-Sep-2025 11:41:02 America/Santiago] PHP Warning:  Undefined variable $active_tab in /home1/puntodat/tiendaslistto.cl/app/login.php on line 311
+[17-Sep-2025 11:49:43 America/Santiago] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 164
+[17-Sep-2025 12:53:09 America/Santiago] PHP Warning:  The use statement with non-compound name 'PDOException' has no effect in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 6
+[17-Sep-2025 14:41:51 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 14:42:22 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:10:38 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:11:40 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:13:12 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:18:31 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:19:12 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:19:18 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:26:46 America/Santiago] PHP Warning:  The use statement with non-compound name 'PDOException' has no effect in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 6
+[17-Sep-2025 15:26:57 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:26:57 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:27:17 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:27:36 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 15:28:22 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:06:41 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:07:29 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:07:30 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:07:35 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:08:10 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:08:44 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:16:27 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:16:47 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:17:20 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:17:22 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:17:33 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:17:39 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:20:24 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:20:31 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 17:20:32 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:11:56 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:11:58 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:11:58 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:11:58 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:11:58 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:11:58 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:11:58 America/Santiago] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: array * string in /home1/puntodat/tiendaslistto.cl/app/cart.php:59
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 59
+[17-Sep-2025 19:12:01 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[17-Sep-2025 19:12:01 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[17-Sep-2025 19:12:01 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[17-Sep-2025 19:12:01 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[17-Sep-2025 19:12:01 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[17-Sep-2025 19:12:01 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:01 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:01 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:01 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:01 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:01 America/Santiago] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: array * string in /home1/puntodat/tiendaslistto.cl/app/cart.php:59
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 59
+[17-Sep-2025 19:12:17 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:12:18 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:18 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:18 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:18 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:18 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:18 America/Santiago] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: array * string in /home1/puntodat/tiendaslistto.cl/app/cart.php:59
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 59
+[17-Sep-2025 19:12:21 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[17-Sep-2025 19:12:21 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[17-Sep-2025 19:12:21 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[17-Sep-2025 19:12:21 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[17-Sep-2025 19:12:21 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[17-Sep-2025 19:12:22 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:22 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:22 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:22 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:22 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 14
+[17-Sep-2025 19:12:22 America/Santiago] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: array * string in /home1/puntodat/tiendaslistto.cl/app/cart.php:59
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 59
+[17-Sep-2025 19:17:51 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:17:55 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:19:44 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:25:03 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:30:45 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:36:18 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:37:38 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:39:06 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:39:23 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:40:07 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:42:32 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:43:25 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:51:28 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:52:24 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:52:30 America/Santiago] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home1/puntodat/tiendaslistto.cl/app/index.php on line 2
+[17-Sep-2025 19:57:09 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 34
+[17-Sep-2025 19:57:09 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 34
+[17-Sep-2025 20:20:51 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined function generateOrderPDF() in /home1/puntodat/tiendaslistto.cl/app/checkout.php:88
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 88
+[17-Sep-2025 20:22:09 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/apptcpdf/tcpdf.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 14
+[17-Sep-2025 20:22:09 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/apptcpdf/tcpdf.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/checkout.php:14
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 14
+[17-Sep-2025 20:22:37 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/apptcpdf/tcpdf.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 14
+[17-Sep-2025 20:22:37 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/apptcpdf/tcpdf.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/checkout.php:14
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 14
+[17-Sep-2025 20:22:52 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined function generateOrderPDF() in /home1/puntodat/tiendaslistto.cl/app/checkout.php:88
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 88
+[18-Sep-2025 09:00:21 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined function generateOrderPDF() in /home1/puntodat/tiendaslistto.cl/app/checkout.php:88
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 88
+[18-Sep-2025 09:45:14 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method TCPDF::setFooterCallback() in /home1/puntodat/tiendaslistto.cl/app/checkout.php:438
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/checkout.php(88): generateOrderPDF('35', 'Rolando Hernand...', Array, Array, 10470.0, 'efectivo', 'retiro')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 438
+[18-Sep-2025 09:46:15 America/Santiago] PHP Fatal error:  Uncaught Error: Class "MYPDF" not found in /home1/puntodat/tiendaslistto.cl/app/checkout.php:338
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/checkout.php(88): generateOrderPDF('36', 'Rolando Hernand...', Array, Array, 10470.0, 'efectivo', 'retiro')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 338
+[18-Sep-2025 09:47:03 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method TCPDF::setFooterCallback() in /home1/puntodat/tiendaslistto.cl/app/checkout.php:438
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/checkout.php(88): generateOrderPDF('37', 'Rolando Hernand...', Array, Array, 10470.0, 'efectivo', 'retiro')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 438
+[18-Sep-2025 11:48:22 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:48:22 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:48:22 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:49:19 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:49:19 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:49:19 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:49:39 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[18-Sep-2025 11:49:39 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[18-Sep-2025 11:49:39 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[18-Sep-2025 11:49:45 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 18
+[18-Sep-2025 11:49:45 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 18
+[18-Sep-2025 11:49:45 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 18
+[18-Sep-2025 11:49:45 America/Santiago] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: array * string in /home1/puntodat/tiendaslistto.cl/app/cart.php:56
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 56
+[18-Sep-2025 11:49:49 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:49:49 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:49:49 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:49:53 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:49:53 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:49:53 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/index.php on line 36
+[18-Sep-2025 11:49:56 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[18-Sep-2025 11:49:56 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[18-Sep-2025 11:49:56 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[18-Sep-2025 11:49:57 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 18
+[18-Sep-2025 11:49:57 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 18
+[18-Sep-2025 11:49:57 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 18
+[18-Sep-2025 11:49:57 America/Santiago] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: array * string in /home1/puntodat/tiendaslistto.cl/app/cart.php:56
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 56
+[18-Sep-2025 11:49:59 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 18
+[18-Sep-2025 11:49:59 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 18
+[18-Sep-2025 11:49:59 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 18
+[18-Sep-2025 11:49:59 America/Santiago] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: array * string in /home1/puntodat/tiendaslistto.cl/app/cart.php:56
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 56
+[18-Sep-2025 11:51:27 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 20
+[18-Sep-2025 11:51:27 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 20
+[18-Sep-2025 11:51:27 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 20
+[18-Sep-2025 11:51:27 America/Santiago] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: array * string in /home1/puntodat/tiendaslistto.cl/app/cart.php:58
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/cart.php on line 58
+[18-Sep-2025 11:57:30 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 39
+[18-Sep-2025 11:57:30 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 39
+[18-Sep-2025 11:57:30 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 39
+[18-Sep-2025 11:59:43 America/Santiago] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: array * string in /home1/puntodat/tiendaslistto.cl/app/checkout.php:69
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 69
+[18-Sep-2025 12:00:52 America/Santiago] Error en producto 3771: precio o cantidad inválidos
+[18-Sep-2025 12:00:52 America/Santiago] Error en producto 3132: precio o cantidad inválidos
+[18-Sep-2025 12:00:52 America/Santiago] Error en producto 3264: precio o cantidad inválidos
+[18-Sep-2025 12:00:52 America/Santiago] PHP Warning:  Array to string conversion in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 96
+[18-Sep-2025 12:00:52 America/Santiago] PHP Warning:  Array to string conversion in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 96
+[18-Sep-2025 12:00:52 America/Santiago] PHP Warning:  Array to string conversion in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 96
+[18-Sep-2025 12:00:52 America/Santiago] PHP Warning:  Array to string conversion in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 102
+[18-Sep-2025 12:00:52 America/Santiago] PHP Warning:  Array to string conversion in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 102
+[18-Sep-2025 12:00:52 America/Santiago] PHP Warning:  Array to string conversion in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 102
+[18-Sep-2025 12:00:52 America/Santiago] PHP Fatal error:  Uncaught TypeError: Unsupported operand types: string * array in /home1/puntodat/tiendaslistto.cl/app/checkout.php:401
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/checkout.php(108): generateOrderPDF('41', 'Rolando Hernand...', Array, Array, 4290.0, 'efectivo', 'retiro')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/checkout.php on line 401
+[18-Sep-2025 12:26:05 America/Santiago] PHP Warning:  Undefined variable $where in /home1/puntodat/tiendaslistto.cl/app/index.php on line 21
+[18-Sep-2025 12:26:22 America/Santiago] PHP Warning:  Undefined variable $where in /home1/puntodat/tiendaslistto.cl/app/index.php on line 21
+[18-Sep-2025 12:26:29 America/Santiago] PHP Warning:  Undefined variable $where in /home1/puntodat/tiendaslistto.cl/app/index.php on line 21
+[18-Sep-2025 13:24:26 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[20-Sep-2025 10:43:12 America/Santiago] PHP Warning:  The use statement with non-compound name 'PDOException' has no effect in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 6
+[20-Sep-2025 10:43:12 America/Santiago] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 164
+[23-Sep-2025 22:58:58 America/Santiago] PHP Warning:  The use statement with non-compound name 'PDOException' has no effect in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 6
+[23-Sep-2025 22:58:58 America/Santiago] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 164
+[23-Sep-2025 23:04:17 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[23-Sep-2025 23:04:17 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[23-Sep-2025 23:04:17 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[23-Sep-2025 23:04:19 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[23-Sep-2025 23:04:19 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[23-Sep-2025 23:04:19 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[23-Sep-2025 23:04:21 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[23-Sep-2025 23:04:21 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[23-Sep-2025 23:04:21 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/app/add_to_cart.php on line 22
+[02-Oct-2025 23:43:27 America/Santiago] PHP Warning:  The use statement with non-compound name 'PDOException' has no effect in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 6
+[03-Oct-2025 00:24:39 America/Santiago] PHP Warning:  The use statement with non-compound name 'PDOException' has no effect in /home1/puntodat/tiendaslistto.cl/app/reset_password.php on line 6
+[23-Nov-2025 19:49:43 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/erp/tienda/add_to_cart.php on line 22
+[23-Nov-2025 19:49:48 America/Santiago] PHP Warning:  array_sum(): Addition is not supported on type array in /home1/puntodat/tiendaslistto.cl/erp/tienda/add_to_cart.php on line 22

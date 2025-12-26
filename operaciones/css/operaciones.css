@@ -1,0 +1,746 @@
+/* ------------------------------------------- */
+/* --- ESTILOS ESPECÍFICOS PARA OPERACIONES --- */
+/* ------------------------------------------- */
+
+:root {
+    --background-start: #f0f2f5;
+    --background-end: #e6e9ee;
+    --card-background: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(255, 255, 255, 0.9);
+    --card-shadow: rgba(0, 0, 0, 0.08);
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --accent-color: #3b82f6;
+    --accent-color-transparent: rgba(59, 130, 246, 0.1);
+    --danger-color: #ef4444;
+    --danger-color-dark: #dc2626;
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-border: rgba(200, 200, 200, 0.5);
+    --success-bg: #dcfce7;
+    --success-text: #166534;
+    --success-border: #86efac;
+    --error-bg: #fee2e2;
+    --error-text: #991b1b;
+    --error-border: #fca5a5;
+    
+    /* Variable para la altura del footer (NECESARIA para el padding del container) */
+    --footer-height: 40px; 
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+ 1. ESTILOS BASE Y SCALING GLOBAL
+ ========================================================================== */
+
+html {
+    zoom: 0.85; /* Escala todo el sitio al 85% */
+}
+
+/* Opcional: compatibilidad con Firefox */
+@supports (-moz-transform: scale(1)) {
+    html {
+        -moz-transform: scale(0.85);
+        -moz-transform-origin: top left;
+    }
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-start);
+    background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    /* AJUSTE CLAVE: Añade padding inferior igual a la altura del footer + un margen */
+    padding-bottom: calc(var(--footer-height) + 2rem);
+}
+
+/* ==========================================================================
+ 2. ENCABEZADO (HEADER)
+ ========================================================================== */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.header-left strong {
+    color: var(--text-primary);
+}
+
+.launcher-icon {
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 0;
+}
+
+.launcher-icon:hover {
+    background-color: rgba(0,0,0,0.05);
+    transform: scale(1.1);
+}
+
+.launcher-icon svg {
+    display: block;
+    color: var(--text-primary);
+}
+
+.header-nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-nav a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+    color: var(--text-primary);
+    background: rgba(0,0,0,0.05);
+}
+
+.header-nav a.active {
+    color: #fff;
+    background-color: var(--accent-color);
+    font-weight: 600;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.app-version {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6b7280;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    vertical-align: middle;
+}
+
+.btn-logout {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    background-color: var(--danger-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* ==========================================================================
+ 3. CONTROLES DE PÁGINA Y SELECTOR DE MES
+ ========================================================================== */
+
+.page-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.page-header-controls h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.month-selector-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.month-selector-container label {
+    font-size: 1rem;
+    color: #374151;
+    font-weight: 500;
+    margin: 0;
+}
+
+.month-selector-container select {
+    padding: 8px 30px 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234B5563" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.018 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.month-selector-container select:hover {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* ==========================================================================
+ 4. TARJETAS DE KPIS Y GRÁFICO
+ ========================================================================== */
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.kpi-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.12);
+}
+
+.kpi-card h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.kpi-card .value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.kpi-card .projection {
+    color: #1ea769;
+    font-weight: 600;
+}
+
+.content-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin-bottom: 2.5rem;
+}
+
+.content-card h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+ 5. TABLA DE VENTAS Y CONTROLES
+ ========================================================================== */
+
+.table-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.table-header-controls h2 {
+    margin-bottom: 0;
+}
+
+.table-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.table-controls label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.table-controls select {
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.sales-table th,
+.sales-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.sales-table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+    padding-right: 15px;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.sales-table tbody tr:hover {
+    background-color: var(--accent-color-transparent);
+}
+
+.sales-table td {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+/* Estilos de ordenamiento (flechas) */
+.sales-table th::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-size: 0.7em;
+    line-height: 1;
+}
+
+.sales-table th.sort-asc::after {
+    content: '▲';
+    opacity: 1;
+    color: #4CAF50;
+    margin-top: -5px;
+}
+
+.sales-table th.sort-desc::after {
+    content: '▼';
+    opacity: 1;
+    color: #f44336;
+    margin-top: -1px;
+}
+
+/* ==========================================================================
+ 6. ESTILOS DE FORMULARIOS GENERALES
+ ========================================================================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-color-transparent);
+    outline: none;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 3.7rem;
+    margin-bottom: 1.3rem;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* ==========================================================================
+ 7. ESTILOS ESPECÍFICOS PARA OPERACIONES Y GASTOS
+ ========================================================================== */
+
+/* (Se mantiene todo el bloque de grids de gastos, expense-category, total display, etc.) */
+.form-grid-operaciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2.5rem;
+}
+
+.form-row-2-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.expense-category {
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background-color: #f7f9fb;
+}
+
+.fixed-expenses-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1.5rem;
+}
+
+.variable-expenses-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.fixed-expenses-grid h4,
+.variable-expenses-grid h4 {
+    grid-column: 1 / -1;
+}
+
+.expense-category h4,
+.expense-category1 h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.variable-expenses-grid .form-group {
+    grid-column: 1 / -1;
+}
+
+.variable-expenses-grid .expense-type-group {
+    grid-column: span 1;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 1.25rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #e2e8f0;
+}
+
+.expense-total-display {
+    padding: 1.5rem;
+    background-color: var(--danger-color-dark);
+    color: white;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.expense-total-display strong {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.expense-total-display span {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    display: block;
+}
+
+.form-grid-operaciones > .btn-submit {
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+.form-footer-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 1.5rem;
+    align-items: stretch;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.form-footer-actions .expense-total-display {
+    flex-grow: 1;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    background-color: var(--danger-color);
+    color: white;
+    border-radius: 12px;
+}
+
+.form-footer-actions .btn-submit {
+flex-shrink: 0;
+    padding: 2rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 2;
+    width: 49%;
+    max-width: none;
+    margin: 0;
+    align-self: center;
+    margin-top: 17px;
+}
+
+.expense-type-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.expense-type-group label {
+    font-weight: 500;
+}
+
+.expense-type-group input[type="radio"] {
+    margin-right: 0.5rem;
+}
+
+/* ==========================================================================
+ 8. PIE DE PÁGINA (FOOTER) Y MEDIA QUERIES
+ ========================================================================== */
+
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #dfdfdf; 
+    color: #7f7f7f;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.85em;
+    z-index: 999;
+    height: var(--footer-height);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 900px) {
+    .header-nav {
+        display: none;
+    }
+    .form-grid,
+    .form-grid-operaciones {
+        grid-template-columns: 1fr;
+    }
+    .fixed-expenses-grid,
+    .variable-expenses-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .form-row-2-cols {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .form-footer-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .form-footer-actions .expense-total-display,
+    .form-footer-actions .btn-submit {
+        width: 100%;
+        max-width: none;
+        text-align: center;
+    }
+}
+    
+        /* Contenedor principal para el título del formulario y el selector */
+        .form-header-row {
+            display: flex;
+            justify-content: space-between; /* Espacia el título y el selector */
+            align-items: center; /* Alinea verticalmente al centro */
+            margin-bottom: 20px;
+        }
+
+        .form-header-row h2 {
+            margin: 0; /* Elimina márgenes para mejor alineación */
+        }
+        
+        /* Estilos del selector de mes */
+        .month-selector-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 15px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            /* Importante: quitamos el margen inferior que tenía antes */
+        }
+
+        .month-selector-container label {
+            font-size: 1rem;
+            color: #374151;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Estilos para el select de mes */
+        .month-selector-container select {
+            padding: 8px 30px 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            background-color: #f9fafb;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1f2937;
+            /* Customización de flecha */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none; 
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234B5563" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.018 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .month-selector-container select:hover {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+        
+        /* --- ESTILOS DEL TOAST MODIFICADOS --- */
+        #toast-notification {
+            visibility: hidden; 
+            min-width: 280px;
+            background-color: #4CAF50; /* Fondo verde */
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 9999;
+            
+            /* POSICIÓN MODIFICADA: Arriba a la derecha */
+            top: 20px; 
+            right: 20px; 
+            left: auto; /* Anula el left: 50% anterior */
+            transform: none; /* Anula el translateX(-50%) anterior */
+            
+            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            opacity: 0;
+            
+            /* Transición para que aparezca desde la derecha */
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+            transform: translateX(100%); /* Comienza fuera de la pantalla (a la derecha) */
+        }
+
+        #toast-notification.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(0); /* Termina en su posición normal */
+        }

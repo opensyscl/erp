@@ -1,0 +1,529 @@
+:root {
+--background-start: #f0f2f5;
+            --background-end: #e6e9ee;
+            --card-background: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(255, 255, 255, 0.9);
+            --card-shadow: rgba(0, 0, 0, 0.08);
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --accent-color: #3b82f6;
+            --accent-color-transparent: rgba(59, 130, 246, 0.1);
+            --danger-color: #ef4444;
+            --danger-color-dark: #dc2626;
+            --glass-bg: rgba(255, 255, 255, 0.5);
+            --glass-border: rgba(200, 200, 200, 0.5);
+            --success-bg: #dcfce7;
+            --success-text: #166534;
+            --success-border: #86efac;
+            --error-bg: #fee2e2;
+            --error-text: #991b1b;
+            --error-border: #fca5a5;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-start);
+            background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .header-left strong {
+            color: var(--text-primary);
+        }
+        /* Estilo del icono de aplicación */
+        .launcher-icon {
+            margin-right: 1rem; /* Margen a la derecha para separarlo del texto "Bienvenido, usuario" */
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease; /* Transición para la animación */
+            line-height: 0; /* Asegura que el SVG no añada espacio extra */
+        }
+        .launcher-icon:hover {
+            background-color: rgba(0,0,0,0.05);
+            transform: scale(1.1); /* Animación: Aumenta ligeramente el tamaño */
+        }
+        .launcher-icon svg {
+            display: block;
+            color: var(--text-primary); /* Color del icono */
+        }
+        /* Fin de estilo del icono */
+        .header-nav {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .header-nav a {
+            margin: 0 0.5rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .header-nav a:hover {
+            color: var(--text-primary);
+            background: rgba(0,0,0,0.05);
+        }
+        .header-nav a.active {
+            color: #fff;
+            background-color: var(--accent-color);
+            font-weight: 600;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .app-version {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background-color: rgba(0,0,0,0.05);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+        }
+        .btn-logout {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .btn-logout:hover {
+            background-color: var(--danger-color-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+        }
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .kpi-card {
+            background: var(--card-background);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px 0 var(--card-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px 0 rgba(0,0,0,0.12);
+        }
+        .kpi-card h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+        .kpi-card .value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .kpi-card .projection {
+            color: #1ea769;
+            font-weight: 600;
+        }
+        .content-card {
+            background: var(--card-background);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 var(--card-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-bottom: 2.5rem;
+        }
+        .content-card h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+           gap: 1rem 2.5rem;
+        }
+        .form-column h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.75rem;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background-color: #fff;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+        .form-group input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px var(--accent-color-transparent);
+            outline: none;
+        }
+        .total-display {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .total-display span {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .total-display strong {
+            display: block;
+            font-size: 2rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-top: 0.25rem;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: none;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 3.7rem;
+    margin-bottom: 1.3rem;
+        }
+        .btn-submit:hover {
+            opacity: 0.9;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        .sales-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        .sales-table th,
+        .sales-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .sales-table th {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+        .sales-table tbody tr:hover {
+            background-color: var(--accent-color-transparent);
+        }
+        .sales-table td {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid transparent;
+        }
+        .alert.success {
+            background-color: var(--success-bg);
+            color: var(--success-text);
+            border-color: var(--success-border);
+        }
+        .alert.error {
+            background-color: var(--error-bg);
+            color: var(--error-text);
+            border-color: var(--error-border);
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        @media (max-width: 900px) {
+            .header-nav {
+                display: none;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .app-version {
+            margin-right: 1rem;
+            font-size: 0.85rem;
+            color: #6b7280;
+            vertical-align: middle;
+        }
+/* ==========================================================================
+ 4. AJUSTE DE ESCALA (80% Zoom)
+ ========================================================================== */
+
+body {
+    /* CORRECCIÓN CLAVE: Aplica un zoom del 85% a todo el cuerpo del documento */
+    transform: scale(0.85);
+    /* Define el punto de origen de la transformación como la esquina superior izquierda */
+    transform-origin: top left;
+    
+    /* Ajusta el ancho para que el contenido escalado quepa sin scroll horizontal (100% / 0.85 ≈ 117.65%) */
+    width: 117.65%; 
+    
+    /* Opcional: Esto ayuda a manejar mejor el espacio en la parte inferior si el contenido es corto. */
+    min-height: 117.65vh; 
+}
+
+/* ==========================================================================
+ 5. Estilos Filtros de fechas (Revisados para consistencia)
+ ========================================================================== */
+ 
+/* Estilos para la sección de Cierres Registrados */
+.header-with-filters {
+    /* Utiliza flexbox para alinear el título y el formulario en una misma línea */
+    display: flex;
+    justify-content: space-between; /* Mueve el formulario a la derecha */
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-bottom: 15px; /* Espacio inferior para separar de la tabla */
+    flex-wrap: wrap; /* Asegura que no se desborde en pantallas pequeñas */
+    gap: 15px;
+}
+
+/* Estilos para el formulario de filtros */
+.filter-form-inline {
+    display: flex;
+    gap: 10px; /* Espacio entre los elementos del filtro */
+    align-items: center;
+}
+
+.filter-form-inline label {
+    font-weight: 500;
+    white-space: nowrap; /* Evita que las etiquetas se rompan en varias líneas */
+    font-size: 0.9rem; /* Consistente con otros labels */
+    color: var(--text-secondary); /* Usa la variable para color */
+}
+
+/* Estilo para los inputs de fecha y select - ¡Ajustados para usar variables! */
+.filter-form-inline select, 
+.filter-form-inline input[type="date"] {
+    /* Ajustamos el padding para que se parezca más al .form-group input */
+    padding: 0.5rem 0.75rem; 
+    
+    /* Usamos las variables definidas para el borde y el fondo */
+    border: 1px solid #cbd5e1; /* Borde estándar */
+    border-radius: 8px; /* Usamos el radio estándar de la app */
+    background-color: #fff;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.filter-form-inline select:focus,
+.filter-form-inline input[type="date"]:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-color-transparent);
+    outline: none;
+}
+
+/* Estilo para el botón de aplicar filtro - ¡Ajustado para usar variables! */
+.filter-form-inline button {
+    cursor: pointer;
+    background-color: var(--accent-color); /* Usa tu color de acento principal */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px; /* Usamos el radio estándar */
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.filter-form-inline button:hover {
+    opacity: 0.9;
+    /* Usamos la misma sombra de hover que otros botones */
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); 
+}
+
+/* Agrupación de input de fecha y su label para mejor control */
+.filter-group {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+/* Estilo para el botón de limpiar filtros (la '❌') */
+.btn-clear-filters {
+    font-size: 1.1rem;
+    line-height: 1; 
+    padding: 0.5rem; /* Aumentado padding para mejor target táctil/clic */
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: var(--danger-color); /* Usa el color de peligro para la X */
+    transition: transform 0.2s;
+}
+
+.btn-clear-filters:hover {
+    transform: scale(1.2);
+}
+
+@media (max-width: 600px) {
+    .header-with-filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .filter-form-inline {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .filter-group {
+        flex-grow: 1; /* Permite que los grupos se expandan */
+    }
+    .filter-form-inline select, 
+    .filter-form-inline input[type="date"],
+    .filter-form-inline button {
+        width: 100%; /* Llenar todo el ancho en móvil */
+    }
+    /* El botón de limpiar, si es solo la X, puede quedarse pequeño */
+    .btn-clear-filters {
+        width: auto; 
+    }
+}
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+            gap: 10px; /* Espacio entre columnas */
+            margin-top: 20px;
+            margin-bottom: 20px;
+            /*padding-top: 15px;*/
+            border-top: 1px solid #e0e0e0;
+        }
+        .results-grid .total-display {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 70px;
+        }
+        .total-net-display strong {
+            font-weight: 700;
+        }
+        .form-column .btn-submit {
+            width: 100%;
+        }
+        /* Color para números negativos (si se usa) */
+        .danger-color {
+            color: #d9534f; /* Rojo */
+        }
+        /* Estilos agregados para el filtro */
+        .header-with-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .filter-form-inline {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-form-inline label {
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .filter-form-inline select, 
+        .filter-form-inline input[type="date"], 
+        .filter-form-inline button {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .filter-form-inline button {
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            transition: background-color 0.2s;
+        }
+        .filter-form-inline button:hover {
+            background-color: #0056b3;
+        }
+        .filter-group {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }

@@ -1,0 +1,443 @@
+[16-Sep-2025 13:41:34 America/Santiago] PHP Warning:  include(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/login.php on line 6
+[16-Sep-2025 13:41:34 America/Santiago] PHP Warning:  include(): Failed opening 'config.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/login.php on line 6
+[16-Sep-2025 13:44:43 America/Santiago] PHP Warning:  include(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/login.php on line 6
+[16-Sep-2025 13:44:43 America/Santiago] PHP Warning:  include(): Failed opening 'config.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/login.php on line 6
+[16-Sep-2025 13:45:00 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:45:00 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:52:44 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:52:44 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:52:57 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:52:57 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:52:58 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:52:58 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:54:52 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:54:52 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:56:27 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:56:27 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:57:04 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:57:04 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:57:06 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:57:06 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:57:15 America/Santiago] PHP Warning:  include(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/login.php on line 6
+[16-Sep-2025 13:57:15 America/Santiago] PHP Warning:  include(): Failed opening 'config.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/login.php on line 6
+[16-Sep-2025 13:58:19 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:58:19 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:58:29 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:58:29 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:58:32 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:58:32 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:59:04 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 13:59:04 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 14:05:34 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 14:05:34 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 14:07:28 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 14:07:28 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 14:07:51 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 14:07:51 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 14:15:12 America/Santiago] PHP Warning:  require_once(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 14:15:12 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[16-Sep-2025 15:11:55 America/Santiago] PHP Warning:  include(partials/tabla_pedidos.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 161
+[16-Sep-2025 15:11:55 America/Santiago] PHP Warning:  include(): Failed opening 'partials/tabla_pedidos.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 161
+[16-Sep-2025 15:12:03 America/Santiago] PHP Warning:  include(partials/tabla_pedidos.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 161
+[16-Sep-2025 15:12:03 America/Santiago] PHP Warning:  include(): Failed opening 'partials/tabla_pedidos.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 161
+[16-Sep-2025 15:12:09 America/Santiago] PHP Warning:  include(partials/tabla_pedidos.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 161
+[16-Sep-2025 15:12:09 America/Santiago] PHP Warning:  include(): Failed opening 'partials/tabla_pedidos.php' for inclusion (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 161
+[17-Sep-2025 09:08:38 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.sku' in 'field list' in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:181
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php(181): PDO->query('\r\n    SELECT p....')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 181
+[17-Sep-2025 09:08:54 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/dash../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:08:54 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/dash../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:10:13 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/dash../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:10:13 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/dash../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:10:16 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/dash../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:10:16 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/dash../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:10:16 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/dash../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:10:16 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/dash../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:11:28 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/dashconfig.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:11:28 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/dashconfig.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:11:52 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/dash../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:11:52 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/dash../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 3
+[17-Sep-2025 09:14:42 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'p.sku' in 'field list' in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:338
+Stack trace:
+#0 /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php(338): PDO->query('\r\n    SELECT p....')
+#1 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 338
+[17-Sep-2025 09:50:52 America/Santiago] PHP Warning:  Undefined array key "order_id" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 544
+[17-Sep-2025 09:50:52 America/Santiago] PHP Warning:  Undefined array key "order_id" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 550
+[17-Sep-2025 09:50:52 America/Santiago] PHP Warning:  Undefined array key "order_id" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 559
+[17-Sep-2025 09:50:52 America/Santiago] PHP Warning:  Undefined array key "order_id" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 561
+[17-Sep-2025 09:50:52 America/Santiago] PHP Warning:  Undefined array key "order_id" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 565
+[17-Sep-2025 09:50:52 America/Santiago] PHP Warning:  Undefined array key "customer_email" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 570
+[17-Sep-2025 09:50:52 America/Santiago] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 570
+[17-Sep-2025 09:50:52 America/Santiago] PHP Warning:  Undefined array key "customer_phone" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 571
+[17-Sep-2025 09:50:52 America/Santiago] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 571
+[17-Sep-2025 09:50:52 America/Santiago] PHP Warning:  Undefined array key "customer_address" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 572
+[17-Sep-2025 09:50:52 America/Santiago] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 572
+[17-Sep-2025 09:50:52 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined function getOrderItems() in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:579
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 579
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 09:59:15 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:06:18 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[17-Sep-2025 10:13:38 America/Santiago] PHP Warning:  Undefined variable $s in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 519
+[02-Oct-2025 21:03:38 America/Santiago] PHP Parse error:  syntax error, unexpected token "/" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 352
+[02-Oct-2025 21:40:19 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 5
+[02-Oct-2025 21:40:19 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:5
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 5
+[02-Oct-2025 21:40:47 America/Santiago] PHP Warning:  require(/../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 5
+[02-Oct-2025 21:40:47 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:5
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 5
+[02-Oct-2025 21:59:14 America/Santiago] PHP Warning:  require_once(/home1/puntodat/tiendaslistto.cl/app/dash../config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 13
+[02-Oct-2025 21:59:14 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required '/home1/puntodat/tiendaslistto.cl/app/dash../config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php:13
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 13
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Fri 26/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Sat 27/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Sun 28/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Mon 29/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Tue 30/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Wed 01/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Thu 02/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Fri 26/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Sat 27/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Sun 28/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Mon 29/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Tue 30/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Wed 01/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 21:59:24 America/Santiago] PHP Warning:  Undefined array key "Thu 02/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Fri 26/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Sat 27/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Sun 28/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Mon 29/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Tue 30/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Wed 01/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Thu 02/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Fri 26/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Sat 27/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Sun 28/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Mon 29/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Tue 30/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Wed 01/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:02:27 America/Santiago] PHP Warning:  Undefined array key "Thu 02/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Fri 26/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Sat 27/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Sun 28/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Mon 29/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Tue 30/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Wed 01/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Thu 02/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Fri 26/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Sat 27/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Sun 28/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Mon 29/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Tue 30/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Wed 01/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:03:23 America/Santiago] PHP Warning:  Undefined array key "Thu 02/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Fri 26/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Sat 27/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Sun 28/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Mon 29/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Tue 30/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Wed 01/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Thu 02/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Fri 26/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Sat 27/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Sun 28/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Mon 29/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Tue 30/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Wed 01/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:07:39 America/Santiago] PHP Warning:  Undefined array key "Thu 02/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Fri 26/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Sat 27/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Sun 28/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Mon 29/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Tue 30/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Wed 01/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Thu 02/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Fri 26/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Sat 27/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Sun 28/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Mon 29/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Tue 30/Sep" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Wed 01/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[02-Oct-2025 22:14:01 America/Santiago] PHP Warning:  Undefined array key "Thu 02/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:37:22 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:41:17 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:42:43 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:43:11 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:44:06 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:45:57 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:47:05 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:49:47 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:27 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Tue 14/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Wed 15/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Thu 16/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Fri 17/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Sat 18/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Sun 19/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[20-Oct-2025 16:50:46 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Tue 21/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Wed 22/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Thu 23/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Fri 24/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Sat 25/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Sun 26/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 293
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Mon 20/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Tue 21/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Wed 22/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Thu 23/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Fri 24/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Sat 25/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[26-Oct-2025 20:47:13 America/Santiago] PHP Warning:  Undefined array key "Sun 26/Oct" in /home1/puntodat/tiendaslistto.cl/app/dash/dashboard.php on line 294
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Mon 17/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 293
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Tue 18/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 293
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Wed 19/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 293
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Thu 20/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 293
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Fri 21/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 293
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Sat 22/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 293
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Sun 23/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 293
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Mon 17/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 294
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Tue 18/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 294
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Wed 19/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 294
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Thu 20/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 294
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Fri 21/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 294
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Sat 22/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 294
+[23-Nov-2025 17:33:56 America/Santiago] PHP Warning:  Undefined array key "Sun 23/Nov" in /home1/puntodat/tiendaslistto.cl/erp/tienda/dash/dashboard.php on line 294

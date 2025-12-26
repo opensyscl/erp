@@ -1,0 +1,5 @@
+[05-Nov-2025 12:18:15 America/Santiago] PHP Warning:  require(config.php): Failed to open stream: No such file or directory in /home1/puntodat/tiendaslistto.cl/erp/caja/caja.php on line 14
+[05-Nov-2025 12:18:15 America/Santiago] PHP Fatal error:  Uncaught Error: Failed opening required 'config.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home1/puntodat/tiendaslistto.cl/erp/caja/caja.php:14
+Stack trace:
+#0 {main}
+  thrown in /home1/puntodat/tiendaslistto.cl/erp/caja/caja.php on line 14

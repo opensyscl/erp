@@ -1,0 +1,1182 @@
+/* ------------------------------------------------ */
+/* ORDERS.CSS (FINAL) - ESCALADO AL 84% */
+/* (Unidades ajustadas para simular un zoom del 84% sin usar transform: scale) */
+/* ------------------------------------------------ */
+
+:root {
+ --background-start: #f0f2f5;
+ --background-end: #e6e9ee;
+ --card-background: rgba(255, 255, 255, 0.7);
+ --card-border: rgba(255, 255, 255, 0.9);
+ --card-shadow: rgba(0, 0, 0, 0.08);
+ --text-primary: #1a202c;
+ --text-secondary: #4a5568;
+ --accent-color: #3b82f6;
+ --accent-color-hover: #2563eb;
+ --accent-color-transparent: rgba(59, 130, 246, 0.1);
+ --danger-color: #ef4444;
+ --danger-color-dark: #dc2626;
+ --success-color: #10b981;
+ --success-color-dark: #059669;
+ --modal-save-button: #28a745;
+ --modal-save-button-hover: #218838;
+ --glass-bg: rgba(255, 255, 255, 0.5);
+ --glass-border: rgba(200, 200, 200, 0.5);
+ --glass-bg-darker: rgba(255, 255, 255, 0.3);
+
+ /* Variables adicionales para el efecto de resalte */
+ --color-success-light: #e6ffe6;
+ --color-success-hover: #218838;
+}
+
+* {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+}
+
+html, body {
+ height: 100%;
+}
+
+body {
+ font-family: 'Inter', sans-serif;
+ background-color: var(--background-start);
+ background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+ color: var(--text-primary);
+ min-height: 100vh;
+ /* --- INICIO: OCULTAR SCROLL --- */
+ overflow: hidden; /* Evita que aparezca el scroll genérico */
+ -ms-overflow-style: none; /* IE and Edge */
+ scrollbar-width: none; /* Firefox */
+ /* --- FIN: OCULTAR SCROLL --- */
+ overflow-x: hidden;
+ /* ✅ ESCALADO AL 84% */
+ font-size: 84%; /* 16px * 0.84 = 13.44px (Ajusta 'em' y 'rem') */
+}
+
+/* Regla adicional necesaria para Chrome/Safari */
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+/* ESTILOS DE ZOOM/ESCALA - Se eliminan los transform */
+body {
+ /* Se eliminan las propiedades de transformación para evitar el rompimiento */
+}
+
+.container {
+ width: 90%;
+ max-width: 1344px; /* 1600px * 0.84 */
+ margin: 0 auto;
+ padding: 1.68rem 0; /* 2rem * 0.84 */
+}
+
+/* --- Encabezado y Navegación --- */
+.main-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 0.84rem 1.68rem; /* 1rem * 0.84 | 2rem * 0.84 */
+ background: var(--glass-bg);
+ backdrop-filter: blur(12px);
+ -webkit-backdrop-filter: blur(12px);
+ border-bottom: 1px solid var(--glass-border);
+ position: sticky;
+ top: 0;
+ z-index: 1000;
+}
+
+.header-left {
+ display: flex;
+ align-items: center;
+ font-weight: 500;
+ color: var(--text-secondary);
+}
+
+.header-left strong {
+ color: var(--text-primary);
+}
+
+.launcher-icon {
+ margin-right: 0.84rem; /* 1rem * 0.84 */
+ padding: 0.42rem; /* 0.5rem * 0.84 */
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ cursor: pointer;
+ transition: all 0.2s ease;
+ line-height: 0;
+}
+
+.launcher-icon:hover {
+ background-color: rgba(0,0,0,0.05);
+ transform: scale(1.1);
+}
+
+.launcher-icon svg {
+ display: block;
+ color: var(--text-primary);
+}
+
+.header-nav {
+ flex-grow: 1;
+ text-align: center;
+}
+
+.header-nav a {
+ margin: 0 0.42rem; /* 0.5rem * 0.84 */
+ text-decoration: none;
+ color: var(--text-secondary);
+ font-weight: 500;
+ padding: 0.42rem 0.84rem; /* 0.5rem * 0.84 | 1rem * 0.84 */
+ border-radius: 6.72px; /* 8px * 0.84 */
+ transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+ color: var(--text-primary);
+ background: rgba(0,0,0,0.05);
+}
+
+.header-nav a.active {
+ color: #fff;
+ background-color: var(--accent-color);
+ font-weight: 600;
+}
+
+.header-right {
+ display: flex;
+ align-items: center;
+ gap: 1.26rem; /* 1.5rem * 0.84 */
+}
+
+.app-version {
+ font-size: 0.672rem; /* 0.8rem * 0.84 */
+ font-weight: 500;
+ color: var(--text-secondary);
+ background-color: rgba(0,0,0,0.05);
+ padding: 0.168rem 0.42rem; /* 0.2rem * 0.84 | 0.5rem * 0.84 */
+ border-radius: 5.04px; /* 6px * 0.84 */
+}
+
+.btn-logout {
+ background-color: var(--danger-color);
+ color: white;
+ border: none;
+ padding: 0.504rem 1.008rem; /* 0.6rem * 0.84 | 1.2rem * 0.84 */
+ border-radius: 6.72px; /* 8px * 0.84 */
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s ease;
+ text-decoration: none;
+}
+
+.btn-logout:hover {
+ background-color: var(--danger-color-dark);
+ transform: translateY(-2px);
+ box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* --- Botones Genéricos --- */
+.page-title {
+ font-size: 1rem; /* 1rem * 0.84 */
+ font-weight: 700;
+ color: var(--text-primary);
+ margin-top: 0;
+ /* ✅ AJUSTE: Se reduce el margen-bottom aquí, se maneja en media query para móvil */
+ margin-bottom: 16.8px; /* 20px * 0.84 */
+}
+
+.btn-primary, .btn-secondary, .btn-success {
+ padding: 0.504rem 1.008rem; /* 0.6rem * 0.84 | 1.2rem * 0.84 */
+ border-radius: 6.72px; /* 8px * 0.84 */
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.2s ease;
+ border: none;
+ text-decoration: none;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: 0.42rem; /* 0.5rem * 0.84 */
+}
+
+.btn-primary {
+ background-color: var(--accent-color);
+ color: white;
+}
+
+.btn-primary:hover {
+ background-color: var(--accent-color-hover);
+ transform: translateY(-1px);
+ box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+ background-color: #e2e8f0;
+ color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+ background-color: #cbd5e1;
+ transform: translateY(-1px);
+}
+
+.btn-success {
+ background-color: var(--modal-save-button);
+ color: white;
+ padding: 8.4px 16.8px; /* 10px * 0.84 | 20px * 0.84 */
+ font-size: 1.1em; /* Se mantiene 'em' para que escale con el body */
+ font-weight: 700;
+ box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+}
+
+.btn-success:hover {
+ background-color: var(--modal-save-button-hover);
+ transform: translateY(-1px);
+ box-shadow: 0 6px 12px rgba(40, 167, 69, 0.5);
+}
+
+.btn-success:disabled {
+ background-color: #a7f3d0;
+ cursor: not-allowed;
+ transform: none;
+ box-shadow: none;
+}
+
+/* ------------------------------------------------- */
+/* Diseño Principal y Sidebar (Fondo Extendido y Scroll Fijo) */
+/* ------------------------------------------------- */
+.main-wrapper {
+ display: flex;
+ min-height: calc(100vh - 50.4px); /* 60px * 0.84 = 50.4px */
+}
+
+/* 🟢 SIDEBAR (Contenedor del Fondo) - Fondo que se extiende con el main-content */
+.sidebar {
+ width: 210px; /* 250px * 0.84 */
+ background-color: var(--glass-bg-darker);
+ backdrop-filter: blur(8px);
+ -webkit-backdrop-filter: blur(8px);
+ border-right: 1px solid var(--glass-border);
+ flex-shrink: 0;
+ min-height: 100%;
+ display: flex;
+ flex-direction: column;
+}
+
+/* 🎯 SIDEBAR-CONTENT (Contenedor del Scroll Fijo) */
+.sidebar-content {
+ padding: 16.8px 0; /* 20px * 0.84 */
+
+ /* ✅ SCROLL INDEPENDIENTE: Hace el contenido "sticky" */
+ position: sticky;
+ top: 50.4px; /* 60px * 0.84 (Se ancla debajo del header) */
+
+ /* Altura máxima de la vista para forzar el scroll interno */
+ max-height: calc(100vh - 50.4px); /* 60px * 0.84 = 50.4px */
+
+ overflow-y: scroll; /* Habilita el desplazamiento independiente */
+ z-index: 900;
+ flex-grow: 1;
+}
+
+/* 🙈 OCULTAR BARRA DE DESPLAZAMIENTO para .sidebar-content */
+
+/* WebKit (Chrome, Safari) */
+.sidebar-content::-webkit-scrollbar {
+ display: none;
+ width: 0;
+}
+
+/* Firefox */
+.sidebar-content {
+ scrollbar-width: none;
+}
+
+/* IE/Edge */
+.sidebar-content {
+ -ms-overflow-style: none;
+}
+/* ------------------------------------------------- */
+
+.sidebar-title {
+ font-size: 1.008rem; /* 1.2rem * 0.84 */
+ color: var(--text-primary);
+ padding: 0 16.8px 8.4px; /* 20px * 0.84 | 10px * 0.84 */
+ margin-bottom: 12.6px; /* 15px * 0.84 */
+ border-bottom: 1px solid var(--glass-border);
+}
+
+.supplier-list {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+}
+
+.supplier-item a {
+ display: block;
+ padding: 8.4px 16.8px; /* 10px * 0.84 | 20px * 0.84 */
+ text-decoration: none;
+ color: var(--text-secondary);
+ transition: background-color 0.2s, color 0.2s;
+ font-weight: 500;
+ border-left: 3.36px solid transparent; /* 4px * 0.84 */
+}
+
+.supplier-item a:hover {
+ background-color: var(--accent-color-transparent);
+ color: var(--accent-color);
+}
+
+.supplier-item a.active {
+ background-color: var(--accent-color-transparent);
+ color: var(--accent-color);
+ font-weight: 700;
+ border-left-color: var(--accent-color);
+}
+
+.main-content {
+ flex-grow: 1;
+ padding: 25.2px; /* 30px * 0.84 */
+}
+
+/* --- Tarjeta de Contenido y Controles --- */
+.content-card {
+ background: var(--card-background);
+ border: 1px solid var(--card-border);
+ border-radius: 13.44px; /* 16px * 0.84 */
+ padding: 1.68rem; /* 2rem * 0.84 */
+ box-shadow: 0 8px 32px 0 var(--card-shadow);
+ backdrop-filter: blur(10px);
+ -webkit-backdrop-filter: blur(10px);
+ margin-bottom: 2.1rem; /* 2.5rem * 0.84 */
+}
+
+.content-card h2 {
+ font-size: 0.84rem; /* 1rem * 0.84 */
+ font-weight: 600;
+ color: var(--text-primary);
+ border-bottom: 1px solid var(--glass-border);
+ padding-bottom: 8.4px; /* 10px * 0.84 */
+ margin-top: 0;
+ margin-bottom: 16.8px; /* 20px * 0.84 */
+}
+
+.info-message {
+ border-left: 4.2px solid var(--accent-color); /* 5px * 0.84 */
+ background-color: var(--accent-color-transparent);
+ padding: 12.6px; /* 15px * 0.84 */
+ border-radius: 6.72px; /* 8px * 0.84 */
+ box-shadow: none;
+ border-color: rgba(59, 130, 246, 0.5);
+}
+
+.product-controls {
+ display: flex;
+ gap: 8.4px; /* 10px * 0.84 */
+ margin-bottom: 16.8px; /* 20px * 0.84 */
+}
+
+/* --- Tablas --- */
+.table-container {
+ overflow-x: auto;
+ border-radius: 6.72px; /* 8px * 0.84 */
+ border: 1px solid var(--glass-border);
+}
+
+.supplier-products-table {
+ width: 100%;
+ border-collapse: collapse;
+ font-size: 0.84em; /* Se mantiene 'em' para que escale con el body */
+ min-width: 1176px; /* 1400px * 0.84 */
+}
+
+.supplier-products-table th,
+.supplier-products-table td {
+ padding: 6.72px 8.4px; /* 8px * 0.84 | 10px * 0.84 */
+ text-align: center;
+ vertical-align: middle;
+ border-right: 1px solid #e2e8f0;
+ border-bottom: 1px solid #e2e8f0;
+}
+
+.supplier-products-table thead th {
+ background-color: #f8fafc;
+ color: var(--text-secondary);
+ font-weight: 600;
+ border-bottom: 2px solid #cbd5e1;
+}
+
+.current-metrics-header {
+ background-color: var(--accent-color-transparent);
+ color: var(--accent-color);
+}
+
+.invoice-data-header {
+ background-color: rgba(16, 185, 129, 0.15);
+ color: var(--success-color);
+}
+
+.supplier-products-table input[type="number"],
+.supplier-products-table input[type="text"] {
+ width: 100%;
+ max-width: 75.6px; /* 90px * 0.84 */
+ padding: 3.36px; /* 4px * 0.84 */
+ border: 1px solid #ccc;
+ border-radius: 3.36px; /* 4px * 0.84 */
+ text-align: right;
+ box-sizing: border-box;
+ font-size: 1em; /* Se mantiene 'em' */
+}
+
+.supplier-products-table input:focus {
+ border-color: var(--accent-color);
+ box-shadow: 0 0 0 0.1rem rgba(59, 130, 246, 0.25);
+}
+
+.supplier-products-table td:nth-child(2) {
+ text-align: left;
+ max-width: 210px; /* 250px * 0.84 */
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
+
+/* Columna de Acción (Eliminar) */
+.supplier-products-table th:last-child,
+.supplier-products-table td:last-child {
+ width: 1%;
+ white-space: nowrap;
+ text-align: center;
+}
+
+/* --- Totales de Factura --- */
+.invoice-totals {
+ text-align: right;
+ margin-top: 16.8px; /* 20px * 0.84 */
+ padding-top: 12.6px; /* 15px * 0.84 */
+ border-top: 1px dashed var(--glass-border);
+}
+
+.invoice-totals p {
+ margin: 4.2px 0; /* 5px * 0.84 */
+ font-size: 1.1em; /* Se mantiene 'em' */
+ font-weight: 500;
+ color: var(--text-secondary);
+}
+
+.invoice-totals .total-line {
+ font-size: 0.924rem; /* 1.1rem * 0.84 */
+ font-weight: 700;
+ color: #059669;
+ margin-top: 8.4px; /* 10px * 0.84 */
+}
+
+/* --- Botón Eliminar Fila --- */
+.btn-remove {
+ background: none;
+ border: none;
+ cursor: pointer;
+ font-size: 0.588rem; /* 0.7rem * 0.84 */
+ font-weight: 600;
+ text-transform: uppercase;
+ padding: 0.252rem 0.84rem; /* 0.3rem * 0.84 | 1rem * 0.84 */
+ border-radius: 6.72px; /* 8px * 0.84 */
+ transition: all 0.2s ease;
+ line-height: 1;
+ display: inline-block;
+}
+
+.btn-danger {
+ background-color: var(--danger-color);
+ color: white;
+ border: none;
+ box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+}
+
+.btn-danger:hover {
+ background-color: var(--danger-color-dark);
+ transform: translateY(-2px);
+ box-shadow: 0 6px 12px rgba(239, 68, 68, 0.6);
+}
+
+.btn-danger:active {
+ transform: translateY(0);
+ box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4);
+}
+
+/* --- Tabla de Órdenes Registradas --- */
+.invoices-table {
+ width: 100%;
+ border-collapse: collapse;
+}
+
+.invoices-table th,
+.invoices-table td {
+ border-bottom: 1px solid #e2e8f0;
+ padding: 10.08px; /* 12px * 0.84 */
+ text-align: left;
+}
+
+.invoices-table th {
+ background-color: #f7f7f7;
+ font-weight: 600;
+ color: var(--text-secondary);
+ text-transform: uppercase;
+ font-size: 0.84em; /* Se mantiene 'em' */
+}
+
+.invoices-table td:nth-child(2) {
+ text-align: right;
+ font-weight: 700;
+ color: var(--success-color-dark);
+}
+
+/* Estilo para el botón de acción en las tablas (Ver Detalle) */
+.btn-view-invoice {
+ display: inline-flex;
+ align-items: center;
+ gap: 0.42rem; /* 0.5rem * 0.84 */
+ padding: 0.42rem 0.84rem; /* 0.5rem * 0.84 | 1rem * 0.84 */
+ border-radius: 5.04px; /* 6px * 0.84 */
+ font-weight: 500;
+ text-decoration: none;
+ cursor: pointer;
+ transition: background-color 0.2s, box-shadow 0.2s;
+ white-space: nowrap;
+ background-color: var(--modal-save-button);
+ color: white;
+ border: 1px solid #1e7e34;
+}
+
+.btn-view-invoice:hover {
+ background-color: var(--color-success-hover);
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-view-invoice i {
+ font-size: 0.84rem; /* 1rem * 0.84 */
+}
+
+/* --- Estilos de Modales --- */
+.modal {
+ position: fixed;
+ top: 0;
+ left: 0;
+ /* Se ajusta a 100vw/vh ya que eliminamos transform: scale del body */
+ width: 100vw;
+ height: 100vh;
+ background-color: rgba(0, 0, 0, 0.6);
+ z-index: 9999;
+ display: none;
+ justify-content: center;
+ align-items: center;
+ overflow: auto;
+}
+
+.modal:not(.is-active) {
+ display: none;
+}
+
+.modal.is-active {
+ display: flex;
+}
+
+.modal-content {
+ background-color: #fff;
+ padding: 2.1rem; /* 2.5rem * 0.84 = 2.1rem */
+ border-radius: 10.08px; /* 12px * 0.84 */
+ box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+ width: 47%;
+ max-width: 655.2px; /* 780px * 0.84 */
+ position: relative;
+ animation: modal-slide-in 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+ margin: 16.8px auto; /* 20px * 0.84 */
+ max-height: calc(100vh - 33.6px); /* 40px * 0.84 = 33.6px */
+}
+
+/* Estilo para hacer el modal de productos más grande */
+.large-modal-content {
+ max-width: 756px; /* 900px * 0.84 */
+ width: 95%;
+}
+
+@keyframes modal-slide-in {
+ from { opacity: 0; transform: translateY(-42px) scale(0.95); } /* 50px * 0.84 = 42px */
+ to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ border-bottom: 1px solid #e5e7eb;
+ padding-bottom: 12.6px; /* 15px * 0.84 */
+ margin-bottom: 21px; /* 25px * 0.84 */
+}
+
+.modal-header h2 {
+ font-size: 1.512rem; /* 1.8rem * 0.84 */
+ font-weight: 700;
+ margin: 0;
+ padding-bottom: 0;
+ border-bottom: none;
+}
+
+.close-button {
+ color: #aaa;
+ float: none;
+ font-size: 26.88px; /* 32px * 0.84 */
+ font-weight: 300;
+ line-height: 1;
+ cursor: pointer;
+ transition: color 0.2s;
+ /* Ajuste para centrar el icono si es un svg o ícono de fuente */
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 1em; /* Asegura que la altura sea consistente con el font-size */
+}
+
+.close-button:hover,
+.close-button:focus {
+ color: var(--danger-color);
+ text-decoration: none;
+ outline: none;
+}
+
+/* --- Formularios y Grillas de Productos --- */
+.form-group {
+ margin-bottom: 16.8px; /* 20px * 0.84 */
+ margin-top: 16.8px; /* 20px * 0.84 */
+}
+
+.form-group label, #final-invoice-form label {
+ display: block;
+ font-weight: 500;
+ margin-bottom: 4.2px; /* 5px * 0.84 */
+ font-size: 0.9em;
+ color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select,
+#final-invoice-form input {
+ width: 100%;
+ padding: 10.08px; /* 12px * 0.84 */
+ border: 1px solid #d1d5db;
+ border-radius: 5.04px; /* 6px * 0.84 */
+ box-sizing: border-box;
+ transition: border-color 0.2s, box-shadow 0.2s;
+ background-color: #fff;
+ font-size: 1em;
+}
+
+.form-group select {
+ appearance: none;
+ -webkit-appearance: none;
+ background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%234a5568"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>');
+ background-repeat: no-repeat;
+ background-position: right 10.08px center; /* 12px * 0.84 */
+ background-size: 1em;
+ padding-right: 25.2px; /* 30px * 0.84 */
+}
+
+.form-group input:focus,
+.form-group select:focus,
+#final-invoice-form input:focus {
+ border-color: var(--accent-color);
+ box-shadow: 0 0 0 1px var(--accent-color);
+ outline: none;
+}
+
+.product-form-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 16.8px; /* 20px * 0.84 */
+ margin-bottom: 21px; /* 25px * 0.84 */
+}
+
+.product-form-grid .full-width,
+.product-form-grid .button-row {
+ grid-column: 1 / span 2;
+}
+
+.product-form-grid .button-row {
+ margin-top: 8.4px; /* 10px * 0.84 */
+}
+
+.file-upload-container {
+ display: flex;
+ align-items: center;
+ border: 1px solid #d1d5db;
+ border-radius: 5.04px; /* 6px * 0.84 */
+ padding: 0;
+ background-color: #fff;
+ overflow: hidden;
+}
+
+.file-upload-container input[type="file"] {
+ display: none;
+}
+
+.file-label {
+ padding: 10.08px; /* 12px * 0.84 */
+ background-color: #f7f7f7;
+ border-right: 1px solid #d1d5db;
+ cursor: pointer;
+ font-weight: 500;
+ color: var(--text-primary);
+ transition: background-color 0.2s;
+}
+
+.file-label:hover {
+ background-color: #e5e5e5;
+}
+
+.file-name-display {
+ padding: 0 10.08px; /* 12px * 0.84 */
+ color: var(--text-secondary);
+ font-size: 1em;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ flex-grow: 1;
+}
+
+#modal-total-display {
+ color: var(--success-color-dark);
+ font-size: 1.512rem; /* 1.8rem * 0.84 */
+ font-weight: 800;
+}
+
+/* --- Modal Seleccionar Producto (Lista) --- */
+.product-search-container {
+ padding-top: 4.2px; /* 5px * 0.84 */
+ margin-bottom: 16.8px; /* 20px * 0.84 */
+}
+
+#product-search {
+ width: 100%;
+ padding: 10.08px; /* 12px * 0.84 */
+ border: 1px solid #d1d5db;
+ border-radius: 6.72px; /* 8px * 0.84 */
+ font-size: 1em;
+ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+ transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#product-search:focus {
+ border-color: var(--accent-color);
+ box-shadow: 0 0 0 3px var(--accent-color-transparent);
+}
+
+.product-selection-list {
+ list-style: none;
+ padding: 0;
+ margin-top: 12.6px; /* 15px * 0.84 */
+ max-height: 294px; /* 350px * 0.84 */
+ overflow-y: auto;
+ border: 1px solid #e2e8f0;
+ border-radius: 6.72px; /* 8px * 0.84 */
+}
+
+.search-info {
+ padding: 12.6px; /* 15px * 0.84 */
+ color: var(--text-secondary);
+ font-style: italic;
+ text-align: center;
+ background-color: #f7f9fc;
+ border-radius: 6.72px; /* 8px * 0.84 */
+ margin: 4.2px; /* 5px * 0.84 */
+ line-height: 1.5;
+}
+
+.search-result-item {
+ display: flex;
+ align-items: center;
+ padding: 10.08px 12.6px; /* 12px * 0.84 | 15px * 0.84 */
+ cursor: pointer;
+ transition: background-color 0.2s;
+ border-bottom: 1px solid #f0f2f5;
+ border-radius: 0;
+ overflow: hidden;
+}
+
+.search-result-item:hover {
+ background-color: var(--accent-color-transparent);
+ transform: none;
+}
+
+.search-result-item:active {
+ background-color: rgba(59, 130, 246, 0.2);
+}
+
+.search-result-item:last-child {
+ border-bottom: none;
+}
+
+.search-result-item i {
+ color: var(--accent-color);
+ font-size: 1.008em; /* 1.2em * 0.84 */
+ margin-right: 8.4px; /* 10px * 0.84 */
+ flex-shrink: 0;
+}
+
+.product-code {
+ font-size: 0.84em;
+ color: var(--text-secondary);
+ font-weight: 500;
+ white-space: nowrap;
+ overflow: visible;
+ text-overflow: clip;
+ flex-grow: 0;
+ flex-shrink: 0;
+ margin-right: 12.6px; /* 15px * 0.84 */
+}
+
+.product-name {
+ font-weight: 600;
+ color: var(--text-primary);
+ flex-grow: 1;
+ margin-right: 8.4px; /* 10px * 0.84 */
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
+
+.product-info {
+ font-size: 0.84em;
+ color: var(--text-secondary);
+ text-align: right;
+ flex-shrink: 0;
+ padding: 3.36px 6.72px; /* 4px * 0.84 | 8px * 0.84 */
+ background-color: #f0f4f8;
+ border-radius: 3.36px; /* 4px * 0.84 */
+ white-space: nowrap;
+}
+
+/* --- Grilla de Productos (Modal) --- */
+.product-grid-container {
+ display: grid;
+ grid-template-columns: repeat(5, 1fr);
+ gap: 16.8px; /* 20px * 0.84 */
+ padding: 8.4px; /* 10px * 0.84 */
+ background-color: #f7f9fc;
+ border-radius: 6.72px; /* 8px * 0.84 */
+ max-height: 58.8vh; /* 70vh * 0.84 (Aproximación para mantener el ratio) */
+ overflow-y: auto;
+}
+
+.product-card {
+ background-color: #fff;
+ border-radius: 6.72px; /* 8px * 0.84 */
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+ overflow: hidden;
+ cursor: pointer;
+ transition: transform 0.2s, box-shadow 0.2s;
+ display: flex;
+ flex-direction: column;
+}
+
+.product-card:not(.is-disabled):hover {
+ transform: translateY(-2px);
+ box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
+}
+
+.product-card.is-disabled {
+ opacity: 0.6;
+ cursor: default;
+ background-color: #f7f7f7;
+}
+
+.product-image-wrapper {
+ width: 100%;
+ aspect-ratio: 4 / 3;
+ overflow: hidden;
+ position: relative;
+ border-bottom: 1px solid #eee;
+}
+
+.product-image {
+ width: 100%;
+ height: 100%;
+ object-fit: contain;
+ display: block;
+ transition: transform 0.3s;
+ transform: none !important;
+}
+
+.product-card:not(.is-disabled):hover .product-image {
+ transform: none;
+}
+
+.product-status-overlay {
+ position: absolute;
+ top: 4.2px; /* 5px * 0.84 */
+ right: 4.2px; /* 5px * 0.84 */
+ display: flex;
+ flex-direction: column;
+ gap: 4.2px; /* 5px * 0.84 */
+}
+
+.status-badge {
+ display: inline-flex;
+ align-items: center;
+ padding: 2.52px 5.04px; /* 3px * 0.84 | 6px * 0.84 */
+ border-radius: 3.36px; /* 4px * 0.84 */
+ font-size: 0.63rem; /* 0.75rem * 0.84 */
+ font-weight: 600;
+ color: white;
+}
+
+.status-badge.added { background-color: #28a745; }
+.status-badge.no-stock { background-color: #dc3545; }
+.status-badge.new { background-color: #ffc107; color: #333; }
+
+.product-details {
+ padding: 8.4px; /* 10px * 0.84 */
+ display: flex;
+ flex-direction: column;
+ flex-grow: 1;
+}
+
+.product-card-name {
+ font-size: 1em;
+ font-weight: 600;
+ margin-bottom: 4.2px; /* 5px * 0.84 */
+ height: 30.24px; /* 36px * 0.84 */
+ overflow: hidden;
+ text-overflow: ellipsis;
+ display: -webkit-box;
+ -webkit-line-clamp: 2;
+ -webkit-box-orient: vertical;
+}
+
+.product-card-price {
+ font-size: 11.76px; /* 14px * 0.84 */
+ color: var(--success-color-dark);
+}
+
+.product-card-info {
+ font-size: 0.8em;
+ color: #666;
+ margin-bottom: 6.72px; /* 8px * 0.84 */
+}
+
+/* --- Footer y Media Queries --- */
+.footer {
+ text-align: center;
+ padding: 1.68rem 0; /* 2rem * 0.84 */
+ font-size: 0.756rem; /* 0.9rem * 0.84 */
+ color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+ .main-wrapper {
+  flex-direction: column;
+ }
+ .sidebar {
+  width: 100%;
+  border-right: none;
+  border-bottom: 1px solid var(--glass-border);
+  /* Desactiva la altura 100% en móvil */
+  height: auto;
+  /* Necesario para que el min-height: 100% no cause problemas en móvil */
+  min-height: auto;
+  background-color: var(--glass-bg); /* ✅ CORREGIDO: Asegura fondo */
+  z-index: 950; /* ✅ CORREGIDO: Lo pone por encima del main-content */
+    position: sticky; /* ✅ AÑADIDO: Fija la barra debajo del header */
+    top: 50.4px; /* ✅ AÑADIDO: Posición pegada debajo del header fijo */
+ }
+ 
+ .sidebar-title {
+  display: none;
+ }
+ /* Desactivamos el comportamiento fijo del contenido en móvil */
+ .sidebar-content {
+  position: relative; /* ✅ AJUSTADO: Se usa relative si el padre es sticky */
+  max-height: none;
+  overflow-y: visible;
+  padding: 12.6px 0; /* 15px * 0.84 */
+    top: auto; /* Evita conflicto con el sticky del padre */
+ }
+
+ .supplier-list {
+  display: flex;
+  overflow-x: auto; /* Permite el scroll horizontal */
+  padding: 0 12.6px; /* 15px * 0.84 */
+  gap: 8.4px; /* 10px * 0.84 */
+  /* ✅ AÑADIDO: Oculta la barra de desplazamiento en la lista horizontal */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+ }
+ 
+ .supplier-list::-webkit-scrollbar {
+  display: none;
+ }
+ 
+ .supplier-item a {
+  padding: 6.72px 12.6px; /* 8px * 0.84 | 15px * 0.84 */
+  border-left: none;
+  border-bottom: 3.36px solid transparent; /* 4px * 0.84 */
+  white-space: nowrap;
+ }
+ .supplier-item a.active {
+  border-left-color: transparent;
+  border-bottom-color: var(--accent-color);
+ }
+ .main-content {
+  /* ✅ CORREGIDO: Ajustado el padding-top. Al ser el sidebar sticky,
+       el padding-top del main-content se reduce, confiando en que el sidebar
+       separe el contenido al ser fijo. El ajuste final de separación se hace en .page-title
+       */
+  padding: 16.8px 12.6px; /* 20px * 0.84 | 15px * 0.84 */
+ }
+ 
+ .page-title {
+  font-size: 1.008rem; /* 1.2rem * 0.84 - Ajustado para móvil */
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 12.6px; /* 15px * 0.84 */
+  padding-top: 12.6px; /* ✅ AJUSTE FINAL: Separa el título de la barra de proveedores */
+ }
+
+ .supplier-products-table {
+  min-width: 840px; /* 1000px * 0.84 */
+ }
+ .product-form-grid {
+  grid-template-columns: 1fr;
+  gap: 12.6px; /* 15px * 0.84 */
+ }
+ .product-form-grid .full-width,
+ .product-form-grid .button-row {
+  grid-column: 1 / span 1;
+ }
+ .product-grid-container {
+  grid-template-columns: repeat(3, 1fr);
+ }
+}
+
+@media (max-width: 600px) {
+ .product-item-row {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4.2px; /* 5px * 0.84 */
+ }
+ .add-to-invoice-btn {
+  width: 100%;
+  margin-top: 6.72px; /* 8px * 0.84 */
+ }
+ .product-info small {
+  margin-top: 4.2px; /* 5px * 0.84 */
+ }
+ .modal-content {
+  padding: 16.8px; /* 20px * 0.84 */
+  max-width: 95%;
+ }
+ .product-grid-container {
+  grid-template-columns: repeat(2, 1fr);
+ }
+}
+
+/* --- Estilos de Estado y Resalte --- */
+
+/* Estilo para la nueva fila (alerta verde) */
+.new-highlight {
+ background-color: var(--color-success-light);
+ animation: fade-highlight 5s ease-out forwards;
+}
+
+@keyframes fade-highlight {
+ 0% { background-color: var(--color-success-light); }
+ 100% { background-color: initial; }
+}
+
+/* Estilo Sugerido para .status-button */
+.status-button {
+ display: inline-flex;
+ align-items: center;
+ padding: 5.04px 10.08px; /* 6px * 0.84 | 12px * 0.84 */
+ margin-left: 12.6px; /* 15px * 0.84 */
+ background-color: #28a745;
+ color: white !important;
+ text-decoration: none;
+ border-radius: 3.36px; /* 4px * 0.84 */
+ font-size: 0.756em; /* 0.9em * 0.84 */
+ font-weight: 600;
+ transition: background-color 0.3s;
+ border: none;
+}
+
+.status-button:hover {
+ background-color: #218838;
+}
+
+.status-button i {
+ margin-right: 4.2px; /* 5px * 0.84 */
+}
+
+/* ------------------------------------------------- */
+/* 🚀 ESTILOS DEL TOAST (Mensaje de Estado) - Superior Derecho */
+/* ------------------------------------------------- */
+
+.status-message {
+ /* Posicionamiento y Capa */
+ position: fixed;
+ top: 21px; /* 25px * 0.84 */
+ right: 21px; /* 25px * 0.84 */
+ z-index: 10000;
+
+ /* Apariencia */
+ padding: 12.6px 21px; /* 15px * 0.84 | 25px * 0.84 */
+ border-radius: 6.72px; /* 8px * 0.84 */
+ color: #fff;
+ font-weight: 600;
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+ max-width: 336px; /* 400px * 0.84 */
+
+ /* Animación */
+ opacity: 0;
+ visibility: hidden;
+ transform: translateY(-16.8px); /* 20px * 0.84 */
+ transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+ pointer-events: none;
+}
+
+/* Estado Activo */
+.status-message.is-active {
+ opacity: 1;
+ visibility: visible;
+ transform: translateY(0);
+ pointer-events: auto;
+}
+
+/* Estilos por Tipo de Mensaje */
+.status-message.success {
+ background-color: var(--modal-save-button);
+ color: #ffffff;
+}
+
+.status-message.error {
+ background-color: var(--danger-color);
+ color: #ffffff;
+}
+
+.status-message.warning {
+ background-color: #ffc107;
+ color: var(--text-primary);
+}
+
+.status-message.info {
+ background-color: var(--accent-color);
+ color: #ffffff;
+}
+/* ------------------------------------------------- */
+/* FIN DEL ARCHIVO ORDERS.CSS (Escalado al 84%) */
+/* ------------------------------------------------- */

@@ -1,0 +1,806 @@
+:root {
+	--background-start: #f0f2f5;
+	--background-end: #e6e9ee;
+	--card-background: rgba(255, 255, 255, 0.7);
+	--card-border: rgba(255, 255, 255, 0.9);
+	--card-shadow: rgba(0, 0, 0, 0.08);
+	--text-primary: #1a202c;
+	--text-secondary: #4a5568;
+	--accent-color: #3b82f6;
+	--accent-color-transparent: rgba(59, 130, 246, 0.1);
+	--danger-color: #ef4444;
+	--danger-color-dark: #dc2626;
+	--glass-bg: rgba(255, 255, 255, 0.5);
+	--glass-border: rgba(200, 200, 200, 0.5);
+	--success-bg: #dcfce7;
+	--success-text: #166534;
+	--success-border: #86efac;
+	--error-bg: #fee2e2;
+	--error-text: #991b1b;
+	--error-border: #fca5a5;
+	/* Nuevos colores para los iconos */
+	--edit-icon-color: #2980b9;
+	--delete-icon-color: #e74c3c;
+	--edit-bg-hover: #e0f2ff;
+	--delete-bg-hover: #ffe0e0;
+	--save-color: #2ecc71;
+	--cancel-color: #95a5a6;
+	--editing-bg: #fffde7;
+	--editing-outline: #fbc02d;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* ==========================================================================
+1. LAYOUT BASE Y ESCALA
+========================================================================== */
+
+body {
+	font-family: 'Inter', sans-serif;
+	background-color: var(--background-start);
+	background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+	color: var(--text-primary);
+	min-height: 100vh;
+	/* APLICACIÓN DE ESCALA */
+	zoom: 0.85;
+}
+
+.container {
+	width: 90%;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 2rem 0;
+}
+
+/* ==========================================================================
+2. ENCABEZADO Y NAVEGACIÓN
+========================================================================== */
+
+.main-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 2rem;
+	background: var(--glass-bg);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border-bottom: 1px solid var(--glass-border);
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+.header-left {
+	display: flex;
+	align-items: center;
+	font-weight: 500;
+	color: var(--text-secondary);
+}
+
+.header-left strong {
+	color: var(--text-primary);
+}
+
+.launcher-icon {
+	margin-right: 1rem;
+	padding: 0.5rem;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	line-height: 0;
+	color: var(--text-primary);
+}
+
+.launcher-icon:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+	transform: scale(1.1);
+}
+
+.launcher-icon svg {
+	display: block;
+	color: var(--text-primary);
+}
+
+.header-nav {
+	flex-grow: 1;
+	text-align: center;
+}
+
+.header-nav a {
+	margin: 0 0.5rem;
+	text-decoration: none;
+	color: var(--text-secondary);
+	font-weight: 500;
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	transition: all 0.2s ease;
+}
+
+.header-nav a:hover {
+	color: var(--text-primary);
+	background: rgba(0, 0, 0, 0.05);
+}
+
+.header-nav a.active {
+	color: #fff;
+	background-color: var(--accent-color);
+	font-weight: 600;
+}
+
+.header-right {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.app-version {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: #6b7280;
+	background-color: rgba(0, 0, 0, 0.05);
+	padding: 0.2rem 0.5rem;
+	border-radius: 6px;
+	vertical-align: middle;
+}
+
+.btn-logout {
+	background-color: var(--danger-color);
+	color: white;
+	border: none;
+	padding: 0.6rem 1.2rem;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	text-decoration: none;
+}
+
+.btn-logout:hover {
+	background-color: var(--danger-color-dark);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* ==========================================================================
+3. ALERTAS Y MENSAJES
+========================================================================== */
+
+.alert {
+	padding: 1rem;
+	margin-bottom: 1.5rem;
+	border-radius: 8px;
+	font-weight: 600;
+	border: 1px solid transparent;
+}
+
+.alert.success {
+	background-color: var(--success-bg);
+	color: var(--success-text);
+	border-color: var(--success-border);
+}
+
+.alert.error {
+	background-color: var(--error-bg);
+	color: var(--error-text);
+	border-color: var(--error-border);
+}
+
+/* ==========================================================================
+4. KPI GRID
+========================================================================== */
+
+.kpi-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 1.5rem;
+	margin-bottom: 2.5rem;
+}
+
+.kpi-card {
+	background: var(--card-background);
+	border: 1px solid var(--card-border);
+	border-radius: 16px;
+	padding: 1.5rem;
+	box-shadow: 0 8px 32px 0 var(--card-shadow);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	transition: all 0.3s ease;
+}
+
+.kpi-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.12);
+}
+
+.kpi-card h3 {
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--text-secondary);
+	margin-bottom: 0.75rem;
+	text-transform: uppercase;
+}
+
+.kpi-card .value {
+	font-size: 2.2rem;
+	font-weight: 700;
+	color: var(--text-primary);
+}
+
+/* ==========================================================================
+5. TOP 5 PRODUCTOS Y FILTROS (Consolidado)
+========================================================================== */
+
+.content-card {
+	background: var(--card-background);
+	border: 1px solid var(--card-border);
+	border-radius: 16px;
+	padding: 2rem;
+	box-shadow: 0 8px 32px 0 var(--card-shadow);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	margin-bottom: 2.5rem;
+	/* Mantienes la posición relativa para que los resultados de búsqueda se posicionen correctamente dentro de ella */
+  position: relative;
+  z-index: 10;
+}
+.content-card h2 {
+	font-size: 1.2rem;
+	font-weight: 600;
+	/* Solo se usa para el formulario, no para el Top 5 */
+	/* margin-bottom: 1.5rem; */
+}
+
+/* Contenedor del Título y Filtros del Top 5 */
+.top-products-header-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	flex-wrap: wrap;
+}
+
+/* --- Estilo del Select Común para Mes --- */
+.month-selector-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	border-radius: 12px;
+}
+
+.month-selector-container label {
+	font-size: 0.95rem;
+	color: var(--text-secondary);
+	font-weight: 500;
+}
+
+.month-selector-container select,
+.table-controls select {
+	padding: 5px 10px;
+	border-radius: 8px;
+	border: 1px solid #d1d5db;
+	background-color: #f9fafb;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--text-primary);
+	cursor: pointer;
+	/* Estilos para el selector sin la flecha nativa */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%234A5568" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.018 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 12px;
+	padding-right: 30px;
+	line-height: 1.5;
+}
+
+/* --- Controles de Rango de Fechas --- */
+.date-range-controls {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	border-radius: 12px;
+}
+
+.date-range-controls input[type="date"] {
+	padding: 5px 12px;
+	border-radius: 8px;
+	border: 1px solid #d1d5db;
+	background-color: #f9fafb;
+	color: var(--text-primary);
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	line-height: 1.5;
+	padding-right: 12px;
+	font-family: inherit;
+	font-size: 0.9rem;
+}
+
+/* --- Top 5 Grid --- */
+.top-products-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 20px;
+	padding: 10px 0;
+}
+
+.product-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	border: 1px solid #eee;
+	border-radius: 16px;
+	padding: 15px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+	transition: transform 0.2s;
+	background: #fff;
+}
+
+.product-item:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+	width: 80px;
+	height: 80px;
+	object-fit: contain;
+	border-radius: 4px;
+	margin-bottom: 10px;
+}
+
+.product-name {
+	font-weight: 600;
+	font-size: 0.9em;
+	margin-bottom: 5px;
+	color: #333;
+}
+
+.product-quantity {
+	font-size: 1.2em;
+	font-weight: 700;
+	color: var(--accent-color);
+}
+
+
+/* ==========================================================================
+6. FORMULARIO DE REGISTRO
+========================================================================== */
+
+/* Ajuste del Formulario para 4 columnas (Search, Qty, Notes, Button) */
+.form-grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr 1.5fr;
+	gap: 1.5rem;
+	align-items: flex-end;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	margin-bottom: 0; /* Lo gestiona el grid */
+}
+
+.form-group label {
+	display: block;
+	font-weight: 500;
+	margin-bottom: 0.5rem;
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+}
+
+.form-group input:not([type="submit"]):not([type="hidden"]) {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid #cbd5e1;
+	border-radius: 8px;
+	background-color: #fff;
+	font-size: 1rem;
+	transition: all 0.2s ease;
+	height: 40px; /* Altura estándar */
+}
+
+.form-group input:focus {
+	border-color: var(--accent-color);
+	box-shadow: 0 0 0 3px var(--accent-color-transparent);
+	outline: none;
+}
+
+.btn-submit {
+	width: 100%;
+	padding: 0.8rem;
+	border-radius: 8px;
+	border: none;
+	background-color: var(--accent-color);
+	color: white;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	height: 40px; /* Alineado con los inputs */
+}
+
+.btn-submit:hover {
+	opacity: 0.9;
+	box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* --- Autocompletado --- */
+#search_results_container {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	/* === CORRECCIÓN CLAVE === */
+	/* Z-index mucho más alto para garantizar que se superponga a TODO el contenido de abajo. */
+	z-index: 2000; 
+	/* ======================== */
+	background-color: white;
+	border: 1px solid #e2e8f0;
+	border-radius: 0 0 8px 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.search-item {
+	padding: 10px 12px;
+	cursor: pointer;
+	border-bottom: 1px solid #f7f7f7;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	font-size: 0.95rem;
+}
+
+.search-item:last-child {
+	border-bottom: none;
+}
+
+.search-item:hover {
+	background-color: var(--accent-color-transparent);
+}
+
+.search-item .item-name {
+	font-weight: 600;
+	color: var(--text-primary);
+}
+
+.search-item .item-details {
+	font-size: 0.85rem;
+	color: var(--text-secondary);
+	display: block;
+	margin-top: 2px;
+}
+
+/* ==========================================================================
+7. TABLA DE REGISTROS Y ACCIONES
+========================================================================== */
+
+.table-container {
+	overflow-x: auto;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+	background: white;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sales-table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.sales-table th,
+.sales-table td {
+	padding: 1rem;
+	border-bottom: 1px solid #e2e8f0;
+	white-space: nowrap;
+}
+
+.sales-table th {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--text-secondary);
+	text-transform: uppercase;
+	background-color: rgba(248, 250, 252, 0.9);
+	position: sticky;
+	top: 0;
+	/* Z-index bajo es suficiente ya que está dentro de su .content-card */
+	z-index: 5;
+}
+
+.sales-table tbody tr:hover {
+	background-color: var(--accent-color-transparent);
+}
+
+.sales-table td {
+	font-size: 0.95rem;
+	color: var(--text-primary);
+}
+
+/* Alineación a la derecha para las columnas de valores */
+.sales-table td:nth-child(4),
+.sales-table td:nth-child(5) {
+	text-align: right;
+}
+
+.sales-table td:last-child {
+	text-align: center;
+	min-width: 100px;
+}
+
+/* --- Botones de Acción (Estilos Unificados de Icono) --- */
+.sales-table .btn-action {
+	/* Sobrescribe los estilos genéricos para un look de ícono */
+	background: none;
+	border: 1px solid transparent;
+	padding: 4px 8px;
+	margin: 0 2px;
+	cursor: pointer;
+	border-radius: 4px;
+	font-size: 14px;
+	transition: background-color 0.2s, border-color 0.2s;
+	line-height: 1; /* Asegura que el emoji se vea bien */
+}
+
+/* Estilo para el botón de EDITAR (✏️) */
+.sales-table .action-edit {
+	color: var(--edit-icon-color); /* Azul para editar (#2980b9) */
+	border-color: var(--edit-bg-hover); /* #e0f2ff */
+}
+.sales-table .action-edit:hover {
+	background-color: var(--edit-bg-hover);
+}
+
+/* Estilo para el botón de ELIMINAR (🗑️) */
+.sales-table .action-delete {
+	color: var(--delete-icon-color); /* Rojo para eliminar (#e74c3c) */
+	border-color: var(--delete-bg-hover); /* #ffe0e0 */
+}
+.sales-table .action-delete:hover {
+	background-color: var(--delete-bg-hover);
+}
+
+
+/* --- Estilos para los botones del modo edición (Save/Cancel) --- */
+.sales-table .save-edit-btn {
+	background-color: var(--save-color); /* Verde (#2ecc71) */
+	color: white;
+	border: 1px solid var(--save-color);
+	margin-right: 5px;
+	padding: 6px 10px;
+	font-weight: 500;
+}
+.sales-table .save-edit-btn:hover {
+	background-color: #27ae60;
+}
+
+.sales-table .cancel-edit-btn {
+	background-color: var(--cancel-color); /* Gris (#95a5a6) */
+	color: white;
+	border: 1px solid var(--cancel-color);
+	padding: 6px 10px;
+}
+.sales-table .cancel-edit-btn:hover {
+	background-color: #7f8c8d;
+}
+
+/* Estilo para la celda de acciones */
+.sales-table .action-buttons-cell {
+	white-space: nowrap; /* Evita que los botones se envuelvan */
+}
+
+/* --- Estilos para la Fila de Edición --- */
+.sales-table .editing-row {
+	background-color: var(--editing-bg) !important; /* Amarillo muy claro (#fffde7) */
+	outline: 2px solid var(--editing-outline); /* Borde amarillo para destacarla (#fbc02d) */
+}
+
+/* Estilo para los inputs de edición dentro de la tabla */
+.sales-table .editing-row input[type="number"],
+.sales-table .editing-row input[type="text"] {
+	width: 100%;
+	padding: 4px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	height: 35px; /* Mantener la altura consistente */
+}
+
+
+/* ==========================================================================
+8. ESTILOS DEL MODAL
+========================================================================== */
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 2000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+}
+
+.modal-content {
+	background-color: #fefefe;
+	border-radius: 10px;
+	padding: 30px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	width: 90%;
+	max-width: 450px;
+	animation: fadeIn 0.3s;
+	text-align: center;
+}
+
+.modal-title {
+	color: var(--danger-color); /* Rojo de la variable */
+	margin-top: 0;
+	margin-bottom: 20px;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.modal-message {
+	line-height: 1.6;
+	color: #333;
+	margin-bottom: 30px;
+}
+
+.modal-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+}
+
+.btn-modal-confirm,
+.btn-modal-cancel {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 500;
+	transition: background-color 0.2s;
+}
+
+.btn-modal-confirm {
+	background-color: var(--danger-color); /* Rojo peligro */
+	color: white;
+}
+
+.btn-modal-confirm:hover {
+	background-color: var(--danger-color-dark);
+}
+
+.btn-modal-cancel {
+	background-color: #e9ecef;
+	color: #495057;
+	border: 1px solid #ced4da;
+}
+
+.btn-modal-cancel:hover {
+	background-color: #d8d8d8;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ==========================================================================
+9. RESPONSIVE
+========================================================================== */
+
+@media (max-width: 1200px) {
+	/* Formulario se ajusta a 2 columnas principales en pantallas medianas */
+	.form-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.form-group:nth-child(1) {
+		grid-column: 1 / 3;
+	}
+
+	.form-group:nth-child(2) {
+		grid-column: 1 / 2;
+	}
+
+	.form-group:nth-child(3) {
+		grid-column: 2 / 3;
+	}
+
+	.btn-submit {
+		grid-column: 1 / 3;
+		height: auto;
+		padding: 0.8rem;
+	}
+}
+
+@media (max-width: 900px) {
+	.main-header {
+		padding: 1rem;
+	}
+
+	.header-nav {
+		display: none;
+	}
+
+	.kpi-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	/* Top 5 Controls se apilan */
+	.top-products-header-controls {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
+	}
+
+	.date-range-controls {
+		width: 100%;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.month-selector-container {
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	/* Ocultar labels de Desde/Hasta si es necesario */
+	.date-range-controls label:not([for="month_selector"]) {
+		display: none;
+	}
+
+	.date-range-controls input[type="date"] {
+		flex: 1;
+	}
+}
+
+@media (max-width: 600px) {
+	.kpi-grid {
+		grid-template-columns: 1fr;
+	}
+
+	/* Formulario se ajusta a 1 columna en móvil */
+	.form-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.form-group:nth-child(1),
+	.form-group:nth-child(2),
+	.form-group:nth-child(3),
+	.btn-submit {
+		grid-column: 1 / 2;
+	}
+
+	/* Top 5 Grid se ajusta */
+	.top-products-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

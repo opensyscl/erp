@@ -1,0 +1,190 @@
+/* ==========================================================================
+   ESTILOS BASE E INTERFAZ (Glassmorphism + Inter)
+   ========================================================================== */
+
+/* Variables CSS para facilitar cambios de color y diseño */
+:root {
+    --background-start: #f0f2f5;             /* Color inicial del degradado de fondo */
+    --background-end: #e6e9ee;               /* Color final del degradado de fondo */
+    --card-background: rgba(255, 255, 255, 0.7); /* Fondo de las tarjetas (semi-transparente) */
+    --card-border: rgba(255, 255, 255, 0.9);     /* Borde claro de las tarjetas */
+    --card-shadow: rgba(0, 0, 0, 0.08);          /* Sombra sutil de las tarjetas */
+    --text-primary: #1a202c;                     /* Color de texto principal (oscuro) */
+    --text-secondary: #4a5568;                   /* Color de texto secundario/gris */
+    --accent-color: #3b82f6;                     /* Color de acento principal (azul) */
+    --accent-color-transparent: rgba(59, 130, 246, 0.1); /* Color de acento transparente */
+    --danger-color: #ef4444;                     /* Color de peligro (rojo) */
+    --danger-color-dark: #dc2626;                /* Color de peligro más oscuro */
+    --glass-bg: rgba(255, 255, 255, 0.5);        /* Fondo para el efecto Glassmorphism */
+    --glass-border: rgba(200, 200, 200, 0.5);    /* Borde para el efecto Glassmorphism */
+}
+
+/* Reset básico */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Estilos del cuerpo y fondo */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-start);
+    background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    /* Ajustes de escala para pantallas grandes (manteniendo tu configuración original) */
+    transform: scale(0.9);
+    transform-origin: top left;
+    width: 111.11%;
+    min-height: 111.11vh;
+}
+
+
+/* Contenedor principal */
+.container-fluid {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* ==========================================================================
+   ESTILOS DE CABECERA (Header)
+   ========================================================================== */
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    /* Efecto Glassmorphism */
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    /* Fijar la cabecera arriba */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left { 
+    display: flex; align-items: center; font-weight: 500; color: var(--text-secondary); 
+}
+.header-left strong { 
+    color: var(--text-primary); 
+}
+
+/* Navegación (Enlaces superiores) */
+.header-nav { 
+    flex-grow: 1; text-align: center; 
+}
+.header-nav a {
+    margin: 0 0.5rem; text-decoration: none; color: var(--text-secondary); font-weight: 500; 
+    padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.2s ease;
+}
+.header-nav a:hover { 
+    color: var(--text-primary); background: rgba(0,0,0,0.05); 
+}
+.header-nav a.active { 
+    color: #fff; background-color: var(--accent-color); font-weight: 600; 
+}
+
+/* Controles de la derecha (Versión y Logout) */
+.header-right { 
+    display: flex; align-items: center; gap: 1.5rem; 
+}
+.app-version { 
+    font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); 
+    background-color: rgba(0,0,0,0.05); padding: 0.2rem 0.5rem; border-radius: 6px; 
+    vertical-align: middle; 
+}
+.btn-logout { 
+    background-color: var(--danger-color); color: white; border: none; 
+    padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; cursor: pointer; 
+    transition: all 0.2s ease; text-decoration: none; 
+}
+.btn-logout:hover { 
+    background-color: var(--danger-color-dark); transform: translateY(-2px); 
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3); 
+}
+
+/* Título de la página y controles (filtros) */
+.page-header-controls { 
+    display: flex; justify-content: space-between; align-items: center; 
+    margin-bottom: 1.5rem; flex-wrap: wrap; 
+}
+.page-header-controls h1 { 
+    margin: 0; font-size: 1.8rem; font-weight: 700; 
+}
+
+/* ==========================================================================
+   ESTILOS DE TARJETAS (KPI y Contenido)
+   ========================================================================== */
+
+/* Contenedor de las tarjetas KPI */
+.kpi-grid { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 1.5rem; margin-bottom: 2.5rem; 
+}
+
+/* Estilo base de las tarjetas KPI (Incluye Glassmorphism y la interactividad) */
+.kpi-card {
+    /* Glassmorphism */
+    background: var(--card-background); border: 1px solid var(--card-border); 
+    border-radius: 16px; padding: 1.5rem; 
+    box-shadow: 0 8px 32px 0 var(--card-shadow); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
+    /* Interacción */
+    transition: all 0.3s ease; 
+    cursor: pointer; /* Cursor de la mano para indicar clic */
+}
+.kpi-card:hover { 
+    transform: translateY(-5px); /* Se levanta un poco */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    border-color: var(--accent-color); /* Borde de color de acento */
+}
+/* Efecto al presionar (para dar sensación de 'click') */
+.kpi-card:active {
+    transform: scale(0.98); 
+}
+
+/* Títulos y valores de las KPI */
+.kpi-card h3 { 
+    font-size: 0.9rem; font-weight: 600; color: #6b7280; 
+    margin-bottom: 0.75rem; text-transform: uppercase; 
+}
+.kpi-card .value { 
+    font-size: 2.2rem; font-weight: 700; color: var(--text-primary); 
+}
+
+/* Tarjetas de contenido general (Gráficos, Tablas) */
+.content-card {
+    background: var(--card-background); border: 1px solid var(--card-border); 
+    border-radius: 16px; padding: 2rem; 
+    box-shadow: 0 8px 32px 0 var(--card-shadow); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
+    margin-bottom: 2.5rem;
+}
+.content-card h2 { 
+    font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; 
+}
+
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS Y FOOTER
+   ========================================================================== */
+
+/* Ajustes de ancho para los filtros en la tabla de pedidos */
+.status-select { 
+    min-width: 130px; 
+}
+.filter-row .form-control, .filter-row .form-select { 
+    min-width: 140px; 
+}
+
+/* Estilos dentro de los Modales (títulos de sección) */
+.modal-body h6 { 
+    font-weight: 700; color: var(--accent-color); margin-top: 1rem; 
+}
+
+/* Pie de página */
+.footer { 
+    text-align: center; padding: 2rem 0; font-size: 0.9rem; color: var(--text-secondary); 
+}

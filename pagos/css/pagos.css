@@ -1,0 +1,741 @@
+/* ==========================================================================
+ 1. VARIABLES DE TEMA (GLASSMORPHISM)
+ ========================================================================== */
+:root {
+  /* Colores base y fondo */
+  --background-start: #f0f2f5;
+  --background-end: #e6e9ee;
+  --card-background: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(255, 255, 255, 0.9);
+  --card-shadow: rgba(0, 0, 0, 0.08);
+ 
+  /* Tipografía */
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+ 
+  /* Interacción y Estados */
+  --accent-color: #3b82f6; /* Azul Primario */
+  --accent-color-transparent: rgba(59, 130, 246, 0.1);
+  --danger-color: #ef4444; /* Rojo (Pendiente/Error) */
+  --danger-color-dark: #dc2626;
+  --success-color: #10b981; /* Verde (Pagado/Éxito) */
+  --success-color-dark: #059669;
+
+  /* Colores para el botón de Edición (Naranja) */
+  --warning-color: #f59e0b; /* Ámbar/Naranja para acciones de edición */
+  --warning-dark-color: #d97706; /* Tono más oscuro al pasar el cursor */
+
+  /* Glassmorphim Base */
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --glass-border: rgba(200, 200, 200, 0.5);
+  --border-color-light: #e2e8f0; /* Borde general para inputs/tablas */
+}
+
+/* ==========================================================================
+ 2. RESET Y ESTILOS GLOBALES
+ ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-start);
+  background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+ 
+  /* AJUSTE DE ESCALA (Zoom 85% para pantalla densa) */
+  transform: scale(0.85);
+  transform-origin: top left;
+  width: 117.65%; /* 100% / 0.85 */
+  min-height: 117.65vh;
+}
+.container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* ==========================================================================
+ 3. HEADER (ENCABEZADO FIJO)
+ ========================================================================== */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.header-left strong {
+  color: var(--text-primary);
+}
+.launcher-icon {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 0;
+}
+.launcher-icon:hover {
+  background-color: rgba(0,0,0,0.05);
+  transform: scale(1.1);
+}
+.launcher-icon svg {
+  display: block;
+  color: var(--text-primary);
+}
+.header-nav {
+  flex-grow: 1;
+  text-align: center;
+}
+.header-nav a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.header-nav a:hover {
+  color: var(--text-primary);
+  background: rgba(0,0,0,0.05);
+}
+.header-nav a.active {
+  color: #fff;
+  background-color: var(--accent-color);
+  font-weight: 600;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.app-version {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: rgba(0,0,0,0.05);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+.btn-logout {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-logout:hover {
+  background-color: var(--danger-color-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* ==========================================================================
+ 4. KPIS (TARJETAS DE MÉTRICAS)
+ ========================================================================== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.kpi-card {
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px 0 var(--card-shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border-left: 5px solid #3b82f6;
+}
+.kpi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px 0 rgba(0,0,0,0.12);
+}
+.kpi-card h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+.kpi-card .value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+/* Estilo para la proyección o monto pendiente del mes */
+.kpi-card .projection {
+  color: var(--accent-color);
+  font-weight: 600;
+  /*font-size: 1.4rem;*/
+}
+
+/* ==========================================================================
+ 5. CONTENEDORES DE CONTENIDO (TABLES)
+ ========================================================================== */
+.content-card {
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px 0 var(--card-shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: 2.5rem;
+}
+.content-card h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.table-header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.table-header-controls h2 {
+  margin-bottom: 0;
+}
+.table-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.table-controls label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.table-controls select {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color-light);
+  background-color: var(--background-start);
+}
+.table-container {
+  overflow-x: auto;
+}
+
+/* Botón de Añadir / Nueva Factura */
+.btn-add {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 15px;
+}
+.btn-add:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+/* ==========================================================================
+ 6. TABLA DE FACTURAS (sales-table renombrada conceptualmente)
+ ========================================================================== */
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.sales-table th,
+.sales-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color-light);
+  vertical-align: middle;
+}
+.sales-table th {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+.sales-table tbody tr:hover {
+  background-color: var(--accent-color-transparent);
+}
+.sales-table td {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+/* Nuevo estilo para la celda de acciones */
+.table-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* ESTADOS Y BOTONES ESPECÍFICOS DE PAGOS */
+.status-paid {
+  color: var(--success-color);
+  font-weight: 600;
+}
+.status-pending {
+  color: var(--danger-color);
+  font-weight: 600;
+}
+
+/* Base de botones de acción en tabla */
+.action-button {
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* Estilos mejorados para el botón PAGAR */
+.mark-paid-btn {
+  background-color: #ef4444;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); /* Cambiada sombra a Ámbar/Naranja */
+}
+
+.mark-paid-btn:hover {
+  background-color: var(--warning-dark-color); /* Cambiado a Ámbar oscuro */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6); /* Cambiado a Ámbar/Naranja */
+}
+
+/* Estilos para el botón DESHACER PAGO (Anteriormente Rojo, ahora Verde por solicitud) */
+/* NOTA: Se sobrescribe el color definido por --danger-color con --success-color. */
+.action-button[style*="background-color: var(--danger-color)"] {
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  /* Cambio de color y sombra a Verde (Success) */
+  background-color: var(--success-color) !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.action-button[style*="background-color: var(--danger-color)"]:hover {
+  /* Cambio de color y sombra a Verde Oscuro (Success Dark) */
+  background-color: var(--success-color-dark) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+}
+
+/* --- ESTILOS DEL BOTÓN DE EDITAR TOTAL --- */
+.action-button.edit-amount-btn {
+  background-color: var(--warning-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+.action-button.edit-amount-btn:hover {
+  background-color: var(--warning-dark-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+}
+
+.action-button.edit-amount-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* ==========================================================================
+ 7. FOOTER Y RESPONSIVE
+ ========================================================================== */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+  .main-header {
+    padding: 1rem 1rem;
+  }
+  .header-nav {
+    display: none;
+  }
+  .kpi-grid {
+    gap: 1rem;
+  }
+  .table-header-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .table-controls {
+    justify-content: flex-start;
+    width: 100%;
+  }
+  /* En dispositivos móviles, la celda de acciones se alinea a la izquierda */
+  .table-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* ==========================================================================
+ 8. ESTILOS DE NOTIFICACIÓN DE AJAX (TOAST)
+ ========================================================================== */
+
+/* Contenedor principal para posicionar la notificación */
+.message-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000; /* Alto para estar sobre el modal */
+  pointer-events: none;
+  width: 350px;
+}
+
+/* Estilo base de la notificación */
+.message-container .alert {
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transform: translateX(100%);
+  color: white;
+}
+
+/* Estilo para notificaciones de ÉXITO (verde) */
+.message-container .alert.success {
+  background-color: var(--success-color);
+  border: 1px solid var(--success-color-dark);
+}
+
+/* Estilo para notificaciones de ERROR (rojo) */
+.message-container .alert.error {
+  background-color: var(--danger-color);
+  border: 1px solid var(--danger-color-dark);
+}
+
+/* Clases para animación de entrada y salida */
+.message-container .alert.show {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.message-container .alert.hide {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+
+/* ==========================================================================
+ 9. ESTILOS DEL MODAL DE EDICIÓN DE MONTO (Estilo Final)
+ ========================================================================== */
+
+/* Fondo oscurecido del modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1500;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
+
+.modal.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Contenedor principal del modal (El fondo oscuro) */
+.modal {
+    display: none;
+    position: fixed; /* ¡CLAVE! Se fija a la ventana (viewport) */
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0; /* Opacidad inicial para la animación */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* El fondo se vuelve visible cuando la clase 'show' se añade por JS */
+.modal.show {
+    opacity: 1;
+}
+
+/* Contenido del Modal (la caja flotante) */
+.modal-content {
+    background: #ffffff;
+    /* --- INICIO DE CORRECCIÓN DE CENTRADO --- */
+    position: fixed; /* Se mantiene fixed para centrado */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95); /* Centrado perfecto y escala inicial */
+    /* --- FIN DE CORRECCIÓN DE CENTRADO --- */
+
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    /* Ya no necesita 'position: relative' a menos que haya hijos que lo requieran */
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    opacity: 0; /* Opacidad inicial del contenido */
+}
+
+/* Animación de entrada: Centrado y Escala 1 */
+.modal.show .modal-content {
+    transform: translate(-50%, -50%) scale(1); /* Mantiene el centrado y aplica la escala 1 */
+    opacity: 1; /* Se vuelve visible */
+}
+
+/* Botón de cierre (X) */
+.close-button {
+    color: var(--text-secondary);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--danger-color);
+}
+
+/* Título del modal */
+.modal-content h2 {
+    color: var(--text-primary);
+    margin-top: 0;
+    padding-bottom: 20px;
+    border-bottom: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Ícono de Edición (si lo usas) */
+.modal-content h2 i {
+    color: var(--warning-color);
+    margin-right: 10px;
+}
+/* Grupos de formulario: Información de la factura */
+.form-group {
+  margin-bottom: 25px;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.form-group p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-group strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Campo de entrada de monto (EL INPUT PRINCIPAL) */
+label[for="new-amount"] {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+#new-amount {
+  width: 100%;
+  padding: 12px 15px;
+  box-sizing: border-box;
+  /* 💥 ELIMINAMOS EL BORDE GRUESO NEGRO/CLARO 💥 */
+  border: none;
+  border-radius: 8px;
+  /* Fondo muy sutil o transparente para el "borde" del input */
+  background-color: var(--background-start);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text-primary);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+#new-amount:focus {
+  outline: none;
+  background-color: white; /* Blanco al enfocar */
+  box-shadow: 0 0 0 3px var(--accent-color-transparent); /* Borde sutil al enfocar */
+}
+
+.help-text {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 5px;
+  text-align: left;
+}
+
+/* ---------------------------------------------------------------------- */
+/* 💥 ACCIONES: BOTONES UNO AL LADO DEL OTRO 💥             */
+/* ---------------------------------------------------------------------- */
+.modal-actions {
+  margin-top: 30px;
+  padding-top: 0;
+  border-top: none;
+  /* Alineación de los botones a la derecha y en línea */
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  /* Desactivamos el ancho completo de la versión anterior */
+  width: auto;
+  font-size: 0.95rem;
+}
+
+/* 🟢 Botón Primario: CONFIRMAR EDICIÓN (Estilo Pagar con checkmark) 🟢 */
+.btn-primary {
+  background-color: var(--success-color);
+  color: white;
+  /*box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); /* Sombra verde */*/
+ 
+  /* Propiedades de visualización para el ícono */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  background-color: var(--success-color-dark);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Botón Secundario: CANCELAR (Diseño limpio y discreto) */
+.btn-secondary {
+  background-color: var(--background-start);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color-light);
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background-color: #e6e9ee;
+  color: var(--text-primary);
+  transform: none;
+}
+
+/* Ejemplo de CSS para un mejor formato de fechas */
+.table-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los controles salten de línea en pantallas pequeñas */
+    padding-bottom: 15px;
+}
+
+.table-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre los grupos de control */
+    flex-wrap: wrap;
+}
+
+.date-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre los elementos de fecha */
+    padding: 8px;
+    border: 1px solid #e2e8f0; /* Color de borde ligero */
+    border-radius: 8px;
+}
+
+.date-input {
+    padding: 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.btn-primary {
+    /* Estilo que ya debes tener, solo para referencia */
+    background-color: var(--primary-color, #3b82f6);
+    color: white;
+    border-radius: 5px;
+    padding-top: 8px;
+    padding-right: 15px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+}

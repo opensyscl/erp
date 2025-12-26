@@ -1,0 +1,249 @@
+/* ==== RAÍZ Y VARIABLES GLOBALES (ESTILO REPLICADO) ==== */
+:root {
+    --background-start: #f4f4f5;
+    --background-end: #e9e9ed;
+    --card-background: rgba(255, 255, 255, 0.65);
+    --card-border: rgba(255, 255, 255, 0.9);
+    --card-shadow: rgba(0, 0, 0, 0.07);
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --accent-color: #e81c1c;
+    --accent-color-dark: #c01515;
+}
+
+/* ==== RESET & BASE ==== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Tipografía más moderna */
+    background-color: var(--background-start);
+    background-image: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* ==== HEADER (CON EFECTO GLASS) ==== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card-background);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--card-border);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+/* ==== BOTONES MODERNIZADOS ==== */
+.btn,
+.btn-login,
+.btn-cart,
+.btn-logout {
+    background-image: linear-gradient(145deg, var(--accent-color), var(--accent-color-dark));
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn:hover,
+.btn-login:hover,
+.btn-cart:hover,
+.btn-logout:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(232, 28, 28, 0.3);
+}
+
+.btn-logout {
+    background-image: linear-gradient(145deg, #555, #333);
+}
+
+
+/* ==== CONTENEDOR PRINCIPAL (ESTILO TARJETA GLASS) ==== */
+.container {
+    max-width: 80%; /* Un poco más ancho para la tabla */
+    margin: 30px auto 60px;
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 25px 30px;
+    box-shadow: 0 8px 32px 0 var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* ==== TABLA DEL CARRITO ==== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+th, td {
+    border-bottom: 1px solid var(--card-border); /* Borde solo abajo para un look más limpio */
+    padding: 16px 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* ==== BOTONES DE CANTIDAD Y ELIMINAR ==== */
+.qty-btn,
+.btn-danger {
+    padding: 6px 12px;
+    background-image: linear-gradient(145deg, var(--accent-color), var(--accent-color-dark));
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    margin: 0 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    user-select: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.qty-btn:hover,
+.btn-danger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(232, 28, 28, 0.3);
+}
+
+/* ==== TOTAL Y ACCIONES FINALES ==== */
+.total {
+    text-align: right;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 25px;
+    color: var(--text-primary);
+}
+
+.total span {
+    color: var(--accent-color);
+}
+
+.cart-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+        padding: 20px;
+    }
+    .header h1 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        justify-content: space-between;
+    }
+    .welcome {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .container {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    /* Ocultar encabezados y usar data-labels para una vista móvil */
+    table thead {
+        display: none;
+    }
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+    }
+    table tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 10px;
+    }
+    table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border: none;
+    }
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+}
