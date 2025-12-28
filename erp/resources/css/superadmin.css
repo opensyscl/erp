@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import "./base.css";
+
+@source '../js/Pages/SuperAdmin/**/*.tsx';
+@source '../js/Layouts/SuperAdminLayout.tsx';
+@source '../js/components/ui/confirm-dialog.tsx';
+
+
+
+@theme {
+    --color-primary: #8EA3D1;
+    --color-danger: #ED8D7F;
+
+    /* Paleta Clean Minimalista (Inspirada en imagen) */
+    --color-sa-bg: #f3f4f6;          /* Gray 100 */
+    --color-sa-sidebar: #ffffff;     /* Blanco */
+    --color-sa-text: #4b5563;        /* Gray 600 */
+    --color-sa-text-active: #4f46e5; /* Indigo 600 */
+    --color-sa-border: #e5e7eb;      /* Gray 200 */
+    --color-sa-accent: #8EA3D1;      /* Indigo 500 */
+}
+
+/* Estilos globales específicos del panel admin */
+body.super-admin {
+    @apply bg-sa-bg text-gray-800;
+}

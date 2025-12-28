@@ -1,0 +1,10 @@
+@theme inline {
+    --font-sans: 'Nunito', sans-serif;
+
+    /* Variables compartidas */
+    --color-primary-50: #eff6ff;
+    --color-primary-500: #3b82f6;
+    --color-primary-600: #2563eb;
+
+    /* Configuración de bordes, radios, etc. comunes si los hay */
+}
