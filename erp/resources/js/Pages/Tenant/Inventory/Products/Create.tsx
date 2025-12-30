@@ -1,8 +1,8 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
-
 import { FormEventHandler } from 'react';
 import { useTenantRoute } from '@/Hooks/useTenantRoute';
+import ImageEditor from '@/components/ImageEditor';
 
 interface Category {
     id: number;
@@ -213,12 +213,18 @@ export default function Create({ categories, suppliers }: Props) {
 
                                 {/* Image */}
                                 <div className="md:col-span-2">
-                                    <label className="block text-sm font-medium text-gray-700">Imagen</label>
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={(e) => setData('image', e.target.files?.[0] || null)}
-                                        className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Imagen del Producto</label>
+                                    <ImageEditor
+                                        aspectRatio="1:1"
+                                        format="webp"
+                                        quality={85}
+                                        maxWidth={1200}
+                                        maxHeight={1200}
+                                        cropWidth={225}
+                                        cropHeight={225}
+                                        placeholder="Arrastra la imagen del producto aquí"
+                                        buttonText="Seleccionar imagen"
+                                        onChange={(result) => setData('image', result.file)}
                                     />
                                     {errors.image && <p className="mt-1 text-sm text-red-600">{errors.image}</p>}
                                 </div>

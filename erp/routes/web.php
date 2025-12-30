@@ -100,6 +100,7 @@ $tenantRoutes = function () {
     // Inventory Module
     Route::prefix('inventory')->name('inventory.')->group(function () {
         Route::get('/', [App\Http\Controllers\Tenant\ProductController::class, 'index'])->name('index');
+        Route::get('/analysis', [App\Http\Controllers\Tenant\InventoryAnalysisController::class, 'index'])->name('analysis');
         Route::get('/products/create', [App\Http\Controllers\Tenant\ProductController::class, 'create'])->name('products.create');
         Route::post('/products', [App\Http\Controllers\Tenant\ProductController::class, 'store'])->name('products.store');
         Route::get('/products/{product}/edit', [App\Http\Controllers\Tenant\ProductController::class, 'edit'])->name('products.edit');

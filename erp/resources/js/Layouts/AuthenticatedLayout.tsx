@@ -9,12 +9,15 @@ import { PageProps } from '@/types';
 import { Toaster } from '@/components/ui/sonner';
 import { ThemeSwitcherCompact } from '@/components/ThemeSwitcher';
 import Breadcrumb from '@/components/Breadcrumb';
+import SectionNav, { NavTab } from '@/components/SectionNav';
+import { usePreventScrollLockShift } from '@/Hooks/usePreventScrollLockShift';
 
 export default function Authenticated({
     header,
     children,
     settings,
-}: PropsWithChildren<{ header?: ReactNode, settings?: any }>) {
+    sectionTabs,
+}: PropsWithChildren<{ header?: ReactNode, settings?: any, sectionTabs?: NavTab[] }>) {
     const user = usePage().props.auth.user;
 
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -23,12 +26,15 @@ export default function Authenticated({
     const { props } = usePage<PageProps>();
     const tenant = props.tenant;
 
+    // Prevent layout shift when dropdowns/selects open
+    usePreventScrollLockShift();
+
     useEffect(() => {
         if (tenant?.brand_color) {
-            document.documentElement.style.setProperty('--primary', tenant.brand_color);
-            document.documentElement.style.setProperty('--ring', tenant.brand_color);
+            //document.documentElement.style.setProperty('--primary', tenant.brand_color);
+            //document.documentElement.style.setProperty('--ring', tenant.brand_color);
             // También actualizamos el color de sidebar activo si es necesario
-            document.documentElement.style.setProperty('--sidebar-primary', tenant.brand_color);
+            //document.documentElement.style.setProperty('--sidebar-primary', tenant.brand_color);
         }
     }, [tenant]);
 
@@ -39,7 +45,7 @@ export default function Authenticated({
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="border-b border-gray-100 bg-white">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-11xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 justify-between">
                         <div className="flex">
                             <div className="flex shrink-0 items-center">
@@ -52,10 +58,17 @@ export default function Authenticated({
                                 </Link>
                             </div>
 
-                            <div className="hidden sm:-my-px sm:ms-10 sm:flex sm:items-center">
+                            <div className="hidden sm:-my-px sm:ms-8 sm:flex sm:items-center">
                                 <Breadcrumb />
                             </div>
                         </div>
+
+                        {/* Center Navigation - Passed from each page */}
+                        {sectionTabs && sectionTabs.length > 0 && (
+                            <div className="hidden sm:flex sm:items-center">
+                                <SectionNav tabs={sectionTabs} />
+                            </div>
+                        )}
 
                         <div className="hidden sm:ms-6 sm:flex sm:items-center gap-2">
                             <ThemeSwitcherCompact />

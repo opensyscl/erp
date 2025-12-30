@@ -54,6 +54,7 @@ class ProductController extends Controller
             match ($request->stock_status) {
                 'low' => $query->lowStock(),
                 'out' => $query->outOfStock(),
+                'negative' => $query->where('stock', '<', 0),
                 'without_image' => $query->withoutImage(),
                 'without_supplier' => $query->withoutSupplier(),
                 'archived' => $query->archived(),
@@ -61,9 +62,18 @@ class ProductController extends Controller
             };
         }
 
-        // Sorting
+        $allowedSortFields = ['name', 'price', 'stock', 'created_at', 'updated_at', 'cost', 'sku'];
         $sortField = $request->input('sort', 'updated_at');
-        $sortDir = $request->input('dir', 'desc');
+        $sortDir = strtolower($request->input('dir', 'desc'));
+
+
+        if (!in_array($sortField, $allowedSortFields)) {
+            $sortField = 'updated_at';
+        }
+        if (!in_array($sortDir, ['asc', 'desc'])) {
+            $sortDir = 'desc';
+        }
+
         $query->orderBy($sortField, $sortDir);
 
         $products = $query->paginate(5)->withQueryString();

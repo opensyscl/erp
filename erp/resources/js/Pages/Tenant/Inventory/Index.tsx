@@ -4,10 +4,20 @@ import { useState, useEffect } from 'react';
 import { useTenantRoute } from '@/Hooks/useTenantRoute';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { ChevronDown, Pencil, Copy, Archive, Trash2, RotateCcw, LayoutGrid, List, Table } from 'lucide-react';
+import { ChevronDown, Pencil, Copy, Archive, Trash2, RotateCcw, LayoutGrid, List, Table, Search, Plus, Package, Truck, Tags, SlidersHorizontal } from 'lucide-react';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+    DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu';
 import { ProductGridSkeleton } from '@/components/skeletons/InventorySkeleton';
 import { toast } from 'sonner';
+import { ProductItemIcon, ImageOffIcon, UserOffIcon, AlertTriangleIcon, ArchiveIcon } from '@/components/Icons';
+import ProductFormDrawer from '@/components/Inventory/ProductFormDrawer';
 
 interface Category {
     id: number;
@@ -77,6 +87,7 @@ export default function Index({ products, stats, categories, suppliers, filters 
     const [category, setCategory] = useState(filters.category || '');
     const [supplier, setSupplier] = useState(filters.supplier || '');
     const [stockStatus, setStockStatus] = useState(filters.stock_status || '');
+    const [sortBy, setSortBy] = useState(filters.sort ? `${filters.sort}_${filters.dir}` : 'updated_at_desc');
 
     // Delete/Archive confirmation state
     const [deleteOpen, setDeleteOpen] = useState(false);
@@ -84,7 +95,24 @@ export default function Index({ products, stats, categories, suppliers, filters 
     const [deleting, setDeleting] = useState(false);
     const [actionType, setActionType] = useState<'archive' | 'delete'>('archive');
     const [isFiltering, setIsFiltering] = useState(false);
-    const [viewMode, setViewMode] = useState<'grid' | 'list' | 'table'>('grid');
+
+    // ViewMode with localStorage persistence
+    const [viewMode, setViewModeState] = useState<'grid' | 'list' | 'table'>(() => {
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('inventory-view-mode');
+            if (saved && ['grid', 'list', 'table'].includes(saved)) {
+                return saved as 'grid' | 'list' | 'table';
+            }
+        }
+        return 'grid';
+    });
+
+    const setViewMode = (mode: 'grid' | 'list' | 'table') => {
+        setViewModeState(mode);
+        localStorage.setItem('inventory-view-mode', mode);
+    };
+
+    const [productDrawerOpen, setProductDrawerOpen] = useState(false);
 
     const tRoute = useTenantRoute();
 
@@ -148,11 +176,30 @@ export default function Index({ products, stats, categories, suppliers, filters 
     };
 
     const handleFilter = () => {
+        const [sort, dir] = sortBy.split('_');
         router.get(tRoute('inventory.index'), {
             search: search || undefined,
             category: category || undefined,
             supplier: supplier || undefined,
             stock_status: stockStatus || undefined,
+            sort: sort || undefined,
+            dir: dir || undefined,
+        }, {
+            preserveState: true,
+            preserveScroll: true,
+        });
+    };
+
+    const handleSortChange = (value: string) => {
+        setSortBy(value);
+        const [sort, dir] = value.split('_');
+        router.get(tRoute('inventory.index'), {
+            search: search || undefined,
+            category: category || undefined,
+            supplier: supplier || undefined,
+            stock_status: stockStatus || undefined,
+            sort,
+            dir,
         }, {
             preserveState: true,
             preserveScroll: true,
@@ -172,31 +219,37 @@ export default function Index({ products, stats, categories, suppliers, filters 
 
     const getStockDot = (product: Product) => {
         if (product.stock <= 0) {
-            return <span className="w-3 h-3 rounded-full bg-red-500 border-2 border-white shadow" title="Sin stock" />;
+            return <span className="w-4 h-4 rounded-full bg-danger border-2  block border-white shadow" title="Sin stock" />;
         }
         if (product.stock <= product.min_stock) {
-            return <span className="w-3 h-3 rounded-full bg-amber-500 border-2 border-white shadow" title="Stock bajo" />;
+            return <span className="w-4 h-4 rounded-full bg-warning border-2 block border-white shadow" title="Stock bajo" />;
         }
-        return <span className="w-3 h-3 rounded-full bg-emerald-500 border-2 border-white shadow" title="Stock OK" />;
+        return <span className="w-4 h-4 rounded-full bg-success border-2  block border-white shadow" title="Stock OK" />;
     };
 
     const getStockBadge = (product: Product) => {
         if (product.stock <= 0) {
-            return <span className="px-2 py-0.5 text-xs font-medium rounded bg-red-100 text-red-800">Stock: {product.stock}</span>;
+            return <span className="px-2 py-0.5 text-xs font-bold rounded-3xl bg-red-100 text-danger">Stock: {product.stock}</span>;
         }
         if (product.stock <= product.min_stock) {
-            return <span className="px-2 py-0.5 text-xs font-medium rounded bg-yellow-100 text-yellow-800">Stock: {product.stock}</span>;
+            return <span className="px-2 py-0.5 text-xs font-bold rounded-3xl bg-yellow-100 text-warning">Stock: {product.stock}</span>;
         }
-        return <span className="px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-800">Stock: {product.stock}</span>;
+        return <span className="px-2 py-0.5 text-xs font-bold rounded-3xl bg-green-100 text-success">Stock: {product.stock}</span>;
     };
 
-    // Stat cards (sin STOCK BAJO y SIN STOCK porque están en sidebar)
     const statCards = [
-        { label: 'PRODUCTOS', value: stats.total, onClick: () => handleStatClick(''), active: !stockStatus },
-        { label: 'SIN IMÁGENES', value: stats.withoutImage, onClick: () => handleStatClick('without_image'), active: stockStatus === 'without_image' },
-        { label: 'SIN PROVEEDOR', value: stats.withoutSupplier, onClick: () => handleStatClick('without_supplier'), active: stockStatus === 'without_supplier' },
-        { label: 'STOCK NEGATIVO', value: stats.negativeStock, color: 'text-red-600' },
-        { label: 'ARCHIVADOS', value: stats.archived, onClick: () => handleStatClick('archived'), active: stockStatus === 'archived', icon: '🗑️' },
+        { label: 'Productos', value: stats.total, onClick: () => handleStatClick(''), active: !stockStatus, icon: <ProductItemIcon size={23} /> },
+        { label: 'Sin imágenes', value: stats.withoutImage, onClick: () => handleStatClick('without_image'), active: stockStatus === 'without_image', icon: <ImageOffIcon size={23} /> },
+        { label: 'Sin proveedor', value: stats.withoutSupplier, onClick: () => handleStatClick('without_supplier'), active: stockStatus === 'without_supplier', icon: <UserOffIcon size={23} /> },
+        { label: 'Stock negativo', value: stats.negativeStock, onClick: () => handleStatClick('negative'), active: stockStatus === 'negative', color: 'text-red-600', icon: <AlertTriangleIcon size={23} /> },
+        { label: 'Archivados', value: stats.archived, onClick: () => handleStatClick('archived'), active: stockStatus === 'archived', icon: <ArchiveIcon size={23} /> },
+    ];
+
+    // Navigation tabs for this section
+    const sectionTabs = [
+        { label: 'Inventario', href: tRoute('inventory.index'), active: true },
+        { label: 'Análisis de Inventario', href: tRoute('inventory.analysis'), active: false },
+        { label: 'Conteo Físico', href: '#', disabled: true },
     ];
 
     return (
@@ -208,12 +261,13 @@ export default function Index({ products, stats, categories, suppliers, filters 
                     </h2>
                 </div>
             }
+            sectionTabs={sectionTabs}
         >
             <Head title="Inventario" />
 
             <div className="py-6">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex gap-5">
-                    <div className="w-full lg:w-64 flex-shrink-0 ">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-3 flex gap-5">
+                    <div className="w-full lg:w-64 shrink-0 ">
                         <div className="bg-glass rounded-3xl shadow-panel p-[1.5rem] space-y-4">
                             {/* Categories */}
                             <Collapsible defaultOpen className="border-b pb-5">
@@ -227,7 +281,7 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                         <div className="space-y-1 pr-3">
                                             <button
                                                 onClick={() => { setCategory(''); handleFilter(); }}
-                                                className={`block w-full cursor-pointer text-left px-2 py-1 rounded text-sm ${
+                                                className={`block w-full cursor-pointer text-left px-3 py-2 rounded-3xl text-xs ${
                                                     !category ? 'bg-primary text-white font-bold' : 'hover:bg-gray-100 text-[#475569]'
                                                 }`}
                                             >
@@ -270,7 +324,7 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                         <div className="space-y-1 pr-3">
                                             <button
                                                 onClick={() => { setSupplier(''); handleFilter(); }}
-                                                className={`block w-full cursor-pointer text-left px-2 py-1 rounded text-sm ${
+                                                className={`block w-full cursor-pointer text-left px-3 py-2 rounded-3xl text-xs ${
                                                     !supplier ? 'bg-primary text-white font-bold' : 'hover:bg-gray-100 text-[#475569]'
                                                 }`}
                                             >
@@ -287,7 +341,7 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                                     } ${sup.products_count === 0 ? 'opacity-40' : ''}`}
                                                 >
                                                     <span className="truncate">{sup.name}</span>
-                                                    <span className={`text-xs ml-2 px-1.5 py-0.5 rounded-full ${
+                                                    <span className={`text-xs ml-2 px-2 py-1 rounded-full ${
                                                         supplier === sup.id.toString()
                                                             ? 'bg-white/20 text-white'
                                                             : 'bg-gray-200 text-gray-600'
@@ -316,7 +370,7 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                                 !stockStatus ? 'bg-primary font-bold text-white' : 'hover:bg-gray-100 text-[#475569]'
                                             }`}
                                         >
-                                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                                            <span className="w-2.5 h-2.5 rounded-full bg-success" />
                                             <span>Todos</span>
                                             <span className={`text-xs ml-auto px-1.5 py-0.5 rounded-full ${
                                                 !stockStatus ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600'
@@ -324,11 +378,11 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                         </button>
                                         <button
                                             onClick={() => handleStatClick('low')}
-                                            className={`flex w-full cursor-pointer items-center gap-2 px-2 py-1.5 rounded text-sm ${
+                                            className={`flex w-full cursor-pointer items-center gap-2 px-3 py-2 rounded-3xl text-xs ${
                                                 stockStatus === 'low' ? 'bg-primary font-bold text-white' : 'hover:bg-gray-100 text-[#475569]'
                                             }`}
                                         >
-                                            <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                                            <span className="w-2.5 h-2.5 rounded-full bg-warning" />
                                             <span>Stock Bajo</span>
                                             <span className={`text-xs ml-auto px-1.5 py-0.5 rounded-full ${
                                                 stockStatus === 'low' ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600'
@@ -336,11 +390,11 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                         </button>
                                         <button
                                             onClick={() => handleStatClick('out')}
-                                            className={`flex w-full cursor-pointer items-center gap-2 px-2 py-1.5 rounded text-sm ${
+                                            className={`flex w-full cursor-pointer items-center gap-2 px-3 py-2 rounded-3xl text-xs ${
                                                 stockStatus === 'out' ? 'bg-primary font-bold text-white' : 'hover:bg-gray-100 text-[#475569]'
                                             }`}
                                         >
-                                            <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                                            <span className="w-2.5 h-2.5 rounded-full bg-danger" />
                                             <span>Sin Stock</span>
                                             <span className={`text-xs ml-auto px-1.5 py-0.5 rounded-full ${
                                                 stockStatus === 'out' ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600'
@@ -348,7 +402,7 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                         </button>
                                         <button
                                             onClick={() => handleStatClick('archived')}
-                                            className={`flex w-full cursor-pointer items-center gap-2 px-2 py-1.5 rounded text-sm ${
+                                            className={`flex w-full cursor-pointer items-center gap-2 px-3 py-2 rounded-3xl text-xs ${
                                                 stockStatus === 'archived' ? 'bg-primary font-bold text-white' : 'hover:bg-gray-100 text-[#475569]'
                                             }`}
                                         >
@@ -364,96 +418,196 @@ export default function Index({ products, stats, categories, suppliers, filters 
                         </div>
                     </div>
                     <div className="w-full">
-                        {/* Stat Cards */}
+
                         <div className="flex justify-between gap-4 mb-6">
                             {statCards.map((stat, index) => (
                                 <button
                                     key={index}
                                     onClick={stat.onClick}
-                                    className={`bg-white rounded-3xl shadow-panel p-4 text-center hover:shadow-md transition flex-1 ${
-                                        stat.active ? 'ring-2 ring-blue-500' : ''
+                                    className={`grow w-full cursor-pointer ring-2 ring-transparent transition-all  duration-600 ease-spring-snappy hover:ring-primary/70 p-0 flex flex-col background-image-decoration justify-between shadow-panel bg-white rounded-3xl gap-6 h-full bg-cover  bg-no-repeat channel-stats-bg ${
+                                        stat.active ? ' ring-primary' : ''
                                     }`}
                                 >
-                                    <div className="text-xs text-gray-500 font-medium mb-1">
-                                        {stat.label}
+                                    <div className="w-10 rounded-xl mt-4 ms-5 ">
+                                        {stat.icon && <span className="text-gray-400">{stat.icon}</span>}
                                     </div>
-                                    <div className={`text-3xl font-nunito font-bold ${stat.color || 'text-gray-900'}`}>
-                                        {stat.value.toLocaleString()}
+                                    <div className="flex flex-col gap-1 pb-4 px-5">
+                                         <div className={`text-3xl font-semibold text-mono ${stat.color || 'text-gray-900'}`}>
+                                            {stat.value.toLocaleString()}
+                                        </div>
+                                        <span className="text-sm  text-[#334155] font-bold">{stat.label}</span>
                                     </div>
+
                                 </button>
                             ))}
                         </div>
 
                         <div className="flex flex-col lg:flex-row gap-6">
 
-                            {/* Main Content */}
                             <div className="flex-1">
-                                {/* Search and Actions */}
-                                <div className="bg-white rounded-lg shadow p-4 mb-4">
-                                    <div className="flex flex-col sm:flex-row gap-3">
-                                        <div className="flex-1">
+                                <div className="bg-white rounded-2xl shadow-panel border border-gray-100 p-4 mb-6">
+                                    <div className="flex flex-col lg:flex-row gap-4">
+                                        {/* Search Input with Icon */}
+                                        <div className="flex-1 relative">
+                                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                                             <input
                                                 type="text"
-                                                placeholder="🔍 Buscar productos..."
+                                                placeholder="Buscar por nombre, SKU o código de barras..."
                                                 value={search}
                                                 onChange={(e) => setSearch(e.target.value)}
                                                 onKeyDown={(e) => e.key === 'Enter' && handleFilter()}
-                                                className="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                                className="w-full pl-10 pr-4 py-2.5 rounded-xl border-gray-200 bg-gray-50/50 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-sm"
                                             />
                                         </div>
-                                        <div className="flex gap-2">
-                                            <Link
-                                                href={tRoute('inventory.products.create')}
-                                                className="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-blue-700"
-                                            >
-                                                + Nuevo Producto
-                                            </Link>
-                                            <Link
-                                                href={tRoute('inventory.suppliers.create')}
-                                                className="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-blue-700"
-                                            >
-                                                + Nuevo Proveedor
-                                            </Link>
 
-                                            <Link
-                                                href={tRoute('inventory.categories.index')}
-                                                className="inline-flex items-center px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50"
-                                            >
-                                                + Nueva Categoría
-                                            </Link>
-                                            <Link
-                                                href={tRoute('inventory.suppliers.index')}
-                                                className="inline-flex items-center px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50"
-                                            >
-                                                + Nuevo Proveedor
-                                            </Link>
+                                        {/* Controls Group */}
+                                        <div className="flex  items-center gap-3">
+                                            {/* Sort Select */}
+                                            <Select  value={sortBy} onValueChange={handleSortChange}>
+                                                <SelectTrigger className="w-auto rounded-xl border-gray-200 bg-gray-50/50 focus:bg-white">
+                                                    <div className="flex items-center gap-2">
+                                                        <SlidersHorizontal className="w-4 h-4 text-gray-400" />
+                                                        <SelectValue placeholder="Ordenar por" />
+                                                    </div>
+                                                </SelectTrigger>
+                                                <SelectContent className="rounded-3xl bg-glass">
+                                                    <SelectItem value="updated_at_desc">Reciente primero</SelectItem>
+                                                    <SelectItem value="name_asc">Nombre (A-Z)</SelectItem>
+                                                    <SelectItem value="name_desc">Nombre (Z-A)</SelectItem>
+                                                    <SelectItem value="stock_desc">Mayor stock</SelectItem>
+                                                    <SelectItem value="stock_asc">Menor stock</SelectItem>
+                                                    <SelectItem value="price_desc">Mayor precio</SelectItem>
+                                                    <SelectItem value="price_asc">Menor precio</SelectItem>
+                                                    <SelectItem value="created_at_desc">Más nuevo</SelectItem>
+                                                    <SelectItem value="created_at_asc">Más antiguo</SelectItem>
+                                                </SelectContent>
+                                            </Select>
 
-                                            {/* View Mode Toggle */}
-                                            <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
+                                            {/* Divider */}
+                                            <div className="hidden lg:block w-px h-8 bg-gray-200" />
+
+                                            {/* View Mode Toggle - Pill Style */}
+                                            <div className="flex items-center p-1 bg-gray-100 rounded-xl">
                                                 <button
                                                     onClick={() => setViewMode('grid')}
-                                                    className={`p-2 ${viewMode === 'grid' ? 'bg-primary text-white' : 'bg-white text-gray-500 hover:bg-gray-50'}`}
+                                                    className={`p-2 rounded-lg transition-all duration-200 ${
+                                                        viewMode === 'grid'
+                                                            ? 'bg-white text-primary shadow-sm'
+                                                            : 'text-gray-500 hover:text-gray-700'
+                                                    }`}
                                                     title="Vista cuadrícula"
                                                 >
                                                     <LayoutGrid className="w-4 h-4" />
                                                 </button>
                                                 <button
                                                     onClick={() => setViewMode('list')}
-                                                    className={`p-2 border-x border-gray-200 ${viewMode === 'list' ? 'bg-primary text-white' : 'bg-white text-gray-500 hover:bg-gray-50'}`}
+                                                    className={`p-2 rounded-lg transition-all duration-200 ${
+                                                        viewMode === 'list'
+                                                            ? 'bg-white text-primary shadow-sm'
+                                                            : 'text-gray-500 hover:text-gray-700'
+                                                    }`}
                                                     title="Vista lista"
                                                 >
                                                     <List className="w-4 h-4" />
                                                 </button>
                                                 <button
                                                     onClick={() => setViewMode('table')}
-                                                    className={`p-2 ${viewMode === 'table' ? 'bg-primary text-white' : 'bg-white text-gray-500 hover:bg-gray-50'}`}
+                                                    className={`p-2 rounded-lg transition-all duration-200 ${
+                                                        viewMode === 'table'
+                                                            ? 'bg-white text-primary shadow-sm'
+                                                            : 'text-gray-500 hover:text-gray-700'
+                                                    }`}
                                                     title="Vista tabla"
                                                 >
                                                     <Table className="w-4 h-4" />
                                                 </button>
                                             </div>
+
+                                            {/* Divider */}
+                                            <div className="hidden lg:block w-px h-8 bg-gray-200" />
+
+                                            {/* Create Dropdown */}
+                                            <DropdownMenu>
+                                                <DropdownMenuTrigger asChild>
+                                                    <button className="inline-flex cursor-pointer items-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary/90 text-white text-sm font-medium rounded-xl transition-colors shadow-sm">
+                                                        <Plus className="w-4 h-4" />
+                                                        <span>Crear nuevo</span>
+                                                        <ChevronDown className="w-4 h-4 opacity-70" />
+                                                    </button>
+                                                </DropdownMenuTrigger>
+                                                <DropdownMenuContent align="end" className="w-52">
+                                                    <DropdownMenuItem
+                                                        onClick={() => setProductDrawerOpen(true)}
+                                                        className="cursor-pointer"
+                                                    >
+                                                        <Package className="w-4 h-4 mr-2 text-primary" />
+                                                        <span>Nuevo Producto</span>
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuSeparator />
+                                                    <DropdownMenuItem asChild>
+                                                        <Link href={tRoute('inventory.categories.index')} className="cursor-pointer">
+                                                            <Tags className="w-4 h-4 mr-2 text-purple" />
+                                                            <span>Nueva Categoría</span>
+                                                        </Link>
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem asChild>
+                                                        <Link href={tRoute('inventory.suppliers.create')} className="cursor-pointer">
+                                                            <Truck className="w-4 h-4 mr-2 text-success" />
+                                                            <span>Nuevo Proveedor</span>
+                                                        </Link>
+                                                    </DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                            </DropdownMenu>
                                         </div>
                                     </div>
+
+                                    {/* Active Filters Display */}
+                                    {(search || category || supplier || stockStatus) && (
+                                        <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-100">
+                                            <span className="text-xs text-gray-500 font-medium">Filtros activos:</span>
+                                            <div className="flex flex-wrap gap-2">
+                                                {search && (
+                                                    <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 text-primary text-xs font-medium rounded-lg">
+                                                        <Search className="w-3 h-3" />
+                                                        "{search}"
+                                                        <button onClick={() => { setSearch(''); handleFilter(); }} className="ml-1 hover:text-primary">×</button>
+                                                    </span>
+                                                )}
+                                                {category && (
+                                                    <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-purple-50 text-purple text-xs font-medium rounded-lg">
+                                                        <Tags className="w-3 h-3" />
+                                                        {categories.find(c => c.id.toString() === category)?.name}
+                                                        <button onClick={() => { setCategory(''); handleFilter(); }} className="ml-1 hover:text-purple">×</button>
+                                                    </span>
+                                                )}
+                                                {supplier && (
+                                                    <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-green-50 text-success text-xs font-medium rounded-lg">
+                                                        <Truck className="w-3 h-3" />
+                                                        {suppliers.find(s => s.id.toString() === supplier)?.name}
+                                                        <button onClick={() => { setSupplier(''); handleFilter(); }} className="ml-1 hover:text-success">×</button>
+                                                    </span>
+                                                )}
+                                                {stockStatus && (
+                                                    <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-amber-50 text-warning text-xs font-medium rounded-lg">
+                                                        <Package className="w-3 h-3" />
+                                                        {stockStatus === 'low' ? 'Stock bajo' :
+                                                         stockStatus === 'out' ? 'Sin stock' :
+                                                         stockStatus === 'archived' ? 'Archivados' :
+                                                         stockStatus === 'without_image' ? 'Sin imagen' :
+                                                         stockStatus === 'without_supplier' ? 'Sin proveedor' :
+                                                         stockStatus === 'negative' ? 'Stock negativo' : stockStatus}
+                                                        <button onClick={() => { setStockStatus(''); handleFilter(); }} className="ml-1 hover:text-warning cursor-pointer">×</button>
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <button
+                                                onClick={() => { setSearch(''); setCategory(''); setSupplier(''); setStockStatus(''); handleFilter(); }}
+                                                className="ml-auto text-xs text-gray-500 hover:text-gray-700 underline"
+                                            >
+                                                Limpiar todo
+                                            </button>
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Products */}
@@ -463,51 +617,126 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                 <>
                                     {/* Grid View */}
                                     {viewMode === 'grid' && (
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                                         {products.data.map((product) => (
-                                            <div key={product.id} className="bg-white rounded-lg shadow overflow-hidden hover:shadow-md transition group">
-                                                <div className="aspect-square bg-gray-100 relative">
+                                            <div
+                                                key={product.id}
+                                                className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-300"
+                                            >
+                                                {/* Image Container */}
+                                                <div className="relative aspect-square bg-glass border-b p-4">
                                                     {product.image ? (
-                                                        <img src={`/storage/${product.image}`} alt={product.name} className="w-full h-full object-cover" />
+                                                        <img
+                                                            src={`/storage/${product.image}`}
+                                                            alt={product.name}
+                                                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                                                        />
                                                     ) : (
-                                                        <div className="w-full h-full flex items-center justify-center text-gray-400">
-                                                            <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                                            </svg>
+                                                        <div className="w-full h-full flex items-center justify-center">
+                                                            <Package className="w-16 h-16 text-gray-300" />
                                                         </div>
                                                     )}
-                                                    {/* Stock Dot - top left */}
-                                                    <div className="absolute top-2 left-2">
+
+                                                    {/* Stock Indicator */}
+                                                    <div className="absolute top-3 left-3">
                                                         {getStockDot(product)}
                                                     </div>
+
+                                                    {/* Out of Stock Badge */}
                                                     {product.stock <= 0 && (
-                                                        <div className="absolute top-2 right-2">
-                                                            <span className="bg-red-500 text-white text-xs px-2 py-1 rounded">Sin Stock</span>
+                                                        <div className="absolute top-3 right-3">
+                                                            <span className="bg-red-500/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wide px-2 py-1 rounded-md">
+                                                                Agotado
+                                                            </span>
                                                         </div>
                                                     )}
-                                                </div>
-                                                <div className="p-4">
-                                                    <h3 className="font-medium text-gray-900 truncate">{product.name}</h3>
-                                                    <p className="text-lg font-bold text-primary">{formatPrice(product.price)}</p>
-                                                    <div className="mt-2 text-sm text-gray-500">
-                                                        <p>SKU: {product.sku || 'N/A'}</p>
-                                                        <p>Costo: {formatPrice(product.cost)}</p>
+
+                                                    {/* Quick Actions - Appear on Hover */}
+                                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                                        <div className="flex gap-1 bg-white/95 backdrop-blur-sm rounded-xl p-1.5 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                                                            {stockStatus === 'archived' ? (
+                                                                <>
+                                                                    <button
+                                                                        onClick={() => { router.patch(tRoute('inventory.products.restore', { product: product.id }), {}, { onSuccess: () => toast.success('Producto restaurado', { description: `"${product.name}" fue restaurado.` }) }); }}
+                                                                        className="p-2 rounded-lg text-green-600 hover:bg-green-100 transition"
+                                                                        title="Restaurar"
+                                                                    >
+                                                                        <RotateCcw className="w-4 h-4" />
+                                                                    </button>
+                                                                    <button
+                                                                        onClick={() => handleDeleteClick(product)}
+                                                                        className="p-2 rounded-lg text-red-500 hover:bg-red-100 transition"
+                                                                        title="Eliminar"
+                                                                    >
+                                                                        <Trash2 className="w-4 h-4" />
+                                                                    </button>
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <Link
+                                                                        href={tRoute('inventory.products.edit', { product: product.id })}
+                                                                        className="p-2 rounded-lg text-blue-600 hover:bg-blue-100 transition"
+                                                                        title="Editar"
+                                                                    >
+                                                                        <Pencil className="w-4 h-4" />
+                                                                    </Link>
+                                                                    <button
+                                                                        onClick={() => { router.post(tRoute('inventory.products.duplicate', { product: product.id }), {}, { onSuccess: () => toast.success('Producto duplicado', { description: `Se creó una copia de "${product.name}".` }) }); }}
+                                                                        className="p-2 rounded-lg text-purple-500 hover:bg-purple-100 transition"
+                                                                        title="Duplicar"
+                                                                    >
+                                                                        <Copy className="w-4 h-4" />
+                                                                    </button>
+                                                                    <button
+                                                                        onClick={() => handleArchiveClick(product)}
+                                                                        className="p-2 rounded-lg text-amber-500 hover:bg-amber-100 transition"
+                                                                        title="Archivar"
+                                                                    >
+                                                                        <Archive className="w-4 h-4" />
+                                                                    </button>
+                                                                </>
+                                                            )}
+                                                        </div>
                                                     </div>
-                                                    <div className="mt-2">{getStockBadge(product)}</div>
-                                                    <div className="mt-3 flex items-center justify-center gap-1 border-t pt-3">
-                                                        {stockStatus === 'archived' ? (
-                                                            <>
-                                                                <button onClick={() => { router.patch(tRoute('inventory.products.restore', { product: product.id }), {}, { onSuccess: () => toast.success('Producto restaurado', { description: `"${product.name}" fue restaurado.` }) }); }} className="p-2 rounded-lg text-green-600 hover:bg-green-50 transition" title="Restaurar"><RotateCcw className="w-4 h-4" /></button>
-                                                                <button onClick={() => handleDeleteClick(product)} className="p-2 rounded-lg text-red-500 hover:bg-red-50 transition" title="Eliminar"><Trash2 className="w-4 h-4" /></button>
-                                                            </>
-                                                        ) : (
-                                                            <>
-                                                                <Link href={tRoute('inventory.products.edit', { product: product.id })} className="p-2 rounded-lg text-blue-600 hover:bg-blue-50 transition" title="Editar"><Pencil className="w-4 h-4" /></Link>
-                                                                <button onClick={() => { router.post(tRoute('inventory.products.duplicate', { product: product.id }), {}, { onSuccess: () => toast.success('Producto duplicado', { description: `Se creó una copia de "${product.name}".` }) }); }} className="p-2 rounded-lg text-purple-500 hover:bg-purple-50 transition" title="Duplicar"><Copy className="w-4 h-4" /></button>
-                                                                <button onClick={() => handleArchiveClick(product)} className="p-2 rounded-lg text-amber-500 hover:bg-amber-50 transition" title="Archivar"><Archive className="w-4 h-4" /></button>
-                                                                <button onClick={() => handleDeleteClick(product)} className="p-2 rounded-lg text-red-500 hover:bg-red-50 transition" title="Eliminar"><Trash2 className="w-4 h-4" /></button>
-                                                            </>
+                                                </div>
+
+                                                {/* Product Info */}
+                                                <div className="p-4">
+                                                    {/* Category & Supplier Pills */}
+                                                    <div className="flex items-center gap-1.5 mb-2">
+                                                        {product.category && (
+                                                            <span className="inline-flex items-center px-2 py-0.5 bg-purple-50 text-purple-600 text-[10px] font-medium rounded-md truncate max-w-[80px]">
+                                                                {product.category.name}
+                                                            </span>
                                                         )}
+                                                        {product.supplier && (
+                                                            <span className="inline-flex items-center px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-medium rounded-md truncate max-w-[80px]">
+                                                                {product.supplier.name}
+                                                            </span>
+                                                        )}
+                                                    </div>
+
+                                                    {/* Name */}
+                                                    <h3 className="font-semibold text-gray-900 text-sm leading-tight mb-1 line-clamp-2 min-h-[2.5rem]">
+                                                        {product.name}
+                                                    </h3>
+
+                                                    {/* SKU */}
+                                                    <p className="text-[11px] text-gray-400 font-mono mb-3">
+                                                        {product.sku || 'Sin SKU'}
+                                                    </p>
+
+                                                    {/* Price & Stock Row */}
+                                                    <div className="flex items-end justify-between">
+                                                        <div>
+                                                            <p className="text-xl font-bold text-primary leading-none">
+                                                                {formatPrice(product.price)}
+                                                            </p>
+                                                            <p className="text-[11px] text-gray-400 mt-0.5">
+                                                                Costo: {formatPrice(product.cost)}
+                                                            </p>
+                                                        </div>
+                                                        <div>{getStockBadge(product)}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -517,33 +746,87 @@ export default function Index({ products, stats, categories, suppliers, filters 
 
                                     {/* List View */}
                                     {viewMode === 'list' && (
-                                    <div className="space-y-3">
+                                    <div className="space-y-2">
                                         {products.data.map((product) => (
-                                            <div key={product.id} className="bg-white rounded-lg shadow p-4 hover:shadow-md transition flex items-center gap-4">
-                                                <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                                            <div
+                                                key={product.id}
+                                                className="group bg-white rounded-xl border border-gray-100 p-4 hover:shadow-md hover:border-gray-200 transition-all duration-200 flex items-center gap-4"
+                                            >
+                                                {/* Image with Stock Dot */}
+                                                <div className="relative w-14 h-14 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl overflow-hidden shrink-0">
                                                     {product.image ? (
                                                         <img src={`/storage/${product.image}`} alt={product.name} className="w-full h-full object-cover" />
                                                     ) : (
-                                                        <div className="w-full h-full flex items-center justify-center text-gray-400">
-                                                            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                                            </svg>
+                                                        <div className="w-full h-full flex items-center justify-center">
+                                                            <Package className="w-6 h-6 text-gray-300" />
                                                         </div>
                                                     )}
+                                                    <div className="absolute -top-0.5 -left-0.5">
+                                                        {getStockDot(product)}
+                                                    </div>
                                                 </div>
+
+                                                {/* Product Info */}
                                                 <div className="flex-1 min-w-0">
-                                                    <h3 className="font-medium text-gray-900 truncate">{product.name}</h3>
-                                                    <p className="text-sm text-gray-500">{product.category?.name || 'Sin categoría'} • SKU: {product.sku || 'N/A'}</p>
+                                                    <div className="flex items-center gap-2 mb-0.5">
+                                                        <h3 className="font-semibold text-gray-900 truncate">{product.name}</h3>
+                                                        {product.stock <= 0 && (
+                                                            <span className="shrink-0 bg-red-100 text-red-600 text-[10px] font-bold px-1.5 py-0.5 rounded">
+                                                                AGOTADO
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                                                        <span className="font-mono">{product.sku || 'Sin SKU'}</span>
+                                                        {product.category && (
+                                                            <>
+                                                                <span>•</span>
+                                                                <span className="text-purple-600">{product.category.name}</span>
+                                                            </>
+                                                        )}
+                                                        {product.supplier && (
+                                                            <>
+                                                                <span>•</span>
+                                                                <span className="text-blue-600">{product.supplier.name}</span>
+                                                            </>
+                                                        )}
+                                                    </div>
                                                 </div>
+
+                                                {/* Price */}
                                                 <div className="text-right hidden sm:block">
-                                                    <p className="font-bold text-primary">{formatPrice(product.price)}</p>
-                                                    <p className="text-sm text-gray-500">Costo: {formatPrice(product.cost)}</p>
+                                                    <p className="font-bold text-primary text-lg">{formatPrice(product.price)}</p>
+                                                    <p className="text-xs text-gray-400">Costo: {formatPrice(product.cost)}</p>
                                                 </div>
-                                                <div className="hidden md:block">{getStockBadge(product)}</div>
-                                                <div className="flex items-center gap-1">
-                                                    <Link href={tRoute('inventory.products.edit', { product: product.id })} className="p-2 rounded-lg text-blue-600 hover:bg-blue-50 transition" title="Editar"><Pencil className="w-4 h-4" /></Link>
-                                                    <button onClick={() => handleArchiveClick(product)} className="p-2 rounded-lg text-amber-500 hover:bg-amber-50 transition" title="Archivar"><Archive className="w-4 h-4" /></button>
-                                                    <button onClick={() => handleDeleteClick(product)} className="p-2 rounded-lg text-red-500 hover:bg-red-50 transition" title="Eliminar"><Trash2 className="w-4 h-4" /></button>
+
+                                                {/* Stock Badge */}
+                                                <div className="hidden md:block w-24 text-center">
+                                                    {getStockBadge(product)}
+                                                </div>
+
+                                                {/* Actions */}
+                                                <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <Link
+                                                        href={tRoute('inventory.products.edit', { product: product.id })}
+                                                        className="p-2 rounded-lg text-blue-600 hover:bg-blue-50 transition"
+                                                        title="Editar"
+                                                    >
+                                                        <Pencil className="w-4 h-4" />
+                                                    </Link>
+                                                    <button
+                                                        onClick={() => { router.post(tRoute('inventory.products.duplicate', { product: product.id }), {}, { onSuccess: () => toast.success('Producto duplicado') }); }}
+                                                        className="p-2 rounded-lg text-purple-500 hover:bg-purple-50 transition"
+                                                        title="Duplicar"
+                                                    >
+                                                        <Copy className="w-4 h-4" />
+                                                    </button>
+                                                    <button
+                                                        onClick={() => handleArchiveClick(product)}
+                                                        className="p-2 rounded-lg text-amber-500 hover:bg-amber-50 transition"
+                                                        title="Archivar"
+                                                    >
+                                                        <Archive className="w-4 h-4" />
+                                                    </button>
                                                 </div>
                                             </div>
                                         ))}
@@ -569,7 +852,7 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                                     <tr key={product.id} className="hover:bg-gray-50">
                                                         <td className="px-4 py-3 whitespace-nowrap">
                                                             <div className="flex items-center gap-3">
-                                                                <div className="w-10 h-10 bg-gray-100 rounded overflow-hidden flex-shrink-0">
+                                                                <div className="w-10 h-10 bg-gray-100 rounded overflow-hidden shrink-0">
                                                                     {product.image ? (
                                                                         <img src={`/storage/${product.image}`} alt={product.name} className="w-full h-full object-cover" />
                                                                     ) : (
@@ -587,9 +870,9 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                                         <td className="px-4 py-3 whitespace-nowrap text-center">{getStockBadge(product)}</td>
                                                         <td className="px-4 py-3 whitespace-nowrap text-center">
                                                             <div className="flex items-center justify-center gap-1">
-                                                                <Link href={tRoute('inventory.products.edit', { product: product.id })} className="p-1.5 rounded text-blue-600 hover:bg-blue-50 transition" title="Editar"><Pencil className="w-4 h-4" /></Link>
-                                                                <button onClick={() => handleArchiveClick(product)} className="p-1.5 rounded text-amber-500 hover:bg-amber-50 transition" title="Archivar"><Archive className="w-4 h-4" /></button>
-                                                                <button onClick={() => handleDeleteClick(product)} className="p-1.5 rounded text-red-500 hover:bg-red-50 transition" title="Eliminar"><Trash2 className="w-4 h-4" /></button>
+                                                                <Link href={tRoute('inventory.products.edit', { product: product.id })} className="p-1.5 rounded text-primary hover:bg-primary/10 transition" title="Editar"><Pencil className="w-4 h-4" /></Link>
+                                                                <button onClick={() => handleArchiveClick(product)} className="p-1.5 rounded text-warning hover:bg-warning/10 transition" title="Archivar"><Archive className="w-4 h-4" /></button>
+                                                                <button onClick={() => handleDeleteClick(product)} className="p-1.5 rounded text-danger hover:bg-danger/10 transition" title="Eliminar"><Trash2 className="w-4 h-4" /></button>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -600,11 +883,29 @@ export default function Index({ products, stats, categories, suppliers, filters 
                                     )}
 
                                     {products.data.length === 0 && (
-                                        <div className="bg-white rounded-lg shadow p-12 text-center">
-                                            <div className="text-6xl mb-4">📦</div>
-                                            <h3 className="text-lg font-medium text-gray-900 mb-2">No hay productos</h3>
-                                            <p className="text-gray-500 mb-4">Comienza agregando tu primer producto al inventario.</p>
-                                            <Link href={tRoute('inventory.products.create')} className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">+ Nuevo Producto</Link>
+                                        <div className="bg-white rounded-2xl border border-gray-100 p-16 text-center">
+                                            <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl flex items-center justify-center">
+                                                <Package className="w-10 h-10 text-primary/60" />
+                                            </div>
+                                            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                                                No hay productos {stockStatus ? 'con este filtro' : 'aún'}
+                                            </h3>
+                                            <p className="text-gray-500 mb-6 max-w-sm mx-auto">
+                                                {stockStatus
+                                                    ? 'Intenta cambiar los filtros de búsqueda o categoría.'
+                                                    : 'Comienza agregando tu primer producto al inventario para empezar a gestionar tu stock.'
+                                                }
+                                            </p>
+                                            {!stockStatus && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setProductDrawerOpen(true)}
+                                                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-xl hover:bg-primary/90 transition-colors shadow-sm"
+                                                >
+                                                    <Plus className="w-4 h-4" />
+                                                    Agregar primer producto
+                                                </button>
+                                            )}
                                         </div>
                                     )}
                                 </>
@@ -760,6 +1061,15 @@ export default function Index({ products, stats, categories, suppliers, filters 
                 onConfirm={actionType === 'archive' ? confirmArchive : confirmDelete}
                 variant={actionType === 'archive' ? 'warning' : 'danger'}
                 loading={deleting}
+            />
+
+            {/* Product Form Drawer */}
+            <ProductFormDrawer
+                open={productDrawerOpen}
+                onClose={() => setProductDrawerOpen(false)}
+                categories={categories}
+                suppliers={suppliers}
+                onSuccess={() => router.reload()}
             />
         </AuthenticatedLayout>
     );
