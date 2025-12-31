@@ -86,7 +86,7 @@ export default function Edit({ product, categories, suppliers }: Props) {
                             {product.image && (
                                 <div className="flex items-center space-x-4">
                                     <img
-                                        src={`/storage/${product.image}`}
+                                        src={product.image.startsWith('http') ? product.image : `/storage/${product.image}`}
                                         alt={product.name}
                                         className="w-24 h-24 object-cover rounded-lg"
                                     />
@@ -240,7 +240,7 @@ export default function Edit({ product, categories, suppliers }: Props) {
                                 <div className="md:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Imagen del Producto</label>
                                     <ImageEditor
-                                        value={product.image ? `/storage/${product.image}` : undefined}
+                                        value={product.image ? (product.image.startsWith('http') ? product.image : `/storage/${product.image}`) : undefined}
                                         aspectRatio="1:1"
                                         format="webp"
                                         quality={85}

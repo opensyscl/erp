@@ -3,7 +3,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import { X } from 'lucide-react';
 
 interface DrawerProps {
-    open: boolean;
+    open?: boolean;
+    isOpen?: boolean;
     onClose: () => void;
     title?: string;
     children: ReactNode;
@@ -20,14 +21,17 @@ const sizeClasses = {
 
 export default function Drawer({
     open,
+    isOpen,
     onClose,
     title,
     children,
     size = 'md',
     position = 'right',
 }: DrawerProps) {
+    const showDrawer = open ?? isOpen ?? false;
+
     return (
-        <Transition.Root show={open} as={Fragment}>
+        <Transition.Root show={showDrawer} as={Fragment}>
             <Dialog as="div" className="relative z-50" onClose={onClose}>
                 {/* Backdrop */}
                 <Transition.Child

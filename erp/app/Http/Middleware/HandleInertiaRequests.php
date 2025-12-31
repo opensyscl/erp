@@ -34,6 +34,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'flash' => fn () => $request->session()->get('flash'),
             // Use a closure so it's evaluated AFTER route middleware (IdentifyTenant) runs
             'tenant' => fn () => $this->getTenantData(),
         ];

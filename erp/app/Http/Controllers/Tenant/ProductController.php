@@ -76,7 +76,7 @@ class ProductController extends Controller
 
         $query->orderBy($sortField, $sortDir);
 
-        $products = $query->paginate(5)->withQueryString();
+        $products = $query->paginate(30)->withQueryString();
 
         // Stats
         $stats = [

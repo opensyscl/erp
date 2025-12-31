@@ -125,6 +125,54 @@ $tenantRoutes = function () {
         Route::delete('/suppliers/{supplier}', [App\Http\Controllers\Tenant\SupplierController::class, 'destroy'])->name('suppliers.destroy');
     });
 
+    // Purchase Invoices Module
+    Route::prefix('purchases')->name('purchases.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\PurchaseInvoiceController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Tenant\PurchaseInvoiceController::class, 'create'])->name('create');
+        Route::post('/', [App\Http\Controllers\Tenant\PurchaseInvoiceController::class, 'store'])->name('store');
+        Route::get('/{purchase}', [App\Http\Controllers\Tenant\PurchaseInvoiceController::class, 'show'])->name('show');
+        Route::patch('/{purchase}/pay', [App\Http\Controllers\Tenant\PurchaseInvoiceController::class, 'markAsPaid'])->name('pay');
+        Route::delete('/{purchase}', [App\Http\Controllers\Tenant\PurchaseInvoiceController::class, 'destroy'])->name('destroy');
+    });
+
+    // POS (Point of Sale) Module
+    Route::prefix('pos')->name('pos.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\POSController::class, 'index'])->name('index');
+        Route::post('/sale', [App\Http\Controllers\Tenant\POSController::class, 'store'])->name('store');
+        Route::get('/lookup-receipt/{receipt}', [App\Http\Controllers\Tenant\POSController::class, 'getSaleByReceipt'])->name('sale.receipt');
+        Route::get('/sale/{sale}', [App\Http\Controllers\Tenant\POSController::class, 'getSale'])->name('sale.show');
+        Route::post('/refund', [App\Http\Controllers\Tenant\POSController::class, 'refund'])->name('refund');
+    });
+
+    // Sales Report Module
+    Route::prefix('sales')->name('sales.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\SalesReportController::class, 'index'])->name('index');
+        Route::get('/{sale}', [App\Http\Controllers\Tenant\SaleController::class, 'show'])->name('show');
+    });
+
+    // Schedules Module
+    Route::prefix('schedules')->name('schedules.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\ScheduleController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Tenant\ScheduleController::class, 'store'])->name('store');
+        Route::delete('/{schedule}', [App\Http\Controllers\Tenant\ScheduleController::class, 'destroy'])->name('destroy');
+    });
+
+    // Employees API
+    Route::prefix('employees')->name('employees.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\EmployeeController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Tenant\EmployeeController::class, 'store'])->name('store');
+        Route::put('/{employee}', [App\Http\Controllers\Tenant\EmployeeController::class, 'update'])->name('update');
+        Route::delete('/{employee}', [App\Http\Controllers\Tenant\EmployeeController::class, 'destroy'])->name('destroy');
+    });
+
+    // Shifts API
+    Route::prefix('shifts')->name('shifts.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\ShiftController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Tenant\ShiftController::class, 'store'])->name('store');
+        Route::put('/{shift}', [App\Http\Controllers\Tenant\ShiftController::class, 'update'])->name('update');
+        Route::delete('/{shift}', [App\Http\Controllers\Tenant\ShiftController::class, 'destroy'])->name('destroy');
+    });
+
     // Settings
     Route::get('/settings', [App\Http\Controllers\Tenant\SettingsController::class, 'index'])->name('settings.index');
     Route::patch('/settings', [App\Http\Controllers\Tenant\SettingsController::class, 'update'])->name('settings.update');
@@ -145,19 +193,24 @@ Route::prefix('app/{tenant}')
 // 2. Domain Based (Production) - Excludes main App URL
 // Note: We DON'T use {domain} capture here to avoid parameter injection into controllers
 $appHost = parse_url(config('app.url'), PHP_URL_HOST);
-if ($appHost) {
-    // Get all tenant domains from database (cached)
-    $tenantDomains = cache()->remember('tenant_domains', 3600, function () {
-        return \App\Models\Tenant::whereNotNull('domain')->pluck('domain')->toArray();
-    });
+if ($appHost && !app()->runningInConsole()) {
+    // Only load tenant domains when not running artisan commands
+    try {
+        // Get all tenant domains from database (cached)
+        $tenantDomains = cache()->remember('tenant_domains', 3600, function () {
+            return \App\Models\Tenant::whereNotNull('domain')->pluck('domain')->toArray();
+        });
 
-    foreach ($tenantDomains as $tenantDomain) {
-        if ($tenantDomain && $tenantDomain !== $appHost) {
-            Route::domain($tenantDomain)
-                ->middleware(['auth', 'verified', IdentifyTenant::class])
-                ->name("tenant.domain.{$tenantDomain}.")
-                ->group($tenantRoutes);
+        foreach ($tenantDomains as $tenantDomain) {
+            if ($tenantDomain && $tenantDomain !== $appHost) {
+                Route::domain($tenantDomain)
+                    ->middleware(['auth', 'verified', IdentifyTenant::class])
+                    ->name("tenant.domain.{$tenantDomain}.")
+                    ->group($tenantRoutes);
+            }
         }
+    } catch (\Exception $e) {
+        // Silently fail if database is not available (e.g., during migrations)
     }
 }
 

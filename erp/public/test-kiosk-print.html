@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Kiosk Print</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+        }
+
+        .controls {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 350px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .info {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #0369a1;
+        }
+
+        .info code {
+            background: #e0f2fe;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .btn-dialog {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .status.success {
+            background: #d1fae5;
+            color: #047857;
+        }
+
+        .status.info {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        /* Ticket Preview */
+        .ticket-preview {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 320px;
+        }
+
+        .ticket {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            line-height: 1.5;
+            color: #000;
+            padding: 15px;
+            border: 1px dashed #ccc;
+            border-radius: 10px;
+        }
+
+        .ticket-header {
+            text-align: center;
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ticket-header img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 5px;
+        }
+
+        .ticket-header h2 {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .ticket-info {
+            font-size: 10px;
+        }
+
+        .ticket-body {
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ticket table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .ticket th, .ticket td {
+            padding: 3px 0;
+            text-align: left;
+        }
+
+        .ticket .text-right {
+            text-align: right;
+        }
+
+        .ticket-totals td {
+            padding: 2px 0;
+        }
+
+        .ticket-totals .total-row {
+            font-weight: bold;
+            font-size: 14px;
+            border-top: 2px solid #000;
+        }
+
+        .ticket-footer {
+            text-align: center;
+            border-top: 1px solid #000;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .ticket-qr {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .ticket-qr img {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+            .controls, .ticket-preview > h3 {
+                display: none !important;
+            }
+            .container {
+                display: block;
+            }
+            .ticket-preview {
+                box-shadow: none;
+                padding: 0;
+                width: 75mm;
+            }
+            .ticket {
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <h1>🖨️ Test Kiosk Print</h1>
+
+            <div class="info">
+                <strong>Para impresión silenciosa:</strong><br><br>
+                Abre Chrome con:<br>
+                <code>--kiosk-printing</code>
+            </div>
+
+            <button class="btn-print" onclick="window.print()">
+                🖨️ Imprimir Ticket (window.print)
+            </button>
+
+            <button class="btn-dialog" onclick="testPrintWindow()">
+                📄 Test Ventana de Impresión
+            </button>
+
+            <div class="status info" id="status">
+                Haz clic en un botón para probar
+            </div>
+
+            <div style="margin-top: 20px; font-size: 12px; color: #666;">
+                <strong>Comando para Chrome Kiosk:</strong>
+                <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px; margin-top: 10px; overflow-x: auto; font-size: 10px;">google-chrome \
+  --kiosk \
+  --kiosk-printing \
+  --disable-print-preview \
+  "file:///path/to/test.html"</pre>
+            </div>
+        </div>
+
+        <div class="ticket-preview">
+            <h3 style="margin-bottom: 15px; color: #333;">Vista Previa del Ticket</h3>
+
+            <div class="ticket" id="ticket-content">
+                <div class="ticket-header">
+                    <img src="https://tiendaslistto.cl/erp/img/fav.png" alt="Logo">
+                    <h2>Tiendas Listto!</h2>
+                    <div class="ticket-info">
+                        Tiendas Listto, SpA.<br>
+                        RUT: 78.169.866-0<br>
+                        Av. Vicuña Mackenna 6617, LC7<br>
+                        +56 9 2021 0349
+                    </div>
+                </div>
+
+                <div class="ticket-body">
+                    <p><strong>Ticket N°:</strong> 12345</p>
+                    <p><strong>Fecha:</strong> 30/12/2024 10:00 hrs</p>
+                    <p><strong>Pago:</strong> Efectivo</p>
+                    <p><strong>Atendido por:</strong> Tiendas Listto 001</p>
+                </div>
+
+                <div class="ticket-body">
+                    <table>
+                        <thead>
+                            <tr style="border-bottom: 1px solid #000;">
+                                <th>Producto</th>
+                                <th class="text-right">Cant.</th>
+                                <th class="text-right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Coca Cola 500ml</strong><br>
+                                    <span style="font-size: 10px;">(2 x $1.500)</span>
+                                </td>
+                                <td class="text-right">2</td>
+                                <td class="text-right">$3.000</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Pan Hallulla</strong><br>
+                                    <span style="font-size: 10px;">(1 x $500)</span>
+                                </td>
+                                <td class="text-right">1</td>
+                                <td class="text-right">$500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <table class="ticket-totals">
+                    <tr>
+                        <td class="text-right">NETO:</td>
+                        <td class="text-right" style="font-weight: bold;">$2.941</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">IVA (19%):</td>
+                        <td class="text-right" style="font-weight: bold;">$559</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td class="text-right" style="padding-top: 8px;">Total:</td>
+                        <td class="text-right" style="padding-top: 8px;">$3.500</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right" style="color: green;">Vuelto:</td>
+                        <td class="text-right" style="color: green; font-weight: bold;">$1.500</td>
+                    </tr>
+                </table>
+
+                <div class="ticket-qr">
+                    <p style="font-size: 10px;">Visita nuestra web</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://tiendaslistto.cl" alt="QR">
+                </div>
+
+                <div class="ticket-footer">
+                    <strong>¡Gracias por tu compra!</strong><br>
+                    <span style="font-size: 10px;">www.tiendaslistto.cl | @listtocl</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function testPrintWindow() {
+            const ticketContent = document.getElementById('ticket-content').innerHTML;
+            const printWindow = window.open('', '', 'width=600,height=600');
+
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Ticket Test</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+                    <style>
+                        body {
+                            font-family: 'Roboto Mono', monospace;
+                            font-size: 11px;
+                            width: 75mm;
+                            margin: 0;
+                            padding: 10px;
+                            line-height: 1.5;
+                            color: #000;
+                        }
+                        table { width: 100%; border-collapse: collapse; }
+                        th, td { padding: 3px 0; }
+                        .text-right { text-align: right; }
+                        img { display: block; margin: 0 auto; }
+                    </style>
+                </head>
+                <body onload="window.print(); window.close();">
+                    ${ticketContent}
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+
+            document.getElementById('status').className = 'status success';
+            document.getElementById('status').textContent = '✅ Ventana de impresión abierta';
+        }
+
+        // Detectar si estamos en modo kiosk
+        if (window.matchMedia('(display-mode: fullscreen)').matches ||
+            window.innerHeight === screen.height) {
+            document.getElementById('status').className = 'status success';
+            document.getElementById('status').textContent = '✅ Modo Kiosk detectado';
+        }
+    </script>
+</body>
+</html>

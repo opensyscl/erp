@@ -474,3 +474,8 @@ body[style*="padding-right:15px"],
 body[style*="padding-right"] {
     padding-right: 0 !important;
 }
+
+
+body{
+    margin-bottom: 0 !important;
+}

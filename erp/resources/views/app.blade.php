@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="cozy-cream">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
+
+        <!-- Theme initialization (blocking to prevent FOUC) -->
+        <script>
+            (function() {
+                const storageKey = 'app-theme';
+                const validThemes = ['default', 'cozzy', 'cozy-cream', 'midnight', 'nord', 'sakura', 'emerald', 'cyber'];
+                const stored = localStorage.getItem(storageKey);
+                if (stored && validThemes.includes(stored)) {
+                    document.documentElement.setAttribute('data-theme', stored);
+                }
+            })();
+        </script>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -20,3 +32,4 @@
         @inertia
     </body>
 </html>
+
