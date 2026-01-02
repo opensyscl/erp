@@ -29,7 +29,8 @@ import {
     Printer,
     ChevronLeft,
     ChevronRight,
-    History
+    History,
+    Pin
 } from 'lucide-react';
 import { CashIcon } from '@/components/Icons';
 import {
@@ -59,6 +60,7 @@ interface Product {
     image: string | null;
     category_id: number | null;
     category_name: string | null;
+    is_pinned: boolean;
 }
 
 interface Category {
@@ -307,6 +309,11 @@ export default function Index({ products: initialProducts, categories, nextRecei
                 p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 (p.barcode && p.barcode.toLowerCase().includes(searchQuery.toLowerCase())) ||
                 (p.sku && p.sku.toLowerCase().includes(searchQuery.toLowerCase()));
+
+            // If Pinned is selected
+            if (selectedCategory === -2) {
+                return matchesSearch && p.is_pinned;
+            }
 
             // -1 means "Favoritos" - show all products that have been sold
             const matchesCategory = selectedCategory === null ||
@@ -603,6 +610,29 @@ export default function Index({ products: initialProducts, categories, nextRecei
         if (cart.length === 0) return;
         if (confirm('¿Limpiar el carrito?')) {
             setCart([]);
+        }
+    };
+
+    // Toggle Pin
+    const handleTogglePin = async (e: React.MouseEvent, productId: number) => {
+        e.stopPropagation();
+
+        // Optimistic Update
+        setProducts(prev => prev.map(p =>
+            p.id === productId ? { ...p, is_pinned: !p.is_pinned } : p
+        ));
+        playClick();
+
+        try {
+            await window.axios.post(tRoute('pos.toggle-pin', { product: productId }));
+            // toast.success('Actualizado');
+        } catch (error) {
+            console.error(error);
+            toast.error('Error al actualizar estado');
+            // Revert
+            setProducts(prev => prev.map(p =>
+                p.id === productId ? { ...p, is_pinned: !p.is_pinned } : p
+            ));
         }
     };
 
@@ -1149,6 +1179,23 @@ export default function Index({ products: initialProducts, categories, nextRecei
                                 >
                                     Todos
                                 </button>
+                                {/* Destacados (Pinned) */}
+                                <button
+                                    onClick={() => handleCategorySelect(-2)}
+                                    className={`
+                                        flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-colors
+                                        ${selectedCategory === -2
+                                            ? 'bg-amber-100 text-amber-700 border-amber-200 border ring-2 ring-amber-100'
+                                            : 'bg-white border border-gray-100 text-gray-600 hover:bg-amber-50 hover:text-amber-600 hover:border-amber-100'
+                                        }
+                                    `}
+                                >
+                                    <div className={`p-1 rounded-md ${selectedCategory === -2 ? 'bg-amber-200' : 'bg-gray-100'}`}>
+                                        <Pin className="w-4 h-4" />
+                                    </div>
+                                    Destacados
+                                </button>
+
                                 {categories.map((category) => (
                                     <button
                                         key={category.id}
@@ -1230,7 +1277,18 @@ export default function Index({ products: initialProducts, categories, nextRecei
                                                         animationTimingFunction: 'cubic-bezier(0.1,0.7,0.5,1)'
                                                     }}
                                                 >
-                                                    <div className="h-[135px] bg-gray-100 object-contain rounded-lg mb-2 flex items-center justify-center overflow-hidden">
+                                                    <div className="h-[135px] bg-gray-100 object-contain rounded-lg mb-2 flex items-center justify-center overflow-hidden relative group/pin">
+                                                        <button
+                                                            onClick={(e) => handleTogglePin(e, product.id)}
+                                                            className={`absolute top-2 right-2 p-1.5 rounded-full shadow-sm z-10 transition-all ${
+                                                                product.is_pinned
+                                                                    ? 'bg-amber-100 border border-amber-200 opacity-100'
+                                                                    : 'bg-white/80 backdrop-blur-sm border border-transparent opacity-0 group-hover/pin:opacity-100 hover:bg-white hover:shadow-md'
+                                                            }`}
+                                                            title={product.is_pinned ? "Quitar de destacados" : "Destacar producto"}
+                                                        >
+                                                            <Pin className={`w-3.5 h-3.5 ${product.is_pinned ? 'text-amber-600 fill-amber-600' : 'text-gray-400 hover:text-amber-500'}`} />
+                                                        </button>
                                                         {product.image ? (
                                                             <BlurImage
                                                                 src={product.image.startsWith('http') ? product.image : `/storage/${product.image}`}

@@ -39,10 +39,10 @@ export default function MinimalDashboard({ modules }: DashboardProps) {
     const ModuleRow = ({ module, isFirst, isLast }: { module: DashboardModule; isFirst: boolean; isLast: boolean }) => {
         const content = (
             <div className={`
-                flex items-center justify-between px-4 py-3.5 bg-white
+                flex items-center justify-between px-4 py-3.5 bg-card
                 ${isFirst ? 'rounded-t-xl' : ''}
-                ${isLast ? 'rounded-b-xl' : 'border-b border-gray-100'}
-                ${!module.soon ? 'hover:bg-gray-50 active:bg-gray-100 transition-colors' : 'opacity-50'}
+                ${isLast ? 'rounded-b-xl' : 'border-b border-border'}
+                ${!module.soon ? 'hover:bg-secondary active:bg-secondary/80 transition-colors' : 'opacity-50'}
             `}>
                 <div className="flex items-center gap-4">
                     {/* Icon container */}
@@ -56,7 +56,7 @@ export default function MinimalDashboard({ modules }: DashboardProps) {
 
                     {/* Text */}
                     <div className="flex-1">
-                        <h3 className="font-medium text-gray-900 text-[15px]">
+                        <h3 className="font-medium text-foreground text-[15px]">
                             {module.name}
                         </h3>
                     </div>
@@ -65,11 +65,11 @@ export default function MinimalDashboard({ modules }: DashboardProps) {
                 {/* Right side */}
                 <div className="flex items-center gap-2">
                     {module.soon ? (
-                        <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">
+                        <span className="text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded">
                             Próximamente
                         </span>
                     ) : (
-                        <ChevronRight className="w-5 h-5 text-gray-300" />
+                        <ChevronRight className="w-5 h-5 text-muted-foreground/50" />
                     )}
                 </div>
             </div>
@@ -83,22 +83,22 @@ export default function MinimalDashboard({ modules }: DashboardProps) {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 -m-6">
+        <div className="min-h-screen bg-secondary">
             {/* iOS-style header */}
-            <div className="bg-gray-100 pt-6 pb-4 px-4 sticky top-0 z-10">
-                <h1 className="text-3xl font-bold text-gray-900 mb-4 px-2">
-                    Configuración
+            <div className="bg-secondary pt-6 pb-4 px-4 sticky top-0 z-10">
+                <h1 className="text-3xl font-bold text-foreground mb-4 px-2">
+                    Panel
                 </h1>
 
                 {/* Search bar */}
                 <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                     <input
                         type="text"
                         placeholder="Buscar"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 bg-gray-200/70 rounded-xl text-[15px] placeholder-gray-500 border-0 focus:ring-0 focus:bg-gray-200"
+                        className="w-full pl-10 pr-4 py-2 bg-muted rounded-xl text-[15px] placeholder-muted-foreground border-0 focus:ring-2 focus:ring-primary"
                     />
                 </div>
             </div>
@@ -107,10 +107,10 @@ export default function MinimalDashboard({ modules }: DashboardProps) {
             <div className="px-4 pb-8 space-y-8">
                 {groupedModules.map((group) => (
                     <div key={group.title}>
-                        <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wider px-4 mb-2">
+                        <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider px-4 mb-2">
                             {group.title}
                         </h2>
-                        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <div className="bg-card rounded-xl shadow-sm overflow-hidden">
                             {group.modules.map((module, index) => (
                                 <ModuleRow
                                     key={module.name}
@@ -125,8 +125,8 @@ export default function MinimalDashboard({ modules }: DashboardProps) {
 
                 {filteredModules.length === 0 && (
                     <div className="text-center py-12">
-                        <Search className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                        <p className="text-gray-500">No se encontraron módulos</p>
+                        <Search className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
+                        <p className="text-muted-foreground">No se encontraron módulos</p>
                     </div>
                 )}
             </div>

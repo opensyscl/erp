@@ -5,13 +5,12 @@ import { PageProps } from '@/types';
 import { NavTab } from '@/components/SectionNav';
 import { usePreventScrollLockShift } from '@/Hooks/usePreventScrollLockShift';
 
-// Import shell components
 import ModernShell from './shells/ModernShell';
 import SidebarShell from './shells/SidebarShell';
 import MinimalShell from './shells/MinimalShell';
 import DarkShell from './shells/DarkShell';
 
-// Shell registry
+
 const shells: Record<string, React.ComponentType<any>> = {
     modern: ModernShell,
     sidebar: SidebarShell,
@@ -39,11 +38,12 @@ export default function Authenticated({
     // Prevent layout shift when dropdowns/selects open
     usePreventScrollLockShift();
 
+    // Sync data-shell attribute on the HTML element
     useEffect(() => {
-        if (tenant?.brand_color) {
-            // Brand color customization (if needed)
-        }
-    }, [tenant]);
+        const layoutTemplate = tenant?.layout_template || 'modern';
+        document.documentElement.setAttribute('data-shell', layoutTemplate);
+        localStorage.setItem('app-shell', layoutTemplate);
+    }, [tenant?.layout_template]);
 
     // Select the appropriate shell based on tenant's layout_template
     const layoutTemplate = (tenant?.layout_template as string) || 'modern';

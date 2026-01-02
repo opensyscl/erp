@@ -16,39 +16,29 @@ export default function DarkDashboard({ modules }: DashboardProps) {
         module: DashboardModule;
         featured?: boolean;
     }) => {
-        // Different neon colors for variety
-        const neonColors = [
-            { glow: 'shadow-cyan-500/50', border: 'hover:border-cyan-500/50', text: 'group-hover:text-cyan-400' },
-            { glow: 'shadow-purple-500/50', border: 'hover:border-purple-500/50', text: 'group-hover:text-purple-400' },
-            { glow: 'shadow-pink-500/50', border: 'hover:border-pink-500/50', text: 'group-hover:text-pink-400' },
-            { glow: 'shadow-emerald-500/50', border: 'hover:border-emerald-500/50', text: 'group-hover:text-emerald-400' },
-        ];
-
-        const colorIndex = module.name.length % neonColors.length;
-        const colors = neonColors[colorIndex];
-
         const content = (
             <div className={`
                 group relative overflow-hidden
                 ${featured ? 'p-6' : 'p-4'}
                 rounded-2xl
-                bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800
-                border border-gray-700/50
-                ${colors.border}
-                hover:shadow-lg ${colors.glow}
+                bg-card/80
+                border border-border
+                hover:border-primary/50
+                hover:shadow-lg hover:shadow-primary/20
                 transition-all duration-300
                 ${module.soon ? 'opacity-40' : ''}
             `}>
                 {/* Animated gradient border on hover */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10" />
+                    <div className="absolute inset-0 bg-primary/5" />
                 </div>
 
                 {/* Grid pattern background */}
                 <div className="absolute inset-0 opacity-5">
                     <div className="w-full h-full" style={{
-                        backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
-                        backgroundSize: '20px 20px'
+                        backgroundImage: 'linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)',
+                        backgroundSize: '20px 20px',
+                        opacity: 0.05
                     }} />
                 </div>
 
@@ -58,7 +48,7 @@ export default function DarkDashboard({ modules }: DashboardProps) {
                     <div className={`
                         mb-3 transition-all duration-300
                         ${featured ? 'text-4xl' : 'text-2xl'}
-                        group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]
+                        group-hover:drop-shadow-[0_0_8px_var(--primary)]
                     `}>
                         {typeof module.icon === 'string' ? (
                             <span>{module.icon}</span>
@@ -71,8 +61,8 @@ export default function DarkDashboard({ modules }: DashboardProps) {
 
                     {/* Title */}
                     <h3 className={`
-                        font-bold text-white transition-colors duration-300
-                        ${colors.text}
+                        font-bold text-foreground transition-colors duration-300
+                        group-hover:text-primary
                         ${featured ? 'text-lg mb-2' : 'text-sm'}
                     `}>
                         {module.name}
@@ -80,14 +70,14 @@ export default function DarkDashboard({ modules }: DashboardProps) {
 
                     {/* Description for featured */}
                     {featured && (
-                        <p className="text-gray-400 text-sm line-clamp-2">
+                        <p className="text-muted-foreground text-sm line-clamp-2">
                             {module.description}
                         </p>
                     )}
 
                     {/* Soon badge */}
                     {module.soon && (
-                        <span className="inline-flex items-center gap-1 mt-2 text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded border border-gray-700">
+                        <span className="inline-flex items-center gap-1 mt-2 text-xs bg-secondary text-muted-foreground px-2 py-1 rounded border border-border">
                             <Zap className="w-3 h-3" />
                             Próximamente
                         </span>
@@ -96,7 +86,7 @@ export default function DarkDashboard({ modules }: DashboardProps) {
 
                 {/* Corner accent */}
                 <div className="absolute top-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                    <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary animate-pulse" />
                 </div>
             </div>
         );
@@ -109,13 +99,14 @@ export default function DarkDashboard({ modules }: DashboardProps) {
     };
 
     return (
-        <div className="min-h-screen bg-black -m-6 p-8 relative overflow-hidden">
+        <div className="min-h-screen bg-background p-8 relative overflow-hidden">
             {/* Animated background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-cyan-900/20" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
 
             {/* Scanlines effect */}
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{
-                backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px)'
+                backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, var(--foreground) 2px, var(--foreground) 4px)',
+                opacity: 0.02
             }} />
 
             {/* Content */}
@@ -123,15 +114,15 @@ export default function DarkDashboard({ modules }: DashboardProps) {
                 {/* Header */}
                 <div className="mb-10">
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                        <span className="text-cyan-400 text-sm font-mono tracking-wider uppercase">
+                        <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                        <span className="text-primary text-sm font-mono tracking-wider uppercase">
                             Sistema Online
                         </span>
                     </div>
-                    <h1 className="text-4xl font-bold text-white mb-2 tracking-tight">
+                    <h1 className="text-4xl font-bold text-foreground mb-2 tracking-tight">
                         Control Center
                     </h1>
-                    <p className="text-gray-500 font-light">
+                    <p className="text-muted-foreground font-light">
                         Acceso rápido a todos los módulos del sistema
                     </p>
                 </div>
@@ -139,11 +130,11 @@ export default function DarkDashboard({ modules }: DashboardProps) {
                 {/* Featured modules */}
                 <div className="mb-10">
                     <div className="flex items-center gap-2 mb-4">
-                        <div className="h-px flex-1 bg-gradient-to-r from-cyan-500/50 to-transparent" />
-                        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">
+                        <div className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />
+                        <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
                             Acceso Rápido
                         </span>
-                        <div className="h-px flex-1 bg-gradient-to-l from-purple-500/50 to-transparent" />
+                        <div className="h-px flex-1 bg-gradient-to-l from-accent/50 to-transparent" />
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {featuredModules.map((module) => (
@@ -155,11 +146,11 @@ export default function DarkDashboard({ modules }: DashboardProps) {
                 {/* Other modules */}
                 <div>
                     <div className="flex items-center gap-2 mb-4">
-                        <div className="h-px flex-1 bg-gradient-to-r from-pink-500/50 to-transparent" />
-                        <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">
+                        <div className="h-px flex-1 bg-gradient-to-r from-accent/50 to-transparent" />
+                        <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
                             Todos los Módulos
                         </span>
-                        <div className="h-px flex-1 bg-gradient-to-l from-emerald-500/50 to-transparent" />
+                        <div className="h-px flex-1 bg-gradient-to-l from-primary/50 to-transparent" />
                     </div>
                     <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-3">
                         {otherModules.map((module) => (
@@ -169,9 +160,9 @@ export default function DarkDashboard({ modules }: DashboardProps) {
                 </div>
 
                 {/* Footer */}
-                <div className="mt-16 pt-8 border-t border-gray-800/50">
-                    <div className="flex items-center justify-center gap-3 text-gray-600">
-                        <Zap className="w-4 h-4 text-cyan-500" />
+                <div className="mt-16 pt-8 border-t border-border/50">
+                    <div className="flex items-center justify-center gap-3 text-muted-foreground">
+                        <Zap className="w-4 h-4 text-primary" />
                         <span className="font-mono text-sm tracking-wider">
                             OpenSys ERP v2.0
                         </span>

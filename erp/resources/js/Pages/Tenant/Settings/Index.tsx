@@ -36,12 +36,14 @@ interface Props {
         company_email?: string;
         layout_template?: string;
         dashboard_shell?: string;
+        timezone?: string;
     };
+    timezones: string[];
 }
 
 type Section = 'sounds' | 'appearance' | 'details' | 'payments' | 'checkout' | 'shipping' | 'location' | 'notifications';
 
-export default function Index({ settings }: Props) {
+export default function Index({ settings, timezones = [] }: Props) {
     const tRoute = useTenantRoute();
     const user = usePage().props.auth.user;
     const [activeSection, setActiveSection] = useState<Section>('sounds');
@@ -105,6 +107,7 @@ export default function Index({ settings }: Props) {
         company_address: settings.company_address || '',
         company_phone: settings.company_phone || '',
         company_email: settings.company_email || '',
+        timezone: settings.timezone || 'UTC',
         layout_template: settings.layout_template || 'modern',
         dashboard_shell: settings.dashboard_shell || 'modern',
         _method: 'patch',
@@ -336,7 +339,15 @@ export default function Index({ settings }: Props) {
                                                             name="layout_template"
                                                             value="modern"
                                                             checked={data.layout_template === 'modern'}
-                                                            onChange={(e) => setData('layout_template', e.target.value)}
+                                                            onChange={(e) => {
+                                                                if (data.dashboard_shell === 'sidebar') {
+                                                                    toast.error('⚠️ No puedes cambiar el layout', {
+                                                                        description: 'Primero debes cambiar el Estilo de Dashboard a otro que no sea "Con Sidebar"'
+                                                                    });
+                                                                    return;
+                                                                }
+                                                                setData('layout_template', e.target.value);
+                                                            }}
                                                             className="sr-only"
                                                         />
                                                         <div className="aspect-video bg-gray-100 rounded-lg mb-3 overflow-hidden">
@@ -421,7 +432,15 @@ export default function Index({ settings }: Props) {
                                                             name="layout_template"
                                                             value="minimal"
                                                             checked={data.layout_template === 'minimal'}
-                                                            onChange={(e) => setData('layout_template', e.target.value)}
+                                                            onChange={(e) => {
+                                                                if (data.dashboard_shell === 'sidebar') {
+                                                                    toast.error('⚠️ No puedes cambiar el layout', {
+                                                                        description: 'Primero debes cambiar el Estilo de Dashboard a otro que no sea "Con Sidebar"'
+                                                                    });
+                                                                    return;
+                                                                }
+                                                                setData('layout_template', e.target.value);
+                                                            }}
                                                             className="sr-only"
                                                         />
                                                         <div className="aspect-video bg-white rounded-lg mb-3 overflow-hidden border">
@@ -456,7 +475,15 @@ export default function Index({ settings }: Props) {
                                                             name="layout_template"
                                                             value="dark"
                                                             checked={data.layout_template === 'dark'}
-                                                            onChange={(e) => setData('layout_template', e.target.value)}
+                                                            onChange={(e) => {
+                                                                if (data.dashboard_shell === 'sidebar') {
+                                                                    toast.error('⚠️ No puedes cambiar el layout', {
+                                                                        description: 'Primero debes cambiar el Estilo de Dashboard a otro que no sea "Con Sidebar"'
+                                                                    });
+                                                                    return;
+                                                                }
+                                                                setData('layout_template', e.target.value);
+                                                            }}
                                                             className="sr-only"
                                                         />
                                                         <div className="aspect-video bg-gray-900 rounded-lg mb-3 overflow-hidden flex">
@@ -628,6 +655,56 @@ export default function Index({ settings }: Props) {
                                                             </div>
                                                         )}
                                                     </label>
+
+                                                    {/* Sidebar Dashboard */}
+                                                    <label
+                                                        className={cn(
+                                                            "relative border-2 rounded-xl p-3 cursor-pointer transition-all hover:border-primary/50",
+                                                            data.dashboard_shell === 'sidebar'
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-gray-200"
+                                                        )}
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            name="dashboard_shell"
+                                                            value="sidebar"
+                                                            checked={data.dashboard_shell === 'sidebar'}
+                                                            onChange={(e) => {
+                                                                setData('dashboard_shell', e.target.value);
+                                                                // Auto-select sidebar layout template and show message
+                                                                if (data.layout_template !== 'sidebar') {
+                                                                    setData('layout_template', 'sidebar');
+                                                                    toast.info('📌 Sidebar activado automáticamente', {
+                                                                        description: 'Este estilo de dashboard requiere el layout con navegación lateral.'
+                                                                    });
+                                                                }
+                                                            }}
+                                                            className="sr-only"
+                                                        />
+                                                        <div className="aspect-video bg-gray-100 rounded-lg mb-2 overflow-hidden flex">
+                                                            <div className="w-1/4 bg-white border-r p-1 space-y-0.5">
+                                                                <div className="h-1.5 bg-primary/20 rounded" />
+                                                                <div className="h-1.5 bg-gray-200 rounded" />
+                                                                <div className="h-1.5 bg-gray-200 rounded" />
+                                                            </div>
+                                                            <div className="flex-1 p-1">
+                                                                <div className="grid grid-cols-2 gap-0.5 h-full">
+                                                                    <div className="bg-white rounded" />
+                                                                    <div className="bg-white rounded" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium text-gray-900 text-sm">Con Sidebar</div>
+                                                            <div className="text-[10px] text-amber-600">Requiere layout Sidebar</div>
+                                                        </div>
+                                                        {data.dashboard_shell === 'sidebar' && (
+                                                            <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+                                                                <CheckCircle className="w-2.5 h-2.5 text-white" />
+                                                            </div>
+                                                        )}
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div className="flex justify-end pt-4 border-t">
@@ -715,6 +792,26 @@ export default function Index({ settings }: Props) {
                                                             onChange={(e) => setData('company_email', e.target.value)}
                                                         />
                                                     </div>
+                                                </div>
+
+                                                <div className="space-y-2">
+                                                    <Label htmlFor="timezone">Zona Horaria</Label>
+                                                    <select
+                                                        id="timezone"
+                                                        className="w-full rounded-md border-gray-300 text-sm"
+                                                        value={data.timezone}
+                                                        onChange={(e) => setData('timezone', e.target.value)}
+                                                    >
+                                                        {timezones.map((tz) => (
+                                                            <option key={tz} value={tz}>
+                                                                {tz}
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                    <p className="text-xs text-gray-500">
+                                                        Define la hora del sistema para reportes y registros.
+                                                        (Actualmente: {new Intl.DateTimeFormat().resolvedOptions().timeZone})
+                                                    </p>
                                                 </div>
                                             </div>
 

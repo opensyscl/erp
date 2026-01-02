@@ -9,6 +9,7 @@ import ClassicDashboard from './shells/ClassicDashboard';
 import ModernDashboard from './shells/ModernDashboard';
 import MinimalDashboard from './shells/MinimalDashboard';
 import DarkDashboard from './shells/DarkDashboard';
+import SidebarDashboard from './shells/SidebarDashboard';
 
 
 
@@ -17,6 +18,7 @@ const DASHBOARD_SHELLS = {
     modern: ModernDashboard,
     minimal: MinimalDashboard,
     dark: DarkDashboard,
+    sidebar: SidebarDashboard,
 } as const;
 
 export default function Dashboard() {
@@ -275,11 +277,7 @@ export default function Dashboard() {
         >
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <ShellComponent modules={modules} />
-                </div>
-            </div>
+            <ShellComponent modules={modules} />
         </AuthenticatedLayout>
     );
 }

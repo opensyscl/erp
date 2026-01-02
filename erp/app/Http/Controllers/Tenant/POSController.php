@@ -43,6 +43,7 @@ class POSController extends Controller
                 'image' => $p->image,
                 'category_id' => $p->category_id,
                 'category_name' => $p->category?->name,
+                'is_pinned' => (bool) $p->is_pinned,
             ]);
 
         // Get all categories
@@ -328,5 +329,21 @@ class POSController extends Controller
                 'error' => 'Error al procesar la devolución: ' . $e->getMessage(),
             ], 500);
         }
+        }
+
+    /**
+     * Toggle product pinned status.
+     */
+    public function togglePin(Request $request, string $tenant, string $productId): JsonResponse
+    {
+        $product = Product::findOrFail($productId);
+        $product->is_pinned = !$product->is_pinned;
+        $product->save();
+
+        return response()->json([
+            'success' => true,
+            'is_pinned' => (bool) $product->is_pinned,
+            'message' => $product->is_pinned ? 'Producto destacado' : 'Producto ya no destacado',
+        ]);
     }
 }

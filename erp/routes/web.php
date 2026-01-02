@@ -5,6 +5,7 @@ use App\Http\Controllers\SuperAdmin\DashboardController as SuperAdminDashboardCo
 use App\Http\Controllers\SuperAdmin\TenantController;
 use App\Http\Middleware\EnsureSuperAdmin;
 use App\Http\Middleware\IdentifyTenant;
+use App\Http\Middleware\SetTenantTimezone;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -112,6 +113,21 @@ $tenantRoutes = function () {
         ]);
     })->name('dashboard');
 
+    // Dashboard Widgets API
+    Route::prefix('api/widgets')->name('api.widgets.')->group(function () {
+        Route::get('/revenue', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'revenue'])->name('revenue');
+        Route::get('/stats', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'stats'])->name('stats');
+        Route::get('/top-products', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'topProducts'])->name('top-products');
+        Route::get('/stock-alerts', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'stockAlerts'])->name('stock-alerts');
+        Route::get('/stock-alerts/{category}', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'stockAlertProducts'])->name('stock-alert-products');
+        Route::get('/recent-sales', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'recentSales'])->name('recent-sales');
+        Route::get('/sales-by-category', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'salesByCategory'])->name('sales-by-category');
+        Route::get('/sales-by-time', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'salesByTime'])->name('sales-by-time');
+        Route::get('/profit-margin', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'profitMargin'])->name('profit-margin');
+        Route::get('/cash-status', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'cashStatus'])->name('cash-status');
+        Route::get('/expenses', [App\Http\Controllers\Tenant\Api\DashboardWidgetController::class, 'expenses'])->name('expenses');
+    });
+
     // Inventory Module
     Route::prefix('inventory')->name('inventory.')->group(function () {
         Route::get('/', [App\Http\Controllers\Tenant\ProductController::class, 'index'])->name('index');
@@ -156,7 +172,9 @@ $tenantRoutes = function () {
         Route::post('/sale', [App\Http\Controllers\Tenant\POSController::class, 'store'])->name('store');
         Route::get('/lookup-receipt/{receipt}', [App\Http\Controllers\Tenant\POSController::class, 'getSaleByReceipt'])->name('sale.receipt');
         Route::get('/sale/{sale}', [App\Http\Controllers\Tenant\POSController::class, 'getSale'])->name('sale.show');
+        Route::get('/sale/{sale}', [App\Http\Controllers\Tenant\POSController::class, 'getSale'])->name('sale.show');
         Route::post('/refund', [App\Http\Controllers\Tenant\POSController::class, 'refund'])->name('refund');
+        Route::post('/product/{product}/toggle-pin', [App\Http\Controllers\Tenant\POSController::class, 'togglePin'])->name('toggle-pin');
     });
 
     // Sales Report Module
@@ -302,7 +320,7 @@ $tenantRoutes = function () {
 
 // 1. Path Based (Development / No Domain)
 Route::prefix('app/{tenant}')
-    ->middleware(['auth', 'verified', IdentifyTenant::class])
+    ->middleware(['auth', 'verified', IdentifyTenant::class, SetTenantTimezone::class])
     ->name('tenant.')
     ->group($tenantRoutes);
 
@@ -321,7 +339,7 @@ if ($appHost && !app()->runningInConsole()) {
             // ALLOW current appHost to be a tenant domain for local dev/single tenant usage
             if ($tenantDomain) {
                 Route::domain($tenantDomain)
-                    ->middleware(['auth', 'verified', IdentifyTenant::class])
+                    ->middleware(['auth', 'verified', IdentifyTenant::class, SetTenantTimezone::class])
                     ->name("tenant.domain.{$tenantDomain}.")
                     ->group($tenantRoutes);
             }

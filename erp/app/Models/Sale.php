@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Events\SaleCreated;
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,13 @@ class Sale extends Model
 {
     use BelongsToTenant;
     use HasFactory;
+
+    /**
+     * Dispatch these events when model actions occur.
+     */
+    protected $dispatchesEvents = [
+        'created' => SaleCreated::class,
+    ];
 
     protected $fillable = [
         'tenant_id',

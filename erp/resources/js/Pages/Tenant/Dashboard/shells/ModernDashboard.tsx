@@ -27,11 +27,11 @@ export default function ModernDashboard({ modules }: DashboardProps) {
         const content = (
             <div className={`
                 relative overflow-hidden rounded-3xl p-6 h-full
-                bg-white/70 backdrop-blur-sm
-                border border-white/50
-                shadow-lg shadow-black/5
-                hover:shadow-xl hover:shadow-black/10
-                hover:bg-white/90
+                bg-card/70 backdrop-blur-sm
+                border border-border/50
+                shadow-lg shadow-foreground/5
+                hover:shadow-xl hover:shadow-foreground/10
+                hover:bg-card/90
                 transition-all duration-300 ease-out
                 group
                 ${module.soon ? 'opacity-60' : ''}
@@ -39,9 +39,9 @@ export default function ModernDashboard({ modules }: DashboardProps) {
                 {/* Background gradient */}
                 <div className={`
                     absolute inset-0 opacity-0 group-hover:opacity-100
-                    bg-gradient-to-br ${module.color}
+                    bg-primary/5
                     transition-opacity duration-500
-                `} style={{ opacity: 0.05 }} />
+                `} />
 
                 {/* Icon */}
                 <div className={`
@@ -60,18 +60,18 @@ export default function ModernDashboard({ modules }: DashboardProps) {
                 {/* Content */}
                 <div className="relative z-10">
                     <h3 className={`
-                        font-semibold text-gray-900 mb-1
+                        font-semibold text-foreground mb-1
                         ${size === 'hero' ? 'text-2xl' : size === 'large' ? 'text-xl' : 'text-base'}
                     `}>
                         {module.name}
                     </h3>
                     {(size === 'hero' || size === 'large') && (
-                        <p className="text-gray-500 text-sm line-clamp-2">
+                        <p className="text-muted-foreground text-sm line-clamp-2">
                             {module.description}
                         </p>
                     )}
                     {module.soon && (
-                        <span className="inline-block mt-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">
+                        <span className="inline-block mt-2 text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded-full">
                             Próximamente
                         </span>
                     )}
@@ -80,7 +80,7 @@ export default function ModernDashboard({ modules }: DashboardProps) {
                 {/* Arrow indicator */}
                 {!module.soon && (
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <ArrowUpRight className="w-5 h-5 text-gray-400" />
+                        <ArrowUpRight className="w-5 h-5 text-muted-foreground" />
                     </div>
                 )}
             </div>
@@ -98,13 +98,13 @@ export default function ModernDashboard({ modules }: DashboardProps) {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/50 -m-6 p-8">
+        <div className="min-h-screen bg-background p-8">
             {/* Header */}
             <div className="mb-8">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                <h1 className="text-3xl font-bold text-foreground mb-2">
                     Panel de Control
                 </h1>
-                <p className="text-gray-500">
+                <p className="text-muted-foreground">
                     Gestiona todos los aspectos de tu negocio
                 </p>
             </div>

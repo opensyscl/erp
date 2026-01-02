@@ -9,6 +9,8 @@ services:
     volumes:
       - .:/var/www
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    ports:
+      - "8080:8080"  # Laravel Reverb WebSocket
     networks:
       - erp_network
     depends_on:

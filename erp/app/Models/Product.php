@@ -36,6 +36,7 @@ class Product extends Model
         'is_active',
         'is_archived',
         'is_offer',
+        'is_pinned',
     ];
 
     protected $casts = [
@@ -46,6 +47,7 @@ class Product extends Model
         'track_stock' => 'boolean',
         'is_active' => 'boolean',
         'is_archived' => 'boolean',
+        'is_pinned' => 'boolean',
     ];
 
     protected static function boot(): void

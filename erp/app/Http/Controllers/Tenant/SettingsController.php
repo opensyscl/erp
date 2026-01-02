@@ -32,9 +32,11 @@ class SettingsController extends Controller
                 'company_address' => $tenant->getSetting('company_address'),
                 'company_phone' => $tenant->getSetting('company_phone'),
                 'company_email' => $tenant->getSetting('company_email'),
+                'timezone' => $tenant->getSetting('timezone', config('app.timezone')),
                 'layout_template' => $tenant->layout_template ?? 'modern',
                 'dashboard_shell' => $tenant->getSetting('dashboard_shell', 'modern'),
             ],
+            'timezones' => \DateTimeZone::listIdentifiers(),
         ]);
     }
 
@@ -51,8 +53,9 @@ class SettingsController extends Controller
             'company_address' => ['nullable', 'string', 'max:255'],
             'company_phone' => ['nullable', 'string', 'max:20'],
             'company_email' => ['nullable', 'email', 'max:255'],
+            'timezone' => ['nullable', 'string', 'max:255', 'timezone'],
             'layout_template' => ['nullable', 'string', 'in:modern,sidebar,minimal,dark'],
-            'dashboard_shell' => ['nullable', 'string', 'in:classic,modern,minimal,dark'],
+            'dashboard_shell' => ['nullable', 'string', 'in:classic,modern,minimal,dark,sidebar'],
         ]);
 
         $tenant = $this->currentTenant->get();
@@ -62,6 +65,10 @@ class SettingsController extends Controller
         $tenant->setSetting('company_address', $validated['company_address']);
         $tenant->setSetting('company_phone', $validated['company_phone']);
         $tenant->setSetting('company_email', $validated['company_email']);
+
+        if (isset($validated['timezone'])) {
+            $tenant->setSetting('timezone', $validated['timezone']);
+        }
 
         // Update layout template directly on tenant model
         if (isset($validated['layout_template'])) {
