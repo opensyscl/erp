@@ -52,6 +52,29 @@ class POSController extends Controller
         $lastSale = Sale::orderByDesc('receipt_number')->first();
         $nextReceiptNumber = ($lastSale?->receipt_number ?? 0) + 1;
 
+        // Get today's sales for history panel
+        $todaysSales = Sale::with(['items.product'])
+            ->whereDate('created_at', now()->toDateString())
+            ->orderByDesc('created_at')
+            ->get()
+            ->map(fn($sale) => [
+                'id' => $sale->id,
+                'receipt_number' => (string) $sale->receipt_number,
+                'total' => (float) $sale->total,
+                'payment_method' => $sale->payment_method,
+                'change' => (float) $sale->change,
+                'status' => $sale->status,
+                'time' => $sale->created_at->format('H:i'),
+                'items' => $sale->items->map(fn($item) => [
+                    'product_id' => $item->product_id,
+                    'name' => $item->product?->name ?? 'Producto Eliminado',
+                    'quantity' => (float) $item->quantity,
+                    'unit_price' => (float) $item->unit_price,
+                    'subtotal' => (float) $item->subtotal,
+                    'image' => $item->product?->image,
+                ]),
+            ]);
+
         // Get tenant settings for ticket
         $tenant = $this->currentTenant->get();
 
@@ -59,6 +82,7 @@ class POSController extends Controller
             'products' => $products,
             'categories' => $categories,
             'nextReceiptNumber' => $nextReceiptNumber,
+            'todaysSales' => $todaysSales,
             'storeSettings' => [
                 'company_name' => $tenant->getSetting('company_name', ''),
                 'company_rut' => $tenant->getSetting('company_rut', ''),
@@ -153,12 +177,11 @@ class POSController extends Controller
                 return $sale;
             });
 
-            return back()->with('flash', [
-                'success' => true,
-                'receipt_number' => $sale->receipt_number,
-                'total' => $sale->total,
-                'change' => $sale->change,
-            ]);
+            return back()
+                ->with('success', true)
+                ->with('receipt_number', $sale->receipt_number)
+                ->with('total', $sale->total)
+                ->with('change', $sale->change);
         } catch (\Exception $e) {
             return back()->withErrors(['error' => 'Error al procesar la venta: ' . $e->getMessage()]);
         }
@@ -167,25 +190,25 @@ class POSController extends Controller
     /**
      * Get sale details for refund.
      */
-    public function getSale(int $saleId): JsonResponse
+    public function getSale(string $tenant, string $sale): JsonResponse
     {
-        $sale = Sale::with(['items.product'])
-            ->find($saleId);
+        $saleModel = Sale::with(['items.product'])
+            ->find((int) $sale);
 
-        if (!$sale) {
+        if (!$saleModel) {
             return response()->json(['error' => 'Venta no encontrada.'], 404);
         }
 
         return response()->json([
-            'id' => $sale->id,
-            'receipt_number' => $sale->receipt_number,
-            'total' => $sale->total,
-            'status' => $sale->status,
-            'created_at' => $sale->created_at->format('d/m/Y H:i'),
-            'items' => $sale->items->map(fn($item) => [
+            'id' => $saleModel->id,
+            'receipt_number' => $saleModel->receipt_number,
+            'total' => $saleModel->total,
+            'status' => $saleModel->status,
+            'created_at' => $saleModel->created_at->format('d/m/Y H:i'),
+            'items' => $saleModel->items->map(fn($item) => [
                 'id' => $item->id,
                 'product_id' => $item->product_id,
-                'product_name' => $item->product->name,
+                'product_name' => $item->product?->name ?? 'Producto Eliminado',
                 'quantity' => (float) $item->quantity,
                 'unit_price' => (float) $item->unit_price,
             ]),
@@ -195,10 +218,11 @@ class POSController extends Controller
     /**
      * Get sale details by receipt number for refund lookup.
      */
-    public function getSaleByReceipt(int $receiptNumber): JsonResponse
+    public function getSaleByReceipt(string $tenant, string $receipt): JsonResponse
     {
+        // $tenant is the route param for tenant slug, we ignore it here
         $sale = Sale::with(['items.product'])
-            ->where('receipt_number', $receiptNumber)
+            ->where('receipt_number', (int) $receipt)
             ->first();
 
         if (!$sale) {
@@ -215,11 +239,11 @@ class POSController extends Controller
             'time' => $sale->created_at->format('H:i'),
             'items' => $sale->items->map(fn($item) => [
                 'product_id' => $item->product_id,
-                'name' => $item->product->name ?? 'Producto Eliminado',
+                'name' => $item->product?->name ?? 'Producto Eliminado',
                 'quantity' => (float) $item->quantity,
                 'unit_price' => (float) $item->unit_price,
                 'subtotal' => (float) $item->subtotal,
-                'image' => $item->product->image ?? null,
+                'image' => $item->product?->image,
             ]),
             'returned_quantities' => [], // TODO: Track returned quantities in DB
             'is_fully_returned' => $sale->status === 'complete_refund',

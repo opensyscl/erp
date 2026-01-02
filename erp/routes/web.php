@@ -23,6 +23,8 @@ use Inertia\Inertia;
 
 $appHost = parse_url(config('app.url'), PHP_URL_HOST);
 
+
+
 if ($appHost) {
     Route::domain($appHost)->group(function () {
         Route::get('/', function () {
@@ -35,6 +37,13 @@ if ($appHost) {
         });
     });
 }
+
+
+// Public quotation view (no auth required)
+Route::get('/quotations/view/{id}', [App\Http\Controllers\PublicQuotationController::class, 'show'])->name('quotations.public.show');
+
+// Public order view (no auth required)
+Route::get('/orders/view/{id}', [App\Http\Controllers\PublicOrderController::class, 'show'])->name('orders.public.show');
 
 /*
 |--------------------------------------------------------------------------
@@ -50,9 +59,9 @@ Route::get('/dashboard', function (\Illuminate\Http\Request $request) {
     }
 
     if ($user->tenant) {
-        // If current host matches tenant domain, use domain route
+        // If current host matches tenant domain, just redirect to root (it's the tenant dashboard)
         if ($user->tenant->domain && $request->getHost() === $user->tenant->domain) {
-             return redirect()->route('tenant.domain.dashboard', ['domain' => $user->tenant->domain]);
+             return redirect('/');
         }
 
         // Otherwise fall back to App Path route
@@ -94,7 +103,13 @@ Route::prefix('superadmin')
 
 $tenantRoutes = function () {
     Route::get('/', function () {
-        return Inertia::render('Tenant/Dashboard');
+        $tenant = app(\App\Services\CurrentTenant::class)->get();
+        return Inertia::render('Tenant/Dashboard/Index', [
+            'settings' => [
+                'dashboard_shell' => $tenant?->getSetting('dashboard_shell', 'classic'),
+                'layout_template' => $tenant?->layout_template ?? 'modern',
+            ],
+        ]);
     })->name('dashboard');
 
     // Inventory Module
@@ -157,6 +172,107 @@ $tenantRoutes = function () {
         Route::delete('/{schedule}', [App\Http\Controllers\Tenant\ScheduleController::class, 'destroy'])->name('destroy');
     });
 
+    // Expenses Module (Gastos Operativos)
+    Route::prefix('expenses')->name('expenses.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\ExpensesController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Tenant\ExpensesController::class, 'store'])->name('store');
+    });
+
+    // Attendance Module (Registro de Asistencias)
+    Route::prefix('attendance')->name('attendance.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\AttendanceController::class, 'index'])->name('index');
+        Route::post('/check-rut', [App\Http\Controllers\Tenant\AttendanceController::class, 'checkRut'])->name('check-rut');
+        Route::post('/check-pin', [App\Http\Controllers\Tenant\AttendanceController::class, 'checkPin'])->name('check-pin');
+        Route::post('/register-event', [App\Http\Controllers\Tenant\AttendanceController::class, 'registerEvent'])->name('register-event');
+    });
+
+    // Ranking Module (Ranking de Productos)
+    Route::get('/ranking', [App\Http\Controllers\Tenant\RankingController::class, 'index'])->name('ranking.index');
+
+    // Offers Module (Ofertas y Packs)
+    Route::prefix('offers')->name('offers.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\OffersController::class, 'index'])->name('index');
+        Route::get('/search', [App\Http\Controllers\Tenant\OffersController::class, 'searchProducts'])->name('search');
+        Route::get('/{id}', [App\Http\Controllers\Tenant\OffersController::class, 'show'])->name('show');
+        Route::post('/', [App\Http\Controllers\Tenant\OffersController::class, 'store'])->name('store');
+        Route::put('/{id}', [App\Http\Controllers\Tenant\OffersController::class, 'update'])->name('update');
+        Route::delete('/{id}', [App\Http\Controllers\Tenant\OffersController::class, 'destroy'])->name('destroy');
+    });
+
+    // Labels Module (Centro de Etiquetas)
+    Route::get('/labels', [App\Http\Controllers\Tenant\LabelsController::class, 'index'])->name('labels.index');
+
+    // Quotations Module (Cotizaciones)
+    Route::prefix('quotations')->name('quotations.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\QuotationsController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Tenant\QuotationsController::class, 'store'])->name('store');
+        Route::get('/{id}', [App\Http\Controllers\Tenant\QuotationsController::class, 'show'])->name('show');
+    });
+
+    // Orders Module (Órdenes de Compra)
+    Route::prefix('orders')->name('orders.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\OrdersController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Tenant\OrdersController::class, 'store'])->name('store');
+        Route::get('/{id}', [App\Http\Controllers\Tenant\OrdersController::class, 'show'])->name('show');
+    });
+
+    // Terceros Module (Clientes y Proveedores)
+    Route::prefix('terceros')->name('terceros.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\TercerosController::class, 'index'])->name('index');
+        Route::post('/clients', [App\Http\Controllers\Tenant\TercerosController::class, 'storeClient'])->name('clients.store');
+        Route::put('/clients/{id}', [App\Http\Controllers\Tenant\TercerosController::class, 'updateClient'])->name('clients.update');
+        Route::post('/suppliers', [App\Http\Controllers\Tenant\TercerosController::class, 'storeSupplier'])->name('suppliers.store');
+        Route::put('/suppliers/{id}', [App\Http\Controllers\Tenant\TercerosController::class, 'updateSupplier'])->name('suppliers.update');
+    });
+
+    // Capital Module (Análisis de Utilidad y Reinversión)
+    Route::prefix('capital')->name('capital.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\CapitalController::class, 'index'])->name('index');
+        Route::get('/suppliers', [App\Http\Controllers\Tenant\CapitalController::class, 'bySupplier'])->name('suppliers');
+    });
+
+    // Cash Closings Module (Cuadres de Caja)
+    Route::prefix('cash-closings')->name('cash-closings.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\CashClosingController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Tenant\CashClosingController::class, 'store'])->name('store');
+    });
+
+    // Supplier Payments Module
+    Route::prefix('payments')->name('payments.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\SupplierPaymentController::class, 'index'])->name('index');
+        Route::post('/{id}/pay', [App\Http\Controllers\Tenant\SupplierPaymentController::class, 'markAsPaid'])->name('pay');
+        Route::post('/{id}/undo', [App\Http\Controllers\Tenant\SupplierPaymentController::class, 'undoPayment'])->name('undo');
+        Route::put('/{id}/amount', [App\Http\Controllers\Tenant\SupplierPaymentController::class, 'updateAmount'])->name('update-amount');
+    });
+
+    // Task Center (Centro de Tareas)
+    Route::prefix('tasks')->name('tasks.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\TaskController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Tenant\TaskController::class, 'store'])->name('store');
+        Route::put('/{task}', [App\Http\Controllers\Tenant\TaskController::class, 'update'])->name('update');
+        Route::delete('/{task}', [App\Http\Controllers\Tenant\TaskController::class, 'destroy'])->name('destroy');
+        Route::get('/metrics', [App\Http\Controllers\Tenant\TaskController::class, 'metrics'])->name('metrics');
+    });
+
+    // Internal Consumption (Consumo Interno)
+    Route::prefix('outputs')->name('outputs.')->group(function () {
+        Route::get('/search', [App\Http\Controllers\Tenant\InternalConsumptionController::class, 'search'])->name('search');
+        Route::get('/', [App\Http\Controllers\Tenant\InternalConsumptionController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Tenant\InternalConsumptionController::class, 'store'])->name('store');
+        Route::put('/{output}', [App\Http\Controllers\Tenant\InternalConsumptionController::class, 'update'])->name('update');
+        Route::delete('/{output}', [App\Http\Controllers\Tenant\InternalConsumptionController::class, 'destroy'])->name('destroy');
+    });
+
+    // Decrease (Mermas)
+    Route::prefix('decrease')->name('decrease.')->group(function () {
+        Route::get('/', [App\Http\Controllers\Tenant\DecreaseController::class, 'index'])->name('index');
+        Route::post('/', [App\Http\Controllers\Tenant\DecreaseController::class, 'store'])->name('store');
+        Route::delete('/{decrease}', [App\Http\Controllers\Tenant\DecreaseController::class, 'destroy'])->name('destroy');
+    });
+
+    // Shop (Catálogo)
+    Route::get('/shop', [App\Http\Controllers\Tenant\ShopController::class, 'index'])->name('shop.index');
+
     // Employees API
     Route::prefix('employees')->name('employees.')->group(function () {
         Route::get('/', [App\Http\Controllers\Tenant\EmployeeController::class, 'index'])->name('index');
@@ -202,7 +318,8 @@ if ($appHost && !app()->runningInConsole()) {
         });
 
         foreach ($tenantDomains as $tenantDomain) {
-            if ($tenantDomain && $tenantDomain !== $appHost) {
+            // ALLOW current appHost to be a tenant domain for local dev/single tenant usage
+            if ($tenantDomain) {
                 Route::domain($tenantDomain)
                     ->middleware(['auth', 'verified', IdentifyTenant::class])
                     ->name("tenant.domain.{$tenantDomain}.")

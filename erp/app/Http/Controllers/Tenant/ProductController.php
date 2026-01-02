@@ -241,14 +241,28 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($productId);
 
-        // Delete image if exists
-        if ($product->image) {
-            Storage::disk('public')->delete($product->image);
+        $hasSaleItems = \DB::table('sale_items')->where('product_id', $product->id)->exists();
+
+        if ($hasSaleItems) {
+            return back()->with('error', 'No se puede eliminar: este producto tiene ventas registradas. Puedes archivarlo en su lugar.');
         }
 
-        $product->delete();
+        try {
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
 
-        return back()->with('success', 'Producto eliminado permanentemente.');
+            $product->delete();
+
+            return back()->with('success', 'Producto eliminado permanentemente.');
+        } catch (\Exception $e) {
+            if (str_contains($e->getMessage(), 'foreign key constraint') ||
+                str_contains($e->getMessage(), '1451') ||
+                str_contains($e->getMessage(), 'Integrity constraint')) {
+                return back()->with('error', 'No se puede eliminar: este producto tiene registros relacionados. Puedes archivarlo en su lugar.');
+            }
+            throw $e;
+        }
     }
 
     /**

@@ -31,6 +31,7 @@ import {
     ChevronRight,
     History
 } from 'lucide-react';
+import { CashIcon } from '@/components/Icons';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -84,6 +85,7 @@ interface Props {
     categories: Category[];
     nextReceiptNumber: number;
     storeSettings: StoreSettings;
+    todaysSales?: SaleRecord[];
 }
 
 interface TicketData {
@@ -121,7 +123,7 @@ interface SaleRecord {
     is_fully_returned?: boolean;
 }
 
-export default function Index({ products: initialProducts, categories, nextReceiptNumber, storeSettings }: Props) {
+export default function Index({ products: initialProducts, categories, nextReceiptNumber, storeSettings, todaysSales = [] }: Props) {
     const tRoute = useTenantRoute();
     const [products, setProducts] = useState<Product[]>(initialProducts);
     const [cart, setCart] = useState<CartItem[]>([]);
@@ -132,10 +134,10 @@ export default function Index({ products: initialProducts, categories, nextRecei
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
-    const handleCategorySelect = (id: number | null) => {
+    const handleCategorySelect = useCallback((id: number | null) => {
         playClick();
         setSelectedCategory(id);
-    };
+    }, [playClick]);
 
     // ... inside rendering categories
     /*
@@ -171,7 +173,7 @@ export default function Index({ products: initialProducts, categories, nextRecei
     const [isSplitPayment, setIsSplitPayment] = useState(false);
 
     // Session sales history
-    const [sessionSales, setSessionSales] = useState<SaleRecord[]>([]);
+    const [sessionSales, setSessionSales] = useState<SaleRecord[]>(todaysSales);
 
     // Search suggestions state
     const SEARCH_HISTORY_KEY = 'pos-search-history';
@@ -288,12 +290,12 @@ export default function Index({ products: initialProducts, categories, nextRecei
     }, []);
 
     // Format price in CLP
-    const formatPrice = (price: number) => {
+    const formatPrice = useCallback((price: number) => {
         return new Intl.NumberFormat('es-CL', {
             style: 'currency',
             currency: 'CLP',
         }).format(price);
-    };
+    }, []);
 
     // Filter products (with favorites support: selectedCategory === -1)
     const filteredProducts = useMemo(() => {
@@ -542,7 +544,7 @@ export default function Index({ products: initialProducts, categories, nextRecei
     }, [cart]);
 
     // Add to cart
-    const addToCart = (product: Product) => {
+    const addToCart = useCallback((product: Product) => {
         if (product.stock <= 0) {
             playError();
             toast.error(`Out of stock: ${product.name}`);
@@ -570,10 +572,10 @@ export default function Index({ products: initialProducts, categories, nextRecei
 
             return [...prevCart, { product, quantity: 1 }];
         });
-    };
+    }, [playError, playScan]);
 
     // Update quantity
-    const updateQuantity = (productId: number, delta: number) => {
+    const updateQuantity = useCallback((productId: number, delta: number) => {
         setCart(prevCart => {
             return prevCart.map(item => {
                 if (item.product.id === productId) {
@@ -589,12 +591,12 @@ export default function Index({ products: initialProducts, categories, nextRecei
                 return item;
             }).filter(Boolean) as CartItem[];
         });
-    };
+    }, []);
 
     // Remove from cart
-    const removeFromCart = (productId: number) => {
+    const removeFromCart = useCallback((productId: number) => {
         setCart(prevCart => prevCart.filter(item => item.product.id !== productId));
-    };
+    }, []);
 
     // Clear cart
     const clearCart = () => {
@@ -838,11 +840,10 @@ export default function Index({ products: initialProducts, categories, nextRecei
                                     }}
                                     onFocus={() => setShowSuggestions(true)}
                                     onBlur={() => {
-                                        // Delay to allow click on suggestions
                                         setTimeout(() => setShowSuggestions(false), 200);
                                     }}
                                     onKeyDown={handleSearchKeyDown}
-                                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                                    className="w-full pl-10 pr-4 py-2 placeholder:text-sm border border-gray-200 rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
                                 />
 
                                 {/* Suggestions Dropdown */}
@@ -1391,7 +1392,7 @@ export default function Index({ products: initialProducts, categories, nextRecei
                                 paymentMethod === 'cash' ? 'border-primary bg-primary/10' : 'border-gray-200'
                                 }`}
                             >
-                                <Banknote className={`w-5 h-5 mb-1 ${paymentMethod === 'cash' ? 'text-primary' : 'text-gray-500'}`} />
+                                <CashIcon size={23} />
                                 <span className={`text-xs font-medium ${paymentMethod === 'cash' ? 'text-primary' : 'text-gray-600'}`}>Efectivo</span>
                             </button>
                             <button

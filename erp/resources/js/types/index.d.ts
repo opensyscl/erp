@@ -17,5 +17,6 @@ export type PageProps<
         slug: string;
         brand_color: string;
         logo?: string;
+        layout_template?: string;
     };
 };

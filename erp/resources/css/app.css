@@ -61,7 +61,6 @@
     --danger: #ED8D7F;
 }
 
-/* 1) Cozy (light, cálido, “glass” suave) */
 [data-theme="cozy-cream"] {
   --glass: #F7F8FA;
   --danger: #ED8D7F;
@@ -120,7 +119,6 @@
   --sidebar-ring: oklch(0.72 0.02 285);
 }
 
-/* 2) Midnight (dark elegante, contraste alto, azul frío) */
 [data-theme="midnight"] {
   --glass: #0E1320;
   --danger: #FF6B6B;

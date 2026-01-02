@@ -32,6 +32,8 @@ class SettingsController extends Controller
                 'company_address' => $tenant->getSetting('company_address'),
                 'company_phone' => $tenant->getSetting('company_phone'),
                 'company_email' => $tenant->getSetting('company_email'),
+                'layout_template' => $tenant->layout_template ?? 'modern',
+                'dashboard_shell' => $tenant->getSetting('dashboard_shell', 'modern'),
             ],
         ]);
     }
@@ -49,6 +51,8 @@ class SettingsController extends Controller
             'company_address' => ['nullable', 'string', 'max:255'],
             'company_phone' => ['nullable', 'string', 'max:20'],
             'company_email' => ['nullable', 'email', 'max:255'],
+            'layout_template' => ['nullable', 'string', 'in:modern,sidebar,minimal,dark'],
+            'dashboard_shell' => ['nullable', 'string', 'in:classic,modern,minimal,dark'],
         ]);
 
         $tenant = $this->currentTenant->get();
@@ -58,6 +62,16 @@ class SettingsController extends Controller
         $tenant->setSetting('company_address', $validated['company_address']);
         $tenant->setSetting('company_phone', $validated['company_phone']);
         $tenant->setSetting('company_email', $validated['company_email']);
+
+        // Update layout template directly on tenant model
+        if (isset($validated['layout_template'])) {
+            $tenant->layout_template = $validated['layout_template'];
+        }
+
+        // Update dashboard shell preference
+        if (isset($validated['dashboard_shell'])) {
+            $tenant->setSetting('dashboard_shell', $validated['dashboard_shell']);
+        }
 
         if ($request->hasFile('logo')) {
             $path = $request->file('logo')->store('tenants/' . $tenant->id . '/logo', 'public');
@@ -69,3 +83,4 @@ class SettingsController extends Controller
         return back()->with('success', 'Configuración actualizada correctamente.');
     }
 }
+

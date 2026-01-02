@@ -162,10 +162,16 @@ export default function Index({ products, stats, categories, suppliers, filters 
         if (!productToDelete) return;
         setDeleting(true);
         router.delete(tRoute('inventory.products.destroy', { product: productToDelete.id }), {
-            onSuccess: () => {
-                toast.success('Producto eliminado', {
-                    description: `"${productToDelete.name}" fue eliminado permanentemente.`,
-                });
+            onSuccess: (page: any) => {
+                if (page.props.flash?.error) {
+                    toast.error('No se puede eliminar', {
+                        description: page.props.flash.error,
+                    });
+                } else {
+                    toast.success('Producto eliminado', {
+                        description: `"${productToDelete.name}" fue eliminado permanentemente.`,
+                    });
+                }
             },
             onFinish: () => {
                 setDeleting(false);

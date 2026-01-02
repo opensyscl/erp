@@ -26,6 +26,7 @@ class Tenant extends Model
         'status',
         'plan',
         'settings',
+        'layout_template',
     ];
 
     /**

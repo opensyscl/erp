@@ -151,10 +151,19 @@ export const ClipboardIcon = ({ size = 20, ...props }: IconProps) => (
 
 
 export const ProductItemIcon = ({ size = 20, ...props }: IconProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="https://cdn.hugeicons.com/icons/product-loading-stroke-rounded.svg?v=1.0.1" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" color="#b1b1b1">
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" {...props}>
         <path d="M4.5 10.2653V6H19.5V10.2653C19.5 13.4401 19.5 15.0275 18.5237 16.0137C17.5474 17 15.976 17 12.8333 17H11.1667C8.02397 17 6.45262 17 5.47631 16.0137C4.5 15.0275 4.5 13.4401 4.5 10.2653Z" stroke="#b1b1b1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
         <path d="M4.5 6L5.22115 4.46154C5.78045 3.26838 6.06009 2.6718 6.62692 2.3359C7.19375 2 7.92084 2 9.375 2H14.625C16.0792 2 16.8062 2 17.3731 2.3359C17.9399 2.6718 18.2196 3.26838 18.7788 4.46154L19.5 6" stroke="#b1b1b1" stroke-width="1.5" stroke-linecap="round"></path>
         <path d="M10.5 9H13.5" stroke="#b1b1b1" stroke-width="1.5" stroke-linecap="round"></path>
         <path d="M12 19.5V22M12 19.5L7 19.5M12 19.5H17M7 19.5H4.5C3.11929 19.5 2 20.6193 2 22M7 19.5V22M17 19.5H19.5C20.8807 19.5 22 20.6193 22 22M17 19.5V22" stroke="#b1b1b1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+)
+
+export const CashIcon = ({ size = 20, ...props }: IconProps) => (
+     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" {...props}>
+        <path d="M14.5005 9.5C14.5005 10.8807 13.3812 12 12.0005 12C10.6198 12 9.50049 10.8807 9.50049 9.5C9.50049 8.11929 10.6198 7 12.0005 7C13.3812 7 14.5005 8.11929 14.5005 9.5Z" stroke="#b1b1b1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M16 2.5C18.7632 2.5 20.572 2.9772 21.4264 3.2723C21.7844 3.39596 22 3.73926 22 4.11803V14.9913C22 15.7347 21.1888 16.2796 20.4671 16.1012C19.4672 15.854 17.9782 15.6094 16 15.6094C11.1629 15.6094 10.0694 17.4812 2.75993 15.7923C2.31284 15.689 2 15.2875 2 14.8286V3.78078C2 3.1302 2.61507 2.6548 3.25078 2.79306C10.1213 4.28736 11.2733 2.5 16 2.5Z" stroke="#b1b1b1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M2 6.5C3.95133 6.5 5.70483 4.90507 5.92901 3.25417M18.5005 3C18.5005 5.03964 20.2655 6.96899 22 6.96899M22 12.5C20.1009 12.5 18.2601 13.8102 18.102 15.5983M6.00049 15.9961C6.00049 13.787 4.20963 11.9961 2.00049 11.9961" stroke="#b1b1b1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M19 18.7329C18.1717 18.5965 17.1718 18.5 16.0005 18.5C11.7061 18.5 10.3624 20.1598 5 19.2027" stroke="#b1b1b1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
 )

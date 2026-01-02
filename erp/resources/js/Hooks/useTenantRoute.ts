@@ -17,24 +17,8 @@ export function useTenantRoute() {
         try {
             // 1. If tenant is available from props
             if (tenant && tenant.slug) {
-                const isDomainRoute = tenant.domain && currentHost.includes(tenant.domain);
-
-                if (isDomainRoute) {
-                    // Domain-based route: Build path manually
-                    // Use path-based route to get the structure, then strip /app/{tenant}
-                    const fullUrl = route(`tenant.${name}`, { ...params, tenant: tenant.slug }, true);
-                    try {
-                        const url = new URL(fullUrl);
-                        // Path: /app/slug/inventory -> /inventory
-                        const pathWithoutTenant = url.pathname.replace(`/app/${tenant.slug}`, '');
-                        return pathWithoutTenant || '/';
-                    } catch {
-                        return '/';
-                    }
-                } else {
-                    // Path-based route: e.g., /app/kisto/inventory
-                    return route(`tenant.${name}`, { ...params, tenant: tenant.slug }, absolute);
-                }
+                // Always use path-based route for consistency
+                return route(`tenant.${name}`, { ...params, tenant: tenant.slug }, absolute);
             }
 
             // 2. Fallback: Try to extract tenant slug from URL path

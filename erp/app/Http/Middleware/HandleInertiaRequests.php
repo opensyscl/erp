@@ -34,7 +34,13 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'flash' => fn () => $request->session()->get('flash'),
+            'flash' => fn () => [
+                'success' => $request->session()->get('success'),
+                'error' => $request->session()->get('error'),
+                'receipt_number' => $request->session()->get('receipt_number'),
+                'total' => $request->session()->get('total'),
+                'change' => $request->session()->get('change'),
+            ],
             // Use a closure so it's evaluated AFTER route middleware (IdentifyTenant) runs
             'tenant' => fn () => $this->getTenantData(),
         ];
@@ -58,6 +64,7 @@ class HandleInertiaRequests extends Middleware
             'domain' => $tenant->domain,
             'brand_color' => $tenant->getSetting('brand_color', '#3b82f6'),
             'logo' => $tenant->getSetting('logo'),
+            'layout_template' => $tenant->layout_template ?? 'modern',
         ];
     }
 }

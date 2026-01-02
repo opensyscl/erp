@@ -4,6 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- React Scan (dev only) -->
+        @if(config('app.debug'))
+            <!-- <script crossorigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js"></script>-->
+        @endif
+
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Theme initialization (blocking to prevent FOUC) -->

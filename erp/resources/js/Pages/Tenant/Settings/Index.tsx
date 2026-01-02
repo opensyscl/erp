@@ -16,7 +16,8 @@ import {
     Music,
     AlertCircle,
     CheckCircle,
-    MousePointerClick
+    MousePointerClick,
+    Palette
 } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
@@ -33,10 +34,12 @@ interface Props {
         company_address?: string;
         company_phone?: string;
         company_email?: string;
+        layout_template?: string;
+        dashboard_shell?: string;
     };
 }
 
-type Section = 'sounds' | 'details' | 'payments' | 'checkout' | 'shipping' | 'location' | 'notifications';
+type Section = 'sounds' | 'appearance' | 'details' | 'payments' | 'checkout' | 'shipping' | 'location' | 'notifications';
 
 export default function Index({ settings }: Props) {
     const tRoute = useTenantRoute();
@@ -102,6 +105,8 @@ export default function Index({ settings }: Props) {
         company_address: settings.company_address || '',
         company_phone: settings.company_phone || '',
         company_email: settings.company_email || '',
+        layout_template: settings.layout_template || 'modern',
+        dashboard_shell: settings.dashboard_shell || 'modern',
         _method: 'patch',
     });
 
@@ -165,6 +170,7 @@ export default function Index({ settings }: Props) {
                                 </h3>
                                 <nav className="space-y-1">
                                     <SidebarItem id="sounds" icon={Volume2} label="Sonidos y Alertas" />
+                                    <SidebarItem id="appearance" icon={Palette} label="Apariencia" />
                                     <SidebarItem id="details" icon={Store} label="Detalles de Tienda" />
                                     <SidebarItem id="payments" icon={CreditCard} label="Pagos" />
                                     <SidebarItem id="checkout" icon={ShoppingCart} label="Checkout" />
@@ -299,6 +305,341 @@ export default function Index({ settings }: Props) {
                                         <button className="text-sm text-gray-500 hover:text-gray-900" onClick={() => toast.info('Los sonidos se guardan automáticamente en este navegador.')}>
                                             Restaurar predeterminados
                                         </button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* APPEARANCE SECTION */}
+                            {activeSection === 'appearance' && (
+                                <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                                    <div className="p-6 border-b border-gray-100">
+                                        <h2 className="text-lg font-semibold text-gray-900">Apariencia del Sistema</h2>
+                                        <p className="text-sm text-gray-500">Selecciona el diseño visual de la interfaz.</p>
+                                    </div>
+
+                                    <div className="p-6">
+                                        <form onSubmit={submit} className="space-y-6">
+                                            <div>
+                                                <Label className="text-base font-medium mb-4 block">Template de Layout</Label>
+                                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                    {/* Modern Layout */}
+                                                    <label
+                                                        className={cn(
+                                                            "relative border-2 rounded-xl p-4 cursor-pointer transition-all hover:border-primary/50",
+                                                            data.layout_template === 'modern'
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-gray-200"
+                                                        )}
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            name="layout_template"
+                                                            value="modern"
+                                                            checked={data.layout_template === 'modern'}
+                                                            onChange={(e) => setData('layout_template', e.target.value)}
+                                                            className="sr-only"
+                                                        />
+                                                        <div className="aspect-video bg-gray-100 rounded-lg mb-3 overflow-hidden">
+                                                            {/* Modern preview */}
+                                                            <div className="h-3 bg-white border-b" />
+                                                            <div className="p-2">
+                                                                <div className="grid grid-cols-4 gap-1">
+                                                                    <div className="h-6 bg-white rounded" />
+                                                                    <div className="h-6 bg-white rounded" />
+                                                                    <div className="h-6 bg-white rounded" />
+                                                                    <div className="h-6 bg-white rounded" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium text-gray-900">Moderno</div>
+                                                            <div className="text-xs text-gray-500">Navbar superior, amplio y limpio</div>
+                                                        </div>
+                                                        {data.layout_template === 'modern' && (
+                                                            <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                                                                <CheckCircle className="w-3 h-3 text-white" />
+                                                            </div>
+                                                        )}
+                                                    </label>
+
+                                                    {/* Sidebar Layout */}
+                                                    <label
+                                                        className={cn(
+                                                            "relative border-2 rounded-xl p-4 cursor-pointer transition-all hover:border-primary/50",
+                                                            data.layout_template === 'sidebar'
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-gray-200"
+                                                        )}
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            name="layout_template"
+                                                            value="sidebar"
+                                                            checked={data.layout_template === 'sidebar'}
+                                                            onChange={(e) => setData('layout_template', e.target.value)}
+                                                            className="sr-only"
+                                                        />
+                                                        <div className="aspect-video bg-gray-100 rounded-lg mb-3 overflow-hidden flex">
+                                                            {/* Sidebar preview */}
+                                                            <div className="w-1/4 bg-white border-r">
+                                                                <div className="space-y-1 p-1">
+                                                                    <div className="h-2 bg-primary/20 rounded" />
+                                                                    <div className="h-2 bg-gray-200 rounded" />
+                                                                    <div className="h-2 bg-gray-200 rounded" />
+                                                                </div>
+                                                            </div>
+                                                            <div className="flex-1 p-2">
+                                                                <div className="h-2 bg-white border-b mb-2" />
+                                                                <div className="grid grid-cols-2 gap-1">
+                                                                    <div className="h-6 bg-white rounded" />
+                                                                    <div className="h-6 bg-white rounded" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium text-gray-900">Sidebar</div>
+                                                            <div className="text-xs text-gray-500">Navegación lateral fija</div>
+                                                        </div>
+                                                        {data.layout_template === 'sidebar' && (
+                                                            <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                                                                <CheckCircle className="w-3 h-3 text-white" />
+                                                            </div>
+                                                        )}
+                                                    </label>
+
+                                                    {/* Minimal Layout */}
+                                                    <label
+                                                        className={cn(
+                                                            "relative border-2 rounded-xl p-4 cursor-pointer transition-all hover:border-primary/50",
+                                                            data.layout_template === 'minimal'
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-gray-200"
+                                                        )}
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            name="layout_template"
+                                                            value="minimal"
+                                                            checked={data.layout_template === 'minimal'}
+                                                            onChange={(e) => setData('layout_template', e.target.value)}
+                                                            className="sr-only"
+                                                        />
+                                                        <div className="aspect-video bg-white rounded-lg mb-3 overflow-hidden border">
+                                                            {/* Minimal preview */}
+                                                            <div className="h-2 bg-gray-50 border-b" />
+                                                            <div className="p-2">
+                                                                <div className="h-10 bg-gray-50 rounded" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium text-gray-900">Minimalista</div>
+                                                            <div className="text-xs text-gray-500">Interfaz ultra limpia</div>
+                                                        </div>
+                                                        {data.layout_template === 'minimal' && (
+                                                            <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                                                                <CheckCircle className="w-3 h-3 text-white" />
+                                                            </div>
+                                                        )}
+                                                    </label>
+
+                                                    {/* Dark Layout */}
+                                                    <label
+                                                        className={cn(
+                                                            "relative border-2 rounded-xl p-4 cursor-pointer transition-all hover:border-primary/50",
+                                                            data.layout_template === 'dark'
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-gray-200"
+                                                        )}
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            name="layout_template"
+                                                            value="dark"
+                                                            checked={data.layout_template === 'dark'}
+                                                            onChange={(e) => setData('layout_template', e.target.value)}
+                                                            className="sr-only"
+                                                        />
+                                                        <div className="aspect-video bg-gray-900 rounded-lg mb-3 overflow-hidden flex">
+                                                            {/* Dark preview */}
+                                                            <div className="w-1/4 bg-gray-800">
+                                                                <div className="space-y-1 p-1">
+                                                                    <div className="h-2 bg-primary/50 rounded" />
+                                                                    <div className="h-2 bg-gray-700 rounded" />
+                                                                    <div className="h-2 bg-gray-700 rounded" />
+                                                                </div>
+                                                            </div>
+                                                            <div className="flex-1 p-2">
+                                                                <div className="h-2 bg-gray-800 mb-2" />
+                                                                <div className="grid grid-cols-2 gap-1">
+                                                                    <div className="h-6 bg-gray-800 rounded" />
+                                                                    <div className="h-6 bg-gray-800 rounded" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium text-gray-900">Dark Mode</div>
+                                                            <div className="text-xs text-gray-500">Tema oscuro elegante</div>
+                                                        </div>
+                                                        {data.layout_template === 'dark' && (
+                                                            <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                                                                <CheckCircle className="w-3 h-3 text-white" />
+                                                            </div>
+                                                        )}
+                                                            </label>
+                                                </div>
+                                            </div>
+
+                                            {/* Dashboard Shell Selector */}
+                                            <div className="pt-6 border-t">
+                                                <Label className="text-base font-medium mb-4 block">Estilo del Dashboard</Label>
+                                                <p className="text-sm text-gray-500 mb-4">Selecciona cómo se verán los módulos en tu dashboard.</p>
+                                                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                                    {/* Classic Dashboard */}
+                                                    <label
+                                                        className={cn(
+                                                            "relative border-2 rounded-xl p-3 cursor-pointer transition-all hover:border-primary/50",
+                                                            data.dashboard_shell === 'classic'
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-gray-200"
+                                                        )}
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            name="dashboard_shell"
+                                                            value="classic"
+                                                            checked={data.dashboard_shell === 'classic'}
+                                                            onChange={(e) => setData('dashboard_shell', e.target.value)}
+                                                            className="sr-only"
+                                                        />
+                                                        <div className="aspect-video bg-gray-100 rounded-lg mb-2 overflow-hidden p-2">
+                                                            <div className="grid grid-cols-2 gap-1 h-full">
+                                                                <div className="bg-white rounded border-t-2 border-green-500" />
+                                                                <div className="bg-white rounded border-t-2 border-blue-500" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium text-gray-900 text-sm">Clásico</div>
+                                                        </div>
+                                                        {data.dashboard_shell === 'classic' && (
+                                                            <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+                                                                <CheckCircle className="w-2.5 h-2.5 text-white" />
+                                                            </div>
+                                                        )}
+                                                    </label>
+
+                                                    {/* Modern Dashboard */}
+                                                    <label
+                                                        className={cn(
+                                                            "relative border-2 rounded-xl p-3 cursor-pointer transition-all hover:border-primary/50",
+                                                            data.dashboard_shell === 'modern'
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-gray-200"
+                                                        )}
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            name="dashboard_shell"
+                                                            value="modern"
+                                                            checked={data.dashboard_shell === 'modern'}
+                                                            onChange={(e) => setData('dashboard_shell', e.target.value)}
+                                                            className="sr-only"
+                                                        />
+                                                        <div className="aspect-video bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg mb-2 overflow-hidden p-2">
+                                                            <div className="grid grid-cols-2 gap-1 h-full">
+                                                                <div className="bg-white/20 rounded" />
+                                                                <div className="bg-white/20 rounded" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium text-gray-900 text-sm">Moderno</div>
+                                                        </div>
+                                                        {data.dashboard_shell === 'modern' && (
+                                                            <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+                                                                <CheckCircle className="w-2.5 h-2.5 text-white" />
+                                                            </div>
+                                                        )}
+                                                    </label>
+
+                                                    {/* Minimal Dashboard */}
+                                                    <label
+                                                        className={cn(
+                                                            "relative border-2 rounded-xl p-3 cursor-pointer transition-all hover:border-primary/50",
+                                                            data.dashboard_shell === 'minimal'
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-gray-200"
+                                                        )}
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            name="dashboard_shell"
+                                                            value="minimal"
+                                                            checked={data.dashboard_shell === 'minimal'}
+                                                            onChange={(e) => setData('dashboard_shell', e.target.value)}
+                                                            className="sr-only"
+                                                        />
+                                                        <div className="aspect-video bg-white rounded-lg mb-2 overflow-hidden border p-2">
+                                                            <div className="space-y-1 h-full">
+                                                                <div className="h-3 bg-gray-100 rounded flex items-center px-1 gap-1">
+                                                                    <div className="w-2 h-2 bg-gray-300 rounded" />
+                                                                    <div className="flex-1 h-1 bg-gray-200 rounded" />
+                                                                </div>
+                                                                <div className="h-3 bg-gray-50 rounded" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium text-gray-900 text-sm">Minimalista</div>
+                                                        </div>
+                                                        {data.dashboard_shell === 'minimal' && (
+                                                            <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+                                                                <CheckCircle className="w-2.5 h-2.5 text-white" />
+                                                            </div>
+                                                        )}
+                                                    </label>
+
+                                                    {/* Dark Dashboard */}
+                                                    <label
+                                                        className={cn(
+                                                            "relative border-2 rounded-xl p-3 cursor-pointer transition-all hover:border-primary/50",
+                                                            data.dashboard_shell === 'dark'
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-gray-200"
+                                                        )}
+                                                    >
+                                                        <input
+                                                            type="radio"
+                                                            name="dashboard_shell"
+                                                            value="dark"
+                                                            checked={data.dashboard_shell === 'dark'}
+                                                            onChange={(e) => setData('dashboard_shell', e.target.value)}
+                                                            className="sr-only"
+                                                        />
+                                                        <div className="aspect-video bg-zinc-900 rounded-lg mb-2 overflow-hidden p-2">
+                                                            <div className="grid grid-cols-2 gap-1 h-full">
+                                                                <div className="bg-zinc-800 rounded" />
+                                                                <div className="bg-zinc-800 rounded" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-center">
+                                                            <div className="font-medium text-gray-900 text-sm">Oscuro</div>
+                                                        </div>
+                                                        {data.dashboard_shell === 'dark' && (
+                                                            <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+                                                                <CheckCircle className="w-2.5 h-2.5 text-white" />
+                                                            </div>
+                                                        )}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div className="flex justify-end pt-4 border-t">
+                                                <button
+                                                    type="submit"
+                                                    disabled={processing}
+                                                    className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
+                                                >
+                                                    {processing ? 'Guardando...' : 'Guardar Cambios'}
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             )}
